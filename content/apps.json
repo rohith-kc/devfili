@@ -1,0 +1,11 @@
+[
+  { "slug": "zoom", "name": "Zoom", "websiteUrl": "https://zoom.us", "aliases": ["zoom", "zoom.us", "zoom meetings"], "order": 1 },
+  { "slug": "slack", "name": "Slack", "websiteUrl": "https://slack.com", "aliases": ["slack", "slack.com"], "order": 2 },
+  { "slug": "gong", "name": "Gong", "websiteUrl": "https://www.gong.io", "aliases": ["gong", "gong.io"], "order": 3 },
+  { "slug": "hubspot", "name": "HubSpot", "websiteUrl": "https://www.hubspot.com", "aliases": ["hubspot", "hubspot.com"], "order": 4 },
+  { "slug": "notion", "name": "Notion", "websiteUrl": "https://www.notion.so", "aliases": ["notion", "notion.so"], "order": 5 },
+  { "slug": "linear", "name": "Linear", "websiteUrl": "https://linear.app", "aliases": ["linear", "linear.app"], "order": 6 },
+  { "slug": "microsoft-teams", "name": "Microsoft Teams", "websiteUrl": "https://www.microsoft.com/microsoft-teams", "aliases": ["microsoft teams", "teams", "ms teams"], "order": 7 },
+  { "slug": "google-gmail", "name": "Google (Gmail)", "websiteUrl": "https://workspace.google.com/gmail", "aliases": ["gmail", "google", "google gmail", "google mail"], "order": 8 },
+  { "slug": "linkedin", "name": "LinkedIn", "websiteUrl": "https://www.linkedin.com", "aliases": ["linkedin", "linkedin.com"], "order": 9 }
+]

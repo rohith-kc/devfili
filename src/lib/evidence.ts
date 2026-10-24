@@ -16,7 +16,7 @@ function probeForUrl(url: string, probes: Probe[]): Probe | undefined {
   return probes.find((p) => p.url === url);
 }
 
-function recheckFor(finding: Finding, probes: Probe[]): Source["recheck"] {
+export function recheckFor(finding: Finding, probes: Probe[]): Source["recheck"] {
   const probe = probeForUrl(finding.sourceUrl, probes);
   if (!probe || !probe.readable) return "not_rechecked";
   return probe.excerptFound ? "confirmed" : "mismatch";
