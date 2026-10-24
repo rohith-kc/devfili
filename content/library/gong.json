@@ -1,0 +1,898 @@
+{
+  "schemaVersion": 1,
+  "app": {
+    "name": "Gong",
+    "slug": "gong",
+    "websiteUrl": "https://www.gong.io"
+  },
+  "kind": "library",
+  "sample": false,
+  "lastVerifiedOn": "2026-10-24",
+  "handVerified": null,
+  "completeness": {
+    "status": "complete",
+    "thinSections": []
+  },
+  "verdict": {
+    "tier": 4,
+    "tierReason": {
+      "id": "c4",
+      "text": "Even getting a developer instance requires a partner application, and only partners can publish an app for other Gong customers to use.",
+      "label": "tested",
+      "sources": [
+        {
+          "url": "https://help.gong.io/docs/create-an-app-for-gong",
+          "title": "Create an app for Gong",
+          "type": "official",
+          "accessedOn": "2026-10-24",
+          "publishedYear": 2026,
+          "oldSource": false,
+          "recheck": "confirmed"
+        },
+        {
+          "url": "https://help.gong.io/docs/publish-your-app",
+          "title": "Publish your app",
+          "type": "official",
+          "accessedOn": "2026-10-24",
+          "publishedYear": 2026,
+          "oldSource": false,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+      "uncertainReason": null,
+      "checked": "unchecked"
+    },
+    "effort": {
+      "min": 12.5,
+      "max": 33,
+      "unit": "hours",
+      "basis": "official",
+      "claimId": null
+    },
+    "wait": {
+      "min": 3,
+      "max": 5,
+      "unit": "business_days",
+      "basis": "official",
+      "claimId": "c5"
+    },
+    "gates": {
+      "provider": "yes",
+      "customerAdmin": "yes",
+      "endUser": "no"
+    },
+    "gatedAccess": true,
+    "confidence": "high",
+    "scopeForks": []
+  },
+  "managedApp": {
+    "exists": "unknown",
+    "claim": {
+      "id": "c6",
+      "text": "It's unclear whether Composio offers Gong as a fully managed toolkit; either way, a Gong tech admin must still approve the initial OAuth connection.",
+      "label": "sourced",
+      "sources": [
+        {
+          "url": "https://composio.dev/content/how-gong-oauth-works-why-it-requires-a-technical-admin-and-how-to-share-access",
+          "title": "How Gong OAuth Works: Why It Requires a Technical Admin and How to Share Access",
+          "type": "vendor",
+          "accessedOn": "2026-10-24",
+          "publishedYear": null,
+          "oldSource": false,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": null,
+      "uncertainReason": null,
+      "checked": "unchecked"
+    },
+    "whatYouLose": [
+      {
+        "id": "c7",
+        "text": "On a managed app, the consent screen shows the platform's name and brand instead of yours, and scopes and rate limits are typically fixed rather than something you control.",
+        "label": "uncertain",
+        "sources": [],
+        "testNote": null,
+        "uncertainReason": "no supporting source",
+        "checked": "unchecked"
+      }
+    ],
+    "whenToSwitch": [
+      {
+        "id": "c8",
+        "text": "Switch to your own Gong OAuth app once you need your own branding, specific scopes, or your own rate limits.",
+        "label": "uncertain",
+        "sources": [],
+        "testNote": null,
+        "uncertainReason": "no supporting source",
+        "checked": "unchecked"
+      }
+    ]
+  },
+  "howItWorks": {
+    "flow": [
+      {
+        "id": "c9",
+        "text": "A Gong tech admin creates an integration, selects scopes, and completes a one-time, company-wide OAuth authorization; there is no per-user consent step.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://help.gong.io/docs/create-an-app-for-gong",
+            "title": "Create an app for Gong",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          },
+          {
+            "url": "https://help.gong.io/docs/create-an-app-for-gong",
+            "title": "Create an app for Gong",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    ],
+    "appTypes": [
+      {
+        "id": "c10",
+        "text": "New apps default to Private (usable only in your own Gong account); making one available to other Gong customers requires publishing to the Gong Collective as a partner.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://help.gong.io/docs/publish-your-app",
+            "title": "Publish your app",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    ],
+    "tokenNotes": [
+      {
+        "id": "c11",
+        "text": "Most scopes use shared, company-wide access rather than per-user tokens; only a few AI/MCP-specific scopes support personal access.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://help.gong.io/docs/create-an-app-for-gong",
+            "title": "Create an app for Gong",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    ]
+  },
+  "scopes": [
+    {
+      "scope": "mcp:read / mcp:write",
+      "allows": "Read and/or write access through Gong's MCP server.",
+      "neededFor": "AI agent integrations built on Gong's MCP server.",
+      "reviewImpact": "unknown",
+      "claim": {
+        "id": "c12",
+        "text": "MCP integrations select the mcp:read and/or mcp:write scopes.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://help.gong.io/docs/create-an-app-for-gong",
+            "title": "Create an app for Gong",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "Shared-access scopes (most API scopes)",
+      "allows": "Access data across the whole Gong account rather than one user's data.",
+      "neededFor": "Most Gong integrations, since authorization is company-wide, not per user.",
+      "reviewImpact": "partner",
+      "claim": {
+        "id": "c13",
+        "text": "Most scopes grant shared, company-wide access, and reaching external customers with any scope requires partner-gated publishing.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://help.gong.io/docs/publish-your-app",
+            "title": "Publish your app",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          },
+          {
+            "url": "https://help.gong.io/docs/create-an-app-for-gong",
+            "title": "Create an app for Gong",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    }
+  ],
+  "prerequisites": [
+    {
+      "item": "A completed Gong partner application for a developer instance",
+      "kind": "partner",
+      "claim": {
+        "id": "c14",
+        "text": "A developer instance comes from Gong's partner application form and can take up to five working days to set up.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://help.gong.io/docs/create-an-app-for-gong",
+            "title": "Create an app for Gong",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "item": "Redirect URI, privacy policy, terms and conditions, help article, and authorization start page links",
+      "kind": "policy_page",
+      "claim": {
+        "id": "c15",
+        "text": "An OAuth app needs a redirect URI plus links to a privacy policy, terms, a help article, and an authorization start page.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://help.gong.io/docs/create-an-app-for-gong",
+            "title": "Create an app for Gong",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "item": "Trusted IP addresses that can access the integration",
+      "kind": "other",
+      "claim": {
+        "id": "c16",
+        "text": "Publishing to the Gong Collective requires providing trusted IP addresses for the integration first.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://help.gong.io/docs/publish-your-app",
+            "title": "Publish your app",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "n": 1,
+      "title": "Found Gong's developer docs and partner application process",
+      "detail": "The research stage located Gong's app-creation and Collective-publishing guides.",
+      "owner": "agent_did",
+      "effort": null,
+      "linkUrl": "https://help.gong.io/docs/create-an-app-for-gong",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c17",
+          "text": "Gong documents app creation and Collective publishing at help.gong.io.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://help.gong.io/docs/create-an-app-for-gong",
+              "title": "Create an app for Gong",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "title": "Submit the Gong partner application for a developer instance",
+      "detail": "This step can take up to five working days before you receive test credentials.",
+      "owner": "you_do",
+      "effort": {
+        "min": 0.5,
+        "max": 1,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c18"
+      },
+      "linkUrl": "https://help.gong.io/docs/create-an-app-for-gong",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c18",
+          "text": "A developer instance comes from a partner application form and can take up to five working days.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://help.gong.io/docs/create-an-app-for-gong",
+              "title": "Create an app for Gong",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "title": "Create your integration and select scopes",
+      "detail": "In Admin center > Settings > Ecosystem > API, create an integration and pick the scopes it needs.",
+      "owner": "you_do",
+      "effort": {
+        "min": 1,
+        "max": 2,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c19"
+      },
+      "linkUrl": "https://help.gong.io/docs/create-an-app-for-gong",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c19",
+          "text": "Integrations are created in the Ecosystem > API area, with scopes selected from the API documentation.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://help.gong.io/docs/create-an-app-for-gong",
+              "title": "Create an app for Gong",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "title": "Add your redirect URI, privacy policy, terms, help article, and authorization start page links",
+      "detail": "All required fields before the integration can be saved and tested.",
+      "owner": "you_do",
+      "effort": {
+        "min": 1,
+        "max": 2,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c20"
+      },
+      "linkUrl": "https://help.gong.io/docs/create-an-app-for-gong",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c20",
+          "text": "The integration form requires a redirect URI plus privacy policy, terms, help article, and authorization-start-page links.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://help.gong.io/docs/create-an-app-for-gong",
+              "title": "Create an app for Gong",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "title": "Add trusted IP addresses for your integration",
+      "detail": "Required before the app can later be published to the Gong Collective.",
+      "owner": "you_do",
+      "effort": {
+        "min": 0.5,
+        "max": 1,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c21"
+      },
+      "linkUrl": "https://help.gong.io/docs/publish-your-app",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c21",
+          "text": "Publishing requires trusted IP addresses to already be on file for the integration.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://help.gong.io/docs/publish-your-app",
+              "title": "Publish your app",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "title": "Build and test the integration in Private mode",
+      "detail": "Private apps work only within your own Gong account - a full build-and-test cycle before anyone else can use it.",
+      "owner": "you_do",
+      "effort": {
+        "min": 8,
+        "max": 24,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c22"
+      },
+      "linkUrl": "https://help.gong.io/docs/publish-your-app",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c22",
+          "text": "New apps default to Private and can only be used within your own Gong account until published.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://help.gong.io/docs/publish-your-app",
+              "title": "Publish your app",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "title": "Draft your scope justification",
+      "detail": "Use the Scope justification helper to prepare reviewer-facing notes for each scope you request.",
+      "owner": "agent_drafted",
+      "effort": null,
+      "linkUrl": null,
+      "helper": "scope_justification",
+      "claims": []
+    },
+    {
+      "n": 8,
+      "title": "Draft a reviewer test plan",
+      "detail": "Use the Reviewer test plan helper so Gong's team can exercise the integration quickly.",
+      "owner": "agent_drafted",
+      "effort": null,
+      "linkUrl": null,
+      "helper": "test_plan",
+      "claims": []
+    },
+    {
+      "n": 9,
+      "title": "Submit the Technology Partner Integration Review & Enablement form",
+      "detail": "This is the step that requests publishing to the Gong Collective.",
+      "owner": "you_do",
+      "effort": {
+        "min": 0.5,
+        "max": 1,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c23"
+      },
+      "linkUrl": "https://help.gong.io/docs/publish-your-app",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c23",
+          "text": "Publishing to the Gong Collective starts with the Technology Partner Integration Review & Enablement form.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://help.gong.io/docs/publish-your-app",
+              "title": "Publish your app",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "title": "Respond to Gong's team during the follow-up window",
+      "detail": "Gong's team gets in touch within five business days to help finalize the release.",
+      "owner": "you_do",
+      "effort": {
+        "min": 1,
+        "max": 2,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c24"
+      },
+      "linkUrl": "https://help.gong.io/docs/publish-your-app",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c24",
+          "text": "Gong's team contacts you within five business days of the review submission to finalize the release.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://help.gong.io/docs/publish-your-app",
+              "title": "Publish your app",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "title": "Approved and listed in the Gong Collective",
+      "detail": "Once finalized, external Gong customers can find and use the integration.",
+      "owner": "agent_did",
+      "effort": null,
+      "linkUrl": null,
+      "helper": null,
+      "claims": []
+    }
+  ],
+  "gates": {
+    "provider": {
+      "applies": "yes",
+      "who": "Gong's partner/ecosystem team",
+      "what": "A partner application is required just to get a developer instance, and only partners can publish an integration to the Gong Collective.",
+      "claims": [
+        {
+          "id": "c26",
+          "text": "A partner application gates both getting a developer instance and publishing to the Collective.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://help.gong.io/docs/create-an-app-for-gong",
+              "title": "Create an app for Gong",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            },
+            {
+              "url": "https://help.gong.io/docs/publish-your-app",
+              "title": "Publish your app",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            },
+            {
+              "url": "https://help.gong.io/docs/publish-your-app",
+              "title": "Publish your app",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    "customerAdmin": {
+      "applies": "yes",
+      "who": "A Gong tech admin at the customer's company",
+      "what": "Must perform the one-time, company-wide OAuth authorization themselves - there's no way for an individual end user to do this.",
+      "claims": [
+        {
+          "id": "c25",
+          "text": "OAuth setup must be performed by a tech admin, authenticating once at the company level.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://help.gong.io/docs/create-an-app-for-gong",
+              "title": "Create an app for Gong",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    "endUser": {
+      "applies": "no",
+      "who": "n/a",
+      "what": "Gong doesn't support user-level OAuth; there is no individual end-user consent step at all.",
+      "claims": [
+        {
+          "id": "c27",
+          "text": "Gong authenticates once at the company level - there's no per-user OAuth consent step.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://help.gong.io/docs/create-an-app-for-gong",
+              "title": "Create an app for Gong",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    }
+  },
+  "stuckPoints": [
+    {
+      "reason": "Can't start building without a partner application",
+      "fix": "Submit the Gong partner application form as early as possible - it can take up to five working days just to get a developer instance.",
+      "escalation": "The partner application form on collective.gong.io",
+      "claim": {
+        "id": "c28",
+        "text": "A developer instance requires a partner application that can take up to five working days to process.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://help.gong.io/docs/create-an-app-for-gong",
+            "title": "Create an app for Gong",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "reason": "Publishing to the Collective is restricted to partners",
+      "fix": "Confirm your organization has (or can establish) Gong partner status before investing further build time.",
+      "escalation": "Gong's partner/ecosystem team",
+      "claim": {
+        "id": "c29",
+        "text": "Only partners can publish an app to the Gong Collective for other customers to use.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://help.gong.io/docs/publish-your-app",
+            "title": "Publish your app",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    }
+  ],
+  "whileYouWait": [
+    {
+      "id": "c30",
+      "text": "While waiting on your developer instance or Collective review, you can fully build and test the app in Private mode within your own Gong account.",
+      "label": "tested",
+      "sources": [
+        {
+          "url": "https://help.gong.io/docs/publish-your-app",
+          "title": "Publish your app",
+          "type": "official",
+          "accessedOn": "2026-10-24",
+          "publishedYear": 2026,
+          "oldSource": false,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-24; the required terms were present.",
+      "uncertainReason": null,
+      "checked": "unchecked"
+    }
+  ],
+  "keepsComingBack": [
+    {
+      "id": "c31",
+      "text": "Changing scopes on an already-published OAuth app has to go through a Gong support ticket, not a self-serve settings change.",
+      "label": "sourced",
+      "sources": [
+        {
+          "url": "https://help.gong.io/docs/publish-your-app",
+          "title": "Publish your app",
+          "type": "official",
+          "accessedOn": "2026-10-24",
+          "publishedYear": 2026,
+          "oldSource": false,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": null,
+      "uncertainReason": null,
+      "checked": "unchecked"
+    }
+  ],
+  "hardToUndo": [
+    {
+      "id": "c32",
+      "text": "The authorization context you choose when setting up OAuth can't be changed afterward.",
+      "label": "sourced",
+      "sources": [
+        {
+          "url": "https://help.gong.io/docs/create-an-app-for-gong",
+          "title": "Create an app for Gong",
+          "type": "official",
+          "accessedOn": "2026-10-24",
+          "publishedYear": 2026,
+          "oldSource": false,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": null,
+      "uncertainReason": null,
+      "checked": "unchecked"
+    }
+  ],
+  "derived": {
+    "unverifiedClaimIds": [
+      "c7",
+      "c8"
+    ],
+    "sources": [
+      {
+        "url": "https://help.gong.io/docs/create-an-app-for-gong",
+        "title": "Create an app for Gong",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://help.gong.io/docs/publish-your-app",
+        "title": "Publish your app",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://composio.dev/content/how-gong-oauth-works-why-it-requires-a-technical-admin-and-how-to-share-access",
+        "title": "How Gong OAuth Works: Why It Requires a Technical Admin and How to Share Access",
+        "type": "vendor",
+        "accessedOn": "2026-10-24",
+        "publishedYear": null,
+        "oldSource": false,
+        "recheck": "confirmed"
+      }
+    ]
+  },
+  "tile": {
+    "tier": 4,
+    "effort": {
+      "min": 12.5,
+      "max": 33,
+      "unit": "hours",
+      "basis": "official",
+      "claimId": null
+    },
+    "wait": {
+      "min": 3,
+      "max": 5,
+      "unit": "business_days",
+      "basis": "official",
+      "claimId": "c5"
+    },
+    "gated": true,
+    "customerAdmin": "yes"
+  }
+}

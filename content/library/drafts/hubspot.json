@@ -1,0 +1,1001 @@
+{
+  "schemaVersion": 1,
+  "app": {
+    "name": "HubSpot",
+    "slug": "hubspot",
+    "websiteUrl": "https://www.hubspot.com"
+  },
+  "kind": "library",
+  "sample": false,
+  "lastVerifiedOn": "2026-10-24",
+  "handVerified": null,
+  "completeness": {
+    "status": "complete",
+    "thinSections": []
+  },
+  "verdict": {
+    "tier": 2,
+    "tierReason": {
+      "id": "c5",
+      "text": "Listing a public app on the HubSpot Marketplace triggers a mandatory Ecosystem Quality review, with an initial response within about 10 business days and a full cycle that can take up to 60 days.",
+      "label": "tested",
+      "sources": [
+        {
+          "url": "https://developers.hubspot.com/app-partners/set-up",
+          "title": "App partner set up",
+          "type": "official",
+          "accessedOn": "2026-10-24",
+          "publishedYear": 2026,
+          "oldSource": false,
+          "recheck": "confirmed"
+        },
+        {
+          "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
+          "title": "Certification requirements",
+          "type": "official",
+          "accessedOn": "2026-10-24",
+          "publishedYear": 2026,
+          "oldSource": false,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": "Fetched https://developers.hubspot.com/app-partners/set-up on 2026-10-24; the required terms were present.",
+      "uncertainReason": null,
+      "checked": "unchecked"
+    },
+    "effort": {
+      "min": 12.5,
+      "max": 26.5,
+      "unit": "hours",
+      "basis": "reported",
+      "claimId": null
+    },
+    "wait": {
+      "min": 14,
+      "max": 60,
+      "unit": "days",
+      "basis": "official",
+      "claimId": "c6"
+    },
+    "gates": {
+      "provider": "yes",
+      "customerAdmin": "yes",
+      "endUser": "yes"
+    },
+    "gatedAccess": false,
+    "confidence": "high",
+    "scopeForks": [
+      {
+        "id": "c7",
+        "text": "Using only an unlisted public app (never published to the Marketplace), Tier 1 applies: no mandatory HubSpot review, though the app is capped at about 25 installs and shows installers an unverified-app warning banner. Listing on the Marketplace - needed past that cap, and to remove the warning - moves it to Tier 2 with the Ecosystem Quality review described here.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://community.hubspot.com/t/new-marketplace-distribution-app-install-limits/139886",
+            "title": "New Marketplace Distribution App Install Limits",
+            "type": "community",
+            "accessedOn": "2026-10-24",
+            "publishedYear": null,
+            "oldSource": false,
+            "recheck": "not_rechecked"
+          },
+          {
+            "url": "https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview",
+            "title": "Public apps overview",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          },
+          {
+            "url": "https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview",
+            "title": "Private apps overview",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": "Fetched https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    ]
+  },
+  "managedApp": {
+    "exists": "yes",
+    "claim": {
+      "id": "c8",
+      "text": "Composio offers a managed HubSpot OAuth app by default, so a developer can skip registering their own HubSpot app.",
+      "label": "sourced",
+      "sources": [
+        {
+          "url": "https://docs.composio.dev/docs/custom-app-vs-managed-app",
+          "title": "Managed vs custom auth",
+          "type": "vendor",
+          "accessedOn": "2026-10-24",
+          "publishedYear": null,
+          "oldSource": false,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": null,
+      "uncertainReason": null,
+      "checked": "unchecked"
+    },
+    "whatYouLose": [
+      {
+        "id": "c9",
+        "text": "On a managed app, the consent screen shows the platform's name and brand instead of yours, and scopes and rate limits are typically fixed rather than something you control.",
+        "label": "uncertain",
+        "sources": [],
+        "testNote": null,
+        "uncertainReason": "no supporting source",
+        "checked": "unchecked"
+      }
+    ],
+    "whenToSwitch": [
+      {
+        "id": "c10",
+        "text": "Switch to your own HubSpot OAuth app once you need your own branding, a specific scope set, or a private (non-shared) setup.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://docs.composio.dev/docs/custom-app-vs-managed-app",
+            "title": "Managed vs custom auth",
+            "type": "vendor",
+            "accessedOn": "2026-10-24",
+            "publishedYear": null,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    ]
+  },
+  "howItWorks": {
+    "flow": [
+      {
+        "id": "c11",
+        "text": "A developer creates a public app, configures required, conditionally-required, and optional scopes, and users authorize it through HubSpot's OAuth consent screen - optionally followed by Marketplace listing and review.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview",
+            "title": "Private apps overview",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          },
+          {
+            "url": "https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview",
+            "title": "Public apps overview",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    ],
+    "appTypes": [
+      {
+        "id": "c12",
+        "text": "Private apps use an access token and work in one account only; public apps use OAuth, can be installed across multiple accounts, and can optionally be listed on the Marketplace.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview",
+            "title": "Private apps overview",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    ],
+    "tokenNotes": [
+      {
+        "id": "c13",
+        "text": "Apps must handle OAuth token requests and refreshes themselves - users are never asked to copy and paste a code or token.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
+            "title": "Certification requirements",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    ]
+  },
+  "scopes": [
+    {
+      "scope": "Required scopes",
+      "allows": "Core data access the app always needs to function.",
+      "neededFor": "Basic app functionality; install fails without these.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c14",
+        "text": "Required scopes must be authorized for the app to install successfully.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview",
+            "title": "Public apps overview",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "Optional / conditionally-required scopes (e.g. custom objects, Enterprise-only features)",
+      "allows": "Access to features only some HubSpot accounts have, such as custom objects on Enterprise-tier accounts.",
+      "neededFor": "Supporting higher-tier accounts without blocking installation for everyone else.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c15",
+        "text": "Optional and conditionally-required scopes let an app support Enterprise-only features without blocking installs for accounts that lack them.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview",
+            "title": "Public apps overview",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    }
+  ],
+  "prerequisites": [
+    {
+      "item": "A public app (not a private one) if you need OAuth across multiple customer accounts",
+      "kind": "other",
+      "claim": {
+        "id": "c16",
+        "text": "Private apps are limited to one account and can't be listed; a public app is needed for multi-account OAuth.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview",
+            "title": "Private apps overview",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "item": "A verified domain tied to your app",
+      "kind": "domain",
+      "claim": {
+        "id": "c17",
+        "text": "Certification requires the app to use a verified domain.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
+            "title": "Certification requirements",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "item": "A demo video (required only if you apply for certification)",
+      "kind": "demo_video",
+      "claim": {
+        "id": "c18",
+        "text": "A demo video is required for a certification request - without one, HubSpot won't review it.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
+            "title": "Certification requirements",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "n": 1,
+      "title": "Found HubSpot's app, listing, and certification docs",
+      "detail": "The research stage located HubSpot's public/private app overview and its listing and certification requirements.",
+      "owner": "agent_did",
+      "effort": null,
+      "linkUrl": "https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c19",
+          "text": "HubSpot documents private vs. public apps, Marketplace listing, and certification at developers.hubspot.com.",
+          "label": "uncertain",
+          "sources": [
+            {
+              "url": "https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview",
+              "title": "Private apps overview",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "mismatch"
+            }
+          ],
+          "testNote": null,
+          "uncertainReason": "quoted fragment not found at source",
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "title": "Decide between a private and a public app",
+      "detail": "A private app only works in one account; a public app is needed for OAuth across customer accounts.",
+      "owner": "you_do",
+      "effort": {
+        "min": 0.5,
+        "max": 0.5,
+        "unit": "hours",
+        "basis": "reported",
+        "claimId": "c20"
+      },
+      "linkUrl": "https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c20",
+          "text": "Private apps work in one account only and can't be listed; public apps support multiple accounts via OAuth.",
+          "label": "uncertain",
+          "sources": [
+            {
+              "url": "https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview",
+              "title": "Private apps overview",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "mismatch"
+            }
+          ],
+          "testNote": null,
+          "uncertainReason": "quoted fragment not found at source",
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "title": "Register a public app and configure scopes",
+      "detail": "Set your OAuth redirect URL and mark each scope required, conditionally required, or optional.",
+      "owner": "you_do",
+      "effort": {
+        "min": 2,
+        "max": 4,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c21"
+      },
+      "linkUrl": "https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c21",
+          "text": "Scopes are configured as required, conditionally required, or optional during app setup.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview",
+              "title": "Public apps overview",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "title": "Verify your domain",
+      "detail": "A verified domain is expected for certification and good practice generally.",
+      "owner": "you_do",
+      "effort": {
+        "min": 0.5,
+        "max": 1,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c22"
+      },
+      "linkUrl": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c22",
+          "text": "A verified domain is part of HubSpot's security expectations for an app.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
+              "title": "Certification requirements",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "title": "Build token storage and automatic refresh",
+      "detail": "Users must never be asked to copy and paste a code or token - the app has to manage and refresh tokens itself.",
+      "owner": "you_do",
+      "effort": {
+        "min": 2,
+        "max": 4,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c23"
+      },
+      "linkUrl": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c23",
+          "text": "The app must handle OAuth token requests and refreshes itself, with no manual token copy-paste step for users.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
+              "title": "Certification requirements",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "title": "Stay under the unlisted-app install cap, or prepare to list",
+      "detail": "An unlisted public app is capped at about 25 installs before you need to list it on the Marketplace.",
+      "owner": "you_do",
+      "effort": {
+        "min": 0.5,
+        "max": 1,
+        "unit": "hours",
+        "basis": "reported",
+        "claimId": "c24"
+      },
+      "linkUrl": "https://community.hubspot.com/t/new-marketplace-distribution-app-install-limits/139886",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c24",
+          "text": "Unlisted public apps are capped at about 25 installs until the app is listed.",
+          "label": "sourced",
+          "sources": [
+            {
+              "url": "https://community.hubspot.com/t/new-marketplace-distribution-app-install-limits/139886",
+              "title": "New Marketplace Distribution App Install Limits",
+              "type": "community",
+              "accessedOn": "2026-10-24",
+              "publishedYear": null,
+              "oldSource": false,
+              "recheck": "not_rechecked"
+            }
+          ],
+          "testNote": null,
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "title": "Draft your scope justification",
+      "detail": "Use the Scope justification helper to prepare reviewer-facing notes for each scope you request.",
+      "owner": "agent_drafted",
+      "effort": null,
+      "linkUrl": null,
+      "helper": "scope_justification",
+      "claims": []
+    },
+    {
+      "n": 8,
+      "title": "Draft a reviewer test plan",
+      "detail": "Use the Reviewer test plan helper so HubSpot's Ecosystem Quality team can exercise the app quickly.",
+      "owner": "agent_drafted",
+      "effort": null,
+      "linkUrl": null,
+      "helper": "test_plan",
+      "claims": []
+    },
+    {
+      "n": 9,
+      "title": "Submit your app listing for Ecosystem Quality review",
+      "detail": "Only one app can be in review at a time; a second submission while one is pending is automatically rejected.",
+      "owner": "you_do",
+      "effort": {
+        "min": 1,
+        "max": 2,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c25"
+      },
+      "linkUrl": "https://developers.hubspot.com/app-partners/set-up",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c25",
+          "text": "Listing submissions go through a manual Ecosystem Quality review and are rejected if they don't meet the criteria.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developers.hubspot.com/app-partners/set-up",
+              "title": "App partner set up",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            },
+            {
+              "url": "https://developers.hubspot.com/app-partners/set-up",
+              "title": "App partner set up",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://developers.hubspot.com/app-partners/set-up on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "title": "Respond to review feedback",
+      "detail": "The full review-and-feedback cycle should take no more than about 60 days.",
+      "owner": "you_do",
+      "effort": {
+        "min": 2,
+        "max": 6,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c26"
+      },
+      "linkUrl": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c26",
+          "text": "HubSpot's review-and-feedback cycle should take no more than 60 days.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
+              "title": "Certification requirements",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "title": "Listed on the HubSpot Marketplace",
+      "detail": "Once review passes, the app is listed and can connect real customer accounts without an install cap.",
+      "owner": "agent_did",
+      "effort": null,
+      "linkUrl": null,
+      "helper": null,
+      "claims": []
+    },
+    {
+      "n": 12,
+      "title": "Optional: apply for certification once you qualify",
+      "detail": "Needs 6+ months listed, 60+ active installs, and a demo video; adds a security questionnaire and a 'HubSpot Certified App' badge.",
+      "owner": "you_do",
+      "effort": {
+        "min": 4,
+        "max": 8,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c27"
+      },
+      "linkUrl": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c27",
+          "text": "Certification requires being listed for 6+ months with 60+ active installs, plus a demo video and security questionnaire.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
+              "title": "Certification requirements",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            },
+            {
+              "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
+              "title": "Certification requirements",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            },
+            {
+              "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
+              "title": "Certification requirements",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    }
+  ],
+  "gates": {
+    "provider": {
+      "applies": "yes",
+      "who": "HubSpot's Ecosystem Quality team",
+      "what": "Reviews a Marketplace listing submission within about 10 business days, with the full cycle taking up to 60 days; optional certification afterward adds a security questionnaire and vulnerability assessment.",
+      "claims": [
+        {
+          "id": "c29",
+          "text": "Ecosystem Quality reviews listing submissions within about 10 business days, up to 60 days total.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developers.hubspot.com/app-partners/set-up",
+              "title": "App partner set up",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            },
+            {
+              "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
+              "title": "Certification requirements",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://developers.hubspot.com/app-partners/set-up on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    "customerAdmin": {
+      "applies": "yes",
+      "who": "A HubSpot super admin on the customer's account",
+      "what": "Must be a super admin to access or create a private app; a public-app install typically also needs a user with sufficient permissions for the requested scopes.",
+      "claims": [
+        {
+          "id": "c28",
+          "text": "You must be a super admin to access private apps in your HubSpot account.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview",
+              "title": "Private apps overview",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "mismatch"
+            }
+          ],
+          "testNote": "Fetched https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    "endUser": {
+      "applies": "yes",
+      "who": "The HubSpot user installing the app",
+      "what": "Authorizes the app through HubSpot's OAuth consent screen; an unverified (unlisted) app shows an extra warning banner.",
+      "claims": [
+        {
+          "id": "c30",
+          "text": "Users are advised to carefully review all scopes an app requests, and unverified apps show a warning banner.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview",
+              "title": "Public apps overview",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    }
+  },
+  "stuckPoints": [
+    {
+      "reason": "Listing submission rejected or returned with feedback",
+      "fix": "Review Ecosystem Quality's feedback carefully - the full cycle can take up to 60 days, and only one submission can be in process at a time.",
+      "escalation": "HubSpot Ecosystem Quality team",
+      "claim": {
+        "id": "c31",
+        "text": "Only one app submission can be in process at a time; a second one made while the first is pending is automatically rejected.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/app-partners/set-up",
+            "title": "App partner set up",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "reason": "Hit the unlisted-app install cap",
+      "fix": "Submit your app for Marketplace listing once you approach the roughly 25-install cap on unlisted public apps.",
+      "escalation": "developers.hubspot.com app-partners",
+      "claim": {
+        "id": "c32",
+        "text": "Unlisted public apps are capped at about 25 installs until the app is listed.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://community.hubspot.com/t/new-marketplace-distribution-app-install-limits/139886",
+            "title": "New Marketplace Distribution App Install Limits",
+            "type": "community",
+            "accessedOn": "2026-10-24",
+            "publishedYear": null,
+            "oldSource": false,
+            "recheck": "not_rechecked"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    }
+  ],
+  "whileYouWait": [
+    {
+      "id": "c33",
+      "text": "An unlisted public app can be installed on up to about 25 accounts (or a private app on up to 10 allowlisted accounts) while you're building or waiting on listing.",
+      "label": "sourced",
+      "sources": [
+        {
+          "url": "https://community.hubspot.com/t/new-marketplace-distribution-app-install-limits/139886",
+          "title": "New Marketplace Distribution App Install Limits",
+          "type": "community",
+          "accessedOn": "2026-10-24",
+          "publishedYear": null,
+          "oldSource": false,
+          "recheck": "not_rechecked"
+        }
+      ],
+      "testNote": null,
+      "uncertainReason": null,
+      "checked": "unchecked"
+    }
+  ],
+  "keepsComingBack": [
+    {
+      "id": "c34",
+      "text": "Certified status must be renewed - it's valid for two years on a rolling basis, and HubSpot can trigger recertification early if the app falls out of compliance.",
+      "label": "tested",
+      "sources": [
+        {
+          "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
+          "title": "Certification requirements",
+          "type": "official",
+          "accessedOn": "2026-10-24",
+          "publishedYear": 2026,
+          "oldSource": false,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements on 2026-10-24; the required terms were present.",
+      "uncertainReason": null,
+      "checked": "unchecked"
+    }
+  ],
+  "hardToUndo": [],
+  "derived": {
+    "unverifiedClaimIds": [
+      "c9",
+      "c12",
+      "c16",
+      "c19",
+      "c20"
+    ],
+    "sources": [
+      {
+        "url": "https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview",
+        "title": "Private apps overview",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "mismatch"
+      },
+      {
+        "url": "https://community.hubspot.com/t/new-marketplace-distribution-app-install-limits/139886",
+        "title": "New Marketplace Distribution App Install Limits",
+        "type": "community",
+        "accessedOn": "2026-10-24",
+        "publishedYear": null,
+        "oldSource": false,
+        "recheck": "not_rechecked"
+      },
+      {
+        "url": "https://developers.hubspot.com/app-partners/set-up",
+        "title": "App partner set up",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
+        "title": "Certification requirements",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview",
+        "title": "Public apps overview",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://docs.composio.dev/docs/custom-app-vs-managed-app",
+        "title": "Managed vs custom auth",
+        "type": "vendor",
+        "accessedOn": "2026-10-24",
+        "publishedYear": null,
+        "oldSource": false,
+        "recheck": "confirmed"
+      }
+    ]
+  },
+  "tile": {
+    "tier": 2,
+    "effort": {
+      "min": 12.5,
+      "max": 26.5,
+      "unit": "hours",
+      "basis": "reported",
+      "claimId": null
+    },
+    "wait": {
+      "min": 14,
+      "max": 60,
+      "unit": "days",
+      "basis": "official",
+      "claimId": "c6"
+    },
+    "gated": false,
+    "customerAdmin": "yes"
+  }
+}

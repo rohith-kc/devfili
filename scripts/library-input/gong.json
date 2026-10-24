@@ -1,0 +1,93 @@
+{
+  "app": { "name": "Gong", "slug": "gong", "websiteUrl": "https://www.gong.io" },
+  "findings": [
+    { "id": "F1", "topic": "partner_gating", "statement": "Request a Gong developer instance through the partner application form on collective.gong.io; setup can take up to five working days before you get test credentials.", "sourceUrl": "https://help.gong.io/docs/create-an-app-for-gong", "sourceTitle": "Create an app for Gong", "sourceType": "official", "publishedYear": 2026, "excerpt": "up to five working days", "checkable": { "url": "https://help.gong.io/docs/create-an-app-for-gong", "mustContain": ["five working days"] } },
+    { "id": "F2", "topic": "partner_gating", "statement": "Publishing an app to the Gong Collective is for partners only; new apps start in Private mode and can only be used within your own Gong account until published.", "sourceUrl": "https://help.gong.io/docs/publish-your-app", "sourceTitle": "Publish your app", "sourceType": "official", "publishedYear": 2026, "excerpt": "Private", "checkable": { "url": "https://help.gong.io/docs/publish-your-app", "mustContain": ["Private"] } },
+    { "id": "F3", "topic": "review_timeline", "statement": "After submitting the Technology Partner Integration Review & Enablement form, Gong's team contacts you within five business days to help finalize the release and Collective listing.", "sourceUrl": "https://help.gong.io/docs/publish-your-app", "sourceTitle": "Publish your app", "sourceType": "official", "publishedYear": 2026, "excerpt": "within five business days", "checkable": { "url": "https://help.gong.io/docs/publish-your-app", "mustContain": ["five business days"] } },
+    { "id": "F4", "topic": "customer_admin", "statement": "OAuth setup must be done by a tech admin, who signs in with their own tech admin credentials during authorization; Gong doesn't support user-level OAuth and authenticates once at the company level.", "sourceUrl": "https://help.gong.io/docs/create-an-app-for-gong", "sourceTitle": "Create an app for Gong", "sourceType": "official", "publishedYear": 2026, "excerpt": "Authentication happens once on a global level.", "checkable": { "url": "https://help.gong.io/docs/create-an-app-for-gong", "mustContain": ["global level"] } },
+    { "id": "F5", "topic": "prerequisites", "statement": "An OAuth app needs a redirect URI, a privacy policy link, a terms and conditions link, a help article link, and an authorization start page link.", "sourceUrl": "https://help.gong.io/docs/create-an-app-for-gong", "sourceTitle": "Create an app for Gong", "sourceType": "official", "publishedYear": 2026, "excerpt": "Terms and conditions", "checkable": { "url": "https://help.gong.io/docs/create-an-app-for-gong", "mustContain": ["Terms and conditions"] } },
+    { "id": "F6", "topic": "prerequisites", "statement": "Before publishing, you must provide trusted IP addresses that can access the integration - the app can't be published to the Gong Collective without these details.", "sourceUrl": "https://help.gong.io/docs/publish-your-app", "sourceTitle": "Publish your app", "sourceType": "official", "publishedYear": 2026, "excerpt": "trusted IP addresses", "checkable": { "url": "https://help.gong.io/docs/publish-your-app", "mustContain": ["trusted IP"] } },
+    { "id": "F7", "topic": "scopes", "statement": "You select the scopes your app needs; most use shared, company-wide access, though personal access is supported for a few AI/MCP-specific scopes.", "sourceUrl": "https://help.gong.io/docs/create-an-app-for-gong", "sourceTitle": "Create an app for Gong", "sourceType": "official", "publishedYear": 2026, "excerpt": "shared access", "checkable": { "url": "https://help.gong.io/docs/create-an-app-for-gong", "mustContain": ["shared access"] } },
+    { "id": "F8", "topic": "other", "statement": "The authorization context chosen when setting up OAuth can't be changed after setup.", "sourceUrl": "https://help.gong.io/docs/create-an-app-for-gong", "sourceTitle": "Create an app for Gong", "sourceType": "official", "publishedYear": 2026, "excerpt": "can't be changed after setup", "checkable": { "url": "https://help.gong.io/docs/create-an-app-for-gong", "mustContain": ["changed after setup"] } },
+    { "id": "F9", "topic": "other", "statement": "By default, a company gets 3 API calls per second and 10,000 API calls per day; these limits can be raised by contacting Gong support.", "sourceUrl": "https://help.gong.io/apidocs/introduction-2", "sourceTitle": "Gong API introduction", "sourceType": "official", "publishedYear": null, "excerpt": "10,000 API calls per day", "checkable": null },
+    { "id": "F10", "topic": "recurring", "statement": "After publication, changing scopes on a published OAuth app or troubleshooting an integration goes through a Gong support ticket rather than a self-serve settings change.", "sourceUrl": "https://help.gong.io/docs/publish-your-app", "sourceTitle": "Publish your app", "sourceType": "official", "publishedYear": 2026, "excerpt": "support ticket", "checkable": { "url": "https://help.gong.io/docs/publish-your-app", "mustContain": ["support ticket"] } },
+    { "id": "F11", "topic": "managed_app", "statement": "A Gong Technical Admin must approve the initial OAuth connection before Composio can manage or share it; Composio does not bypass Gong's admin requirement.", "sourceUrl": "https://composio.dev/content/how-gong-oauth-works-why-it-requires-a-technical-admin-and-how-to-share-access", "sourceTitle": "How Gong OAuth Works: Why It Requires a Technical Admin and How to Share Access", "sourceType": "vendor", "publishedYear": null, "excerpt": "does not bypass", "checkable": null },
+    { "id": "F12", "topic": "oauth_registration", "statement": "You create an integration under Admin center > Settings > Ecosystem > API, picking scopes and providing a name, descriptions, and logos; customers installing the app are asked to grant access to the entities covered by those scopes.", "sourceUrl": "https://help.gong.io/docs/create-an-app-for-gong", "sourceTitle": "Create an app for Gong", "sourceType": "official", "publishedYear": 2026, "excerpt": "grant access to the entities accessed by these scopes", "checkable": { "url": "https://help.gong.io/docs/create-an-app-for-gong", "mustContain": ["grant access"] } },
+    { "id": "F13", "topic": "other", "statement": "As an alternative to OAuth, a tech admin can generate an Access Key and Access Key Secret for direct Basic-auth API access instead.", "sourceUrl": "https://help.gong.io/docs/create-an-app-for-gong", "sourceTitle": "Create an app for Gong", "sourceType": "official", "publishedYear": 2026, "excerpt": "Access Key", "checkable": null }
+  ],
+  "core": {
+    "facts": {
+      "partnerGated": { "value": true, "claim": { "text": "Getting a developer instance requires a partner application, and publishing an app so other Gong customers can use it is restricted to partners.", "findingIds": ["F1", "F2"], "probeIds": [] } },
+      "securityAssessment": { "value": null, "claim": null },
+      "reviewRequired": { "value": true, "claim": { "text": "Publishing to the Gong Collective requires submitting a Technology Partner Integration Review & Enablement form and waiting on Gong's team.", "findingIds": ["F3"], "probeIds": [] } },
+      "customerAdminLikely": { "value": true, "claim": { "text": "OAuth setup is performed once, company-wide, only by a tech admin - there is no per-user authorization at all.", "findingIds": ["F4"], "probeIds": [] } },
+      "userCapBeforeApproval": { "value": null, "claim": null }
+    },
+    "tierReason": { "text": "Even getting a developer instance requires a partner application, and only partners can publish an app for other Gong customers to use.", "findingIds": ["F1", "F2"], "probeIds": [] },
+    "wait": { "min": 3, "max": 5, "unit": "business_days", "claim": { "text": "Gong's team follows up on a publish request within five business days of the Technology Partner Integration Review & Enablement submission.", "findingIds": ["F3"], "probeIds": [] } },
+    "scopeForks": [],
+    "managedApp": {
+      "exists": "unknown",
+      "claim": { "text": "It's unclear whether Composio offers Gong as a fully managed toolkit; either way, a Gong tech admin must still approve the initial OAuth connection.", "findingIds": ["F11"], "probeIds": [] },
+      "whatYouLose": [
+        { "text": "On a managed app, the consent screen shows the platform's name and brand instead of yours, and scopes and rate limits are typically fixed rather than something you control.", "findingIds": [], "probeIds": [] }
+      ],
+      "whenToSwitch": [
+        { "text": "Switch to your own Gong OAuth app once you need your own branding, specific scopes, or your own rate limits.", "findingIds": [], "probeIds": [] }
+      ]
+    },
+    "howItWorks": {
+      "flow": [
+        { "text": "A Gong tech admin creates an integration, selects scopes, and completes a one-time, company-wide OAuth authorization; there is no per-user consent step.", "findingIds": ["F4", "F12"], "probeIds": [] }
+      ],
+      "appTypes": [
+        { "text": "New apps default to Private (usable only in your own Gong account); making one available to other Gong customers requires publishing to the Gong Collective as a partner.", "findingIds": ["F2"], "probeIds": [] }
+      ],
+      "tokenNotes": [
+        { "text": "Most scopes use shared, company-wide access rather than per-user tokens; only a few AI/MCP-specific scopes support personal access.", "findingIds": ["F7"], "probeIds": [] }
+      ]
+    },
+    "scopes": [
+      { "scope": "mcp:read / mcp:write", "allows": "Read and/or write access through Gong's MCP server.", "neededFor": "AI agent integrations built on Gong's MCP server.", "reviewImpact": "unknown", "claim": { "text": "MCP integrations select the mcp:read and/or mcp:write scopes.", "findingIds": ["F7"], "probeIds": [] } },
+      { "scope": "Shared-access scopes (most API scopes)", "allows": "Access data across the whole Gong account rather than one user's data.", "neededFor": "Most Gong integrations, since authorization is company-wide, not per user.", "reviewImpact": "partner", "claim": { "text": "Most scopes grant shared, company-wide access, and reaching external customers with any scope requires partner-gated publishing.", "findingIds": ["F2", "F4"], "probeIds": [] } }
+    ],
+    "prerequisites": [
+      { "item": "A completed Gong partner application for a developer instance", "kind": "partner", "claim": { "text": "A developer instance comes from Gong's partner application form and can take up to five working days to set up.", "findingIds": ["F1"], "probeIds": [] } },
+      { "item": "Redirect URI, privacy policy, terms and conditions, help article, and authorization start page links", "kind": "policy_page", "claim": { "text": "An OAuth app needs a redirect URI plus links to a privacy policy, terms, a help article, and an authorization start page.", "findingIds": ["F5"], "probeIds": [] } },
+      { "item": "Trusted IP addresses that can access the integration", "kind": "other", "claim": { "text": "Publishing to the Gong Collective requires providing trusted IP addresses for the integration first.", "findingIds": ["F6"], "probeIds": [] } }
+    ]
+  },
+  "path": {
+    "steps": [
+      { "title": "Found Gong's developer docs and partner application process", "detail": "The research stage located Gong's app-creation and Collective-publishing guides.", "owner": "agent_did", "effortHours": null, "linkFindingId": "F1", "helper": null, "claims": [{ "text": "Gong documents app creation and Collective publishing at help.gong.io.", "findingIds": ["F1"], "probeIds": [] }] },
+      { "title": "Submit the Gong partner application for a developer instance", "detail": "This step can take up to five working days before you receive test credentials.", "owner": "you_do", "effortHours": { "min": 0.5, "max": 1 }, "linkFindingId": "F1", "helper": null, "claims": [{ "text": "A developer instance comes from a partner application form and can take up to five working days.", "findingIds": ["F1"], "probeIds": [] }] },
+      { "title": "Create your integration and select scopes", "detail": "In Admin center > Settings > Ecosystem > API, create an integration and pick the scopes it needs.", "owner": "you_do", "effortHours": { "min": 1, "max": 2 }, "linkFindingId": "F12", "helper": null, "claims": [{ "text": "Integrations are created in the Ecosystem > API area, with scopes selected from the API documentation.", "findingIds": ["F12"], "probeIds": [] }] },
+      { "title": "Add your redirect URI, privacy policy, terms, help article, and authorization start page links", "detail": "All required fields before the integration can be saved and tested.", "owner": "you_do", "effortHours": { "min": 1, "max": 2 }, "linkFindingId": "F5", "helper": null, "claims": [{ "text": "The integration form requires a redirect URI plus privacy policy, terms, help article, and authorization-start-page links.", "findingIds": ["F5"], "probeIds": [] }] },
+      { "title": "Add trusted IP addresses for your integration", "detail": "Required before the app can later be published to the Gong Collective.", "owner": "you_do", "effortHours": { "min": 0.5, "max": 1 }, "linkFindingId": "F6", "helper": null, "claims": [{ "text": "Publishing requires trusted IP addresses to already be on file for the integration.", "findingIds": ["F6"], "probeIds": [] }] },
+      { "title": "Build and test the integration in Private mode", "detail": "Private apps work only within your own Gong account - a full build-and-test cycle before anyone else can use it.", "owner": "you_do", "effortHours": { "min": 8, "max": 24 }, "linkFindingId": "F2", "helper": null, "claims": [{ "text": "New apps default to Private and can only be used within your own Gong account until published.", "findingIds": ["F2"], "probeIds": [] }] },
+      { "title": "Draft your scope justification", "detail": "Use the Scope justification helper to prepare reviewer-facing notes for each scope you request.", "owner": "agent_drafted", "effortHours": null, "linkFindingId": null, "helper": "scope_justification", "claims": [] },
+      { "title": "Draft a reviewer test plan", "detail": "Use the Reviewer test plan helper so Gong's team can exercise the integration quickly.", "owner": "agent_drafted", "effortHours": null, "linkFindingId": null, "helper": "test_plan", "claims": [] },
+      { "title": "Submit the Technology Partner Integration Review & Enablement form", "detail": "This is the step that requests publishing to the Gong Collective.", "owner": "you_do", "effortHours": { "min": 0.5, "max": 1 }, "linkFindingId": "F3", "helper": null, "claims": [{ "text": "Publishing to the Gong Collective starts with the Technology Partner Integration Review & Enablement form.", "findingIds": ["F3"], "probeIds": [] }] },
+      { "title": "Respond to Gong's team during the follow-up window", "detail": "Gong's team gets in touch within five business days to help finalize the release.", "owner": "you_do", "effortHours": { "min": 1, "max": 2 }, "linkFindingId": "F3", "helper": null, "claims": [{ "text": "Gong's team contacts you within five business days of the review submission to finalize the release.", "findingIds": ["F3"], "probeIds": [] }] },
+      { "title": "Approved and listed in the Gong Collective", "detail": "Once finalized, external Gong customers can find and use the integration.", "owner": "agent_did", "effortHours": null, "linkFindingId": null, "helper": null, "claims": [] }
+    ],
+    "gates": {
+      "provider": { "applies": "yes", "who": "Gong's partner/ecosystem team", "what": "A partner application is required just to get a developer instance, and only partners can publish an integration to the Gong Collective.", "claims": [{ "text": "A partner application gates both getting a developer instance and publishing to the Collective.", "findingIds": ["F1", "F2", "F3"], "probeIds": [] }] },
+      "customerAdmin": { "applies": "yes", "who": "A Gong tech admin at the customer's company", "what": "Must perform the one-time, company-wide OAuth authorization themselves - there's no way for an individual end user to do this.", "claims": [{ "text": "OAuth setup must be performed by a tech admin, authenticating once at the company level.", "findingIds": ["F4"], "probeIds": [] }] },
+      "endUser": { "applies": "no", "who": "n/a", "what": "Gong doesn't support user-level OAuth; there is no individual end-user consent step at all.", "claims": [{ "text": "Gong authenticates once at the company level - there's no per-user OAuth consent step.", "findingIds": ["F4"], "probeIds": [] }] }
+    },
+    "stuckPoints": [
+      { "reason": "Can't start building without a partner application", "fix": "Submit the Gong partner application form as early as possible - it can take up to five working days just to get a developer instance.", "escalation": "The partner application form on collective.gong.io", "claim": { "text": "A developer instance requires a partner application that can take up to five working days to process.", "findingIds": ["F1"], "probeIds": [] } },
+      { "reason": "Publishing to the Collective is restricted to partners", "fix": "Confirm your organization has (or can establish) Gong partner status before investing further build time.", "escalation": "Gong's partner/ecosystem team", "claim": { "text": "Only partners can publish an app to the Gong Collective for other customers to use.", "findingIds": ["F2"], "probeIds": [] } }
+    ],
+    "whileYouWait": [
+      { "text": "While waiting on your developer instance or Collective review, you can fully build and test the app in Private mode within your own Gong account.", "findingIds": ["F2"], "probeIds": [] }
+    ],
+    "keepsComingBack": [
+      { "text": "Changing scopes on an already-published OAuth app has to go through a Gong support ticket, not a self-serve settings change.", "findingIds": ["F10"], "probeIds": [] }
+    ],
+    "hardToUndo": [
+      { "text": "The authorization context you choose when setting up OAuth can't be changed afterward.", "findingIds": ["F8"], "probeIds": [] }
+    ]
+  }
+}
