@@ -1,0 +1,963 @@
+{
+  "schemaVersion": 1,
+  "app": {
+    "name": "Zoom",
+    "slug": "zoom",
+    "websiteUrl": "https://zoom.us"
+  },
+  "kind": "library",
+  "sample": false,
+  "lastVerifiedOn": "2026-10-24",
+  "handVerified": null,
+  "completeness": {
+    "status": "complete",
+    "thinSections": []
+  },
+  "verdict": {
+    "tier": 3,
+    "tierReason": {
+      "id": "c6",
+      "text": "Every scope request goes through a dedicated Security Review team, and the standard review process includes a security-review stage that alone can take up to two weeks before an app can go live.",
+      "label": "tested",
+      "sources": [
+        {
+          "url": "https://developers.zoom.us/docs/build-flow/create-oauth-apps/",
+          "title": "Select general app features",
+          "type": "official",
+          "accessedOn": "2026-10-24",
+          "publishedYear": 2026,
+          "oldSource": false,
+          "recheck": "confirmed"
+        },
+        {
+          "url": "https://devforum.zoom.us/t/marketplace-app-production-approval-timelines-post-updates/138920",
+          "title": "Marketplace App Production Approval Timelines Post Updates",
+          "type": "community",
+          "accessedOn": "2026-10-24",
+          "publishedYear": 2025,
+          "oldSource": false,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": "Fetched https://developers.zoom.us/docs/build-flow/create-oauth-apps/ on 2026-10-24; the required terms were present.",
+      "uncertainReason": null,
+      "checked": "unchecked"
+    },
+    "effort": {
+      "min": 10.5,
+      "max": 30,
+      "unit": "hours",
+      "basis": "official",
+      "claimId": null
+    },
+    "wait": {
+      "min": 3,
+      "max": 10,
+      "unit": "business_days",
+      "basis": "reported",
+      "claimId": "c7"
+    },
+    "gates": {
+      "provider": "yes",
+      "customerAdmin": "yes",
+      "endUser": "yes"
+    },
+    "gatedAccess": false,
+    "confidence": "medium",
+    "scopeForks": []
+  },
+  "managedApp": {
+    "exists": "no",
+    "claim": {
+      "id": "c8",
+      "text": "Composio's Zoom integration has you create and register your own Zoom OAuth app rather than offering a pre-built managed one.",
+      "label": "sourced",
+      "sources": [
+        {
+          "url": "https://docs.composio.dev/docs/custom-app-vs-managed-app",
+          "title": "Managed vs custom auth",
+          "type": "vendor",
+          "accessedOn": "2026-10-24",
+          "publishedYear": null,
+          "oldSource": false,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": null,
+      "uncertainReason": null,
+      "checked": "unchecked"
+    },
+    "whatYouLose": [],
+    "whenToSwitch": []
+  },
+  "howItWorks": {
+    "flow": [
+      {
+        "id": "c9",
+        "text": "A developer registers an app as account-level (admin-managed) or user-managed, requests scopes with written justifications, and the user is redirected to Zoom to grant consent.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://developers.zoom.us/docs/integrations/create/",
+            "title": "Create an OAuth app",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          },
+          {
+            "url": "https://developers.zoom.us/docs/build-flow/create-oauth-apps/",
+            "title": "Select general app features",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://developers.zoom.us/docs/integrations/create/ on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    ],
+    "appTypes": [
+      {
+        "id": "c10",
+        "text": "Account-level apps are managed by admins and can request admin-scoped data across the account; user-managed apps are limited to data the installing user can access.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://developers.zoom.us/docs/integrations/create/",
+            "title": "Create an OAuth app",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          },
+          {
+            "url": "https://developers.zoom.us/docs/integrations/end-user-auth/",
+            "title": "End user authorization",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": "Fetched https://developers.zoom.us/docs/integrations/create/ on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    ],
+    "tokenNotes": [
+      {
+        "id": "c11",
+        "text": "Published public apps must notify a Deauthorization Notification Endpoint whenever a user revokes access; private or in-development apps don't send this notification.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://developers.zoom.us/docs/integrations/end-user-auth/",
+            "title": "End user authorization",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": "Fetched https://developers.zoom.us/docs/integrations/end-user-auth/ on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    ]
+  },
+  "scopes": [
+    {
+      "scope": "report:read:admin",
+      "allows": "Read account-wide usage reports.",
+      "neededFor": "Admin-level reporting integrations across an organization's whole account.",
+      "reviewImpact": "security_assessment",
+      "claim": {
+        "id": "c12",
+        "text": "The report:read:admin scope requires the authorizing user to have matching admin-level Role Permissions, and - like every scope - goes through Zoom's Security Review team.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://developers.zoom.us/docs/build-flow/create-oauth-apps/",
+            "title": "Select general app features",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          },
+          {
+            "url": "https://developers.zoom.us/docs/integrations/end-user-auth/",
+            "title": "End user authorization",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": "Fetched https://developers.zoom.us/docs/build-flow/create-oauth-apps/ on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "Account-level scopes (general)",
+      "allows": "Access data across the whole Zoom account rather than one user.",
+      "neededFor": "Apps that act on behalf of an organization rather than a single user.",
+      "reviewImpact": "security_assessment",
+      "claim": {
+        "id": "c13",
+        "text": "Account-level scopes are reviewed by Zoom's Security Review team and require an authorizing user with matching admin permissions.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://developers.zoom.us/docs/integrations/create/",
+            "title": "Create an OAuth app",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          },
+          {
+            "url": "https://developers.zoom.us/docs/build-flow/create-oauth-apps/",
+            "title": "Select general app features",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          },
+          {
+            "url": "https://developers.zoom.us/docs/integrations/end-user-auth/",
+            "title": "End user authorization",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": "Fetched https://developers.zoom.us/docs/integrations/create/ on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    }
+  ],
+  "prerequisites": [
+    {
+      "item": "A published Privacy Policy and Terms of Use page, at a domain you can verify ownership of",
+      "kind": "policy_page",
+      "claim": {
+        "id": "c14",
+        "text": "Zoom verifies ownership of the domains used for your Privacy Policy, Terms of Use, and callback URLs before approving the app.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://developers.zoom.us/docs/distribute/app-submission/submit-apps-review/",
+            "title": "Submit apps for review",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://developers.zoom.us/docs/distribute/app-submission/submit-apps-review/ on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "item": "Reviewer release notes with a test plan and a fully populated test account (one login per user role)",
+      "kind": "test_account",
+      "claim": {
+        "id": "c15",
+        "text": "Reviewers need release notes with a test plan and a populated test account covering every user role your app supports.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://developers.zoom.us/docs/distribute/app-submission/submit-apps-review/",
+            "title": "Submit apps for review",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "item": "SSDLC documentation, SAST and DAST scan results (only if you need Authorization URL approval)",
+      "kind": "other",
+      "claim": {
+        "id": "c16",
+        "text": "Authorization URL approval needs SSDLC documentation and SAST/DAST scan results as supporting evidence, on top of standard Marketplace review.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://developers.zoom.us/docs/distribute/security-requirements.md",
+            "title": "Security requirements",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://developers.zoom.us/docs/distribute/security-requirements.md on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "n": 1,
+      "title": "Found Zoom's developer portal and OAuth app build flow",
+      "detail": "The research stage located Zoom's app registration flow and its review and security-requirements pages.",
+      "owner": "agent_did",
+      "effort": null,
+      "linkUrl": "https://developers.zoom.us/docs/integrations/create/",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c17",
+          "text": "Zoom's OAuth app build flow is documented at developers.zoom.us.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developers.zoom.us/docs/integrations/create/",
+              "title": "Create an OAuth app",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://developers.zoom.us/docs/integrations/create/ on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "title": "Create a Zoom developer account and register an OAuth app",
+      "detail": "Start a new app in the build flow and choose account-level or user-managed.",
+      "owner": "you_do",
+      "effort": {
+        "min": 1,
+        "max": 2,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c18"
+      },
+      "linkUrl": "https://developers.zoom.us/docs/integrations/create/",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c18",
+          "text": "Registering an app means picking account-level or user-managed, which affects which scopes you can request.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developers.zoom.us/docs/integrations/create/",
+              "title": "Create an OAuth app",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://developers.zoom.us/docs/integrations/create/ on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "title": "Select your scopes and write a justification for each",
+      "detail": "Every scope needs a written reason; Zoom's Security Review team can reject scopes it finds unnecessary.",
+      "owner": "you_do",
+      "effort": {
+        "min": 1,
+        "max": 3,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c19"
+      },
+      "linkUrl": "https://developers.zoom.us/docs/build-flow/create-oauth-apps/",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c19",
+          "text": "Each requested scope needs a written justification and is reviewed by Zoom's Security Review team.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developers.zoom.us/docs/build-flow/create-oauth-apps/",
+              "title": "Select general app features",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://developers.zoom.us/docs/build-flow/create-oauth-apps/ on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "title": "Verify ownership of your redirect, privacy-policy, and terms domains",
+      "detail": "Zoom runs a one-time check (DNS TXT record, HTML file, or meta tag) before it will send callbacks to your domain.",
+      "owner": "you_do",
+      "effort": {
+        "min": 0.5,
+        "max": 1,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c20"
+      },
+      "linkUrl": "https://developers.zoom.us/docs/distribute/app-submission/submit-apps-review/",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c20",
+          "text": "Zoom performs a one-time domain-ownership verification for your callback, privacy policy, and terms URLs.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developers.zoom.us/docs/distribute/app-submission/submit-apps-review/",
+              "title": "Submit apps for review",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://developers.zoom.us/docs/distribute/app-submission/submit-apps-review/ on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "title": "Build the deauthorization endpoint",
+      "detail": "Published public apps must accept a signed POST whenever a user deauthorizes the app.",
+      "owner": "you_do",
+      "effort": {
+        "min": 2,
+        "max": 4,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c21"
+      },
+      "linkUrl": "https://developers.zoom.us/docs/integrations/end-user-auth/",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c21",
+          "text": "Published public apps must handle a signed POST to a Deauthorization Notification Endpoint.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developers.zoom.us/docs/integrations/end-user-auth/",
+              "title": "End user authorization",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "mismatch"
+            }
+          ],
+          "testNote": "Fetched https://developers.zoom.us/docs/integrations/end-user-auth/ on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "title": "Populate a test account with credentials for every user role",
+      "detail": "Zoom's review team installs the production app into their own account and needs working test logins.",
+      "owner": "you_do",
+      "effort": {
+        "min": 1,
+        "max": 2,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c22"
+      },
+      "linkUrl": "https://developers.zoom.us/docs/distribute/app-submission/submit-apps-review/",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c22",
+          "text": "Reviewers need a populated test account with a login for every user role your app supports.",
+          "label": "sourced",
+          "sources": [
+            {
+              "url": "https://developers.zoom.us/docs/distribute/app-submission/submit-apps-review/",
+              "title": "Submit apps for review",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": null,
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "title": "Draft your scope justification for the Security Review team",
+      "detail": "Use the Scope justification helper to prepare reviewer-facing notes for each scope you requested.",
+      "owner": "agent_drafted",
+      "effort": null,
+      "linkUrl": null,
+      "helper": "scope_justification",
+      "claims": []
+    },
+    {
+      "n": 8,
+      "title": "Draft a reviewer test plan",
+      "detail": "Use the Reviewer test plan helper so Zoom's reviewer can exercise your integration quickly.",
+      "owner": "agent_drafted",
+      "effort": null,
+      "linkUrl": null,
+      "helper": "test_plan",
+      "claims": []
+    },
+    {
+      "n": 9,
+      "title": "If you need an Authorization URL, gather SSDLC/SAST/DAST security evidence",
+      "detail": "Authorization URL approval needs extra, specific evidence beyond standard Marketplace review.",
+      "owner": "you_do",
+      "effort": {
+        "min": 4,
+        "max": 16,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c23"
+      },
+      "linkUrl": "https://developers.zoom.us/docs/distribute/security-requirements.md",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c23",
+          "text": "Authorization URL approval requires SSDLC documentation and SAST/DAST scan evidence beyond standard review.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developers.zoom.us/docs/distribute/security-requirements.md",
+              "title": "Security requirements",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://developers.zoom.us/docs/distribute/security-requirements.md on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "title": "Submit for review and respond to any reviewer notes",
+      "detail": "Reviewer feedback appears as notes in your app's status panel; you must respond before resubmitting.",
+      "owner": "you_do",
+      "effort": {
+        "min": 1,
+        "max": 2,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c24"
+      },
+      "linkUrl": "https://developers.zoom.us/docs/distribute/app-submission/submit-apps-review/",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c24",
+          "text": "Apps go through Zoom's review process, and reviewer notes must be acknowledged before resubmission.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developers.zoom.us/docs/distribute/app-submission/submit-apps-review/",
+              "title": "Submit apps for review",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://developers.zoom.us/docs/distribute/app-submission/submit-apps-review/ on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "title": "Approved and live",
+      "detail": "Once review passes, the app can connect real Zoom user accounts.",
+      "owner": "agent_did",
+      "effort": null,
+      "linkUrl": null,
+      "helper": null,
+      "claims": []
+    }
+  ],
+  "gates": {
+    "provider": {
+      "applies": "yes",
+      "who": "Zoom's Marketplace Review Team, including a dedicated Security Review team for scopes",
+      "what": "Reviews functionality, branding, and every requested scope; the security-review stage alone can take up to about two weeks.",
+      "claims": [
+        {
+          "id": "c26",
+          "text": "Zoom's review covers functionality and scopes, with a security-review stage that can take up to two weeks.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developers.zoom.us/docs/distribute/app-submission/submit-apps-review/",
+              "title": "Submit apps for review",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            },
+            {
+              "url": "https://developers.zoom.us/docs/build-flow/create-oauth-apps/",
+              "title": "Select general app features",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            },
+            {
+              "url": "https://devforum.zoom.us/t/marketplace-app-production-approval-timelines-post-updates/138920",
+              "title": "Marketplace App Production Approval Timelines Post Updates",
+              "type": "community",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2025,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://developers.zoom.us/docs/distribute/app-submission/submit-apps-review/ on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    "customerAdmin": {
+      "applies": "yes",
+      "who": "The Zoom account owner or an admin with matching Role Permissions",
+      "what": "Must authorize account-level or admin-scoped access, and the account may require the app to be pre-approved before any user can authorize it.",
+      "claims": [
+        {
+          "id": "c25",
+          "text": "Account-level and admin-scoped access needs an admin with matching Role Permissions, and the account may require pre-approval first.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developers.zoom.us/docs/integrations/end-user-auth/",
+              "title": "End user authorization",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "mismatch"
+            }
+          ],
+          "testNote": "Fetched https://developers.zoom.us/docs/integrations/end-user-auth/ on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    "endUser": {
+      "applies": "yes",
+      "who": "The Zoom user being connected",
+      "what": "Grants authorization at Zoom's consent screen; admin-scoped access still needs an admin, not just the user.",
+      "claims": [
+        {
+          "id": "c27",
+          "text": "Users grant authorization at Zoom's consent screen, though admin-scoped access additionally needs an admin.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developers.zoom.us/docs/integrations/end-user-auth/",
+              "title": "End user authorization",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "mismatch"
+            }
+          ],
+          "testNote": "Fetched https://developers.zoom.us/docs/integrations/end-user-auth/ on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    }
+  },
+  "stuckPoints": [
+    {
+      "reason": "Review stalls, or is rejected with an unclear reason",
+      "fix": "Check the Review Team's notes in your app's status panel (the speech-bubble icon) - you must acknowledge them before resubmitting.",
+      "escalation": "Reply on the review thread, or ask in the Zoom developer forum",
+      "claim": {
+        "id": "c28",
+        "text": "Developers report rejections for incomplete test credentials, missing documentation links, incomplete branding, or a missing deauthorization URL.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://devforum.zoom.us/t/why-is-my-application-getting-rejected-by-the-marketplace-team/73260",
+            "title": "Why is my Application getting rejected?",
+            "type": "community",
+            "accessedOn": "2026-10-24",
+            "publishedYear": null,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "reason": "No reviewer response past the stated SLA",
+      "fix": "Follow up referencing your submission date and the 72-hour SLA; ask what stage the review is in.",
+      "escalation": "Reply on the review thread in the Zoom developer forum",
+      "claim": {
+        "id": "c29",
+        "text": "Zoom staff describe a 72-hour response SLA, but some developers have reported waits of many weeks in practice.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://devforum.zoom.us/t/marketplace-app-production-approval-timelines-post-updates/138920",
+            "title": "Marketplace App Production Approval Timelines Post Updates",
+            "type": "community",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2025,
+            "oldSource": false,
+            "recheck": "confirmed"
+          },
+          {
+            "url": "https://devforum.zoom.us/t/zoom-app-submitted-on-4-5-and-still-no-reply/87373",
+            "title": "Zoom App submitted on 4/5 and still no reply",
+            "type": "community",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2023,
+            "oldSource": true,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": "Fetched https://devforum.zoom.us/t/marketplace-app-production-approval-timelines-post-updates/138920 on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    }
+  ],
+  "whileYouWait": [
+    {
+      "id": "c30",
+      "text": "A Beta/Shareable URL reportedly lets up to about 10 external users install and test your app before it's published.",
+      "label": "sourced",
+      "sources": [
+        {
+          "url": "https://recall.ai/blog/how-can-i-allow-multiple-users-to-test-my-zoom-oauth-app-in-development-mode",
+          "title": "How can I allow multiple users to test my Zoom OAuth app in development mode",
+          "type": "vendor",
+          "accessedOn": "2026-10-24",
+          "publishedYear": null,
+          "oldSource": false,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": null,
+      "uncertainReason": null,
+      "checked": "unchecked"
+    }
+  ],
+  "keepsComingBack": [
+    {
+      "id": "c31",
+      "text": "Zoom can order a mandatory security re-review of an already-approved app, and a failed re-review can get the app unpublished.",
+      "label": "sourced",
+      "sources": [
+        {
+          "url": "https://devforum.zoom.us/t/when-is-a-re-review-needed-for-published-apps/116405",
+          "title": "When is a re-review needed for published apps?",
+          "type": "community",
+          "accessedOn": "2026-10-24",
+          "publishedYear": 2023,
+          "oldSource": true,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": null,
+      "uncertainReason": null,
+      "checked": "unchecked"
+    }
+  ],
+  "hardToUndo": [],
+  "derived": {
+    "unverifiedClaimIds": [],
+    "sources": [
+      {
+        "url": "https://developers.zoom.us/docs/integrations/create/",
+        "title": "Create an OAuth app",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://developers.zoom.us/docs/distribute/app-submission/submit-apps-review/",
+        "title": "Submit apps for review",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://developers.zoom.us/docs/build-flow/create-oauth-apps/",
+        "title": "Select general app features",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://devforum.zoom.us/t/marketplace-app-production-approval-timelines-post-updates/138920",
+        "title": "Marketplace App Production Approval Timelines Post Updates",
+        "type": "community",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2025,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://developers.zoom.us/docs/integrations/end-user-auth/",
+        "title": "End user authorization",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "mismatch"
+      },
+      {
+        "url": "https://recall.ai/blog/how-can-i-allow-multiple-users-to-test-my-zoom-oauth-app-in-development-mode",
+        "title": "How can I allow multiple users to test my Zoom OAuth app in development mode",
+        "type": "vendor",
+        "accessedOn": "2026-10-24",
+        "publishedYear": null,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://docs.composio.dev/docs/custom-app-vs-managed-app",
+        "title": "Managed vs custom auth",
+        "type": "vendor",
+        "accessedOn": "2026-10-24",
+        "publishedYear": null,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://developers.zoom.us/docs/distribute/security-requirements.md",
+        "title": "Security requirements",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://devforum.zoom.us/t/why-is-my-application-getting-rejected-by-the-marketplace-team/73260",
+        "title": "Why is my Application getting rejected?",
+        "type": "community",
+        "accessedOn": "2026-10-24",
+        "publishedYear": null,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://devforum.zoom.us/t/zoom-app-submitted-on-4-5-and-still-no-reply/87373",
+        "title": "Zoom App submitted on 4/5 and still no reply",
+        "type": "community",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2023,
+        "oldSource": true,
+        "recheck": "mismatch"
+      },
+      {
+        "url": "https://devforum.zoom.us/t/when-is-a-re-review-needed-for-published-apps/116405",
+        "title": "When is a re-review needed for published apps?",
+        "type": "community",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2023,
+        "oldSource": true,
+        "recheck": "confirmed"
+      }
+    ]
+  },
+  "tile": {
+    "tier": 3,
+    "effort": {
+      "min": 10.5,
+      "max": 30,
+      "unit": "hours",
+      "basis": "official",
+      "claimId": null
+    },
+    "wait": {
+      "min": 3,
+      "max": 10,
+      "unit": "business_days",
+      "basis": "reported",
+      "claimId": "c7"
+    },
+    "gated": false,
+    "customerAdmin": "yes"
+  }
+}

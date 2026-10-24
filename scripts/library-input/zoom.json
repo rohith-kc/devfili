@@ -1,0 +1,411 @@
+{
+  "app": { "name": "Zoom", "slug": "zoom", "websiteUrl": "https://zoom.us" },
+  "findings": [
+    {
+      "id": "F1",
+      "topic": "app_types",
+      "statement": "OAuth apps can be account-level (managed by admins across the account) or user-managed (added individually by each user); the management type affects which scopes are available.",
+      "sourceUrl": "https://developers.zoom.us/docs/integrations/create/",
+      "sourceTitle": "Create an OAuth app",
+      "sourceType": "official",
+      "publishedYear": 2026,
+      "excerpt": "account-level app) or by users individually (user-managed app)",
+      "checkable": { "url": "https://developers.zoom.us/docs/integrations/create/", "mustContain": ["account-level", "user-managed"] }
+    },
+    {
+      "id": "F2",
+      "topic": "review_required",
+      "statement": "External apps intended for public Marketplace listing go through Zoom's review process before publication; internal-only apps don't require the standard Marketplace review.",
+      "sourceUrl": "https://developers.zoom.us/docs/distribute/app-submission/submit-apps-review/",
+      "sourceTitle": "Submit apps for review",
+      "sourceType": "official",
+      "publishedYear": 2026,
+      "excerpt": "after it passes Zoom's review process",
+      "checkable": { "url": "https://developers.zoom.us/docs/distribute/app-submission/submit-apps-review/", "mustContain": ["review process"] }
+    },
+    {
+      "id": "F3",
+      "topic": "prerequisites",
+      "statement": "Zoom runs a one-time domain verification to confirm you own the domains used for your Privacy Policy, Terms of Use, OAuth redirect, webhook callback, and home URLs.",
+      "sourceUrl": "https://developers.zoom.us/docs/distribute/app-submission/submit-apps-review/",
+      "sourceTitle": "Submit apps for review",
+      "sourceType": "official",
+      "publishedYear": 2026,
+      "excerpt": "We perform a one-time verification to make sure that the domain where you receive Zoom callbacks is owned by you.",
+      "checkable": { "url": "https://developers.zoom.us/docs/distribute/app-submission/submit-apps-review/", "mustContain": ["one-time verification"] }
+    },
+    {
+      "id": "F4",
+      "topic": "prerequisites",
+      "statement": "Before submitting, provide reviewer release notes with a test plan and a populated test account with credentials for every user role your app supports.",
+      "sourceUrl": "https://developers.zoom.us/docs/distribute/app-submission/submit-apps-review/",
+      "sourceTitle": "Submit apps for review",
+      "sourceType": "official",
+      "publishedYear": 2026,
+      "excerpt": "test credentials",
+      "checkable": null
+    },
+    {
+      "id": "F5",
+      "topic": "security_assessment",
+      "statement": "Approval for an Authorization URL requires extra security evidence (SSDLC documentation, SAST and DAST scan results, a privacy policy, plus three of five further security documents); standard Marketplace publication does not require this extra package.",
+      "sourceUrl": "https://developers.zoom.us/docs/distribute/security-requirements.md",
+      "sourceTitle": "Security requirements",
+      "sourceType": "official",
+      "publishedYear": 2026,
+      "excerpt": "Custom-written summaries are not accepted as scan evidence.",
+      "checkable": { "url": "https://developers.zoom.us/docs/distribute/security-requirements.md", "mustContain": ["SAST", "DAST"] }
+    },
+    {
+      "id": "F6",
+      "topic": "security_assessment",
+      "statement": "Apps must support TLS 1.2 or higher and are expected to follow ongoing secure-SDLC practices: regular SAST/DAST scanning and periodic penetration testing.",
+      "sourceUrl": "https://developers.zoom.us/docs/distribute/security-requirements.md",
+      "sourceTitle": "Security requirements",
+      "sourceType": "official",
+      "publishedYear": 2026,
+      "excerpt": "TLS 1.2 or higher",
+      "checkable": { "url": "https://developers.zoom.us/docs/distribute/security-requirements.md", "mustContain": ["TLS 1.2"] }
+    },
+    {
+      "id": "F7",
+      "topic": "scopes",
+      "statement": "Each requested scope needs a written justification, and adding a scope submits a request to Zoom's Security Review team, which may reject scopes it finds unnecessary.",
+      "sourceUrl": "https://developers.zoom.us/docs/build-flow/create-oauth-apps/",
+      "sourceTitle": "Select general app features",
+      "sourceType": "official",
+      "publishedYear": 2026,
+      "excerpt": "may reject the scope request",
+      "checkable": { "url": "https://developers.zoom.us/docs/build-flow/create-oauth-apps/", "mustContain": ["Security Review"] }
+    },
+    {
+      "id": "F8",
+      "topic": "customer_admin",
+      "statement": "Account-level or admin scopes require authorization by a user with matching admin Role Permissions, and an account may require a Marketplace admin to pre-approve the app before any user can authorize it.",
+      "sourceUrl": "https://developers.zoom.us/docs/integrations/end-user-auth/",
+      "sourceTitle": "End user authorization",
+      "sourceType": "official",
+      "publishedYear": 2026,
+      "excerpt": "Account-level scopes require an admin with the right permissions.",
+      "checkable": { "url": "https://developers.zoom.us/docs/integrations/end-user-auth/", "mustContain": ["pre-approve"] }
+    },
+    {
+      "id": "F9",
+      "topic": "user_cap",
+      "statement": "A Beta/Shareable URL reportedly lets up to about 10 external users install and test an app before it's published; without one, the app works only for accounts in the developer's own Zoom org.",
+      "sourceUrl": "https://recall.ai/blog/how-can-i-allow-multiple-users-to-test-my-zoom-oauth-app-in-development-mode",
+      "sourceTitle": "How can I allow multiple users to test my Zoom OAuth app in development mode",
+      "sourceType": "vendor",
+      "publishedYear": null,
+      "excerpt": "allow multiple users to test",
+      "checkable": null
+    },
+    {
+      "id": "F10",
+      "topic": "review_timeline",
+      "statement": "Zoom staff described a roughly 72-hour initial-response SLA (excluding weekends and holidays), with the security-review stage alone taking up to about two weeks.",
+      "sourceUrl": "https://devforum.zoom.us/t/marketplace-app-production-approval-timelines-post-updates/138920",
+      "sourceTitle": "Marketplace App Production Approval Timelines Post Updates",
+      "sourceType": "community",
+      "publishedYear": 2025,
+      "excerpt": "our SLA is 72hours, not including weekends, US Holidays, and Company closings",
+      "checkable": { "url": "https://devforum.zoom.us/t/marketplace-app-production-approval-timelines-post-updates/138920", "mustContain": ["72hours"] }
+    },
+    {
+      "id": "F11",
+      "topic": "community_timeline",
+      "statement": "One developer's app, flagged for extra review due to its technology, was still unresolved about seven weeks after resubmission.",
+      "sourceUrl": "https://devforum.zoom.us/t/zoom-app-submitted-on-4-5-and-still-no-reply/87373",
+      "sourceTitle": "Zoom App submitted on 4/5 and still no reply",
+      "sourceType": "community",
+      "publishedYear": 2023,
+      "excerpt": "resubmitted",
+      "checkable": null
+    },
+    {
+      "id": "F12",
+      "topic": "rejection_reason",
+      "statement": "Developers report common rejection causes: incomplete test credentials or test plans, missing or non-actionable documentation links, incomplete branding or listing details, and a missing or broken deauthorization URL.",
+      "sourceUrl": "https://devforum.zoom.us/t/why-is-my-application-getting-rejected-by-the-marketplace-team/73260",
+      "sourceTitle": "Why is my Application getting rejected?",
+      "sourceType": "community",
+      "publishedYear": null,
+      "excerpt": "deauthorization URL",
+      "checkable": null
+    },
+    {
+      "id": "F13",
+      "topic": "recurring",
+      "statement": "Zoom can order a mandatory security re-review of an already-approved app; one developer reported their app was unpublished after failing such a re-review.",
+      "sourceUrl": "https://devforum.zoom.us/t/when-is-a-re-review-needed-for-published-apps/116405",
+      "sourceTitle": "When is a re-review needed for published apps?",
+      "sourceType": "community",
+      "publishedYear": 2023,
+      "excerpt": "re-review",
+      "checkable": null
+    },
+    {
+      "id": "F14",
+      "topic": "managed_app",
+      "statement": "Composio's Zoom integration requires creating your own Zoom OAuth app and pointing its redirect URI at Composio's callback; Composio does not offer a pre-built managed app for Zoom.",
+      "sourceUrl": "https://docs.composio.dev/docs/custom-app-vs-managed-app",
+      "sourceTitle": "Managed vs custom auth",
+      "sourceType": "vendor",
+      "publishedYear": null,
+      "excerpt": "managed app",
+      "checkable": null
+    },
+    {
+      "id": "F15",
+      "topic": "scope_change",
+      "statement": "When an update request changes an app's scopes, Zoom automatically emails existing subscribers to notify them of the change.",
+      "sourceUrl": "https://developers.zoom.us/docs/distribute/app-submission/submit-apps-review/",
+      "sourceTitle": "Submit apps for review",
+      "sourceType": "official",
+      "publishedYear": 2026,
+      "excerpt": "Zoom emails existing subscribers automatically",
+      "checkable": null
+    },
+    {
+      "id": "F16",
+      "topic": "other",
+      "statement": "Published public apps must send a signed POST to a Deauthorization Notification Endpoint whenever a user deauthorizes the app; private apps and apps still in development don't send this notification.",
+      "sourceUrl": "https://developers.zoom.us/docs/integrations/end-user-auth/",
+      "sourceTitle": "End user authorization",
+      "sourceType": "official",
+      "publishedYear": 2026,
+      "excerpt": "Deauthorization Notification Endpoint",
+      "checkable": { "url": "https://developers.zoom.us/docs/integrations/end-user-auth/", "mustContain": ["Deauthorization"] }
+    }
+  ],
+  "core": {
+    "facts": {
+      "partnerGated": {
+        "value": false,
+        "claim": { "text": "App creation goes through a fully self-serve build flow and standard Marketplace review, with no partner program or vetting step mentioned anywhere in the registration or review docs.", "findingIds": ["F1", "F2"], "probeIds": ["P12", "P13"] }
+      },
+      "securityAssessment": {
+        "value": true,
+        "claim": { "text": "Every scope request goes to a dedicated Security Review team, and the standard review process includes a security-review stage that alone can take up to two weeks.", "findingIds": ["F7", "F10"], "probeIds": ["P17", "P19"] }
+      },
+      "reviewRequired": {
+        "value": true,
+        "claim": { "text": "Public apps must pass Zoom's Marketplace review before they can be listed and connect real user accounts.", "findingIds": ["F2"], "probeIds": ["P13"] }
+      },
+      "customerAdminLikely": {
+        "value": true,
+        "claim": { "text": "Account-level and admin-scoped access requires an admin with matching Role Permissions, and the account may require pre-approval by a Marketplace admin first.", "findingIds": ["F8"], "probeIds": ["P18"] }
+      },
+      "userCapBeforeApproval": {
+        "value": true,
+        "claim": { "text": "A Beta/Shareable URL reportedly caps pre-publish testing at about 10 external users.", "findingIds": ["F9"], "probeIds": [] }
+      }
+    },
+    "tierReason": {
+      "text": "Every scope request goes through a dedicated Security Review team, and the standard review process includes a security-review stage that alone can take up to two weeks before an app can go live.",
+      "findingIds": ["F7", "F10"],
+      "probeIds": ["P17", "P19"]
+    },
+    "wait": {
+      "min": 3,
+      "max": 10,
+      "unit": "business_days",
+      "claim": { "text": "Zoom staff describe a roughly 72-hour initial-response SLA, with the security-review stage alone taking up to about two weeks (roughly 10 business days) before a decision.", "findingIds": ["F10"], "probeIds": ["P19"] }
+    },
+    "scopeForks": [],
+    "managedApp": {
+      "exists": "no",
+      "claim": { "text": "Composio's Zoom integration has you create and register your own Zoom OAuth app rather than offering a pre-built managed one.", "findingIds": ["F14"], "probeIds": [] },
+      "whatYouLose": [],
+      "whenToSwitch": []
+    },
+    "howItWorks": {
+      "flow": [
+        { "text": "A developer registers an app as account-level (admin-managed) or user-managed, requests scopes with written justifications, and the user is redirected to Zoom to grant consent.", "findingIds": ["F1", "F7"], "probeIds": ["P12", "P17"] }
+      ],
+      "appTypes": [
+        { "text": "Account-level apps are managed by admins and can request admin-scoped data across the account; user-managed apps are limited to data the installing user can access.", "findingIds": ["F1", "F8"], "probeIds": ["P12", "P18"] }
+      ],
+      "tokenNotes": [
+        { "text": "Published public apps must notify a Deauthorization Notification Endpoint whenever a user revokes access; private or in-development apps don't send this notification.", "findingIds": ["F16"], "probeIds": ["P20"] }
+      ]
+    },
+    "scopes": [
+      {
+        "scope": "report:read:admin",
+        "allows": "Read account-wide usage reports.",
+        "neededFor": "Admin-level reporting integrations across an organization's whole account.",
+        "reviewImpact": "security_assessment",
+        "claim": { "text": "The report:read:admin scope requires the authorizing user to have matching admin-level Role Permissions, and - like every scope - goes through Zoom's Security Review team.", "findingIds": ["F7", "F8"], "probeIds": ["P17", "P18"] }
+      },
+      {
+        "scope": "Account-level scopes (general)",
+        "allows": "Access data across the whole Zoom account rather than one user.",
+        "neededFor": "Apps that act on behalf of an organization rather than a single user.",
+        "reviewImpact": "security_assessment",
+        "claim": { "text": "Account-level scopes are reviewed by Zoom's Security Review team and require an authorizing user with matching admin permissions.", "findingIds": ["F1", "F7", "F8"], "probeIds": ["P12", "P17", "P18"] }
+      }
+    ],
+    "prerequisites": [
+      {
+        "item": "A published Privacy Policy and Terms of Use page, at a domain you can verify ownership of",
+        "kind": "policy_page",
+        "claim": { "text": "Zoom verifies ownership of the domains used for your Privacy Policy, Terms of Use, and callback URLs before approving the app.", "findingIds": ["F3"], "probeIds": ["P14"] }
+      },
+      {
+        "item": "Reviewer release notes with a test plan and a fully populated test account (one login per user role)",
+        "kind": "test_account",
+        "claim": { "text": "Reviewers need release notes with a test plan and a populated test account covering every user role your app supports.", "findingIds": ["F4"], "probeIds": [] }
+      },
+      {
+        "item": "SSDLC documentation, SAST and DAST scan results (only if you need Authorization URL approval)",
+        "kind": "other",
+        "claim": { "text": "Authorization URL approval needs SSDLC documentation and SAST/DAST scan results as supporting evidence, on top of standard Marketplace review.", "findingIds": ["F5"], "probeIds": ["P15"] }
+      }
+    ]
+  },
+  "path": {
+    "steps": [
+      {
+        "title": "Found Zoom's developer portal and OAuth app build flow",
+        "detail": "The research stage located Zoom's app registration flow and its review and security-requirements pages.",
+        "owner": "agent_did",
+        "effortHours": null,
+        "linkFindingId": "F1",
+        "helper": null,
+        "claims": [{ "text": "Zoom's OAuth app build flow is documented at developers.zoom.us.", "findingIds": ["F1"], "probeIds": ["P12"] }]
+      },
+      {
+        "title": "Create a Zoom developer account and register an OAuth app",
+        "detail": "Start a new app in the build flow and choose account-level or user-managed.",
+        "owner": "you_do",
+        "effortHours": { "min": 1, "max": 2 },
+        "linkFindingId": "F1",
+        "helper": null,
+        "claims": [{ "text": "Registering an app means picking account-level or user-managed, which affects which scopes you can request.", "findingIds": ["F1"], "probeIds": ["P12"] }]
+      },
+      {
+        "title": "Select your scopes and write a justification for each",
+        "detail": "Every scope needs a written reason; Zoom's Security Review team can reject scopes it finds unnecessary.",
+        "owner": "you_do",
+        "effortHours": { "min": 1, "max": 3 },
+        "linkFindingId": "F7",
+        "helper": null,
+        "claims": [{ "text": "Each requested scope needs a written justification and is reviewed by Zoom's Security Review team.", "findingIds": ["F7"], "probeIds": ["P17"] }]
+      },
+      {
+        "title": "Verify ownership of your redirect, privacy-policy, and terms domains",
+        "detail": "Zoom runs a one-time check (DNS TXT record, HTML file, or meta tag) before it will send callbacks to your domain.",
+        "owner": "you_do",
+        "effortHours": { "min": 0.5, "max": 1 },
+        "linkFindingId": "F3",
+        "helper": null,
+        "claims": [{ "text": "Zoom performs a one-time domain-ownership verification for your callback, privacy policy, and terms URLs.", "findingIds": ["F3"], "probeIds": ["P14"] }]
+      },
+      {
+        "title": "Build the deauthorization endpoint",
+        "detail": "Published public apps must accept a signed POST whenever a user deauthorizes the app.",
+        "owner": "you_do",
+        "effortHours": { "min": 2, "max": 4 },
+        "linkFindingId": "F16",
+        "helper": null,
+        "claims": [{ "text": "Published public apps must handle a signed POST to a Deauthorization Notification Endpoint.", "findingIds": ["F16"], "probeIds": ["P20"] }]
+      },
+      {
+        "title": "Populate a test account with credentials for every user role",
+        "detail": "Zoom's review team installs the production app into their own account and needs working test logins.",
+        "owner": "you_do",
+        "effortHours": { "min": 1, "max": 2 },
+        "linkFindingId": "F4",
+        "helper": null,
+        "claims": [{ "text": "Reviewers need a populated test account with a login for every user role your app supports.", "findingIds": ["F4"], "probeIds": [] }]
+      },
+      {
+        "title": "Draft your scope justification for the Security Review team",
+        "detail": "Use the Scope justification helper to prepare reviewer-facing notes for each scope you requested.",
+        "owner": "agent_drafted",
+        "effortHours": null,
+        "linkFindingId": null,
+        "helper": "scope_justification",
+        "claims": []
+      },
+      {
+        "title": "Draft a reviewer test plan",
+        "detail": "Use the Reviewer test plan helper so Zoom's reviewer can exercise your integration quickly.",
+        "owner": "agent_drafted",
+        "effortHours": null,
+        "linkFindingId": null,
+        "helper": "test_plan",
+        "claims": []
+      },
+      {
+        "title": "If you need an Authorization URL, gather SSDLC/SAST/DAST security evidence",
+        "detail": "Authorization URL approval needs extra, specific evidence beyond standard Marketplace review.",
+        "owner": "you_do",
+        "effortHours": { "min": 4, "max": 16 },
+        "linkFindingId": "F5",
+        "helper": null,
+        "claims": [{ "text": "Authorization URL approval requires SSDLC documentation and SAST/DAST scan evidence beyond standard review.", "findingIds": ["F5"], "probeIds": ["P15"] }]
+      },
+      {
+        "title": "Submit for review and respond to any reviewer notes",
+        "detail": "Reviewer feedback appears as notes in your app's status panel; you must respond before resubmitting.",
+        "owner": "you_do",
+        "effortHours": { "min": 1, "max": 2 },
+        "linkFindingId": "F2",
+        "helper": null,
+        "claims": [{ "text": "Apps go through Zoom's review process, and reviewer notes must be acknowledged before resubmission.", "findingIds": ["F2"], "probeIds": ["P13"] }]
+      },
+      {
+        "title": "Approved and live",
+        "detail": "Once review passes, the app can connect real Zoom user accounts.",
+        "owner": "agent_did",
+        "effortHours": null,
+        "linkFindingId": null,
+        "helper": null,
+        "claims": []
+      }
+    ],
+    "gates": {
+      "provider": {
+        "applies": "yes",
+        "who": "Zoom's Marketplace Review Team, including a dedicated Security Review team for scopes",
+        "what": "Reviews functionality, branding, and every requested scope; the security-review stage alone can take up to about two weeks.",
+        "claims": [{ "text": "Zoom's review covers functionality and scopes, with a security-review stage that can take up to two weeks.", "findingIds": ["F2", "F7", "F10"], "probeIds": ["P13", "P17", "P19"] }]
+      },
+      "customerAdmin": {
+        "applies": "yes",
+        "who": "The Zoom account owner or an admin with matching Role Permissions",
+        "what": "Must authorize account-level or admin-scoped access, and the account may require the app to be pre-approved before any user can authorize it.",
+        "claims": [{ "text": "Account-level and admin-scoped access needs an admin with matching Role Permissions, and the account may require pre-approval first.", "findingIds": ["F8"], "probeIds": ["P18"] }]
+      },
+      "endUser": {
+        "applies": "yes",
+        "who": "The Zoom user being connected",
+        "what": "Grants authorization at Zoom's consent screen; admin-scoped access still needs an admin, not just the user.",
+        "claims": [{ "text": "Users grant authorization at Zoom's consent screen, though admin-scoped access additionally needs an admin.", "findingIds": ["F8"], "probeIds": ["P18"] }]
+      }
+    },
+    "stuckPoints": [
+      {
+        "reason": "Review stalls, or is rejected with an unclear reason",
+        "fix": "Check the Review Team's notes in your app's status panel (the speech-bubble icon) - you must acknowledge them before resubmitting.",
+        "escalation": "Reply on the review thread, or ask in the Zoom developer forum",
+        "claim": { "text": "Developers report rejections for incomplete test credentials, missing documentation links, incomplete branding, or a missing deauthorization URL.", "findingIds": ["F12"], "probeIds": [] }
+      },
+      {
+        "reason": "No reviewer response past the stated SLA",
+        "fix": "Follow up referencing your submission date and the 72-hour SLA; ask what stage the review is in.",
+        "escalation": "Reply on the review thread in the Zoom developer forum",
+        "claim": { "text": "Zoom staff describe a 72-hour response SLA, but some developers have reported waits of many weeks in practice.", "findingIds": ["F10", "F11"], "probeIds": ["P19"] }
+      }
+    ],
+    "whileYouWait": [
+      { "text": "A Beta/Shareable URL reportedly lets up to about 10 external users install and test your app before it's published.", "findingIds": ["F9"], "probeIds": [] }
+    ],
+    "keepsComingBack": [
+      { "text": "Zoom can order a mandatory security re-review of an already-approved app, and a failed re-review can get the app unpublished.", "findingIds": ["F13"], "probeIds": [] }
+    ],
+    "hardToUndo": []
+  }
+}

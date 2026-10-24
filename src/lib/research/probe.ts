@@ -89,3 +89,34 @@ export async function probeFindings(findings: Finding[]): Promise<Probe[]> {
 
   return Promise.all(targets.map((t) => limit(() => probeOne(t))));
 }
+
+/** Re-derives, without any network calls, which probe id (if any) a
+ * finding's `checkable` was assigned by {@link probeFindings} - same dedup
+ * and cap logic, so it stays correct as long as `findings` is unchanged.
+ * Lets a hand-authored draft cite `findingIds` only and still become
+ * eligible for Tested, instead of having to predict probe ids by hand. */
+export function mapFindingsToCheckableProbeId(findings: Finding[]): Map<string, string> {
+  const findingToProbeId = new Map<string, string>();
+  let n = 1;
+  const seenUrls = new Set<string>();
+  for (const f of findings) {
+    if (seenUrls.size >= MAX_SOURCE_URLS) break;
+    if (seenUrls.has(f.sourceUrl)) continue;
+    seenUrls.add(f.sourceUrl);
+    n++;
+  }
+
+  const seenCheckable = new Map<string, string>();
+  for (const f of findings) {
+    if (!f.checkable) continue;
+    if (seenCheckable.size >= MAX_CHECKABLES) break;
+    const key = `${f.checkable.url}::${f.checkable.mustContain.join("|")}`;
+    let probeId = seenCheckable.get(key);
+    if (probeId === undefined) {
+      probeId = `P${n++}`;
+      seenCheckable.set(key, probeId);
+    }
+    findingToProbeId.set(f.id, probeId);
+  }
+  return findingToProbeId;
+}

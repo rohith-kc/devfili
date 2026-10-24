@@ -12,6 +12,7 @@
     "scan-secrets": "tsx scripts/scan-secrets.ts",
     "research": "tsx scripts/research.ts",
     "library:generate": "tsx scripts/library-generate.ts",
+    "library:compose": "tsx scripts/library-compose.ts",
     "library:validate": "tsx scripts/library-validate.ts",
     "library:links": "tsx scripts/library-links.ts"
   },
