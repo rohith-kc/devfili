@@ -86,7 +86,11 @@ async function discoverOneSide(env: Env, stage: string, prompt: string, useGroq:
   const parsed = parseJsonWithSchema(text, RawFindingsResponse);
   if (parsed.success) return parsed.data;
 
+  console.log(`[research] stage=${stage} parse-failed reason=${parsed.error} snippet=${JSON.stringify(text.slice(0, 300))}`);
   const repaired = await repairJson(env, stage, text);
+  if (repaired && repaired.findings.length === 0) {
+    console.log(`[research] stage=${stage} repaired-but-empty notFound=${JSON.stringify(repaired.notFound)}`);
+  }
   return repaired ?? { findings: [], notFound: [`${stage}: could not parse model output`] };
 }
 

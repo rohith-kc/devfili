@@ -10,7 +10,10 @@
     "test": "vitest run",
     "check-keys": "tsx scripts/check-keys.ts",
     "scan-secrets": "tsx scripts/scan-secrets.ts",
-    "research": "tsx scripts/research.ts"
+    "research": "tsx scripts/research.ts",
+    "library:generate": "tsx scripts/library-generate.ts",
+    "library:validate": "tsx scripts/library-validate.ts",
+    "library:links": "tsx scripts/library-links.ts"
   },
   "dependencies": {
     "@google/genai": "^2.31.0",

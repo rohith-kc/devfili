@@ -114,6 +114,9 @@ export interface RunOptions {
   deadlineSeconds?: number;
   today?: string;
   actor?: LiveRunActor;
+  /** Library generation: always research live, ignoring any existing
+   * content/library/<slug>.json or research_cache entry. */
+  forceLive?: boolean;
 }
 
 const DEFAULT_DEADLINE_SECONDS = 240;
@@ -167,21 +170,22 @@ export async function* runPipeline(query: string, options: RunOptions = {}): Asy
 
   let app: { name: string; slug: string; websiteUrl: string | null };
   if (resolved.type === "library") {
-    const guide = loadLibraryGuide(resolved.slug);
+    const guide = options.forceLive ? null : loadLibraryGuide(resolved.slug);
     if (guide) {
       yield { type: "result", guide, cached: false, researchedAt: guide.lastVerifiedOn };
       yield { type: "done" };
       return;
     }
-    // Matched a library slug but its reviewed file doesn't exist yet
-    // (pre-Phase-3) - fall through to live research using apps.json.
+    // Matched a library slug but either its reviewed file doesn't exist yet
+    // (pre-Phase-3) or the caller asked to force live research (library
+    // generation) - fall through to live research using apps.json.
     const entry = loadApps().find((a) => a.slug === resolved.slug);
     app = { name: entry?.name ?? resolved.slug, slug: resolved.slug, websiteUrl: entry?.websiteUrl ?? null };
   } else {
     app = resolved.app;
   }
 
-  const cached = await getCachedGuide(app.slug);
+  const cached = options.forceLive ? null : await getCachedGuide(app.slug);
   if (cached) {
     yield { type: "result", guide: cached.guide, cached: true, researchedAt: cached.researchedAt };
     yield { type: "done" };
@@ -260,7 +264,7 @@ export async function* runPipeline(query: string, options: RunOptions = {}): Asy
   yield status(7, "done");
   yield status(8, "done");
 
-  await setCachedGuide(app.slug, guide);
+  if (!options.forceLive) await setCachedGuide(app.slug, guide);
   yield { type: "result", guide, cached: false, researchedAt: today };
   yield { type: "done" };
 }

@@ -78,7 +78,7 @@ export async function groqBrowserSearch(opts: GroqBrowserSearchOptions): Promise
     tool_choice: "required",
     tools: [{ type: "browser_search" }] as unknown as OpenAI.Chat.Completions.ChatCompletionTool[],
     reasoning_effort: "low",
-    max_completion_tokens: opts.maxCompletionTokens ?? 4000,
+    max_completion_tokens: opts.maxCompletionTokens ?? 8000,
   });
   return toResult(completion);
 }
