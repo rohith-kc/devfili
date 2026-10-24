@@ -1,0 +1,722 @@
+{
+  "schemaVersion": 1,
+  "app": {
+    "name": "Linear",
+    "slug": "linear",
+    "websiteUrl": "https://linear.app"
+  },
+  "kind": "library",
+  "sample": false,
+  "lastVerifiedOn": "2026-10-24",
+  "handVerified": null,
+  "completeness": {
+    "status": "complete",
+    "thinSections": []
+  },
+  "verdict": {
+    "tier": 1,
+    "tierReason": {
+      "id": "c4",
+      "text": "Linear's OAuth docs describe a fully self-serve app-creation flow with no review, security assessment, or partner requirement of any kind.",
+      "label": "tested",
+      "sources": [
+        {
+          "url": "https://linear.app/developers/oauth-2-0-authentication",
+          "title": "OAuth 2.0 authentication",
+          "type": "official",
+          "accessedOn": "2026-10-24",
+          "publishedYear": 2026,
+          "oldSource": false,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+      "uncertainReason": null,
+      "checked": "unchecked"
+    },
+    "effort": {
+      "min": 4,
+      "max": 8,
+      "unit": "hours",
+      "basis": "estimated",
+      "claimId": null
+    },
+    "wait": null,
+    "gates": {
+      "provider": "no",
+      "customerAdmin": "unknown",
+      "endUser": "yes"
+    },
+    "gatedAccess": false,
+    "confidence": "medium",
+    "scopeForks": [
+      {
+        "id": "c5",
+        "text": "Submitting to Linear's optional Integration Directory (for public discoverability) isn't a technical review - Linear says it accepts integrations useful to the community and built by formal companies, generally turning away scripts and hobbyist apps. This doesn't block using your OAuth app directly; it only affects whether it's listed in the directory.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://linear.app/developers/integration-directory",
+            "title": "Integration directory",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          },
+          {
+            "url": "https://linear.app/developers/integration-directory",
+            "title": "Integration directory",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://linear.app/developers/integration-directory on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    ]
+  },
+  "managedApp": {
+    "exists": "yes",
+    "claim": {
+      "id": "c6",
+      "text": "Composio offers a managed OAuth app for Linear by default, so a developer can skip registering their own.",
+      "label": "sourced",
+      "sources": [
+        {
+          "url": "https://docs.composio.dev/docs/custom-app-vs-managed-app",
+          "title": "Managed vs custom auth",
+          "type": "vendor",
+          "accessedOn": "2026-10-24",
+          "publishedYear": null,
+          "oldSource": false,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": null,
+      "uncertainReason": null,
+      "checked": "unchecked"
+    },
+    "whatYouLose": [
+      {
+        "id": "c7",
+        "text": "On a managed app, the consent screen shows the platform's name and brand instead of yours, and scopes/rate limits are typically fixed rather than something you control.",
+        "label": "uncertain",
+        "sources": [],
+        "testNote": null,
+        "uncertainReason": "no supporting source",
+        "checked": "unchecked"
+      }
+    ],
+    "whenToSwitch": [
+      {
+        "id": "c8",
+        "text": "Switch to your own Linear OAuth app once you need your own branding, specific scopes, or your own rate limits.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://docs.composio.dev/docs/custom-app-vs-managed-app",
+            "title": "Managed vs custom auth",
+            "type": "vendor",
+            "accessedOn": "2026-10-24",
+            "publishedYear": null,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    ]
+  },
+  "howItWorks": {
+    "flow": [
+      {
+        "id": "c9",
+        "text": "A developer creates an OAuth2 application, chooses scopes, and users authorize it through Linear's standard OAuth flow; adding actor=app lets the app perform mutations itself instead of the authorizing user.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://linear.app/developers/oauth-2-0-authentication",
+            "title": "OAuth 2.0 authentication",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          },
+          {
+            "url": "https://linear.app/developers/oauth-actor-authorization",
+            "title": "OAuth actor authorization",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    ],
+    "appTypes": [
+      {
+        "id": "c10",
+        "text": "By default, API actions are attributed to the authenticating user; actor=app switches attribution to the app itself, intended for agents and service accounts.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://linear.app/developers/oauth-actor-authorization",
+            "title": "OAuth actor authorization",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://linear.app/developers/oauth-actor-authorization on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    ],
+    "tokenNotes": [
+      {
+        "id": "c11",
+        "text": "Access tokens expire after 24 hours and must be refreshed; a refresh has a 30-minute grace period to retry on a network error.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://linear.app/developers/oauth-2-0-authentication",
+            "title": "OAuth 2.0 authentication",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    ]
+  },
+  "scopes": [
+    {
+      "scope": "admin",
+      "allows": "Full access to admin-level endpoints.",
+      "neededFor": "Rarely - Linear's own docs say to never request it unless absolutely needed.",
+      "reviewImpact": "unknown",
+      "claim": {
+        "id": "c12",
+        "text": "Linear's docs explicitly warn never to request the admin scope unless it's absolutely needed.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://linear.app/developers/oauth-2-0-authentication",
+            "title": "OAuth 2.0 authentication",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "read / write / issues:create / comments:create",
+      "allows": "Narrower read access, or create-only access to issues and comments, instead of full admin.",
+      "neededFor": "Most integrations, which only need to read data or create issues/comments.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c13",
+        "text": "Narrower scopes like read, write, issues:create, and comments:create cover most integrations without needing admin.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://linear.app/developers/oauth-2-0-authentication",
+            "title": "OAuth 2.0 authentication",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    }
+  ],
+  "prerequisites": [
+    {
+      "item": "Redirect callback URL(s) configured on your OAuth2 application",
+      "kind": "other",
+      "claim": {
+        "id": "c14",
+        "text": "Creating an OAuth2 application requires configuring redirect callback URLs.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://linear.app/developers/oauth-2-0-authentication",
+            "title": "OAuth 2.0 authentication",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "item": "A dedicated workspace to manage the OAuth2 application (recommended)",
+      "kind": "other",
+      "claim": {
+        "id": "c15",
+        "text": "A dedicated workspace is recommended for managing the app, since every admin there gets access to it.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://linear.app/developers/oauth-2-0-authentication",
+            "title": "OAuth 2.0 authentication",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "n": 1,
+      "title": "Found Linear's OAuth and actor-authorization docs",
+      "detail": "The research stage located Linear's OAuth 2.0 guide and its Integration Directory page.",
+      "owner": "agent_did",
+      "effort": null,
+      "linkUrl": "https://linear.app/developers/oauth-2-0-authentication",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c16",
+          "text": "Linear documents OAuth app creation and actor authorization at linear.app/developers.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://linear.app/developers/oauth-2-0-authentication",
+              "title": "OAuth 2.0 authentication",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "title": "Create a new OAuth2 application and set redirect URIs",
+      "detail": "Under Settings > API > OAuth applications, in a dedicated workspace if possible.",
+      "owner": "you_do",
+      "effort": {
+        "min": 0.5,
+        "max": 1,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c17"
+      },
+      "linkUrl": "https://linear.app/developers/oauth-2-0-authentication",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c17",
+          "text": "OAuth2 applications are created under workspace Settings > API with configured redirect URIs.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://linear.app/developers/oauth-2-0-authentication",
+              "title": "OAuth 2.0 authentication",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "title": "Choose your scopes",
+      "detail": "Start with read, write, issues:create, or comments:create; avoid admin unless truly necessary.",
+      "owner": "you_do",
+      "effort": {
+        "min": 0.5,
+        "max": 1,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c18"
+      },
+      "linkUrl": "https://linear.app/developers/oauth-2-0-authentication",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c18",
+          "text": "Linear's docs warn against requesting the admin scope unless absolutely needed.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://linear.app/developers/oauth-2-0-authentication",
+              "title": "OAuth 2.0 authentication",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "title": "Make the app installable in other workspaces",
+      "detail": "Enables other Linear workspaces to authorize and use the app.",
+      "owner": "you_do",
+      "effort": {
+        "min": 0.5,
+        "max": 1,
+        "unit": "hours",
+        "basis": "estimated",
+        "claimId": null
+      },
+      "linkUrl": null,
+      "helper": null,
+      "claims": []
+    },
+    {
+      "n": 5,
+      "title": "If building an agent or service account, add actor=app",
+      "detail": "Mutations are then attributed to the app itself instead of the authorizing user.",
+      "owner": "you_do",
+      "effort": {
+        "min": 0.5,
+        "max": 1,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c19"
+      },
+      "linkUrl": "https://linear.app/developers/oauth-actor-authorization",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c19",
+          "text": "Adding actor=app to the authorization URL attributes mutations to the app rather than the user.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://linear.app/developers/oauth-actor-authorization",
+              "title": "OAuth actor authorization",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://linear.app/developers/oauth-actor-authorization on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "title": "Live for any workspace that installs it - no Linear review needed",
+      "detail": "No review step exists for basic OAuth app creation or use.",
+      "owner": "agent_did",
+      "effort": null,
+      "linkUrl": null,
+      "helper": null,
+      "claims": []
+    },
+    {
+      "n": 7,
+      "title": "Draft your scope justification",
+      "detail": "Useful context to have ready, including if you later submit to Linear's Integration Directory.",
+      "owner": "agent_drafted",
+      "effort": null,
+      "linkUrl": null,
+      "helper": "scope_justification",
+      "claims": []
+    },
+    {
+      "n": 8,
+      "title": "Optional: submit to Linear's Integration Directory",
+      "detail": "Linear generally only accepts directory submissions from formal companies, not scripts or hobbyist apps.",
+      "owner": "you_do",
+      "effort": {
+        "min": 2,
+        "max": 4,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c20"
+      },
+      "linkUrl": "https://linear.app/developers/integration-directory",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c20",
+          "text": "Directory submission starts with a form, then sending assets to integrations@linear.app.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://linear.app/developers/integration-directory",
+              "title": "Integration directory",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://linear.app/developers/integration-directory on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "title": "Listed in Linear's Integration Directory (if pursued)",
+      "detail": "Optional - only affects public discoverability, not whether the OAuth app works.",
+      "owner": "agent_did",
+      "effort": null,
+      "linkUrl": null,
+      "helper": null,
+      "claims": []
+    }
+  ],
+  "gates": {
+    "provider": {
+      "applies": "no",
+      "who": "n/a for normal OAuth use",
+      "what": "No review is required to create an OAuth app or make it installable elsewhere; only the optional Integration Directory listing has an informal formal-company bar.",
+      "claims": [
+        {
+          "id": "c21",
+          "text": "No review step is described for OAuth app creation, scopes, or making an app installable in other workspaces.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://linear.app/developers/oauth-2-0-authentication",
+              "title": "OAuth 2.0 authentication",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    "customerAdmin": {
+      "applies": "unknown",
+      "who": "",
+      "what": "",
+      "claims": []
+    },
+    "endUser": {
+      "applies": "yes",
+      "who": "The Linear user authorizing the app",
+      "what": "Grants authorization through Linear's OAuth consent screen; with actor=app, subsequent actions are attributed to the app rather than that user.",
+      "claims": [
+        {
+          "id": "c22",
+          "text": "Users authorize the app via OAuth; actor=app then attributes actions to the app itself.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://linear.app/developers/oauth-actor-authorization",
+              "title": "OAuth actor authorization",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://linear.app/developers/oauth-actor-authorization on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    }
+  },
+  "stuckPoints": [
+    {
+      "reason": "Requested the admin scope without a strong need",
+      "fix": "Switch to a narrower scope - read, write, issues:create, or comments:create - instead of admin.",
+      "escalation": "Linear developer docs",
+      "claim": {
+        "id": "c23",
+        "text": "Linear's docs say never to request the admin scope unless absolutely needed.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://linear.app/developers/oauth-2-0-authentication",
+            "title": "OAuth 2.0 authentication",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "reason": "Integration Directory submission turned away as a hobbyist project",
+      "fix": "Linear generally only accepts directory submissions from formal companies - contact integrations@linear.app if you believe an exception is warranted.",
+      "escalation": "integrations@linear.app",
+      "claim": {
+        "id": "c24",
+        "text": "Linear's directory generally turns away scripts and hobbyist apps in favor of ones built by formal companies.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://linear.app/developers/integration-directory",
+            "title": "Integration directory",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://linear.app/developers/integration-directory on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    }
+  ],
+  "whileYouWait": [
+    {
+      "id": "c25",
+      "text": "There's no review to wait on for basic OAuth use - the app works for any workspace that installs it as soon as it's built.",
+      "label": "tested",
+      "sources": [
+        {
+          "url": "https://linear.app/developers/oauth-2-0-authentication",
+          "title": "OAuth 2.0 authentication",
+          "type": "official",
+          "accessedOn": "2026-10-24",
+          "publishedYear": 2026,
+          "oldSource": false,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+      "uncertainReason": null,
+      "checked": "unchecked"
+    }
+  ],
+  "keepsComingBack": [],
+  "hardToUndo": [],
+  "derived": {
+    "unverifiedClaimIds": [
+      "c7"
+    ],
+    "sources": [
+      {
+        "url": "https://linear.app/developers/oauth-2-0-authentication",
+        "title": "OAuth 2.0 authentication",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://linear.app/developers/integration-directory",
+        "title": "Integration directory",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://docs.composio.dev/docs/custom-app-vs-managed-app",
+        "title": "Managed vs custom auth",
+        "type": "vendor",
+        "accessedOn": "2026-10-24",
+        "publishedYear": null,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://linear.app/developers/oauth-actor-authorization",
+        "title": "OAuth actor authorization",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      }
+    ]
+  },
+  "tile": {
+    "tier": 1,
+    "effort": {
+      "min": 4,
+      "max": 8,
+      "unit": "hours",
+      "basis": "estimated",
+      "claimId": null
+    },
+    "wait": null,
+    "gated": false,
+    "customerAdmin": "unknown"
+  }
+}
