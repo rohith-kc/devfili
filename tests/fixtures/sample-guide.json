@@ -1,0 +1,737 @@
+{
+  "schemaVersion": 1,
+  "app": { "name": "Sample App", "slug": "sample-app", "websiteUrl": "https://sample-app.example.com" },
+  "kind": "live",
+  "sample": true,
+  "lastVerifiedOn": "2026-10-24",
+  "handVerified": { "by": "Rohith", "on": "2026-10-24" },
+  "completeness": { "status": "complete", "thinSections": [] },
+  "verdict": {
+    "tier": 2,
+    "tierReason": {
+      "id": "c1",
+      "text": "Sample App requires a marketplace review before a public app can connect real user accounts.",
+      "label": "sourced",
+      "sources": [
+        {
+          "url": "https://developer.sample-app.example.com/docs/review",
+          "title": "Sample App Developer Docs: App Review",
+          "type": "official",
+          "accessedOn": "2026-10-24",
+          "publishedYear": 2026,
+          "oldSource": false,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": null,
+      "uncertainReason": null,
+      "checked": "supported"
+    },
+    "effort": { "min": 3, "max": 6, "unit": "hours", "basis": "reported", "claimId": null },
+    "wait": { "min": 5, "max": 10, "unit": "business_days", "basis": "official", "claimId": "c15" },
+    "gates": { "provider": "yes", "customerAdmin": "unknown", "endUser": "no" },
+    "gatedAccess": false,
+    "confidence": "high",
+    "scopeForks": [
+      {
+        "id": "c24",
+        "text": "With only the read-only scope, Tier 1 applies. Adding the write scope moves review to Tier 2.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://developer.sample-app.example.com/docs/scope-tiers",
+            "title": "Sample App Developer Docs: Scope Review Tiers",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "supported"
+      }
+    ]
+  },
+  "managedApp": {
+    "exists": "unknown",
+    "claim": {
+      "id": "c2",
+      "text": "No managed integration platform was found offering Sample App as a pre-built OAuth app.",
+      "label": "uncertain",
+      "sources": [],
+      "testNote": null,
+      "uncertainReason": "no supporting source",
+      "checked": "unchecked"
+    },
+    "whatYouLose": [
+      {
+        "id": "c3",
+        "text": "On a managed app, the consent screen shows the platform's name and brand instead of yours.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://blog.integrator-vendor.example.com/managed-apps-comparison",
+            "title": "Managed vs. Direct OAuth Apps: What's the Difference?",
+            "type": "vendor",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2025,
+            "oldSource": false,
+            "recheck": "not_rechecked"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "partial"
+      }
+    ],
+    "whenToSwitch": [
+      {
+        "id": "c4",
+        "text": "Teams usually switch to their own app once they need scopes or rate limits the managed app doesn't offer.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://community.sample-app.example.com/t/switching-from-managed-app",
+            "title": "Community thread: switching off the managed app",
+            "type": "community",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2022,
+            "oldSource": true,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "supported"
+      }
+    ]
+  },
+  "howItWorks": {
+    "flow": [
+      {
+        "id": "c5",
+        "text": "The developer registers an app, requests scopes, and the user is redirected to Sample App to approve them.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://developer.sample-app.example.com/docs/oauth-flow",
+            "title": "Sample App Developer Docs: OAuth Flow Overview",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://developer.sample-app.example.com/docs/oauth-flow on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "supported"
+      }
+    ],
+    "appTypes": [
+      {
+        "id": "c6",
+        "text": "Sample App offers both a public marketplace app type and a private, single-workspace app type.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://developer.sample-app.example.com/docs/app-types",
+            "title": "Sample App Developer Docs: App Types & Consent",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "supported"
+      }
+    ],
+    "tokenNotes": [
+      {
+        "id": "c7",
+        "text": "Access tokens expire after one hour; refresh tokens are issued alongside them.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://developer.sample-app.example.com/docs/tokens",
+            "title": "Sample App Developer Docs: Access & Refresh Tokens",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "supported"
+      }
+    ]
+  },
+  "scopes": [
+    {
+      "scope": "records:read",
+      "allows": "Read a workspace's records.",
+      "neededFor": "Showing a user their existing records inside your product.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c8",
+        "text": "The records:read scope is listed as not requiring review beyond standard app registration.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://developer.sample-app.example.com/docs/scopes",
+            "title": "Sample App Developer Docs: Scopes & Permissions",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://developer.sample-app.example.com/docs/scopes on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "supported"
+      }
+    },
+    {
+      "scope": "records:write",
+      "allows": "Create and edit a workspace's records.",
+      "neededFor": "Letting a user create records in Sample App from your product.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c9",
+        "text": "The records:write scope is marked as sensitive and triggers the marketplace review.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://developer.sample-app.example.com/docs/scopes",
+            "title": "Sample App Developer Docs: Scopes & Permissions",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "supported"
+      }
+    }
+  ],
+  "prerequisites": [
+    {
+      "item": "A verified business account on Sample App",
+      "kind": "business",
+      "claim": {
+        "id": "c10",
+        "text": "Marketplace review requires the developer account to be a verified business account.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://developer.sample-app.example.com/docs/review",
+            "title": "Sample App Developer Docs: App Review",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "supported"
+      }
+    },
+    {
+      "item": "A published privacy policy URL",
+      "kind": "policy_page",
+      "claim": {
+        "id": "c11",
+        "text": "The app registration form requires a reachable privacy policy URL.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://developer.sample-app.example.com/docs/review",
+            "title": "Sample App Developer Docs: App Review",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "supported"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "n": 1,
+      "title": "Found the developer docs and registration page",
+      "detail": "The research stage located Sample App's developer portal and app registration form.",
+      "owner": "agent_did",
+      "effort": null,
+      "linkUrl": "https://developer.sample-app.example.com/docs/review",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c12",
+          "text": "The developer portal's registration page is live at /docs/review.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developer.sample-app.example.com/docs/review",
+              "title": "Sample App Developer Docs: App Review",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://developer.sample-app.example.com/docs/review on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "supported"
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "title": "Create a developer account and register your app",
+      "detail": "Sign up for a verified business account and fill in the app registration form.",
+      "owner": "you_do",
+      "effort": { "min": 1, "max": 2, "unit": "hours", "basis": "reported", "claimId": "c13" },
+      "linkUrl": null,
+      "helper": null,
+      "claims": [
+        {
+          "id": "c13",
+          "text": "Developers report account verification and app registration together take about 1-2 hours.",
+          "label": "sourced",
+          "sources": [
+            {
+              "url": "https://community.sample-app.example.com/t/time-to-create-account",
+              "title": "Community thread: how long did account setup take",
+              "type": "community",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": null,
+          "uncertainReason": null,
+          "checked": "supported"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "title": "Draft your scope justification",
+      "detail": "Use the Scope justification helper to prepare reviewer-facing notes for each scope you request.",
+      "owner": "agent_drafted",
+      "effort": null,
+      "linkUrl": null,
+      "helper": "scope_justification",
+      "claims": []
+    },
+    {
+      "n": 4,
+      "title": "Submit the app for marketplace review",
+      "detail": "Complete the submission checklist and submit for review.",
+      "owner": "you_do",
+      "effort": { "min": 2, "max": 4, "unit": "hours", "basis": "official", "claimId": "c14" },
+      "linkUrl": "https://developer.sample-app.example.com/docs/submission-checklist",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c14",
+          "text": "The submission checklist lists about 2-4 hours of preparation work before submitting.",
+          "label": "sourced",
+          "sources": [
+            {
+              "url": "https://developer.sample-app.example.com/docs/submission-checklist",
+              "title": "Sample App Developer Docs: Submission Checklist",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": null,
+          "uncertainReason": null,
+          "checked": "supported"
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "title": "Draft a customer admin note, if you'll need one",
+      "detail": "Use the Customer admin note helper in case a customer's IT admin asks what the integration needs.",
+      "owner": "agent_drafted",
+      "effort": null,
+      "linkUrl": null,
+      "helper": "admin_note",
+      "claims": []
+    },
+    {
+      "n": 6,
+      "title": "App approved and live",
+      "detail": "Once review passes, the app can connect real user accounts.",
+      "owner": "agent_did",
+      "effort": null,
+      "linkUrl": null,
+      "helper": null,
+      "claims": []
+    }
+  ],
+  "gates": {
+    "provider": {
+      "applies": "yes",
+      "who": "Sample App's marketplace review team",
+      "what": "Reviews the app's requested scopes and the registration form before it can connect real users.",
+      "claims": [
+        {
+          "id": "c21",
+          "text": "The provider's marketplace team reviews every public app before it can connect real user accounts.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developer.sample-app.example.com/docs/review",
+              "title": "Sample App Developer Docs: App Review",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://developer.sample-app.example.com/docs/review on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "supported"
+        },
+        {
+          "id": "c15",
+          "text": "Review typically takes 5-10 business days from submission.",
+          "label": "sourced",
+          "sources": [
+            {
+              "url": "https://developer.sample-app.example.com/docs/review-timeline",
+              "title": "Sample App Developer Docs: Review Timelines",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": null,
+          "uncertainReason": null,
+          "checked": "supported"
+        }
+      ]
+    },
+    "customerAdmin": {
+      "applies": "unknown",
+      "who": "",
+      "what": "",
+      "claims": [
+        {
+          "id": "c22",
+          "text": "No documentation was found describing a customer IT admin approval step for this app.",
+          "label": "uncertain",
+          "sources": [],
+          "testNote": null,
+          "uncertainReason": "no supporting source",
+          "checked": "unchecked"
+        }
+      ]
+    },
+    "endUser": {
+      "applies": "no",
+      "who": "n/a",
+      "what": "This sample integration only uses client-credentials access, so there is no end-user consent step.",
+      "claims": [
+        {
+          "id": "c23",
+          "text": "The app-types docs describe a private app type that uses client-credentials access with no end-user consent step.",
+          "label": "sourced",
+          "sources": [
+            {
+              "url": "https://developer.sample-app.example.com/docs/app-types",
+              "title": "Sample App Developer Docs: App Types & Consent",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": null,
+          "uncertainReason": null,
+          "checked": "supported"
+        }
+      ]
+    }
+  },
+  "stuckPoints": [
+    {
+      "reason": "Review is rejected with a vague \"does not meet our guidelines\" message.",
+      "fix": "Reply asking which specific guideline section applies, and attach your scope justification.",
+      "escalation": "Sample App's developer support form",
+      "claim": {
+        "id": "c16",
+        "text": "Developers report getting a vague rejection message and had to ask support for specifics.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://community.sample-app.example.com/t/review-rejected-vague-reason",
+            "title": "Community thread: review rejected for a vague reason",
+            "type": "community",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "supported"
+      }
+    },
+    {
+      "reason": "Submission fails with a missing redirect URI error.",
+      "fix": "Add the exact callback URL (including the path) to the app's allowed redirect URIs before resubmitting.",
+      "escalation": null,
+      "claim": {
+        "id": "c17",
+        "text": "A missing or mismatched redirect URI is a commonly reported cause of submission failures.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://community.sample-app.example.com/t/missing-redirect-uri-error",
+            "title": "Community thread: missing redirect URI error",
+            "type": "community",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2025,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "supported"
+      }
+    }
+  ],
+  "whileYouWait": [
+    {
+      "id": "c18",
+      "text": "A test mode lets up to 10 real accounts connect before the app is approved.",
+      "label": "sourced",
+      "sources": [
+        {
+          "url": "https://developer.sample-app.example.com/docs/test-mode",
+          "title": "Sample App Developer Docs: Test Mode Limits",
+          "type": "official",
+          "accessedOn": "2026-10-24",
+          "publishedYear": 2026,
+          "oldSource": false,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": null,
+      "uncertainReason": null,
+      "checked": "supported"
+    }
+  ],
+  "keepsComingBack": [
+    {
+      "id": "c19",
+      "text": "Approved apps are reassessed once a year to keep their marketplace listing active.",
+      "label": "sourced",
+      "sources": [
+        {
+          "url": "https://developer.sample-app.example.com/docs/annual-reassessment",
+          "title": "Sample App Developer Docs: Annual Reassessment",
+          "type": "official",
+          "accessedOn": "2026-10-24",
+          "publishedYear": 2026,
+          "oldSource": false,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": null,
+      "uncertainReason": null,
+      "checked": "supported"
+    }
+  ],
+  "hardToUndo": [
+    {
+      "id": "c20",
+      "text": "No documentation was found on whether an app's primary domain can be changed after approval.",
+      "label": "uncertain",
+      "sources": [],
+      "testNote": null,
+      "uncertainReason": "no supporting source",
+      "checked": "unchecked"
+    }
+  ],
+  "derived": {
+    "unverifiedClaimIds": ["c2", "c20", "c22"],
+    "sources": [
+      {
+        "url": "https://developer.sample-app.example.com/docs/review",
+        "title": "Sample App Developer Docs: App Review",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://developer.sample-app.example.com/docs/scopes",
+        "title": "Sample App Developer Docs: Scopes & Permissions",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://developer.sample-app.example.com/docs/app-types",
+        "title": "Sample App Developer Docs: App Types & Consent",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://blog.integrator-vendor.example.com/managed-apps-comparison",
+        "title": "Managed vs. Direct OAuth Apps: What's the Difference?",
+        "type": "vendor",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2025,
+        "oldSource": false,
+        "recheck": "not_rechecked"
+      },
+      {
+        "url": "https://community.sample-app.example.com/t/switching-from-managed-app",
+        "title": "Community thread: switching off the managed app",
+        "type": "community",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2022,
+        "oldSource": true,
+        "recheck": "mismatch"
+      },
+      {
+        "url": "https://developer.sample-app.example.com/docs/review-timeline",
+        "title": "Sample App Developer Docs: Review Timelines",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://community.sample-app.example.com/t/review-rejected-vague-reason",
+        "title": "Community thread: review rejected for a vague reason",
+        "type": "community",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://community.sample-app.example.com/t/missing-redirect-uri-error",
+        "title": "Community thread: missing redirect URI error",
+        "type": "community",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2025,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://developer.sample-app.example.com/docs/oauth-flow",
+        "title": "Sample App Developer Docs: OAuth Flow Overview",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://developer.sample-app.example.com/docs/tokens",
+        "title": "Sample App Developer Docs: Access & Refresh Tokens",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://community.sample-app.example.com/t/time-to-create-account",
+        "title": "Community thread: how long did account setup take",
+        "type": "community",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://developer.sample-app.example.com/docs/submission-checklist",
+        "title": "Sample App Developer Docs: Submission Checklist",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://developer.sample-app.example.com/docs/test-mode",
+        "title": "Sample App Developer Docs: Test Mode Limits",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://developer.sample-app.example.com/docs/annual-reassessment",
+        "title": "Sample App Developer Docs: Annual Reassessment",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://developer.sample-app.example.com/docs/scope-tiers",
+        "title": "Sample App Developer Docs: Scope Review Tiers",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      }
+    ]
+  },
+  "tile": {
+    "tier": 2,
+    "effort": { "min": 3, "max": 6, "unit": "hours", "basis": "reported", "claimId": null },
+    "wait": { "min": 5, "max": 10, "unit": "business_days", "basis": "official", "claimId": "c15" },
+    "gated": false,
+    "customerAdmin": "unknown"
+  }
+}
