@@ -80,13 +80,13 @@
             "recheck": "confirmed"
           },
           {
-            "url": "https://get.slack.help/hc/articles/202035138",
-            "title": "Manage app approval for your workspace",
+            "url": "https://slack.com/help/articles/202035138-Add-apps-to-your-Slack-workspace",
+            "title": "Add apps to your Slack workspace",
             "type": "official",
             "accessedOn": "2026-10-24",
-            "publishedYear": null,
+            "publishedYear": 2026,
             "oldSource": false,
-            "recheck": "not_rechecked"
+            "recheck": "confirmed"
           }
         ],
         "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-24; the required terms were present.",
@@ -725,13 +725,13 @@
               "recheck": "mismatch"
             },
             {
-              "url": "https://get.slack.help/hc/articles/202035138",
-              "title": "Manage app approval for your workspace",
+              "url": "https://slack.com/help/articles/202035138-Add-apps-to-your-Slack-workspace",
+              "title": "Add apps to your Slack workspace",
               "type": "official",
               "accessedOn": "2026-10-24",
-              "publishedYear": null,
+              "publishedYear": 2026,
               "oldSource": false,
-              "recheck": "not_rechecked"
+              "recheck": "confirmed"
             }
           ],
           "testNote": null,
@@ -751,13 +751,13 @@
           "label": "sourced",
           "sources": [
             {
-              "url": "https://get.slack.help/hc/articles/202035138",
-              "title": "Manage app approval for your workspace",
+              "url": "https://slack.com/help/articles/202035138-Add-apps-to-your-Slack-workspace",
+              "title": "Add apps to your Slack workspace",
               "type": "official",
               "accessedOn": "2026-10-24",
-              "publishedYear": null,
+              "publishedYear": 2026,
               "oldSource": false,
-              "recheck": "not_rechecked"
+              "recheck": "confirmed"
             }
           ],
           "testNote": null,
@@ -933,13 +933,13 @@
         "recheck": "mismatch"
       },
       {
-        "url": "https://get.slack.help/hc/articles/202035138",
-        "title": "Manage app approval for your workspace",
+        "url": "https://slack.com/help/articles/202035138-Add-apps-to-your-Slack-workspace",
+        "title": "Add apps to your Slack workspace",
         "type": "official",
         "accessedOn": "2026-10-24",
-        "publishedYear": null,
+        "publishedYear": 2026,
         "oldSource": false,
-        "recheck": "not_rechecked"
+        "recheck": "confirmed"
       },
       {
         "url": "https://docs.composio.dev/docs/custom-app-vs-managed-app",

@@ -1,0 +1,853 @@
+{
+  "schemaVersion": 1,
+  "app": {
+    "name": "LinkedIn",
+    "slug": "linkedin",
+    "websiteUrl": "https://www.linkedin.com"
+  },
+  "kind": "library",
+  "sample": false,
+  "lastVerifiedOn": "2026-10-24",
+  "handVerified": null,
+  "completeness": {
+    "status": "complete",
+    "thinSections": []
+  },
+  "verdict": {
+    "tier": 4,
+    "tierReason": {
+      "id": "c4",
+      "text": "LinkedIn reserves the right to review and select partners for Marketing/Advertising and Community Management API access at its own discretion - meeting the minimum requirements doesn't guarantee approval, and restricted APIs are evaluated case-by-case with no fixed timeline.",
+      "label": "tested",
+      "sources": [
+        {
+          "url": "https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers",
+          "title": "LinkedIn Marketing API Program Access Tiers",
+          "type": "official",
+          "accessedOn": "2026-10-24",
+          "publishedYear": 2026,
+          "oldSource": false,
+          "recheck": "confirmed"
+        },
+        {
+          "url": "https://learn.microsoft.com/linkedin/marketing/increasing-access",
+          "title": "Increasing Access",
+          "type": "official",
+          "accessedOn": "2026-10-24",
+          "publishedYear": 2026,
+          "oldSource": false,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": "Fetched https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers on 2026-10-24; the required terms were present.",
+      "uncertainReason": null,
+      "checked": "unchecked"
+    },
+    "effort": {
+      "min": 11.5,
+      "max": 25.5,
+      "unit": "hours",
+      "basis": "reported",
+      "claimId": null
+    },
+    "wait": null,
+    "gates": {
+      "provider": "yes",
+      "customerAdmin": "unknown",
+      "endUser": "yes"
+    },
+    "gatedAccess": true,
+    "confidence": "medium",
+    "scopeForks": [
+      {
+        "id": "c5",
+        "text": "Basic self-serve products - Sign In with LinkedIn (OpenID Connect) for identity, and Share on LinkedIn for posting as a member - are typically granted without LinkedIn's discretionary review (closer to Tier 1). Broader access - the Marketing/Advertising API, Community Management API, or other company-page features - requires applying for that Product and is reviewed and selected at LinkedIn's discretion, with no fixed timeline (Tier 4).",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://www.upload-post.com/linkedin-api/",
+            "title": "LinkedIn API developer guide",
+            "type": "vendor",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers",
+            "title": "LinkedIn Marketing API Program Access Tiers",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          },
+          {
+            "url": "https://learn.microsoft.com/linkedin/marketing/increasing-access",
+            "title": "Increasing Access",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    ]
+  },
+  "managedApp": {
+    "exists": "unknown",
+    "claim": {
+      "id": "c6",
+      "text": "Composio's LinkedIn setup guide points developers toward bringing their own Client ID and Secret rather than describing a clear managed-by-default app.",
+      "label": "sourced",
+      "sources": [
+        {
+          "url": "https://composio.dev/auth/linkedin",
+          "title": "How to create Oauth2 config for LinkedIn",
+          "type": "vendor",
+          "accessedOn": "2026-10-24",
+          "publishedYear": null,
+          "oldSource": false,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": null,
+      "uncertainReason": null,
+      "checked": "unchecked"
+    },
+    "whatYouLose": [
+      {
+        "id": "c7",
+        "text": "On a managed app, the consent screen shows the platform's name and brand instead of yours, and scopes and rate limits are typically fixed rather than something you control.",
+        "label": "uncertain",
+        "sources": [],
+        "testNote": null,
+        "uncertainReason": "no supporting source",
+        "checked": "unchecked"
+      }
+    ],
+    "whenToSwitch": [
+      {
+        "id": "c8",
+        "text": "Switch to your own LinkedIn Developer Portal app once you need your own branding or specific LinkedIn Products and scopes.",
+        "label": "uncertain",
+        "sources": [],
+        "testNote": null,
+        "uncertainReason": "no supporting source",
+        "checked": "unchecked"
+      }
+    ]
+  },
+  "howItWorks": {
+    "flow": [
+      {
+        "id": "c9",
+        "text": "A developer creates a LinkedIn Developer Portal app, requests the Products it needs (each gating specific scopes), and a member authorizes all requested scopes at once during LinkedIn's OAuth consent flow.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow",
+            "title": "LinkedIn 3-Legged OAuth Flow",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    ],
+    "appTypes": [
+      {
+        "id": "c10",
+        "text": "Sign In with LinkedIn and Share on LinkedIn are self-serve products for identity and member posting; Community Management, Advertising, and other company-page features are vetted and need a separate application.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://www.upload-post.com/linkedin-api/",
+            "title": "LinkedIn API developer guide",
+            "type": "vendor",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    ],
+    "tokenNotes": [
+      {
+        "id": "c11",
+        "text": "Access tokens last 60 days with no long-lived option; refreshing normally re-runs the authorization flow, and programmatic refresh tokens (skipping that) are limited to select partners.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow",
+            "title": "LinkedIn 3-Legged OAuth Flow",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow",
+            "title": "LinkedIn 3-Legged OAuth Flow",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    ]
+  },
+  "scopes": [
+    {
+      "scope": "openid / profile / email",
+      "allows": "Basic identity: LinkedIn ID, name, and email address.",
+      "neededFor": "Sign In with LinkedIn (login/identity only).",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c12",
+        "text": "Sign In with LinkedIn (OpenID Connect) covers the openid, profile, and email scopes for basic identity.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://www.upload-post.com/linkedin-api/",
+            "title": "LinkedIn API developer guide",
+            "type": "vendor",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "Marketing/Advertising API scopes (e.g. rw_organization_admin, w_organization_social)",
+      "allows": "Manage ad accounts, or post and read as an organization/company page.",
+      "neededFor": "Marketing, advertising, or company-page management integrations.",
+      "reviewImpact": "partner",
+      "claim": {
+        "id": "c13",
+        "text": "Company-page features like the Advertising API and Community Management API are vetted and need a separate, discretionary application.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers",
+            "title": "LinkedIn Marketing API Program Access Tiers",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          },
+          {
+            "url": "https://www.upload-post.com/linkedin-api/",
+            "title": "LinkedIn API developer guide",
+            "type": "vendor",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    }
+  ],
+  "prerequisites": [
+    {
+      "item": "Approval for each LinkedIn Product your app needs, requested from the Developer Portal's Products tab",
+      "kind": "other",
+      "claim": {
+        "id": "c14",
+        "text": "New scopes require applying for the matching Product and being approved before they're available.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow",
+            "title": "LinkedIn 3-Legged OAuth Flow",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "item": "A working Development-tier integration before applying for Standard Advertising API access",
+      "kind": "other",
+      "claim": {
+        "id": "c15",
+        "text": "Standard Advertising API access requires first building and testing under Development access.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers",
+            "title": "LinkedIn Marketing API Program Access Tiers",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "n": 1,
+      "title": "Found LinkedIn's OAuth, Products, and Marketing API access docs",
+      "detail": "The research stage located LinkedIn's 3-legged OAuth flow and Marketing API access tier documentation.",
+      "owner": "agent_did",
+      "effort": null,
+      "linkUrl": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c16",
+          "text": "LinkedIn documents OAuth, Products, and Marketing API access tiers at learn.microsoft.com/linkedin.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow",
+              "title": "LinkedIn 3-Legged OAuth Flow",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "title": "Create a LinkedIn Developer Portal app and set redirect URLs",
+      "detail": "Gives you a Client ID and Client Secret for the OAuth flow.",
+      "owner": "you_do",
+      "effort": {
+        "min": 0.5,
+        "max": 1,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c17"
+      },
+      "linkUrl": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c17",
+          "text": "An app is configured in the LinkedIn Developer Portal to get OAuth credentials and set redirect URLs.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow",
+              "title": "LinkedIn 3-Legged OAuth Flow",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "title": "Request the Sign In with LinkedIn and/or Share on LinkedIn products",
+      "detail": "These self-serve products are typically granted without a discretionary review.",
+      "owner": "you_do",
+      "effort": {
+        "min": 0.5,
+        "max": 0.5,
+        "unit": "hours",
+        "basis": "reported",
+        "claimId": "c18"
+      },
+      "linkUrl": "https://www.upload-post.com/linkedin-api/",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c18",
+          "text": "Sign In with LinkedIn and Share on LinkedIn are self-serve products covering identity and member posting.",
+          "label": "sourced",
+          "sources": [
+            {
+              "url": "https://www.upload-post.com/linkedin-api/",
+              "title": "LinkedIn API developer guide",
+              "type": "vendor",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": null,
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "title": "Live for basic identity and posting - no discretionary review needed",
+      "detail": "This covers login and posting as a member; broader data needs the steps below.",
+      "owner": "agent_did",
+      "effort": null,
+      "linkUrl": null,
+      "helper": null,
+      "claims": []
+    },
+    {
+      "n": 5,
+      "title": "If you need Marketing, Advertising, or Community Management data, apply for that Product",
+      "detail": "Reviewed and selected at LinkedIn's discretion - meeting the minimum requirements doesn't guarantee approval.",
+      "owner": "you_do",
+      "effort": {
+        "min": 1,
+        "max": 2,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c19"
+      },
+      "linkUrl": "https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c19",
+          "text": "LinkedIn reserves the right to review and select partners for this access at its own discretion.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers",
+              "title": "LinkedIn Marketing API Program Access Tiers",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "title": "Draft your scope justification",
+      "detail": "Use the Scope justification helper to prepare reviewer-facing notes for each Product/scope you're requesting.",
+      "owner": "agent_drafted",
+      "effort": null,
+      "linkUrl": null,
+      "helper": "scope_justification",
+      "claims": []
+    },
+    {
+      "n": 7,
+      "title": "Draft a reviewer test plan",
+      "detail": "Use the Reviewer test plan helper in case LinkedIn's review team needs to exercise your integration.",
+      "owner": "agent_drafted",
+      "effort": null,
+      "linkUrl": null,
+      "helper": "test_plan",
+      "claims": []
+    },
+    {
+      "n": 8,
+      "title": "Wait for LinkedIn's discretionary review",
+      "detail": "Restricted APIs are evaluated case-by-case with no fixed timeline - there's no SLA to plan around.",
+      "owner": "you_do",
+      "effort": {
+        "min": 0.5,
+        "max": 1,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c20"
+      },
+      "linkUrl": "https://learn.microsoft.com/linkedin/marketing/increasing-access",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c20",
+          "text": "Restricted LinkedIn APIs are evaluated case-by-case with no fixed timeline.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://learn.microsoft.com/linkedin/marketing/increasing-access",
+              "title": "Increasing Access",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://learn.microsoft.com/linkedin/marketing/increasing-access on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "title": "Build and test on Development tier before requesting Standard Advertising access",
+      "detail": "Development tier caps you at one API-created test ad account and edits to 5 accounts.",
+      "owner": "you_do",
+      "effort": {
+        "min": 8,
+        "max": 20,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c21"
+      },
+      "linkUrl": "https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c21",
+          "text": "Development tier allows only one test ad account via the API and edits to up to 5 ad accounts.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers",
+              "title": "LinkedIn Marketing API Program Access Tiers",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "title": "Apply for Standard access once Development is proven out",
+      "detail": "Standard removes the ad-account limits, but is still granted at LinkedIn's discretion.",
+      "owner": "you_do",
+      "effort": {
+        "min": 1,
+        "max": 1,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c22"
+      },
+      "linkUrl": "https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c22",
+          "text": "Standard access requires first building and testing under Development access.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers",
+              "title": "LinkedIn Marketing API Program Access Tiers",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "title": "Approved (if selected) and live for the requested Product",
+      "detail": "Approval isn't guaranteed even if minimum requirements are met.",
+      "owner": "agent_did",
+      "effort": null,
+      "linkUrl": null,
+      "helper": null,
+      "claims": []
+    }
+  ],
+  "gates": {
+    "provider": {
+      "applies": "yes",
+      "who": "LinkedIn's partner/review team",
+      "what": "Reviews and selects Marketing/Advertising/Community Management API applications at its discretion, with no fixed timeline; basic Sign In/Share products are typically granted without this review.",
+      "claims": [
+        {
+          "id": "c23",
+          "text": "LinkedIn reserves the right to review and select partners at its discretion; restricted APIs have no fixed timeline.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers",
+              "title": "LinkedIn Marketing API Program Access Tiers",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            },
+            {
+              "url": "https://learn.microsoft.com/linkedin/marketing/increasing-access",
+              "title": "Increasing Access",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    "customerAdmin": {
+      "applies": "unknown",
+      "who": "",
+      "what": "",
+      "claims": []
+    },
+    "endUser": {
+      "applies": "yes",
+      "who": "The LinkedIn member authorizing the app",
+      "what": "Must consent to all requested scopes at once (can't select individual ones), and must re-authenticate if the app's requested scopes change.",
+      "claims": [
+        {
+          "id": "c24",
+          "text": "Members must consent to all requested scopes together, and re-authenticate if the scopes change.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow",
+              "title": "LinkedIn 3-Legged OAuth Flow",
+              "type": "official",
+              "accessedOn": "2026-10-24",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow on 2026-10-24; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    }
+  },
+  "stuckPoints": [
+    {
+      "reason": "Marketing/Advertising/Community Management API application not approved",
+      "fix": "LinkedIn selects partners at its discretion - meeting the minimum requirements doesn't guarantee approval. Review your use case against LinkedIn's supported-use-cases documentation before reapplying.",
+      "escalation": "LinkedIn Developer Support Portal",
+      "claim": {
+        "id": "c25",
+        "text": "LinkedIn reserves the right to review and select partners at its discretion, and a partner might not be upgraded even after meeting minimum requirements.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers",
+            "title": "LinkedIn Marketing API Program Access Tiers",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "reason": "No response and no stated timeline on a restricted API application",
+      "fix": "LinkedIn states restricted APIs are evaluated case-by-case with no fixed timeline - there's no SLA to escalate against; use the Developer Support Portal if it's been an unusually long wait.",
+      "escalation": "LinkedIn Developer Support Portal",
+      "claim": {
+        "id": "c26",
+        "text": "Restricted LinkedIn APIs are evaluated on a case-by-case basis with no fixed timeline.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://learn.microsoft.com/linkedin/marketing/increasing-access",
+            "title": "Increasing Access",
+            "type": "official",
+            "accessedOn": "2026-10-24",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://learn.microsoft.com/linkedin/marketing/increasing-access on 2026-10-24; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    }
+  ],
+  "whileYouWait": [
+    {
+      "id": "c27",
+      "text": "Sign In with LinkedIn and Share on LinkedIn work without LinkedIn's discretionary review, so basic identity and posting features can ship while a broader Marketing/Advertising application is pending.",
+      "label": "sourced",
+      "sources": [
+        {
+          "url": "https://www.upload-post.com/linkedin-api/",
+          "title": "LinkedIn API developer guide",
+          "type": "vendor",
+          "accessedOn": "2026-10-24",
+          "publishedYear": 2026,
+          "oldSource": false,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": null,
+      "uncertainReason": null,
+      "checked": "unchecked"
+    }
+  ],
+  "keepsComingBack": [
+    {
+      "id": "c28",
+      "text": "Access tokens last only 60 days with no long-lived option, so most integrations have to send users back through the authorization flow periodically; changing your app's scopes forces every user to re-authenticate.",
+      "label": "tested",
+      "sources": [
+        {
+          "url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow",
+          "title": "LinkedIn 3-Legged OAuth Flow",
+          "type": "official",
+          "accessedOn": "2026-10-24",
+          "publishedYear": 2026,
+          "oldSource": false,
+          "recheck": "confirmed"
+        },
+        {
+          "url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow",
+          "title": "LinkedIn 3-Legged OAuth Flow",
+          "type": "official",
+          "accessedOn": "2026-10-24",
+          "publishedYear": 2026,
+          "oldSource": false,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": "Fetched https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow on 2026-10-24; the required terms were present.",
+      "uncertainReason": null,
+      "checked": "unchecked"
+    }
+  ],
+  "hardToUndo": [],
+  "derived": {
+    "unverifiedClaimIds": [
+      "c7",
+      "c8"
+    ],
+    "sources": [
+      {
+        "url": "https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers",
+        "title": "LinkedIn Marketing API Program Access Tiers",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://learn.microsoft.com/linkedin/marketing/increasing-access",
+        "title": "Increasing Access",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow",
+        "title": "LinkedIn 3-Legged OAuth Flow",
+        "type": "official",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://www.upload-post.com/linkedin-api/",
+        "title": "LinkedIn API developer guide",
+        "type": "vendor",
+        "accessedOn": "2026-10-24",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://composio.dev/auth/linkedin",
+        "title": "How to create Oauth2 config for LinkedIn",
+        "type": "vendor",
+        "accessedOn": "2026-10-24",
+        "publishedYear": null,
+        "oldSource": false,
+        "recheck": "confirmed"
+      }
+    ]
+  },
+  "tile": {
+    "tier": 4,
+    "effort": {
+      "min": 11.5,
+      "max": 25.5,
+      "unit": "hours",
+      "basis": "reported",
+      "claimId": null
+    },
+    "wait": null,
+    "gated": true,
+    "customerAdmin": "unknown"
+  }
+}

@@ -71,13 +71,13 @@
         "label": "tested",
         "sources": [
           {
-            "url": "https://community.hubspot.com/t/new-marketplace-distribution-app-install-limits/139886",
-            "title": "New Marketplace Distribution App Install Limits",
-            "type": "community",
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot",
+            "title": "Manage apps in HubSpot",
+            "type": "official",
             "accessedOn": "2026-10-24",
-            "publishedYear": null,
+            "publishedYear": 2026,
             "oldSource": false,
-            "recheck": "not_rechecked"
+            "recheck": "confirmed"
           },
           {
             "url": "https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview",
@@ -98,7 +98,7 @@
             "recheck": "mismatch"
           }
         ],
-        "testNote": "Fetched https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot on 2026-10-24; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -539,28 +539,28 @@
         "min": 0.5,
         "max": 1,
         "unit": "hours",
-        "basis": "reported",
+        "basis": "official",
         "claimId": "c24"
       },
-      "linkUrl": "https://community.hubspot.com/t/new-marketplace-distribution-app-install-limits/139886",
+      "linkUrl": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot",
       "helper": null,
       "claims": [
         {
           "id": "c24",
           "text": "Unlisted public apps are capped at about 25 installs until the app is listed.",
-          "label": "sourced",
+          "label": "tested",
           "sources": [
             {
-              "url": "https://community.hubspot.com/t/new-marketplace-distribution-app-install-limits/139886",
-              "title": "New Marketplace Distribution App Install Limits",
-              "type": "community",
+              "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot",
+              "title": "Manage apps in HubSpot",
+              "type": "official",
               "accessedOn": "2026-10-24",
-              "publishedYear": null,
+              "publishedYear": 2026,
               "oldSource": false,
-              "recheck": "not_rechecked"
+              "recheck": "confirmed"
             }
           ],
-          "testNote": null,
+          "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot on 2026-10-24; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -853,19 +853,19 @@
       "claim": {
         "id": "c32",
         "text": "Unlisted public apps are capped at about 25 installs until the app is listed.",
-        "label": "sourced",
+        "label": "tested",
         "sources": [
           {
-            "url": "https://community.hubspot.com/t/new-marketplace-distribution-app-install-limits/139886",
-            "title": "New Marketplace Distribution App Install Limits",
-            "type": "community",
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot",
+            "title": "Manage apps in HubSpot",
+            "type": "official",
             "accessedOn": "2026-10-24",
-            "publishedYear": null,
+            "publishedYear": 2026,
             "oldSource": false,
-            "recheck": "not_rechecked"
+            "recheck": "confirmed"
           }
         ],
-        "testNote": null,
+        "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot on 2026-10-24; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -875,19 +875,19 @@
     {
       "id": "c33",
       "text": "An unlisted public app can be installed on up to about 25 accounts (or a private app on up to 10 allowlisted accounts) while you're building or waiting on listing.",
-      "label": "sourced",
+      "label": "tested",
       "sources": [
         {
-          "url": "https://community.hubspot.com/t/new-marketplace-distribution-app-install-limits/139886",
-          "title": "New Marketplace Distribution App Install Limits",
-          "type": "community",
+          "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot",
+          "title": "Manage apps in HubSpot",
+          "type": "official",
           "accessedOn": "2026-10-24",
-          "publishedYear": null,
+          "publishedYear": 2026,
           "oldSource": false,
-          "recheck": "not_rechecked"
+          "recheck": "confirmed"
         }
       ],
-      "testNote": null,
+      "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot on 2026-10-24; the required terms were present.",
       "uncertainReason": null,
       "checked": "unchecked"
     }
@@ -896,7 +896,7 @@
     {
       "id": "c34",
       "text": "Certified status must be renewed - it's valid for two years on a rolling basis, and HubSpot can trigger recertification early if the app falls out of compliance.",
-      "label": "tested",
+      "label": "sourced",
       "sources": [
         {
           "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
@@ -908,7 +908,7 @@
           "recheck": "confirmed"
         }
       ],
-      "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements on 2026-10-24; the required terms were present.",
+      "testNote": null,
       "uncertainReason": null,
       "checked": "unchecked"
     }
@@ -933,13 +933,13 @@
         "recheck": "mismatch"
       },
       {
-        "url": "https://community.hubspot.com/t/new-marketplace-distribution-app-install-limits/139886",
-        "title": "New Marketplace Distribution App Install Limits",
-        "type": "community",
+        "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot",
+        "title": "Manage apps in HubSpot",
+        "type": "official",
         "accessedOn": "2026-10-24",
-        "publishedYear": null,
+        "publishedYear": 2026,
         "oldSource": false,
-        "recheck": "not_rechecked"
+        "recheck": "confirmed"
       },
       {
         "url": "https://developers.hubspot.com/app-partners/set-up",
