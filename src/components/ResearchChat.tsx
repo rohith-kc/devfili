@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { Guide } from "@/lib/schema";
+import { getUsername, setUsername, saveGuide, isGuideSaved } from "@/lib/localUser";
 import { GuideView } from "./GuideView";
 
 type Candidate = { name: string; websiteUrl: string | null; description: string };
@@ -41,6 +42,9 @@ export function ResearchChat() {
   const [guide, setGuide] = useState<Guide | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [slow, setSlow] = useState(false);
+  const [saved, setSaved] = useState(false);
+  const [showNamePrompt, setShowNamePrompt] = useState(false);
+  const [nameDraft, setNameDraft] = useState("");
   const abortRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
@@ -55,6 +59,30 @@ export function ResearchChat() {
     setQuestion(null);
     setGuide(null);
     setError(null);
+    setSaved(false);
+    setShowNamePrompt(false);
+    setNameDraft("");
+  }
+
+  function handleSaveClick() {
+    if (!guide) return;
+    if (!getUsername()) {
+      setShowNamePrompt(true);
+      return;
+    }
+    saveGuide(guide);
+    setSaved(true);
+  }
+
+  function confirmName(e: React.FormEvent) {
+    e.preventDefault();
+    const trimmed = nameDraft.trim();
+    if (!trimmed || !guide) return;
+    setUsername(trimmed);
+    saveGuide(guide);
+    setSaved(true);
+    setShowNamePrompt(false);
+    setNameDraft("");
   }
 
   async function run(body: { query: string; choice?: Candidate }) {
@@ -133,6 +161,7 @@ export function ResearchChat() {
     } else if (event.type === "result" && event.guide) {
       setPhase("result");
       setGuide(event.guide);
+      setSaved(isGuideSaved(event.guide.app.slug));
     } else if (event.type === "error") {
       setPhase("error");
       setError(event.message ?? "Something went wrong.");
@@ -279,16 +308,42 @@ export function ResearchChat() {
 
               {phase === "result" && guide && (
                 <div>
-                  <div className="mb-4 flex items-center justify-between rounded-xl border border-border bg-background p-3">
-                    <span className="text-sm text-muted">Researched live just now.</span>
-                    <button
-                      type="button"
-                      disabled
-                      title="Sign-in and saving aren't built yet"
-                      className="font-mono-label rounded-full border border-border px-3 py-1 text-xs font-medium uppercase text-muted opacity-50"
-                    >
-                      Save to my guides
-                    </button>
+                  <div className="mb-4 flex flex-col gap-3 rounded-xl border border-border bg-background p-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-muted">Researched live just now.</span>
+                      <button
+                        type="button"
+                        onClick={handleSaveClick}
+                        disabled={saved}
+                        className="font-mono-label focus-ring rounded-full border border-border px-3 py-1 text-xs font-medium uppercase text-foreground transition-opacity hover:opacity-80 disabled:opacity-50"
+                      >
+                        {saved ? "Saved ✓" : "Save to my guides"}
+                      </button>
+                    </div>
+                    {showNamePrompt && (
+                      <form onSubmit={confirmName} className="flex flex-col gap-2 border-t border-border pt-3">
+                        <label htmlFor="save-name-input" className="text-xs text-muted">
+                          Just a name &mdash; no password. Stored on this device only, to label your saved guides.
+                        </label>
+                        <div className="flex gap-2">
+                          <input
+                            id="save-name-input"
+                            autoFocus
+                            value={nameDraft}
+                            onChange={(e) => setNameDraft(e.target.value)}
+                            placeholder="e.g. Rohith"
+                            className="focus-ring flex-1 rounded-lg border border-border bg-surface px-3 py-1.5 text-sm text-foreground placeholder:text-muted"
+                          />
+                          <button
+                            type="submit"
+                            disabled={!nameDraft.trim()}
+                            className="font-mono-label focus-ring w-fit rounded-full bg-foreground px-3 py-1.5 text-xs font-semibold uppercase text-background disabled:opacity-50"
+                          >
+                            Save
+                          </button>
+                        </div>
+                      </form>
+                    )}
                   </div>
                   <GuideView guide={guide} />
                   <button type="button" onClick={reset} className="focus-ring mb-6 text-sm text-accent hover:underline">

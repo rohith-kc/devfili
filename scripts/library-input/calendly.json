@@ -1,0 +1,85 @@
+{
+  "app": { "name": "Calendly", "slug": "calendly", "websiteUrl": "https://calendly.com" },
+  "findings": [
+    { "id": "F1", "topic": "oauth_registration", "statement": "Register an OAuth app by signing up for a Calendly developer account with GitHub or Google, then creating a new OAuth application (web or native), with no partner application or vetting step described.", "sourceUrl": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app", "sourceTitle": "Creating an OAuth app", "sourceType": "official", "publishedYear": 2026, "excerpt": "Sign up for a Calendly developer account using your Github or Google account", "checkable": { "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app", "mustContain": ["Sign up for a Calendly developer account"] } },
+    { "id": "F2", "topic": "app_types", "statement": "An OAuth app is created in one of two environments, Sandbox or Production; Calendly recommends starting in Sandbox and creating a second, separate app for Production when ready to use real customer data - no review step is described for that move.", "sourceUrl": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app", "sourceTitle": "Creating an OAuth app", "sourceType": "official", "publishedYear": 2026, "excerpt": "We recommend starting with Sandbox for development and creating a second application for Production", "checkable": { "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app", "mustContain": ["second application for Production"] } },
+    { "id": "F3", "topic": "oauth_registration", "statement": "All OAuth applications (web or native) use Proof Key for Code Exchange (PKCE) with S256; the Production redirect URI must be HTTPS, while Sandbox allows HTTP on localhost.", "sourceUrl": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app", "sourceTitle": "Creating an OAuth app", "sourceType": "official", "publishedYear": 2026, "excerpt": "use a specific redirect_uri, a Proof Key for Code Exchange (PKCE), and S256 for code_challenge_method", "checkable": { "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app", "mustContain": ["Proof Key for Code Exchange"] } },
+    { "id": "F4", "topic": "scopes", "statement": "Calendly documents 23 OAuth scopes across six areas: Scheduling (availability, event types, locations, routing forms, scheduled events, scheduling links), User management (groups, organizations, users), Webhooks, Security & Compliance (activity log, data compliance, outgoing communications), Contacts, and Notetaker (meeting recaps).", "sourceUrl": "https://developer.calendly.com/docs/authentication/scopes", "sourceTitle": "Scopes", "sourceType": "official", "publishedYear": 2026, "excerpt": "Reads user and event-type availability", "checkable": { "url": "https://developer.calendly.com/docs/authentication/scopes", "mustContain": ["Reads user and event-type availability"] } },
+    { "id": "F5", "topic": "partner_gating", "statement": "Formally partnering with Calendly or getting listed through Calendly's own channels goes through a contact-based partner inquiry - submit information and a team member reaches out if there's a fit - separate from, and not required for, building and using your own OAuth app.", "sourceUrl": "https://calendly.com/partners/contact", "sourceTitle": "Partner Inquiry", "sourceType": "vendor", "publishedYear": null, "excerpt": "submit your information and a member of our team will reach out if there is a fit", "checkable": null },
+    { "id": "F6", "topic": "other", "statement": "Editing an existing OAuth app's name, kind, environment type, or redirect URI is self-serve, but the Client Secret and Webhook signing key are shown only once, at creation, and can't be retrieved again afterward.", "sourceUrl": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app", "sourceTitle": "Creating an OAuth app", "sourceType": "official", "publishedYear": 2026, "excerpt": "you will not be able to access the Client Secret or Webhook signing key when editing", "checkable": { "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app", "mustContain": ["access the Client Secret"] } }
+  ],
+  "core": {
+    "facts": {
+      "partnerGated": { "value": false, "claim": { "text": "Creating and using your own OAuth app is fully self-serve; Calendly's partner inquiry process is a separate, optional path for formal partnerships, not a requirement to build an integration.", "findingIds": ["F1", "F5"], "probeIds": [] } },
+      "securityAssessment": { "value": false, "claim": { "text": "Calendly's OAuth app creation and scopes docs describe no security review, questionnaire, or scan requirement of any kind.", "findingIds": ["F1"], "probeIds": [] } },
+      "reviewRequired": { "value": false, "claim": { "text": "No review step is described for creating an OAuth app, choosing scopes, or moving from Sandbox to Production.", "findingIds": ["F2"], "probeIds": [] } },
+      "customerAdminLikely": { "value": null, "claim": null },
+      "userCapBeforeApproval": { "value": null, "claim": null }
+    },
+    "tierReason": { "text": "Calendly's OAuth docs describe a fully self-serve app-creation flow, with no review, security assessment, or partner requirement to build and use your own app against real customer data.", "findingIds": ["F1", "F2"], "probeIds": [] },
+    "wait": null,
+    "scopeForks": [
+      { "text": "Formally partnering with Calendly (for example, to be listed as an official integration) goes through a separate, contact-based Partner Inquiry process with no published criteria or timeline - but this isn't required just to build and use your own OAuth app.", "findingIds": ["F5"], "probeIds": [] }
+    ],
+    "managedApp": {
+      "exists": "unknown",
+      "claim": null,
+      "whatYouLose": [],
+      "whenToSwitch": []
+    },
+    "howItWorks": {
+      "flow": [
+        { "text": "A developer registers an OAuth app (Sandbox or Production), selects scopes, and users authorize it via Calendly's OAuth consent screen using PKCE.", "findingIds": ["F1", "F3"], "probeIds": [] }
+      ],
+      "appTypes": [
+        { "text": "Sandbox and Production are separate app registrations; Calendly recommends building in Sandbox first, then creating a second app for Production with no review step in between.", "findingIds": ["F2"], "probeIds": [] }
+      ],
+      "tokenNotes": [
+        { "text": "The Client Secret and Webhook signing key are shown only once, at app creation, and can't be retrieved again when editing the app afterward.", "findingIds": ["F6"], "probeIds": [] }
+      ]
+    },
+    "scopes": [
+      { "scope": "Scope areas (overview)", "allows": "Calendly groups its 23 scopes into six areas: Scheduling, User management, Webhooks, Security & Compliance, Contacts, and Notetaker.", "neededFor": "Picking which named scopes below your integration actually needs.", "reviewImpact": "none", "claim": { "text": "Register an OAuth app by signing up for a Calendly developer account, then selecting scopes based on the data and functionality your app requires.", "findingIds": ["F1"], "probeIds": [] } },
+      { "scope": "availability:read / availability:write", "allows": "Read, or update, user and event-type availability.", "neededFor": "Reading or managing when someone is bookable.", "reviewImpact": "none", "claim": { "text": "availability:read reads user and event-type availability; availability:write updates event type availability.", "findingIds": ["F4"], "probeIds": [] } },
+      { "scope": "event_types:read / event_types:write", "allows": "Read event type details and available times, or create/update event types.", "neededFor": "Reading or managing the meeting types someone offers.", "reviewImpact": "none", "claim": { "text": "event_types:read reads event type details and available times; event_types:write creates or updates event types.", "findingIds": ["F4"], "probeIds": [] } },
+      { "scope": "scheduled_events:read / scheduled_events:write", "allows": "Read scheduled events and invitee info, or create invitees, cancel events, and mark no-shows.", "neededFor": "Reading or managing actual booked meetings.", "reviewImpact": "none", "claim": { "text": "scheduled_events:read reads scheduled events and invitee information; scheduled_events:write creates invitees, cancels events, and marks invitees as no-show.", "findingIds": ["F4"], "probeIds": [] } },
+      { "scope": "users:read", "allows": "Read user information.", "neededFor": "Looking up basic profile info for the authorizing user.", "reviewImpact": "none", "claim": { "text": "users:read reads user information.", "findingIds": ["F4"], "probeIds": [] } },
+      { "scope": "organizations:read / organizations:write", "allows": "Read organization data, memberships, and invitations, or invite/remove organization users.", "neededFor": "Org-wide integrations, not just a single user's own account.", "reviewImpact": "verification", "claim": { "text": "organizations:read reads organization data, memberships, and invitations; organizations:write invites or removes users from an organization.", "findingIds": ["F4"], "probeIds": [] } },
+      { "scope": "webhooks:read / webhooks:write", "allows": "Read webhook subscriptions and sample payloads, or create/delete webhook subscriptions.", "neededFor": "Reacting to scheduling events in real time.", "reviewImpact": "none", "claim": { "text": "webhooks:read reads webhook subscriptions and sample payloads; webhooks:write creates or deletes webhook subscriptions.", "findingIds": ["F4"], "probeIds": [] } },
+      { "scope": "contacts:read / contacts:write", "allows": "Read contact details, or create/update/delete contacts.", "neededFor": "Syncing Calendly's contacts with another system.", "reviewImpact": "none", "claim": { "text": "contacts:read reads contact details; contacts:write creates, updates, and deletes contacts.", "findingIds": ["F4"], "probeIds": [] } },
+      { "scope": "data_compliance:write", "allows": "Delete invitee or event data.", "neededFor": "Handling data-deletion requests.", "reviewImpact": "verification", "claim": { "text": "data_compliance:write deletes invitee or event data.", "findingIds": ["F4"], "probeIds": [] } },
+      { "scope": "meeting_recaps:read / meeting_recaps:write", "allows": "Read recap summaries, action items, discussions, and transcripts, or update/delete meeting recaps.", "neededFor": "Working with Calendly's AI meeting-notetaker output.", "reviewImpact": "none", "claim": { "text": "meeting_recaps:read reads recap summaries, action items, discussions, and transcripts; meeting_recaps:write updates or deletes meeting recaps.", "findingIds": ["F4"], "probeIds": [] } }
+    ],
+    "prerequisites": [
+      { "item": "A Calendly developer account (sign up with GitHub or Google - separate from a regular Calendly user account)", "kind": "account", "claim": { "text": "Registering an OAuth app requires a Calendly developer account, signed up via GitHub or Google, which is not the same as a regular Calendly user account.", "findingIds": ["F1"], "probeIds": [] } },
+      { "item": "A production-ready redirect URI (HTTPS required for Production; HTTP/localhost allowed only in Sandbox)", "kind": "other", "claim": { "text": "The Production redirect URI must be HTTPS; Sandbox allows HTTP on localhost.", "findingIds": ["F3"], "probeIds": [] } }
+    ]
+  },
+  "path": {
+    "steps": [
+      { "title": "Found Calendly's OAuth and scopes docs", "detail": "The research stage located Calendly's OAuth app creation guide and its scopes reference.", "owner": "agent_did", "effortHours": null, "linkFindingId": "F1", "helper": null, "claims": [{ "text": "Calendly documents OAuth app creation and scopes at developer.calendly.com.", "findingIds": ["F1"], "probeIds": [] }] },
+      { "title": "Sign up for a Calendly developer account and create a Sandbox app", "detail": "Separate from your regular Calendly login; start in Sandbox to build and test.", "owner": "you_do", "effortHours": { "min": 0.5, "max": 1 }, "linkFindingId": "F1", "helper": null, "claims": [{ "text": "A Calendly developer account (via GitHub or Google) is required to register an OAuth app.", "findingIds": ["F1"], "probeIds": [] }] },
+      { "title": "Select your scopes and implement PKCE", "detail": "Choose from the 23 documented scopes; use PKCE with S256 for both web and native apps.", "owner": "you_do", "effortHours": { "min": 2, "max": 4 }, "linkFindingId": "F4", "helper": null, "claims": [{ "text": "Scopes are selected from Calendly's documented list, and PKCE with S256 is required for the authorization flow.", "findingIds": ["F4", "F3"], "probeIds": [] }] },
+      { "title": "Build and test against the Sandbox app", "detail": "No review needed to build - the app works immediately for OAuth flows in Sandbox.", "owner": "you_do", "effortHours": { "min": 4, "max": 12 }, "linkFindingId": "F2", "helper": null, "claims": [] },
+      { "title": "Draft your scope justification", "detail": "Use the Scope justification helper, in case you later pursue a formal Calendly partnership.", "owner": "agent_drafted", "effortHours": null, "linkFindingId": null, "helper": "scope_justification", "claims": [] },
+      { "title": "Create a separate Production app and go live", "detail": "No review step - create a second OAuth app registered for Production, with an HTTPS redirect URI, and switch your integration to it.", "owner": "you_do", "effortHours": { "min": 1, "max": 2 }, "linkFindingId": "F2", "helper": null, "claims": [{ "text": "Moving to Production means creating a second, separate OAuth app with an HTTPS redirect URI - no review step is described.", "findingIds": ["F2", "F3"], "probeIds": [] }] },
+      { "title": "Live - no Calendly review needed at any point", "detail": "The integration works for real customer accounts as soon as the Production app is created.", "owner": "agent_did", "effortHours": null, "linkFindingId": null, "helper": null, "claims": [] }
+    ],
+    "gates": {
+      "provider": { "applies": "no", "who": "n/a", "what": "No review step is described anywhere in Calendly's OAuth documentation for creating an app, selecting scopes, or moving to Production.", "claims": [{ "text": "No review, security assessment, or partner requirement is described for building and using your own Calendly OAuth app.", "findingIds": ["F1", "F2"], "probeIds": [] }] },
+      "customerAdmin": { "applies": "unknown", "who": "", "what": "Calendly's docs don't describe an explicit admin-approval step for installing an OAuth app; org-level scopes like organizations:write likely still need the authorizing user to already hold admin permissions in their own Calendly organization, but this isn't spelled out as a separate gate.", "claims": [] },
+      "endUser": { "applies": "yes", "who": "The Calendly user authorizing the app", "what": "Grants authorization through Calendly's OAuth consent screen using PKCE.", "claims": [{ "text": "Users authorize the app through Calendly's OAuth consent screen, using the PKCE flow.", "findingIds": ["F3"], "probeIds": [] }] }
+    },
+    "stuckPoints": [
+      { "reason": "Lost the Client Secret or Webhook signing key", "fix": "These are shown only once, at app creation. If lost, the only fix is creating a new OAuth app - editing an existing app never re-displays them.", "escalation": "Calendly developer support", "claim": { "text": "The Client Secret and Webhook signing key are shown only once, at creation, and can't be retrieved again when editing the app.", "findingIds": ["F6"], "probeIds": [] } },
+      { "reason": "Production app rejects your redirect URI", "fix": "Production requires an HTTPS redirect URI - the HTTP/localhost URIs allowed in Sandbox won't work once you switch to a Production app.", "escalation": "developer.calendly.com docs", "claim": { "text": "For the Production environment, the redirect URI must be HTTPS; only Sandbox allows HTTP with a localhost domain.", "findingIds": ["F3"], "probeIds": [] } }
+    ],
+    "whileYouWait": [
+      { "text": "There's no review to wait on - a Sandbox app works immediately for development, and a Production app works immediately once created.", "findingIds": ["F2"], "probeIds": [] }
+    ],
+    "keepsComingBack": [],
+    "hardToUndo": [
+      { "text": "The Client Secret and Webhook signing key can only be viewed once, at app creation - there's no way to retrieve them again later.", "findingIds": ["F6"], "probeIds": [] }
+    ]
+  }
+}
