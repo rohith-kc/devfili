@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
 import { ResearchChat } from "./ResearchChat";
-import { UserMenu } from "./UserMenu";
+import { ProfileMenu } from "./ProfileMenu";
 
 export function Header() {
   return (
@@ -10,11 +10,11 @@ export function Header() {
         <Link href="/" className="focus-ring rounded">
           <Logo />
         </Link>
-        <nav aria-label="Primary" className="flex items-center gap-6">
+        <nav aria-label="Primary" className="flex items-center gap-4 sm:gap-6">
           <Link href="/#library" className="focus-ring rounded text-sm font-medium text-muted hover:text-foreground">
             Library
           </Link>
-          <UserMenu />
+          <ProfileMenu />
           <ResearchChat />
         </nav>
       </div>

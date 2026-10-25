@@ -1,27 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Header } from "@/components/Header";
 import { AppIcon } from "@/components/AppIcon";
 import { GuideView } from "@/components/GuideView";
-import { getUsername, getSavedGuides, removeSavedGuide, type SavedGuide } from "@/lib/localUser";
+import { removeSavedGuide, useHydrated, useSavedGuides, useUsername } from "@/lib/localUser";
 
 export default function MyGuidesPage() {
-  const [name, setName] = useState<string | null | undefined>(undefined);
-  const [guides, setGuides] = useState<SavedGuide[]>([]);
+  const hydrated = useHydrated();
+  const name = useUsername();
+  const guides = useSavedGuides();
   const [openSlug, setOpenSlug] = useState<string | null>(null);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing from localStorage, which React can't read during render without a hydration mismatch
-    setName(getUsername());
-    setGuides(getSavedGuides());
-  }, []);
-
-  function remove(slug: string) {
-    removeSavedGuide(slug);
-    setGuides(getSavedGuides());
-    if (openSlug === slug) setOpenSlug(null);
-  }
 
   return (
     <div className="flex min-h-full flex-1 flex-col bg-background">
@@ -29,13 +18,12 @@ export default function MyGuidesPage() {
       <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-10">
         <h1 className="text-2xl font-semibold tracking-tight text-foreground">My guides</h1>
         <p className="mt-1 text-sm text-muted">
-          Saved on this device only (name-only sign-in, no account) &mdash; from live research via &ldquo;Check an
-          app.&rdquo;
+          Saved in this browser only &mdash; from live research via &ldquo;Check an app.&rdquo;
         </p>
 
-        {name === undefined ? null : name === null ? (
+        {!hydrated ? null : !name ? (
           <p className="mt-8 rounded-2xl border border-dashed border-border p-6 text-sm text-muted">
-            Sign in with just a name (top right) to see your saved guides here.
+            Open Profile (top right) and enter your name to see your saved guides here.
           </p>
         ) : guides.length === 0 ? (
           <p className="mt-8 rounded-2xl border border-dashed border-border p-6 text-sm text-muted">
@@ -62,7 +50,7 @@ export default function MyGuidesPage() {
                   </button>
                   <button
                     type="button"
-                    onClick={() => remove(g.slug)}
+                    onClick={() => removeSavedGuide(g.slug)}
                     className="font-mono-label focus-ring shrink-0 text-xs uppercase text-muted hover:text-rose-600"
                   >
                     Remove
