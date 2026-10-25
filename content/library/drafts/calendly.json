@@ -1,0 +1,874 @@
+{
+  "schemaVersion": 1,
+  "app": {
+    "name": "Calendly",
+    "slug": "calendly",
+    "websiteUrl": "https://calendly.com"
+  },
+  "kind": "library",
+  "sample": false,
+  "lastVerifiedOn": "2026-10-25",
+  "handVerified": null,
+  "completeness": {
+    "status": "complete",
+    "thinSections": []
+  },
+  "verdict": {
+    "tier": 1,
+    "tierReason": {
+      "id": "c4",
+      "text": "Calendly's OAuth docs describe a fully self-serve app-creation flow, with no review, security assessment, or partner requirement to build and use your own app against real customer data.",
+      "label": "tested",
+      "sources": [
+        {
+          "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+          "title": "Creating an OAuth app",
+          "type": "official",
+          "accessedOn": "2026-10-25",
+          "publishedYear": 2026,
+          "oldSource": false,
+          "recheck": "confirmed"
+        },
+        {
+          "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+          "title": "Creating an OAuth app",
+          "type": "official",
+          "accessedOn": "2026-10-25",
+          "publishedYear": 2026,
+          "oldSource": false,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": "Fetched https://developer.calendly.com/docs/authentication/creating-an-oauth-app on 2026-10-25; the required terms were present.",
+      "uncertainReason": null,
+      "checked": "unchecked"
+    },
+    "effort": {
+      "min": 7.5,
+      "max": 19,
+      "unit": "hours",
+      "basis": "estimated",
+      "claimId": null
+    },
+    "wait": null,
+    "gates": {
+      "provider": "no",
+      "customerAdmin": "unknown",
+      "endUser": "yes"
+    },
+    "gatedAccess": false,
+    "confidence": "medium",
+    "scopeForks": [
+      {
+        "id": "c5",
+        "text": "Formally partnering with Calendly (for example, to be listed as an official integration) goes through a separate, contact-based Partner Inquiry process with no published criteria or timeline - but this isn't required just to build and use your own OAuth app.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://calendly.com/partners/contact",
+            "title": "Partner Inquiry",
+            "type": "vendor",
+            "accessedOn": "2026-10-25",
+            "publishedYear": null,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    ]
+  },
+  "managedApp": {
+    "exists": "unknown",
+    "claim": null,
+    "whatYouLose": [],
+    "whenToSwitch": []
+  },
+  "howItWorks": {
+    "flow": [
+      {
+        "id": "c6",
+        "text": "A developer registers an OAuth app (Sandbox or Production), selects scopes, and users authorize it via Calendly's OAuth consent screen using PKCE.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+            "title": "Creating an OAuth app",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          },
+          {
+            "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+            "title": "Creating an OAuth app",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://developer.calendly.com/docs/authentication/creating-an-oauth-app on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    ],
+    "appTypes": [
+      {
+        "id": "c7",
+        "text": "Sandbox and Production are separate app registrations; Calendly recommends building in Sandbox first, then creating a second app for Production with no review step in between.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+            "title": "Creating an OAuth app",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://developer.calendly.com/docs/authentication/creating-an-oauth-app on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    ],
+    "tokenNotes": [
+      {
+        "id": "c8",
+        "text": "The Client Secret and Webhook signing key are shown only once, at app creation, and can't be retrieved again when editing the app afterward.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+            "title": "Creating an OAuth app",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://developer.calendly.com/docs/authentication/creating-an-oauth-app on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    ]
+  },
+  "scopes": [
+    {
+      "scope": "Scope areas (overview)",
+      "allows": "Calendly groups its 23 scopes into six areas: Scheduling, User management, Webhooks, Security & Compliance, Contacts, and Notetaker.",
+      "neededFor": "Picking which named scopes below your integration actually needs.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c9",
+        "text": "Register an OAuth app by signing up for a Calendly developer account, then selecting scopes based on the data and functionality your app requires.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+            "title": "Creating an OAuth app",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://developer.calendly.com/docs/authentication/creating-an-oauth-app on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "availability:read / availability:write",
+      "allows": "Read, or update, user and event-type availability.",
+      "neededFor": "Reading or managing when someone is bookable.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c10",
+        "text": "availability:read reads user and event-type availability; availability:write updates event type availability.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developer.calendly.com/docs/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "event_types:read / event_types:write",
+      "allows": "Read event type details and available times, or create/update event types.",
+      "neededFor": "Reading or managing the meeting types someone offers.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c11",
+        "text": "event_types:read reads event type details and available times; event_types:write creates or updates event types.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developer.calendly.com/docs/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "scheduled_events:read / scheduled_events:write",
+      "allows": "Read scheduled events and invitee info, or create invitees, cancel events, and mark no-shows.",
+      "neededFor": "Reading or managing actual booked meetings.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c12",
+        "text": "scheduled_events:read reads scheduled events and invitee information; scheduled_events:write creates invitees, cancels events, and marks invitees as no-show.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developer.calendly.com/docs/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "users:read",
+      "allows": "Read user information.",
+      "neededFor": "Looking up basic profile info for the authorizing user.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c13",
+        "text": "users:read reads user information.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developer.calendly.com/docs/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "organizations:read / organizations:write",
+      "allows": "Read organization data, memberships, and invitations, or invite/remove organization users.",
+      "neededFor": "Org-wide integrations, not just a single user's own account.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c14",
+        "text": "organizations:read reads organization data, memberships, and invitations; organizations:write invites or removes users from an organization.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developer.calendly.com/docs/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "webhooks:read / webhooks:write",
+      "allows": "Read webhook subscriptions and sample payloads, or create/delete webhook subscriptions.",
+      "neededFor": "Reacting to scheduling events in real time.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c15",
+        "text": "webhooks:read reads webhook subscriptions and sample payloads; webhooks:write creates or deletes webhook subscriptions.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developer.calendly.com/docs/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "contacts:read / contacts:write",
+      "allows": "Read contact details, or create/update/delete contacts.",
+      "neededFor": "Syncing Calendly's contacts with another system.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c16",
+        "text": "contacts:read reads contact details; contacts:write creates, updates, and deletes contacts.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developer.calendly.com/docs/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "data_compliance:write",
+      "allows": "Delete invitee or event data.",
+      "neededFor": "Handling data-deletion requests.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c17",
+        "text": "data_compliance:write deletes invitee or event data.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developer.calendly.com/docs/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "meeting_recaps:read / meeting_recaps:write",
+      "allows": "Read recap summaries, action items, discussions, and transcripts, or update/delete meeting recaps.",
+      "neededFor": "Working with Calendly's AI meeting-notetaker output.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c18",
+        "text": "meeting_recaps:read reads recap summaries, action items, discussions, and transcripts; meeting_recaps:write updates or deletes meeting recaps.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developer.calendly.com/docs/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    }
+  ],
+  "prerequisites": [
+    {
+      "item": "A Calendly developer account (sign up with GitHub or Google - separate from a regular Calendly user account)",
+      "kind": "account",
+      "claim": {
+        "id": "c19",
+        "text": "Registering an OAuth app requires a Calendly developer account, signed up via GitHub or Google, which is not the same as a regular Calendly user account.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+            "title": "Creating an OAuth app",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://developer.calendly.com/docs/authentication/creating-an-oauth-app on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "item": "A production-ready redirect URI (HTTPS required for Production; HTTP/localhost allowed only in Sandbox)",
+      "kind": "other",
+      "claim": {
+        "id": "c20",
+        "text": "The Production redirect URI must be HTTPS; Sandbox allows HTTP on localhost.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+            "title": "Creating an OAuth app",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://developer.calendly.com/docs/authentication/creating-an-oauth-app on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "n": 1,
+      "title": "Found Calendly's OAuth and scopes docs",
+      "detail": "The research stage located Calendly's OAuth app creation guide and its scopes reference.",
+      "owner": "agent_did",
+      "effort": null,
+      "linkUrl": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c21",
+          "text": "Calendly documents OAuth app creation and scopes at developer.calendly.com.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+              "title": "Creating an OAuth app",
+              "type": "official",
+              "accessedOn": "2026-10-25",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://developer.calendly.com/docs/authentication/creating-an-oauth-app on 2026-10-25; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "title": "Sign up for a Calendly developer account and create a Sandbox app",
+      "detail": "Separate from your regular Calendly login; start in Sandbox to build and test.",
+      "owner": "you_do",
+      "effort": {
+        "min": 0.5,
+        "max": 1,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c22"
+      },
+      "linkUrl": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c22",
+          "text": "A Calendly developer account (via GitHub or Google) is required to register an OAuth app.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+              "title": "Creating an OAuth app",
+              "type": "official",
+              "accessedOn": "2026-10-25",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://developer.calendly.com/docs/authentication/creating-an-oauth-app on 2026-10-25; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "title": "Select your scopes and implement PKCE",
+      "detail": "Choose from the 23 documented scopes; use PKCE with S256 for both web and native apps.",
+      "owner": "you_do",
+      "effort": {
+        "min": 2,
+        "max": 4,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c23"
+      },
+      "linkUrl": "https://developer.calendly.com/docs/authentication/scopes",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c23",
+          "text": "Scopes are selected from Calendly's documented list, and PKCE with S256 is required for the authorization flow.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developer.calendly.com/docs/authentication/scopes",
+              "title": "Scopes",
+              "type": "official",
+              "accessedOn": "2026-10-25",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "mismatch"
+            },
+            {
+              "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+              "title": "Creating an OAuth app",
+              "type": "official",
+              "accessedOn": "2026-10-25",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://developer.calendly.com/docs/authentication/creating-an-oauth-app on 2026-10-25; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "title": "Build and test against the Sandbox app",
+      "detail": "No review needed to build - the app works immediately for OAuth flows in Sandbox.",
+      "owner": "you_do",
+      "effort": {
+        "min": 4,
+        "max": 12,
+        "unit": "hours",
+        "basis": "estimated",
+        "claimId": null
+      },
+      "linkUrl": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+      "helper": null,
+      "claims": []
+    },
+    {
+      "n": 5,
+      "title": "Draft your scope justification",
+      "detail": "Use the Scope justification helper, in case you later pursue a formal Calendly partnership.",
+      "owner": "agent_drafted",
+      "effort": null,
+      "linkUrl": null,
+      "helper": "scope_justification",
+      "claims": []
+    },
+    {
+      "n": 6,
+      "title": "Create a separate Production app and go live",
+      "detail": "No review step - create a second OAuth app registered for Production, with an HTTPS redirect URI, and switch your integration to it.",
+      "owner": "you_do",
+      "effort": {
+        "min": 1,
+        "max": 2,
+        "unit": "hours",
+        "basis": "official",
+        "claimId": "c24"
+      },
+      "linkUrl": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+      "helper": null,
+      "claims": [
+        {
+          "id": "c24",
+          "text": "Moving to Production means creating a second, separate OAuth app with an HTTPS redirect URI - no review step is described.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+              "title": "Creating an OAuth app",
+              "type": "official",
+              "accessedOn": "2026-10-25",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            },
+            {
+              "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+              "title": "Creating an OAuth app",
+              "type": "official",
+              "accessedOn": "2026-10-25",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://developer.calendly.com/docs/authentication/creating-an-oauth-app on 2026-10-25; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "title": "Live - no Calendly review needed at any point",
+      "detail": "The integration works for real customer accounts as soon as the Production app is created.",
+      "owner": "agent_did",
+      "effort": null,
+      "linkUrl": null,
+      "helper": null,
+      "claims": []
+    }
+  ],
+  "gates": {
+    "provider": {
+      "applies": "no",
+      "who": "n/a",
+      "what": "No review step is described anywhere in Calendly's OAuth documentation for creating an app, selecting scopes, or moving to Production.",
+      "claims": [
+        {
+          "id": "c25",
+          "text": "No review, security assessment, or partner requirement is described for building and using your own Calendly OAuth app.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+              "title": "Creating an OAuth app",
+              "type": "official",
+              "accessedOn": "2026-10-25",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            },
+            {
+              "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+              "title": "Creating an OAuth app",
+              "type": "official",
+              "accessedOn": "2026-10-25",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://developer.calendly.com/docs/authentication/creating-an-oauth-app on 2026-10-25; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    },
+    "customerAdmin": {
+      "applies": "unknown",
+      "who": "",
+      "what": "Calendly's docs don't describe an explicit admin-approval step for installing an OAuth app; org-level scopes like organizations:write likely still need the authorizing user to already hold admin permissions in their own Calendly organization, but this isn't spelled out as a separate gate.",
+      "claims": []
+    },
+    "endUser": {
+      "applies": "yes",
+      "who": "The Calendly user authorizing the app",
+      "what": "Grants authorization through Calendly's OAuth consent screen using PKCE.",
+      "claims": [
+        {
+          "id": "c26",
+          "text": "Users authorize the app through Calendly's OAuth consent screen, using the PKCE flow.",
+          "label": "tested",
+          "sources": [
+            {
+              "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+              "title": "Creating an OAuth app",
+              "type": "official",
+              "accessedOn": "2026-10-25",
+              "publishedYear": 2026,
+              "oldSource": false,
+              "recheck": "confirmed"
+            }
+          ],
+          "testNote": "Fetched https://developer.calendly.com/docs/authentication/creating-an-oauth-app on 2026-10-25; the required terms were present.",
+          "uncertainReason": null,
+          "checked": "unchecked"
+        }
+      ]
+    }
+  },
+  "stuckPoints": [
+    {
+      "reason": "Lost the Client Secret or Webhook signing key",
+      "fix": "These are shown only once, at app creation. If lost, the only fix is creating a new OAuth app - editing an existing app never re-displays them.",
+      "escalation": "Calendly developer support",
+      "claim": {
+        "id": "c27",
+        "text": "The Client Secret and Webhook signing key are shown only once, at creation, and can't be retrieved again when editing the app.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+            "title": "Creating an OAuth app",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://developer.calendly.com/docs/authentication/creating-an-oauth-app on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "reason": "Production app rejects your redirect URI",
+      "fix": "Production requires an HTTPS redirect URI - the HTTP/localhost URIs allowed in Sandbox won't work once you switch to a Production app.",
+      "escalation": "developer.calendly.com docs",
+      "claim": {
+        "id": "c28",
+        "text": "For the Production environment, the redirect URI must be HTTPS; only Sandbox allows HTTP with a localhost domain.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+            "title": "Creating an OAuth app",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://developer.calendly.com/docs/authentication/creating-an-oauth-app on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    }
+  ],
+  "whileYouWait": [
+    {
+      "id": "c29",
+      "text": "There's no review to wait on - a Sandbox app works immediately for development, and a Production app works immediately once created.",
+      "label": "tested",
+      "sources": [
+        {
+          "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+          "title": "Creating an OAuth app",
+          "type": "official",
+          "accessedOn": "2026-10-25",
+          "publishedYear": 2026,
+          "oldSource": false,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": "Fetched https://developer.calendly.com/docs/authentication/creating-an-oauth-app on 2026-10-25; the required terms were present.",
+      "uncertainReason": null,
+      "checked": "unchecked"
+    }
+  ],
+  "keepsComingBack": [],
+  "hardToUndo": [
+    {
+      "id": "c30",
+      "text": "The Client Secret and Webhook signing key can only be viewed once, at app creation - there's no way to retrieve them again later.",
+      "label": "tested",
+      "sources": [
+        {
+          "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+          "title": "Creating an OAuth app",
+          "type": "official",
+          "accessedOn": "2026-10-25",
+          "publishedYear": 2026,
+          "oldSource": false,
+          "recheck": "confirmed"
+        }
+      ],
+      "testNote": "Fetched https://developer.calendly.com/docs/authentication/creating-an-oauth-app on 2026-10-25; the required terms were present.",
+      "uncertainReason": null,
+      "checked": "unchecked"
+    }
+  ],
+  "derived": {
+    "unverifiedClaimIds": [
+      "c10",
+      "c11",
+      "c12",
+      "c13",
+      "c14",
+      "c15",
+      "c16",
+      "c17",
+      "c18"
+    ],
+    "sources": [
+      {
+        "url": "https://developer.calendly.com/docs/authentication/creating-an-oauth-app",
+        "title": "Creating an OAuth app",
+        "type": "official",
+        "accessedOn": "2026-10-25",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://calendly.com/partners/contact",
+        "title": "Partner Inquiry",
+        "type": "vendor",
+        "accessedOn": "2026-10-25",
+        "publishedYear": null,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://developer.calendly.com/docs/authentication/scopes",
+        "title": "Scopes",
+        "type": "official",
+        "accessedOn": "2026-10-25",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "mismatch"
+      }
+    ]
+  },
+  "tile": {
+    "tier": 1,
+    "effort": {
+      "min": 7.5,
+      "max": 19,
+      "unit": "hours",
+      "basis": "estimated",
+      "claimId": null
+    },
+    "wait": null,
+    "gated": false,
+    "customerAdmin": "unknown"
+  }
+}
