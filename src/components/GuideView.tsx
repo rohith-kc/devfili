@@ -153,6 +153,11 @@ export function GuideSections({ guide }: { guide: Guide }) {
                     {new URL(step.linkUrl).hostname}
                   </a>
                 )}
+                {step.helper && (
+                  <a href={`#helper-${step.helper}`} className="focus-ring mt-1 block text-xs text-accent hover:underline">
+                    {step.owner === "agent_drafted" ? "Draft this in the sidebar →" : "Open the checklist →"}
+                  </a>
+                )}
                 {step.claims.length > 0 && (
                   <ul className="mt-1 flex flex-col gap-1">
                     {step.claims.map((c) => (

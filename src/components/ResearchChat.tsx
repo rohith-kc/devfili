@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import type { Guide } from "@/lib/schema";
 import { GuideView } from "./GuideView";
 
@@ -165,7 +166,8 @@ export function ResearchChat() {
         Check an app
       </button>
 
-      {open && (
+      {open &&
+        createPortal(
         <div className="fixed inset-0 z-50 flex justify-end bg-black/40" role="presentation" onClick={close}>
           <div
             role="dialog"
@@ -296,8 +298,9 @@ export function ResearchChat() {
               )}
             </div>
           </div>
-        </div>
-      )}
+        </div>,
+        document.body
+        )}
     </>
   );
 }
