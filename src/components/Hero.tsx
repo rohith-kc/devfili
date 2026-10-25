@@ -1,20 +1,27 @@
 export function Hero() {
   return (
-    <section className="mx-auto max-w-5xl px-6 pt-14 pb-10">
-      <h1 className="max-w-2xl text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-        How hard is it to get your OAuth app approved?
-      </h1>
-      <ul className="mt-6 flex flex-col gap-2 text-base text-zinc-600 dark:text-zinc-400 sm:flex-row sm:gap-8">
-        <li>
-          <span className="font-medium text-foreground">Size it</span> &mdash; difficulty tier, your time, and the wait
-        </li>
-        <li>
-          <span className="font-medium text-foreground">Prepare it</span> &mdash; prerequisites and every step, with an owner
-        </li>
-        <li>
-          <span className="font-medium text-foreground">Share it</span> &mdash; the three approval gates and who clears each one
-        </li>
-      </ul>
+    <section className="relative overflow-hidden border-b border-border bg-foreground text-background">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.07]"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+        }}
+      />
+      <div className="relative mx-auto max-w-6xl px-6 py-20 text-center sm:py-28">
+        <span className="font-mono-label inline-block rounded-full border border-background/20 px-3 py-1 text-xs uppercase tracking-wide text-background/70">
+          9 apps reviewed &middot; live research for the rest
+        </span>
+        <h1 className="mx-auto mt-6 max-w-3xl text-4xl font-semibold tracking-tight sm:text-6xl">
+          Get your OAuth app approved <span className="text-accent">swiftly</span>
+        </h1>
+        <p className="mx-auto mt-5 max-w-xl text-base text-background/70 sm:text-lg">
+          Difficulty tier, your time, the wait, and the three approval gates &mdash; for Zoom, Slack, HubSpot, and
+          six more, with evidence you can check yourself.
+        </p>
+      </div>
     </section>
   );
 }

@@ -1,17 +1,17 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { AppGrid } from "@/components/AppGrid";
+import { LibraryBrowser } from "@/components/LibraryBrowser";
 import { listLibraryGuides } from "@/lib/content";
 
 export default function Home() {
   const items = listLibraryGuides();
 
   return (
-    <div className="flex min-h-full flex-1 flex-col bg-zinc-50 dark:bg-zinc-950">
+    <div className="flex min-h-full flex-1 flex-col bg-background">
       <Header />
       <main className="flex-1">
         <Hero />
-        <AppGrid items={items} />
+        <LibraryBrowser items={items} />
       </main>
     </div>
   );

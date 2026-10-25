@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import type { Claim, Guide } from "@/lib/schema";
 import { rangeLabel, GATE_LABEL } from "@/lib/format";
+import { AppIcon } from "./AppIcon";
 import { EvidenceBadge } from "./EvidenceBadge";
 import { OwnerTag } from "./OwnerTag";
 import { Verdict } from "./Verdict";
@@ -24,7 +25,7 @@ function Section({
   children: ReactNode;
 }) {
   return (
-    <section id={id} aria-labelledby={`${id}-heading`} className="border-t border-zinc-200 py-8 dark:border-zinc-800">
+    <section id={id} aria-labelledby={`${id}-heading`} className="border-t border-border py-8">
       <h2 id={`${id}-heading`} className="mb-3 text-lg font-semibold text-foreground">
         {title}
       </h2>
@@ -38,15 +39,20 @@ export function GuideView({ guide }: { guide: Guide }) {
     <article className="mx-auto max-w-3xl px-6 pb-20">
       <header className="pt-10 pb-6">
         {guide.sample && (
-          <span className="mb-3 inline-block rounded border border-dashed border-amber-400 px-2 py-0.5 text-xs font-medium text-amber-700 dark:border-amber-600 dark:text-amber-400">
+          <span className="mb-3 inline-block rounded-full border border-dashed border-amber-400 px-2 py-0.5 text-xs font-medium text-amber-700 dark:border-amber-600 dark:text-amber-400">
             Sample
           </span>
         )}
-        <h1 className="text-2xl font-semibold tracking-tight text-foreground">{guide.app.name}</h1>
-        <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-          Last verified {guide.lastVerifiedOn}
-          {guide.handVerified && ` · Hand-verified by ${guide.handVerified.by} on ${guide.handVerified.on}`}
-        </p>
+        <div className="flex items-center gap-3">
+          <AppIcon slug={guide.app.slug} name={guide.app.name} size={44} />
+          <div>
+            <h1 className="text-2xl font-semibold tracking-tight text-foreground">{guide.app.name}</h1>
+            <p className="text-sm text-muted">
+              Last verified {guide.lastVerifiedOn}
+              {guide.handVerified && ` · Hand-verified by ${guide.handVerified.by} on ${guide.handVerified.on}`}
+            </p>
+          </div>
+        </div>
       </header>
 
       <Verdict guide={guide} />
@@ -62,7 +68,7 @@ export function GuideView({ guide }: { guide: Guide }) {
         {guide.managedApp.claim && <ul className="flex flex-col gap-2"><ClaimLine claim={guide.managedApp.claim} /></ul>}
         {guide.managedApp.whatYouLose.length > 0 && (
           <>
-            <h3 className="mt-4 text-sm font-medium text-zinc-500 dark:text-zinc-400">What you lose with a managed app</h3>
+            <h3 className="mt-4 text-sm font-medium text-muted">What you lose with a managed app</h3>
             <ul className="mt-1 flex flex-col gap-2">
               {guide.managedApp.whatYouLose.map((c) => (
                 <ClaimLine key={c.id} claim={c} />
@@ -72,7 +78,7 @@ export function GuideView({ guide }: { guide: Guide }) {
         )}
         {guide.managedApp.whenToSwitch.length > 0 && (
           <>
-            <h3 className="mt-4 text-sm font-medium text-zinc-500 dark:text-zinc-400">When to switch to your own app</h3>
+            <h3 className="mt-4 text-sm font-medium text-muted">When to switch to your own app</h3>
             <ul className="mt-1 flex flex-col gap-2">
               {guide.managedApp.whenToSwitch.map((c) => (
                 <ClaimLine key={c.id} claim={c} />
@@ -94,7 +100,7 @@ export function GuideView({ guide }: { guide: Guide }) {
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm">
             <thead>
-              <tr className="border-b border-zinc-200 text-xs uppercase tracking-wide text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
+              <tr className="font-mono-label border-b border-border text-xs uppercase text-muted">
                 <th className="py-2 pr-3 font-medium">Scope</th>
                 <th className="py-2 pr-3 font-medium">Allows</th>
                 <th className="py-2 pr-3 font-medium">Needed for</th>
@@ -103,10 +109,10 @@ export function GuideView({ guide }: { guide: Guide }) {
             </thead>
             <tbody>
               {guide.scopes.map((s, i) => (
-                <tr key={i} className="border-b border-zinc-100 align-top last:border-0 dark:border-zinc-900">
-                  <td className="py-2 pr-3 font-mono text-xs text-foreground">{s.scope}</td>
-                  <td className="py-2 pr-3 text-zinc-600 dark:text-zinc-400">{s.allows}</td>
-                  <td className="py-2 pr-3 text-zinc-600 dark:text-zinc-400">{s.neededFor}</td>
+                <tr key={i} className="border-b border-border/60 align-top last:border-0">
+                  <td className="font-mono-label py-2 pr-3 text-xs text-foreground">{s.scope}</td>
+                  <td className="py-2 pr-3 text-muted">{s.allows}</td>
+                  <td className="py-2 pr-3 text-muted">{s.neededFor}</td>
                   <td className="py-2 pr-2">
                     <EvidenceBadge claim={s.claim} />
                   </td>
@@ -132,7 +138,7 @@ export function GuideView({ guide }: { guide: Guide }) {
         <ol className="flex flex-col gap-4">
           {guide.steps.map((step) => (
             <li key={step.n} className="flex gap-3">
-              <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-xs font-semibold text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400">
+              <span className="font-mono-label mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/10 text-xs font-semibold text-accent">
                 {step.n}
               </span>
               <div className="flex-1">
@@ -140,10 +146,10 @@ export function GuideView({ guide }: { guide: Guide }) {
                   <h3 className="text-sm font-medium text-foreground">{step.title}</h3>
                   <OwnerTag owner={step.owner} />
                   {step.effort && (
-                    <span className="text-xs text-zinc-500 dark:text-zinc-400">{rangeLabel(step.effort)}</span>
+                    <span className="text-xs text-muted">{rangeLabel(step.effort)}</span>
                   )}
                 </div>
-                <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">{step.detail}</p>
+                <p className="mt-1 text-sm text-muted">{step.detail}</p>
                 {step.linkUrl && (
                   <a
                     href={step.linkUrl}
@@ -157,7 +163,7 @@ export function GuideView({ guide }: { guide: Guide }) {
                 {step.claims.length > 0 && (
                   <ul className="mt-1 flex flex-col gap-1">
                     {step.claims.map((c) => (
-                      <li key={c.id} className="flex items-start gap-2 text-xs text-zinc-500 dark:text-zinc-400">
+                      <li key={c.id} className="flex items-start gap-2 text-xs text-muted">
                         <span className="flex-1">{c.text}</span>
                         <EvidenceBadge claim={c} />
                       </li>
@@ -178,8 +184,8 @@ export function GuideView({ guide }: { guide: Guide }) {
             <p className="mb-1 text-sm text-foreground">
               Applies: <span className="font-medium">{GATE_LABEL[gate.applies]}</span>
             </p>
-            {gate.who && <p className="text-sm text-zinc-600 dark:text-zinc-400">Who: {gate.who}</p>}
-            {gate.what && <p className="text-sm text-zinc-600 dark:text-zinc-400">What: {gate.what}</p>}
+            {gate.who && <p className="text-sm text-muted">Who: {gate.who}</p>}
+            {gate.what && <p className="text-sm text-muted">What: {gate.what}</p>}
             {gate.claims.length > 0 && (
               <ul className="mt-2 flex flex-col gap-2">
                 {gate.claims.map((c) => (
@@ -195,12 +201,12 @@ export function GuideView({ guide }: { guide: Guide }) {
         <ul className="flex flex-col gap-4">
           {guide.stuckPoints.map((sp, i) => (
             <li key={i}>
-              <p className="flex items-start gap-2 text-sm font-medium text-foreground">
+              <div className="flex items-start gap-2 text-sm font-medium text-foreground">
                 <span className="flex-1">{sp.reason}</span>
                 <EvidenceBadge claim={sp.claim} />
-              </p>
-              <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">{sp.fix}</p>
-              {sp.escalation && <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-500">Escalate: {sp.escalation}</p>}
+              </div>
+              <p className="mt-1 text-sm text-muted">{sp.fix}</p>
+              {sp.escalation && <p className="mt-1 text-xs text-muted">Escalate: {sp.escalation}</p>}
             </li>
           ))}
         </ul>
@@ -208,7 +214,7 @@ export function GuideView({ guide }: { guide: Guide }) {
 
       <Section id="good-to-know" title="Good to know">
         {[...guide.whileYouWait, ...guide.keepsComingBack, ...guide.hardToUndo].length === 0 ? (
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">Nothing recurring or hard-to-undo turned up in the research for this one.</p>
+          <p className="text-sm text-muted">Nothing recurring or hard-to-undo turned up in the research for this one.</p>
         ) : (
           <ul className="flex flex-col gap-2">
             {[...guide.whileYouWait, ...guide.keepsComingBack, ...guide.hardToUndo].map((c) => (
@@ -230,7 +236,7 @@ export function GuideView({ guide }: { guide: Guide }) {
               >
                 {s.title}
               </a>
-              <span className="ml-1 text-xs text-zinc-500 dark:text-zinc-400">({new URL(s.url).hostname})</span>
+              <span className="ml-1 text-xs text-muted">({new URL(s.url).hostname})</span>
             </li>
           ))}
         </ul>
