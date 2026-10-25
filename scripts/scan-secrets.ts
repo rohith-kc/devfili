@@ -6,7 +6,7 @@ const ROOT = process.cwd();
 
 // These two files document or implement the patterns below and would
 // otherwise match their own pattern text.
-const ALLOWLIST = new Set(["scripts/scan-secrets.ts", "docs/SPEC.md"]);
+const ALLOWLIST = new Set(["scripts/scan-secrets.ts", "docs/SPEC.md", "src/lib/safety/secrets.ts"]);
 
 const PATTERNS: Array<{ name: string; re: RegExp }> = [
   { name: "Gemini AQ-format key", re: /AQ\.[A-Za-z0-9_-]{20,}/ },
