@@ -4,6 +4,7 @@ import type { Guide } from "@/lib/schema";
 import { tierLabel, rangeLabel } from "@/lib/format";
 import { TIER_EXPLAIN, GATED_EXPLAIN, CUSTOMER_ADMIN_EXPLAIN } from "@/lib/glossary";
 import { AppIcon } from "./AppIcon";
+import { SaveButton } from "./SaveButton";
 
 const TIER_DOT: Record<number, string> = {
   1: "bg-emerald-500",
@@ -16,11 +17,15 @@ export function AppTile({ app, guide }: { app: AppMeta; guide: Guide }) {
   const { tile } = guide;
 
   return (
+    <div className="relative">
+      <div className="absolute right-4 top-4 z-10">
+        <SaveButton guide={guide} variant="icon" />
+      </div>
     <Link
       href={`/guide/${app.slug}`}
-      className="focus-ring group flex flex-col gap-4 rounded-2xl border border-border bg-surface p-5 transition-all hover:-translate-y-0.5 hover:border-accent hover:shadow-md"
+      className="focus-ring group flex h-full flex-col gap-4 rounded-2xl border border-border bg-surface p-5 transition-all hover:-translate-y-0.5 hover:border-accent hover:shadow-md"
     >
-      <div className="flex items-start justify-between gap-2">
+      <div className="flex items-start justify-between gap-2 pr-10">
         <AppIcon slug={app.slug} name={app.name} websiteUrl={app.websiteUrl} />
         {guide.handVerified && (
           <span className="font-mono-label shrink-0 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold uppercase text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400">
@@ -68,5 +73,6 @@ export function AppTile({ app, guide }: { app: AppMeta; guide: Guide }) {
         </div>
       )}
     </Link>
+    </div>
   );
 }

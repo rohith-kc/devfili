@@ -4,6 +4,37 @@ import { TIER_EXPLAIN, CUSTOMER_ADMIN_EXPLAIN } from "@/lib/glossary";
 import { EvidenceBadge } from "./EvidenceBadge";
 import { InfoTip } from "./InfoTip";
 
+const TIER_DOT: Record<number, string> = {
+  1: "bg-emerald-500",
+  2: "bg-blue-500",
+  3: "bg-amber-500",
+  4: "bg-rose-500",
+};
+
+const GATE_NAME = { provider: "Provider review", customerAdmin: "Customer admin", endUser: "End user" } as const;
+
+function Stat({
+  label,
+  value,
+  basis,
+}: {
+  label: string;
+  value: string;
+  basis: string | null;
+}) {
+  return (
+    <div className="rounded-xl border border-border bg-background p-4">
+      <dt className="font-mono-label text-[11px] uppercase text-muted">{label}</dt>
+      <dd className="mt-1 text-2xl font-semibold tracking-tight text-foreground">{value}</dd>
+      {basis && (
+        <span className="font-mono-label mt-2 inline-block rounded-full border border-border px-2 py-0.5 text-[10px] uppercase text-muted">
+          {basis}
+        </span>
+      )}
+    </div>
+  );
+}
+
 export function Verdict({ guide }: { guide: Guide }) {
   const { verdict, completeness } = guide;
 
@@ -16,8 +47,9 @@ export function Verdict({ guide }: { guide: Guide }) {
         Verdict
       </h2>
       <div className="flex flex-wrap items-center gap-3">
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-3 py-1">
-          <span className="font-mono-label text-sm font-semibold uppercase text-accent">{tierLabel(verdict.tier)}</span>
+        <span className="inline-flex items-center gap-2 rounded-full bg-foreground px-3.5 py-1.5 text-background">
+          <span aria-hidden="true" className={`h-2 w-2 rounded-full ${TIER_DOT[verdict.tier ?? 0] ?? "bg-zinc-400"}`} />
+          <span className="font-mono-label text-xs font-semibold uppercase">{tierLabel(verdict.tier)}</span>
           {verdict.tier && <InfoTip label={tierLabel(verdict.tier)}>{TIER_EXPLAIN[verdict.tier]}</InfoTip>}
         </span>
         <span className="text-sm text-muted">
@@ -30,50 +62,40 @@ export function Verdict({ guide }: { guide: Guide }) {
         )}
       </div>
 
-      <div className="mt-4 flex items-start gap-2 text-sm text-foreground">
+      <div className="mt-4 flex items-start gap-2 text-[15px] leading-relaxed text-foreground">
         <span className="flex-1">{verdict.tierReason.text}</span>
         <EvidenceBadge claim={verdict.tierReason} />
       </div>
 
-      <dl className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div>
-          <dt className="font-mono-label text-xs uppercase text-muted">Your time</dt>
-          <dd className="text-lg font-semibold text-foreground">
-            {rangeLabel(verdict.effort)}
-            {verdict.effort && (
-              <span className="font-mono-label ml-2 rounded-full bg-background px-2 py-0.5 text-xs font-normal text-muted">
-                {BASIS_LABEL[verdict.effort.basis]}
-              </span>
-            )}
-          </dd>
-        </div>
-        <div>
-          <dt className="font-mono-label text-xs uppercase text-muted">Waiting on the provider</dt>
-          <dd className="text-lg font-semibold text-foreground">
-            {rangeLabel(verdict.wait)}
-            {verdict.wait && (
-              <span className="font-mono-label ml-2 rounded-full bg-background px-2 py-0.5 text-xs font-normal text-muted">
-                {BASIS_LABEL[verdict.wait.basis]}
-              </span>
-            )}
-          </dd>
-        </div>
+      <dl className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <Stat
+          label="Your time"
+          value={rangeLabel(verdict.effort)}
+          basis={verdict.effort ? BASIS_LABEL[verdict.effort.basis] : null}
+        />
+        <Stat
+          label="Waiting on the provider"
+          value={rangeLabel(verdict.wait)}
+          basis={verdict.wait ? BASIS_LABEL[verdict.wait.basis] : null}
+        />
       </dl>
 
-      <div className="mt-5 flex flex-wrap gap-4 border-t border-border pt-4 text-sm">
+      <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-3">
         {(["provider", "customerAdmin", "endUser"] as const).map((gate) => (
-          <span key={gate} className="inline-flex items-center gap-1 text-muted">
-            {gate === "provider" ? "Provider review" : gate === "customerAdmin" ? "Customer admin" : "End user"}:{" "}
-            <span className="font-medium text-foreground">{GATE_LABEL[verdict.gates[gate]]}</span>
-            {gate === "customerAdmin" && <InfoTip label="Customer admin">{CUSTOMER_ADMIN_EXPLAIN}</InfoTip>}
-          </span>
+          <div key={gate} className="flex items-center justify-between rounded-xl border border-border px-3.5 py-2.5 text-sm">
+            <span className="inline-flex items-center gap-1 text-muted">
+              {GATE_NAME[gate]}
+              {gate === "customerAdmin" && <InfoTip label="Customer admin">{CUSTOMER_ADMIN_EXPLAIN}</InfoTip>}
+            </span>
+            <span className="font-semibold text-foreground">{GATE_LABEL[verdict.gates[gate]]}</span>
+          </div>
         ))}
       </div>
 
       {verdict.scopeForks.length > 0 && (
-        <div className="mt-5 border-t border-border pt-4">
+        <div className="mt-4 flex flex-col gap-2 rounded-xl bg-accent/[0.06] p-4">
           {verdict.scopeForks.map((fork, i) => (
-            <div key={i} className="flex items-start gap-2 text-sm text-muted">
+            <div key={i} className="flex items-start gap-2 text-sm text-foreground">
               <span className="flex-1">{fork.text}</span>
               <EvidenceBadge claim={fork} />
             </div>

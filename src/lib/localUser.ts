@@ -103,6 +103,56 @@ export function getSavedGuides(): SavedGuide[] {
   return parseSaved(safeGet(SAVED_GUIDES_KEY));
 }
 
+const DEVICE_KEY = "devfili:device-id";
+
+/** Random id for this browser; saved guides in the database are keyed by it. */
+export function getDeviceId(): string | null {
+  if (typeof window === "undefined") return null;
+  let id = safeGet(DEVICE_KEY);
+  if (!id) {
+    id = crypto.randomUUID();
+    safeSet(DEVICE_KEY, id);
+  }
+  return id;
+}
+
+/** Best-effort: the browser copy stays the source of truth if the database is down. */
+function pushToServer(method: "POST" | "DELETE", guide: Guide | null, slug?: string): void {
+  const deviceId = getDeviceId();
+  if (!deviceId) return;
+  const request =
+    method === "POST"
+      ? fetch("/api/saved", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ deviceId, guide }),
+        })
+      : fetch(`/api/saved?device=${deviceId}&slug=${encodeURIComponent(slug ?? "")}`, { method: "DELETE" });
+  request.catch(() => {});
+}
+
+/** Merges the database copy into this browser's list (union by slug, newest first). */
+export async function syncSavedFromServer(): Promise<void> {
+  const deviceId = getDeviceId();
+  if (!deviceId) return;
+  try {
+    const res = await fetch(`/api/saved?device=${deviceId}`);
+    if (!res.ok) return;
+    const body = (await res.json()) as { saved: SavedGuide[] };
+    const local = getSavedGuides();
+    const localSlugs = new Set(local.map((g) => g.slug));
+    const remoteSlugs = new Set(body.saved.map((g) => g.slug));
+    const merged = [...local, ...body.saved.filter((g) => !localSlugs.has(g.slug))]
+      .sort((a, b) => b.savedAt.localeCompare(a.savedAt))
+      .slice(0, 25);
+    safeSet(SAVED_GUIDES_KEY, JSON.stringify(merged));
+    notify();
+    for (const g of local) if (!remoteSlugs.has(g.slug)) pushToServer("POST", g.guide);
+  } catch {
+    // offline or database unavailable: keep the local list
+  }
+}
+
 export function saveGuide(guide: Guide): void {
   if (typeof window === "undefined") return;
   const existing = getSavedGuides().filter((g) => g.slug !== guide.app.slug);
@@ -112,6 +162,7 @@ export function saveGuide(guide: Guide): void {
   ].slice(0, 25);
   safeSet(SAVED_GUIDES_KEY, JSON.stringify(next));
   notify();
+  pushToServer("POST", guide);
 }
 
 export function removeSavedGuide(slug: string): void {
@@ -119,6 +170,7 @@ export function removeSavedGuide(slug: string): void {
   const next = getSavedGuides().filter((g) => g.slug !== slug);
   safeSet(SAVED_GUIDES_KEY, JSON.stringify(next));
   notify();
+  pushToServer("DELETE", null, slug);
 }
 
 export function isGuideSaved(slug: string): boolean {

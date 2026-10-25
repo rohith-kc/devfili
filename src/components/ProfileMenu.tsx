@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { AppIcon } from "./AppIcon";
@@ -8,6 +8,7 @@ import {
   clearUsername,
   removeSavedGuide,
   setUsername,
+  syncSavedFromServer,
   useHydrated,
   useSavedGuides,
   useUsername,
@@ -19,6 +20,10 @@ export function ProfileMenu() {
   const guides = useSavedGuides();
   const [open, setOpen] = useState(false);
   const [draft, setDraft] = useState("");
+
+  useEffect(() => {
+    void syncSavedFromServer();
+  }, []);
 
   function saveName(e: React.FormEvent) {
     e.preventDefault();
@@ -94,7 +99,7 @@ export function ProfileMenu() {
                             <AppIcon slug={g.slug} name={g.name} websiteUrl={g.guide.app.websiteUrl} />
                             <span className="min-w-0 flex-1">
                               <Link
-                                href="/my-guides"
+                                href={`/saved/${g.slug}`}
                                 onClick={() => setOpen(false)}
                                 className="focus-ring block truncate text-sm font-medium text-foreground hover:underline"
                               >
