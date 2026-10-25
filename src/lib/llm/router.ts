@@ -6,6 +6,9 @@ export interface Env {
   groqBaseUrl: string;
   groqModelDraft: string;
   groqModelFast: string;
+  openrouterApiKey: string;
+  openrouterBaseUrl: string;
+  openrouterModel: string;
   providerResearch: "gemini" | "groq";
   providerCheck: "gemini" | "groq";
 }
@@ -21,6 +24,9 @@ export function loadEnv(): Env {
     groqBaseUrl: process.env.GROQ_BASE_URL || "https://api.groq.com/openai/v1",
     groqModelDraft: process.env.GROQ_MODEL_DRAFT || "openai/gpt-oss-120b",
     groqModelFast: process.env.GROQ_MODEL_FAST || "openai/gpt-oss-20b",
+    openrouterApiKey: process.env.OPENROUTER_API_KEY ?? "",
+    openrouterBaseUrl: process.env.OPENROUTER_BASE_URL || "https://openrouter.ai/api/v1",
+    openrouterModel: process.env.OPENROUTER_MODEL || "meta-llama/llama-3.3-70b-instruct",
     providerResearch: process.env.PROVIDER_RESEARCH === "groq" ? "groq" : "gemini",
     providerCheck: process.env.PROVIDER_CHECK === "groq" ? "groq" : "gemini",
   };

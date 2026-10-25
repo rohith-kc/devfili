@@ -3,6 +3,7 @@ import path from "node:path";
 import { z } from "zod";
 import { callWithRetry, type Env } from "../llm/router";
 import { groqComplete } from "../llm/groq";
+import { openrouterComplete } from "../llm/openrouter";
 import { parseJsonWithSchema } from "../llm/json";
 import { normalizeQuery, slugify } from "../normalize";
 import { resolvePrompt } from "./prompts";
@@ -54,17 +55,28 @@ export function findLibraryMatch(query: string, apps: AppsEntry[] = loadApps()):
 }
 
 /** No model call for a library match. Otherwise a single Groq FAST,
- * JSON-object-mode call to disambiguate the query into a product. */
+ * JSON-object-mode call to disambiguate the query into a product, falling
+ * back once to OpenRouter (when configured) if Groq is unavailable. */
 export async function resolveApp(query: string, env: Env, today: string): Promise<ResolveResult> {
   const libraryMatch = findLibraryMatch(query);
   if (libraryMatch) return { type: "library", slug: libraryMatch };
 
   const prompt = resolvePrompt(today, query);
-  const result = await callWithRetry("resolve", "groq", env.groqModelFast, () =>
-    groqComplete({ apiKey: env.groqApiKey, baseURL: env.groqBaseUrl, model: env.groqModelFast, prompt, jsonMode: true })
-  );
+  let text: string;
+  try {
+    const result = await callWithRetry("resolve", "groq", env.groqModelFast, () =>
+      groqComplete({ apiKey: env.groqApiKey, baseURL: env.groqBaseUrl, model: env.groqModelFast, prompt, jsonMode: true })
+    );
+    text = result.text;
+  } catch (err) {
+    if (!env.openrouterApiKey) throw err;
+    const result = await callWithRetry("resolve-fallback", "openrouter", env.openrouterModel, () =>
+      openrouterComplete({ apiKey: env.openrouterApiKey, baseURL: env.openrouterBaseUrl, model: env.openrouterModel, prompt, jsonMode: true })
+    );
+    text = result.text;
+  }
 
-  const parsed = parseJsonWithSchema(result.text, ResolveResponse);
+  const parsed = parseJsonWithSchema(text, ResolveResponse);
   if (!parsed.success) {
     return { type: "not_found", note: "Could not understand the app you meant. Try naming it more specifically." };
   }

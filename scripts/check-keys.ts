@@ -3,9 +3,13 @@ import { GoogleGenAI } from "@google/genai";
 import { loadEnvLocal } from "./env";
 
 const env = loadEnvLocal();
-const secrets = [env.GEMINI_API_KEY, env.GROQ_API_KEY, env.SUPABASE_SERVICE_ROLE_KEY, env.NEXT_PUBLIC_SUPABASE_ANON_KEY].filter(
-  (v): v is string => !!v && v.length > 8
-);
+const secrets = [
+  env.GEMINI_API_KEY,
+  env.GROQ_API_KEY,
+  env.OPENROUTER_API_KEY,
+  env.SUPABASE_SERVICE_ROLE_KEY,
+  env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+].filter((v): v is string => !!v && v.length > 8);
 
 function redact(text: string): string {
   let out = text;
@@ -114,6 +118,50 @@ async function checkGroq() {
   }
 }
 
+async function checkOpenRouter() {
+  const key = env.OPENROUTER_API_KEY;
+  if (!key) {
+    record("OpenRouter", true, "OPENROUTER_API_KEY is blank - the optional third fallback tier is disabled. This is fine; Gemini and Groq still work without it.");
+    return;
+  }
+  const baseURL = env.OPENROUTER_BASE_URL || "https://openrouter.ai/api/v1";
+  const client = new OpenAI({ apiKey: key, baseURL, defaultHeaders: { "HTTP-Referer": "https://devfili.app", "X-Title": "DevFili" } });
+  const model = env.OPENROUTER_MODEL || "meta-llama/llama-3.3-70b-instruct";
+
+  try {
+    const completion = await client.chat.completions.create({
+      model,
+      messages: [{ role: "user", content: "Reply with the single word: pong" }],
+      max_tokens: 5,
+    });
+    const text = completion.choices[0]?.message?.content ?? "";
+    record(`OpenRouter: tiny completion (${model})`, true, `model replied "${text.trim().slice(0, 30)}"`);
+  } catch (err) {
+    record(
+      `OpenRouter: tiny completion (${model})`,
+      false,
+      `${describeError(err)}. Next step: confirm OPENROUTER_MODEL is a real, available model id - see https://openrouter.ai/models - and that the key has credit/access.`
+    );
+    return;
+  }
+
+  try {
+    const completion = await client.chat.completions.create({
+      model: `${model}:online`,
+      messages: [{ role: "user", content: "Search the web for today's top technology news headline and tell me what it is." }],
+      max_tokens: 200,
+    });
+    const text = completion.choices[0]?.message?.content ?? "";
+    record(`OpenRouter: web search (${model}:online)`, true, `model replied "${text.trim().slice(0, 40)}"`);
+  } catch (err) {
+    record(
+      `OpenRouter: web search (${model}:online)`,
+      false,
+      `${describeError(err)}. Next step: this is OpenRouter's web-search fallback, used only as the last research/check tier after Gemini and Groq both fail.`
+    );
+  }
+}
+
 function printAqKeyAdvice() {
   console.log(
     "\nThis Gemini key starts with 'AQ.' - AI Studio's newer key format. Some of these keys return 401 ACCESS_TOKEN_TYPE_UNSUPPORTED on the SDK/REST endpoint used here."
@@ -209,6 +257,8 @@ async function main() {
   await checkGroq();
   console.log("");
   await checkGemini();
+  console.log("");
+  await checkOpenRouter();
   console.log("");
   await checkSupabase();
   console.log("");

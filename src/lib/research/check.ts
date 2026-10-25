@@ -3,6 +3,7 @@ import type { Env } from "../llm/router";
 import { callWithRetry } from "../llm/router";
 import { geminiGenerate } from "../llm/gemini";
 import { groqComplete } from "../llm/groq";
+import { openrouterComplete } from "../llm/openrouter";
 import { parseJsonWithSchema } from "../llm/json";
 import type { CheckResult } from "../schema";
 import { checkPrompt, fallbackCheckPrompt } from "./prompts";
@@ -73,6 +74,23 @@ async function runGroqFallbackCheck(env: Env, today: string, batch: ClaimForChec
   return parsed.data;
 }
 
+/** Same excerpts-only shape as the Groq fallback, but via OpenRouter - the
+ * third and last fact-check tier, tried only when Groq's fallback also
+ * fails and an OpenRouter key is configured. */
+async function runOpenRouterFallbackCheck(env: Env, today: string, batch: ClaimForCheck[]): Promise<CheckResult[]> {
+  if (!env.openrouterApiKey) throw new Error("check-fallback-2: no OpenRouter key configured");
+  const prompt = fallbackCheckPrompt(
+    today,
+    JSON.stringify(batch.map((c) => ({ claimId: c.claimId, text: c.text, excerpts: c.excerpts })))
+  );
+  const result = await callWithRetry("check-fallback-2", "openrouter", env.openrouterModel, () =>
+    openrouterComplete({ apiKey: env.openrouterApiKey, baseURL: env.openrouterBaseUrl, model: env.openrouterModel, prompt, jsonMode: true })
+  );
+  const parsed = parseJsonWithSchema(result.text, FallbackCheckResultsResponse);
+  if (!parsed.success) throw new Error(`check-fallback-2: could not parse OpenRouter output: ${parsed.error}`);
+  return parsed.data;
+}
+
 export interface CheckOutcome {
   results: CheckResult[];
   usedFallback: boolean;
@@ -81,10 +99,11 @@ export interface CheckOutcome {
 /** Runs the independent fact-check stage over (at most) the 40 highest-
  * priority claims, batched by distinct URL count. Uses Gemini with
  * urlContext when env.providerCheck is 'gemini' (falling back to the
- * excerpts-only Groq checker if Gemini is unavailable); uses the Groq
- * checker directly when env.providerCheck is 'groq'. A batch that fails both
- * paths is left unresolved - the caller treats a missing claimId as not
- * checked. */
+ * excerpts-only Groq checker, then to the same checker via OpenRouter if
+ * configured, if Gemini is unavailable); uses the Groq checker directly
+ * (with the same OpenRouter last resort) when env.providerCheck is 'groq'.
+ * A batch that fails every path is left unresolved - the caller treats a
+ * missing claimId as not checked. */
 export async function runCheck(env: Env, today: string, allClaims: ClaimForCheck[]): Promise<CheckOutcome> {
   const claims = allClaims.slice(0, MAX_CLAIMS);
   if (claims.length === 0) return { results: [], usedFallback: false };
@@ -99,7 +118,11 @@ export async function runCheck(env: Env, today: string, allClaims: ClaimForCheck
       try {
         results.push(...(await runGroqFallbackCheck(env, today, batch)));
       } catch {
-        // leave this batch's claims unresolved
+        try {
+          results.push(...(await runOpenRouterFallbackCheck(env, today, batch)));
+        } catch {
+          // leave this batch's claims unresolved
+        }
       }
       continue;
     }
@@ -110,7 +133,11 @@ export async function runCheck(env: Env, today: string, allClaims: ClaimForCheck
       try {
         results.push(...(await runGroqFallbackCheck(env, today, batch)));
       } catch {
-        // leave this batch's claims unresolved
+        try {
+          results.push(...(await runOpenRouterFallbackCheck(env, today, batch)));
+        } catch {
+          // leave this batch's claims unresolved
+        }
       }
     }
   }

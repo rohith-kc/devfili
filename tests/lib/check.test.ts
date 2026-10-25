@@ -20,6 +20,9 @@ const env: Env = {
   groqBaseUrl: "https://api.groq.com/openai/v1",
   groqModelDraft: "openai/gpt-oss-120b",
   groqModelFast: "openai/gpt-oss-20b",
+  openrouterApiKey: "",
+  openrouterBaseUrl: "https://openrouter.ai/api/v1",
+  openrouterModel: "meta-llama/llama-3.3-70b-instruct",
   providerResearch: "gemini",
   providerCheck: "gemini",
 };
