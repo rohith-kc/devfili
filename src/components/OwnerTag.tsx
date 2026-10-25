@@ -9,7 +9,7 @@ const OWNER_ICON: Record<Step["owner"], string> = {
 
 export function OwnerTag({ owner }: { owner: Step["owner"] }) {
   return (
-    <span className="inline-flex items-center gap-1 rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+    <span className="font-mono-label inline-flex items-center gap-1 rounded-full bg-background px-2 py-0.5 text-[11px] font-medium uppercase text-muted">
       <span aria-hidden="true">{OWNER_ICON[owner]}</span>
       {OWNER_LABEL[owner]}
     </span>

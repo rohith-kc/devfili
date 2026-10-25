@@ -13,7 +13,7 @@ export default async function GuidePage({ params }: PageProps<"/guide/[slug]">) 
   if (!guide) notFound();
 
   return (
-    <div className="flex min-h-full flex-1 flex-col bg-zinc-50 dark:bg-zinc-950">
+    <div className="flex min-h-full flex-1 flex-col bg-background">
       <Header />
       <main className="flex-1">
         <GuideView guide={guide} />
