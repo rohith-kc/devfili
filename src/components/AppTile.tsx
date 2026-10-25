@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { AppMeta } from "@/lib/content";
 import type { Guide } from "@/lib/schema";
 import { tierLabel, rangeLabel } from "@/lib/format";
+import { TIER_EXPLAIN, GATED_EXPLAIN, CUSTOMER_ADMIN_EXPLAIN } from "@/lib/glossary";
 import { AppIcon } from "./AppIcon";
 
 const TIER_DOT: Record<number, string> = {
@@ -20,7 +21,7 @@ export function AppTile({ app, guide }: { app: AppMeta; guide: Guide }) {
       className="focus-ring group flex flex-col gap-4 rounded-2xl border border-border bg-surface p-5 transition-all hover:-translate-y-0.5 hover:border-accent hover:shadow-md"
     >
       <div className="flex items-start justify-between gap-2">
-        <AppIcon slug={app.slug} name={app.name} />
+        <AppIcon slug={app.slug} name={app.name} websiteUrl={app.websiteUrl} />
         {guide.handVerified && (
           <span className="font-mono-label shrink-0 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold uppercase text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400">
             Hand-verified
@@ -30,7 +31,10 @@ export function AppTile({ app, guide }: { app: AppMeta; guide: Guide }) {
 
       <div>
         <h3 className="text-base font-semibold text-foreground">{app.name}</h3>
-        <span className="mt-1 inline-flex items-center gap-1.5 text-sm text-muted">
+        <span
+          className="mt-1 inline-flex items-center gap-1.5 text-sm text-muted"
+          title={tile.tier ? TIER_EXPLAIN[tile.tier as 1 | 2 | 3 | 4] : undefined}
+        >
           <span className={`h-1.5 w-1.5 rounded-full ${TIER_DOT[tile.tier ?? 0] ?? "bg-zinc-400"}`} />
           {tierLabel(tile.tier as 1 | 2 | 3 | 4 | null)}
         </span>
@@ -46,12 +50,18 @@ export function AppTile({ app, guide }: { app: AppMeta; guide: Guide }) {
       {(tile.gated || tile.customerAdmin === "yes") && (
         <div className="flex flex-wrap gap-1.5">
           {tile.gated && (
-            <span className="font-mono-label rounded-full border border-amber-300 px-2 py-0.5 text-[10px] font-medium uppercase text-amber-700 dark:border-amber-700 dark:text-amber-400">
+            <span
+              title={GATED_EXPLAIN}
+              className="font-mono-label rounded-full border border-amber-300 px-2 py-0.5 text-[10px] font-medium uppercase text-amber-700 dark:border-amber-700 dark:text-amber-400"
+            >
               Gated
             </span>
           )}
           {tile.customerAdmin === "yes" && (
-            <span className="font-mono-label rounded-full border border-border px-2 py-0.5 text-[10px] font-medium uppercase text-muted">
+            <span
+              title={CUSTOMER_ADMIN_EXPLAIN}
+              className="font-mono-label rounded-full border border-border px-2 py-0.5 text-[10px] font-medium uppercase text-muted"
+            >
               Customer admin
             </span>
           )}

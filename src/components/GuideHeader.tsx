@@ -10,7 +10,7 @@ export function GuideHeader({ guide }: { guide: Guide }) {
         </span>
       )}
       <div className="flex items-center gap-3">
-        <AppIcon slug={guide.app.slug} name={guide.app.name} size={44} />
+        <AppIcon slug={guide.app.slug} name={guide.app.name} websiteUrl={guide.app.websiteUrl} size={44} />
         <div>
           <h1 className="text-2xl font-semibold tracking-tight text-foreground">{guide.app.name}</h1>
           <p className="text-sm text-muted">

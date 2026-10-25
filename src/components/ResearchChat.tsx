@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Guide } from "@/lib/schema";
 import { GuideView } from "./GuideView";
 
@@ -8,10 +8,24 @@ type Candidate = { name: string; websiteUrl: string | null; description: string 
 type StageState = "pending" | "active" | "done";
 type Stage = { stage: number; message: string; state: StageState };
 
+// Mirrors STAGE_MESSAGES in src/lib/research/pipeline.ts, so the full list
+// (not just "Stage N" placeholders) is visible the instant a search starts,
+// before the first server event arrives.
+const STAGE_MESSAGES: Record<number, string> = {
+  1: "Working out which app you mean",
+  2: "Finding the developer docs and review pages",
+  3: "Reading scopes, requirements and review steps",
+  4: "Looking for delays and rejections others hit",
+  5: "Checking that the pages and steps exist",
+  6: "Writing the guide in the standard format",
+  7: "Checking every claim against its source",
+  8: "Done: open the guide or save it",
+};
+
 const STAGE_COUNT = 8;
 const INITIAL_STAGES: Stage[] = Array.from({ length: STAGE_COUNT }, (_, i) => ({
   stage: i + 1,
-  message: "",
+  message: STAGE_MESSAGES[i + 1],
   state: "pending",
 }));
 
@@ -25,7 +39,14 @@ export function ResearchChat() {
   const [question, setQuestion] = useState<{ text: string; candidates: Candidate[] } | null>(null);
   const [guide, setGuide] = useState<Guide | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [slow, setSlow] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
+
+  useEffect(() => {
+    if (phase !== "running") return;
+    const t = setTimeout(() => setSlow(true), 20000);
+    return () => clearTimeout(t);
+  }, [phase]);
 
   function reset() {
     setPhase("idle");
@@ -44,6 +65,7 @@ export function ResearchChat() {
     setStages(INITIAL_STAGES);
     setQuestion(null);
     setError(null);
+    setSlow(false);
 
     let res: Response;
     try {
@@ -185,7 +207,22 @@ export function ResearchChat() {
 
               {(phase === "running" || phase === "question" || phase === "error") && (
                 <div>
-                  <p className="mb-3 text-sm text-muted">Researching &ldquo;{query}&rdquo;&hellip;</p>
+                  <p className="mb-3 flex items-center gap-2 text-sm text-muted">
+                    {phase === "running" && (
+                      <span className="relative flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+                      </span>
+                    )}
+                    Researching &ldquo;{query}&rdquo;&hellip;
+                  </p>
+                  {slow && phase === "running" && (
+                    <p className="mb-3 rounded-xl border border-border bg-background p-3 text-xs text-muted">
+                      Still working &mdash; a fresh app can take a couple of minutes since we read the real docs and
+                      double-check every claim. If this keeps spinning, the research providers may be rate-limited
+                      right now; try again shortly or browse the reviewed library below.
+                    </p>
+                  )}
                   <ul aria-live="polite" className="flex flex-col gap-1.5">
                     {stages.map((s) => (
                       <li key={s.stage} className="flex items-center gap-2 text-sm">

@@ -1,6 +1,8 @@
 import type { Guide } from "@/lib/schema";
 import { tierLabel, rangeLabel, BASIS_LABEL, GATE_LABEL } from "@/lib/format";
+import { TIER_EXPLAIN, CUSTOMER_ADMIN_EXPLAIN } from "@/lib/glossary";
 import { EvidenceBadge } from "./EvidenceBadge";
+import { InfoTip } from "./InfoTip";
 
 export function Verdict({ guide }: { guide: Guide }) {
   const { verdict, completeness } = guide;
@@ -14,8 +16,9 @@ export function Verdict({ guide }: { guide: Guide }) {
         Verdict
       </h2>
       <div className="flex flex-wrap items-center gap-3">
-        <span className="font-mono-label rounded-full bg-accent/10 px-3 py-1 text-sm font-semibold uppercase text-accent">
-          {tierLabel(verdict.tier)}
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-3 py-1">
+          <span className="font-mono-label text-sm font-semibold uppercase text-accent">{tierLabel(verdict.tier)}</span>
+          {verdict.tier && <InfoTip label={tierLabel(verdict.tier)}>{TIER_EXPLAIN[verdict.tier]}</InfoTip>}
         </span>
         <span className="text-sm text-muted">
           Confidence: <span className="font-medium text-foreground">{verdict.confidence}</span>
@@ -59,9 +62,10 @@ export function Verdict({ guide }: { guide: Guide }) {
 
       <div className="mt-5 flex flex-wrap gap-4 border-t border-border pt-4 text-sm">
         {(["provider", "customerAdmin", "endUser"] as const).map((gate) => (
-          <span key={gate} className="text-muted">
+          <span key={gate} className="inline-flex items-center gap-1 text-muted">
             {gate === "provider" ? "Provider review" : gate === "customerAdmin" ? "Customer admin" : "End user"}:{" "}
             <span className="font-medium text-foreground">{GATE_LABEL[verdict.gates[gate]]}</span>
+            {gate === "customerAdmin" && <InfoTip label="Customer admin">{CUSTOMER_ADMIN_EXPLAIN}</InfoTip>}
           </span>
         ))}
       </div>
