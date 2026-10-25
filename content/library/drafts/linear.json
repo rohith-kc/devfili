@@ -7,7 +7,7 @@
   },
   "kind": "library",
   "sample": false,
-  "lastVerifiedOn": "2026-10-24",
+  "lastVerifiedOn": "2026-10-25",
   "handVerified": null,
   "completeness": {
     "status": "complete",
@@ -24,13 +24,13 @@
           "url": "https://linear.app/developers/oauth-2-0-authentication",
           "title": "OAuth 2.0 authentication",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
           "recheck": "confirmed"
         }
       ],
-      "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+      "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-25; the required terms were present.",
       "uncertainReason": null,
       "checked": "unchecked"
     },
@@ -59,7 +59,7 @@
             "url": "https://linear.app/developers/integration-directory",
             "title": "Integration directory",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
@@ -68,13 +68,13 @@
             "url": "https://linear.app/developers/integration-directory",
             "title": "Integration directory",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://linear.app/developers/integration-directory on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://linear.app/developers/integration-directory on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -91,7 +91,7 @@
           "url": "https://docs.composio.dev/docs/custom-app-vs-managed-app",
           "title": "Managed vs custom auth",
           "type": "vendor",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": null,
           "oldSource": false,
           "recheck": "confirmed"
@@ -122,7 +122,7 @@
             "url": "https://docs.composio.dev/docs/custom-app-vs-managed-app",
             "title": "Managed vs custom auth",
             "type": "vendor",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": null,
             "oldSource": false,
             "recheck": "confirmed"
@@ -145,7 +145,7 @@
             "url": "https://linear.app/developers/oauth-2-0-authentication",
             "title": "OAuth 2.0 authentication",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
@@ -154,13 +154,13 @@
             "url": "https://linear.app/developers/oauth-actor-authorization",
             "title": "OAuth actor authorization",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -175,13 +175,13 @@
             "url": "https://linear.app/developers/oauth-actor-authorization",
             "title": "OAuth actor authorization",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://linear.app/developers/oauth-actor-authorization on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://linear.app/developers/oauth-actor-authorization on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -196,13 +196,13 @@
             "url": "https://linear.app/developers/oauth-2-0-authentication",
             "title": "OAuth 2.0 authentication",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -210,12 +210,137 @@
   },
   "scopes": [
     {
+      "scope": "read",
+      "allows": "Read access for the user's account. Always present - this is the default scope.",
+      "neededFor": "Any integration that reads Linear data.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c12",
+        "text": "read is the default scope, always present, giving read access for the user's account.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://linear.app/developers/oauth-2-0-authentication",
+            "title": "OAuth 2.0 authentication",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "write",
+      "allows": "Write access for the user's account.",
+      "neededFor": "Integrations that need to edit existing issues/data generally; use a narrower scope if you only need to create comments.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c13",
+        "text": "write gives write access for the user's account; Linear suggests a more targeted scope if you only need to create comments.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://linear.app/developers/oauth-2-0-authentication",
+            "title": "OAuth 2.0 authentication",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "issues:create",
+      "allows": "Create new issues and their attachments.",
+      "neededFor": "Integrations that only need to create issues, not edit everything.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c14",
+        "text": "issues:create allows creating new issues and their attachments.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://linear.app/developers/oauth-2-0-authentication",
+            "title": "OAuth 2.0 authentication",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "comments:create",
+      "allows": "Create new issue comments.",
+      "neededFor": "Integrations that only need to post comments.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c15",
+        "text": "comments:create allows creating new issue comments.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://linear.app/developers/oauth-2-0-authentication",
+            "title": "OAuth 2.0 authentication",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "timeSchedule:write",
+      "allows": "Create and modify time schedules.",
+      "neededFor": "On-call/scheduling integrations.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c16",
+        "text": "timeSchedule:write allows creating and modifying time schedules.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://linear.app/developers/oauth-2-0-authentication",
+            "title": "OAuth 2.0 authentication",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
       "scope": "admin",
       "allows": "Full access to admin-level endpoints.",
       "neededFor": "Rarely - Linear's own docs say to never request it unless absolutely needed.",
       "reviewImpact": "unknown",
       "claim": {
-        "id": "c12",
+        "id": "c17",
         "text": "Linear's docs explicitly warn never to request the admin scope unless it's absolutely needed.",
         "label": "tested",
         "sources": [
@@ -223,38 +348,22 @@
             "url": "https://linear.app/developers/oauth-2-0-authentication",
             "title": "OAuth 2.0 authentication",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
-          }
-        ],
-        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
-        "uncertainReason": null,
-        "checked": "unchecked"
-      }
-    },
-    {
-      "scope": "read / write / issues:create / comments:create",
-      "allows": "Narrower read access, or create-only access to issues and comments, instead of full admin.",
-      "neededFor": "Most integrations, which only need to read data or create issues/comments.",
-      "reviewImpact": "none",
-      "claim": {
-        "id": "c13",
-        "text": "Narrower scopes like read, write, issues:create, and comments:create cover most integrations without needing admin.",
-        "label": "tested",
-        "sources": [
+          },
           {
             "url": "https://linear.app/developers/oauth-2-0-authentication",
             "title": "OAuth 2.0 authentication",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -265,7 +374,7 @@
       "item": "Redirect callback URL(s) configured on your OAuth2 application",
       "kind": "other",
       "claim": {
-        "id": "c14",
+        "id": "c18",
         "text": "Creating an OAuth2 application requires configuring redirect callback URLs.",
         "label": "tested",
         "sources": [
@@ -273,13 +382,13 @@
             "url": "https://linear.app/developers/oauth-2-0-authentication",
             "title": "OAuth 2.0 authentication",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -288,7 +397,7 @@
       "item": "A dedicated workspace to manage the OAuth2 application (recommended)",
       "kind": "other",
       "claim": {
-        "id": "c15",
+        "id": "c19",
         "text": "A dedicated workspace is recommended for managing the app, since every admin there gets access to it.",
         "label": "tested",
         "sources": [
@@ -296,13 +405,13 @@
             "url": "https://linear.app/developers/oauth-2-0-authentication",
             "title": "OAuth 2.0 authentication",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -319,7 +428,7 @@
       "helper": null,
       "claims": [
         {
-          "id": "c16",
+          "id": "c20",
           "text": "Linear documents OAuth app creation and actor authorization at linear.app/developers.",
           "label": "tested",
           "sources": [
@@ -327,13 +436,13 @@
               "url": "https://linear.app/developers/oauth-2-0-authentication",
               "title": "OAuth 2.0 authentication",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -349,13 +458,13 @@
         "max": 1,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c17"
+        "claimId": "c21"
       },
       "linkUrl": "https://linear.app/developers/oauth-2-0-authentication",
       "helper": null,
       "claims": [
         {
-          "id": "c17",
+          "id": "c21",
           "text": "OAuth2 applications are created under workspace Settings > API with configured redirect URIs.",
           "label": "tested",
           "sources": [
@@ -363,13 +472,13 @@
               "url": "https://linear.app/developers/oauth-2-0-authentication",
               "title": "OAuth 2.0 authentication",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -385,13 +494,13 @@
         "max": 1,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c18"
+        "claimId": "c22"
       },
       "linkUrl": "https://linear.app/developers/oauth-2-0-authentication",
       "helper": null,
       "claims": [
         {
-          "id": "c18",
+          "id": "c22",
           "text": "Linear's docs warn against requesting the admin scope unless absolutely needed.",
           "label": "tested",
           "sources": [
@@ -399,13 +508,13 @@
               "url": "https://linear.app/developers/oauth-2-0-authentication",
               "title": "OAuth 2.0 authentication",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -437,13 +546,13 @@
         "max": 1,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c19"
+        "claimId": "c23"
       },
       "linkUrl": "https://linear.app/developers/oauth-actor-authorization",
       "helper": null,
       "claims": [
         {
-          "id": "c19",
+          "id": "c23",
           "text": "Adding actor=app to the authorization URL attributes mutations to the app rather than the user.",
           "label": "tested",
           "sources": [
@@ -451,13 +560,13 @@
               "url": "https://linear.app/developers/oauth-actor-authorization",
               "title": "OAuth actor authorization",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://linear.app/developers/oauth-actor-authorization on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://linear.app/developers/oauth-actor-authorization on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -493,13 +602,13 @@
         "max": 4,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c20"
+        "claimId": "c24"
       },
       "linkUrl": "https://linear.app/developers/integration-directory",
       "helper": null,
       "claims": [
         {
-          "id": "c20",
+          "id": "c24",
           "text": "Directory submission starts with a form, then sending assets to integrations@linear.app.",
           "label": "tested",
           "sources": [
@@ -507,13 +616,13 @@
               "url": "https://linear.app/developers/integration-directory",
               "title": "Integration directory",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://linear.app/developers/integration-directory on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://linear.app/developers/integration-directory on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -537,7 +646,7 @@
       "what": "No review is required to create an OAuth app or make it installable elsewhere; only the optional Integration Directory listing has an informal formal-company bar.",
       "claims": [
         {
-          "id": "c21",
+          "id": "c25",
           "text": "No review step is described for OAuth app creation, scopes, or making an app installable in other workspaces.",
           "label": "tested",
           "sources": [
@@ -545,13 +654,13 @@
               "url": "https://linear.app/developers/oauth-2-0-authentication",
               "title": "OAuth 2.0 authentication",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -569,7 +678,7 @@
       "what": "Grants authorization through Linear's OAuth consent screen; with actor=app, subsequent actions are attributed to the app rather than that user.",
       "claims": [
         {
-          "id": "c22",
+          "id": "c26",
           "text": "Users authorize the app via OAuth; actor=app then attributes actions to the app itself.",
           "label": "tested",
           "sources": [
@@ -577,13 +686,13 @@
               "url": "https://linear.app/developers/oauth-actor-authorization",
               "title": "OAuth actor authorization",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://linear.app/developers/oauth-actor-authorization on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://linear.app/developers/oauth-actor-authorization on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -596,7 +705,7 @@
       "fix": "Switch to a narrower scope - read, write, issues:create, or comments:create - instead of admin.",
       "escalation": "Linear developer docs",
       "claim": {
-        "id": "c23",
+        "id": "c27",
         "text": "Linear's docs say never to request the admin scope unless absolutely needed.",
         "label": "tested",
         "sources": [
@@ -604,13 +713,13 @@
             "url": "https://linear.app/developers/oauth-2-0-authentication",
             "title": "OAuth 2.0 authentication",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -620,7 +729,7 @@
       "fix": "Linear generally only accepts directory submissions from formal companies - contact integrations@linear.app if you believe an exception is warranted.",
       "escalation": "integrations@linear.app",
       "claim": {
-        "id": "c24",
+        "id": "c28",
         "text": "Linear's directory generally turns away scripts and hobbyist apps in favor of ones built by formal companies.",
         "label": "tested",
         "sources": [
@@ -628,13 +737,13 @@
             "url": "https://linear.app/developers/integration-directory",
             "title": "Integration directory",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://linear.app/developers/integration-directory on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://linear.app/developers/integration-directory on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -642,7 +751,7 @@
   ],
   "whileYouWait": [
     {
-      "id": "c25",
+      "id": "c29",
       "text": "There's no review to wait on for basic OAuth use - the app works for any workspace that installs it as soon as it's built.",
       "label": "tested",
       "sources": [
@@ -650,13 +759,13 @@
           "url": "https://linear.app/developers/oauth-2-0-authentication",
           "title": "OAuth 2.0 authentication",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
           "recheck": "confirmed"
         }
       ],
-      "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-24; the required terms were present.",
+      "testNote": "Fetched https://linear.app/developers/oauth-2-0-authentication on 2026-10-25; the required terms were present.",
       "uncertainReason": null,
       "checked": "unchecked"
     }
@@ -672,7 +781,7 @@
         "url": "https://linear.app/developers/oauth-2-0-authentication",
         "title": "OAuth 2.0 authentication",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
         "recheck": "confirmed"
@@ -681,7 +790,7 @@
         "url": "https://linear.app/developers/integration-directory",
         "title": "Integration directory",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
         "recheck": "confirmed"
@@ -690,7 +799,7 @@
         "url": "https://docs.composio.dev/docs/custom-app-vs-managed-app",
         "title": "Managed vs custom auth",
         "type": "vendor",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": null,
         "oldSource": false,
         "recheck": "confirmed"
@@ -699,7 +808,7 @@
         "url": "https://linear.app/developers/oauth-actor-authorization",
         "title": "OAuth actor authorization",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
         "recheck": "confirmed"

@@ -7,7 +7,7 @@
   },
   "kind": "library",
   "sample": false,
-  "lastVerifiedOn": "2026-10-24",
+  "lastVerifiedOn": "2026-10-25",
   "handVerified": null,
   "completeness": {
     "status": "complete",
@@ -24,7 +24,7 @@
           "url": "https://developers.hubspot.com/app-partners/set-up",
           "title": "App partner set up",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
           "recheck": "confirmed"
@@ -33,13 +33,13 @@
           "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
           "title": "Certification requirements",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
           "recheck": "confirmed"
         }
       ],
-      "testNote": "Fetched https://developers.hubspot.com/app-partners/set-up on 2026-10-24; the required terms were present.",
+      "testNote": "Fetched https://developers.hubspot.com/app-partners/set-up on 2026-10-25; the required terms were present.",
       "uncertainReason": null,
       "checked": "unchecked"
     },
@@ -74,7 +74,7 @@
             "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot",
             "title": "Manage apps in HubSpot",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
@@ -83,7 +83,7 @@
             "url": "https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview",
             "title": "Public apps overview",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
@@ -92,13 +92,13 @@
             "url": "https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview",
             "title": "Private apps overview",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "mismatch"
           }
         ],
-        "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -115,7 +115,7 @@
           "url": "https://docs.composio.dev/docs/custom-app-vs-managed-app",
           "title": "Managed vs custom auth",
           "type": "vendor",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": null,
           "oldSource": false,
           "recheck": "confirmed"
@@ -146,7 +146,7 @@
             "url": "https://docs.composio.dev/docs/custom-app-vs-managed-app",
             "title": "Managed vs custom auth",
             "type": "vendor",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": null,
             "oldSource": false,
             "recheck": "confirmed"
@@ -169,7 +169,7 @@
             "url": "https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview",
             "title": "Private apps overview",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "mismatch"
@@ -178,13 +178,13 @@
             "url": "https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview",
             "title": "Public apps overview",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -199,7 +199,7 @@
             "url": "https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview",
             "title": "Private apps overview",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "mismatch"
@@ -220,13 +220,13 @@
             "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
             "title": "Certification requirements",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -234,52 +234,527 @@
   },
   "scopes": [
     {
-      "scope": "Required scopes",
-      "allows": "Core data access the app always needs to function.",
-      "neededFor": "Basic app functionality; install fails without these.",
+      "scope": "Scope types (required / conditionally-required / optional)",
+      "allows": "Required scopes gate install; conditionally-required scopes only gate install when present in that install URL; optional scopes never block install and are requested separately.",
+      "neededFor": "Deciding which named scopes below to mark required vs. optional when you configure the app.",
       "reviewImpact": "verification",
       "claim": {
         "id": "c14",
-        "text": "Required scopes must be authorized for the app to install successfully.",
+        "text": "Scopes are configured as required, conditionally required, or optional during app setup.",
         "label": "tested",
         "sources": [
           {
             "url": "https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview",
             "title": "Public apps overview",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
     },
     {
-      "scope": "Optional / conditionally-required scopes (e.g. custom objects, Enterprise-only features)",
-      "allows": "Access to features only some HubSpot accounts have, such as custom objects on Enterprise-tier accounts.",
-      "neededFor": "Supporting higher-tier accounts without blocking installation for everyone else.",
-      "reviewImpact": "none",
+      "scope": "crm.objects.contacts.read",
+      "allows": "View properties and other details about contacts.",
+      "neededFor": "Reading contact records.",
+      "reviewImpact": "verification",
       "claim": {
         "id": "c15",
-        "text": "Optional and conditionally-required scopes let an app support Enterprise-only features without blocking installs for accounts that lack them.",
-        "label": "tested",
+        "text": "crm.objects.contacts.read lets an app view properties and other details about contacts, on all account tiers.",
+        "label": "uncertain",
         "sources": [
           {
-            "url": "https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview",
-            "title": "Public apps overview",
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/scopes",
+            "title": "Scopes",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
-            "recheck": "confirmed"
+            "recheck": "mismatch"
           }
         ],
-        "testNote": "Fetched https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview on 2026-10-24; the required terms were present.",
-        "uncertainReason": null,
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "crm.objects.contacts.write",
+      "allows": "Create, delete, and make changes to contacts.",
+      "neededFor": "Syncing or editing contact records.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c16",
+        "text": "crm.objects.contacts.write lets an app create, delete, and change contacts, on all account tiers.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "crm.objects.companies.read",
+      "allows": "View properties and other details about companies.",
+      "neededFor": "Reading company records.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c17",
+        "text": "crm.objects.companies.read lets an app view properties and other details about companies, on all account tiers.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "crm.objects.companies.write",
+      "allows": "Create, delete, or make changes to companies.",
+      "neededFor": "Syncing or editing company records.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c18",
+        "text": "crm.objects.companies.write lets an app create, delete, or change companies, on all account tiers.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "crm.objects.deals.read",
+      "allows": "View properties and other details about deals.",
+      "neededFor": "Reading pipeline/deal data.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c19",
+        "text": "crm.objects.deals.read lets an app view properties and other details about deals, on all account tiers.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "crm.objects.deals.write",
+      "allows": "Create, delete, or make changes to deals.",
+      "neededFor": "Syncing or editing deals.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c20",
+        "text": "crm.objects.deals.write lets an app create, delete, or change deals, on all account tiers.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "crm.objects.tickets.read",
+      "allows": "View properties and other details about tickets.",
+      "neededFor": "Reading support tickets.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c21",
+        "text": "crm.objects.tickets.read lets an app view properties and other details about tickets, on all account tiers.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "crm.objects.tickets.write",
+      "allows": "Create, delete, or make changes to tickets.",
+      "neededFor": "Syncing or editing support tickets.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c22",
+        "text": "crm.objects.tickets.write lets an app create, delete, or change tickets, on all account tiers.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "crm.lists.read",
+      "allows": "View details about contact lists.",
+      "neededFor": "Reading list membership.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c23",
+        "text": "crm.lists.read lets an app view details about contact lists, on all account tiers.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "crm.lists.write",
+      "allows": "Create, delete, or make changes to contact lists.",
+      "neededFor": "Managing list membership.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c24",
+        "text": "crm.lists.write lets an app create, delete, or change contact lists, on all account tiers.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "files.read",
+      "allows": "View details about files in the HubSpot file manager.",
+      "neededFor": "Reading uploaded files.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c25",
+        "text": "files.read lets an app view details about files in the HubSpot file manager, on all account tiers.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "files.write",
+      "allows": "Upload and manage files in the HubSpot file manager.",
+      "neededFor": "Uploading or managing files.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c26",
+        "text": "files.write lets an app upload and manage files in the HubSpot file manager, on all account tiers.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "conversations.read",
+      "allows": "View actors, messages, and threads in the conversations inbox and help desk.",
+      "neededFor": "Reading support/chat conversations.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c27",
+        "text": "conversations.read lets an app view actors, messages, and threads in help desk and the conversations inbox, on all account tiers.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "conversations.write",
+      "allows": "Create and manage threads and messages in the conversations inbox.",
+      "neededFor": "Sending or managing support/chat messages.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c28",
+        "text": "conversations.write lets an app create and manage threads and messages in the conversations inbox, on all account tiers.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "forms",
+      "allows": "Access to the legacy and v3 forms APIs.",
+      "neededFor": "Reading or submitting HubSpot forms.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c29",
+        "text": "The forms scope grants access to HubSpot's legacy and v3 forms APIs, on all account tiers.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "content",
+      "allows": "Access to content APIs: website pages, landing pages, marketing email, and blog.",
+      "neededFor": "Working with marketing/CMS content.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c30",
+        "text": "The content scope grants access to website pages, landing pages, marketing email, and blog APIs, but only on CMS Hub or Marketing Hub Professional/Enterprise accounts.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "automation",
+      "allows": "Create and retrieve custom workflow actions and use the v4 workflow APIs.",
+      "neededFor": "Building custom workflow actions.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c31",
+        "text": "The automation scope grants access to custom workflow actions and the v4 workflow APIs, but only on Professional/Enterprise accounts.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "crm.objects.custom.read",
+      "allows": "View details about custom objects.",
+      "neededFor": "Reading custom-object data.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c32",
+        "text": "crm.objects.custom.read lets an app view details about custom objects, but only on Enterprise accounts.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "crm.export",
+      "allows": "Export records from the CRM for all CRM data types.",
+      "neededFor": "Bulk-exporting CRM data.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c33",
+        "text": "crm.export lets an app export records from the CRM for all CRM data types, on all account tiers.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "crm.import",
+      "allows": "Import new records, or modify existing ones, for all CRM data types.",
+      "neededFor": "Bulk-importing CRM data.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c34",
+        "text": "crm.import lets an app import or modify records for all CRM data types, on all account tiers.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
         "checked": "unchecked"
       }
     }
@@ -289,7 +764,7 @@
       "item": "A public app (not a private one) if you need OAuth across multiple customer accounts",
       "kind": "other",
       "claim": {
-        "id": "c16",
+        "id": "c35",
         "text": "Private apps are limited to one account and can't be listed; a public app is needed for multi-account OAuth.",
         "label": "uncertain",
         "sources": [
@@ -297,7 +772,7 @@
             "url": "https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview",
             "title": "Private apps overview",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "mismatch"
@@ -312,7 +787,7 @@
       "item": "A verified domain tied to your app",
       "kind": "domain",
       "claim": {
-        "id": "c17",
+        "id": "c36",
         "text": "Certification requires the app to use a verified domain.",
         "label": "tested",
         "sources": [
@@ -320,13 +795,13 @@
             "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
             "title": "Certification requirements",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -335,7 +810,7 @@
       "item": "A demo video (required only if you apply for certification)",
       "kind": "demo_video",
       "claim": {
-        "id": "c18",
+        "id": "c37",
         "text": "A demo video is required for a certification request - without one, HubSpot won't review it.",
         "label": "sourced",
         "sources": [
@@ -343,7 +818,7 @@
             "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
             "title": "Certification requirements",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
@@ -366,7 +841,7 @@
       "helper": null,
       "claims": [
         {
-          "id": "c19",
+          "id": "c38",
           "text": "HubSpot documents private vs. public apps, Marketplace listing, and certification at developers.hubspot.com.",
           "label": "uncertain",
           "sources": [
@@ -374,7 +849,7 @@
               "url": "https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview",
               "title": "Private apps overview",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "mismatch"
@@ -396,13 +871,13 @@
         "max": 0.5,
         "unit": "hours",
         "basis": "reported",
-        "claimId": "c20"
+        "claimId": "c39"
       },
       "linkUrl": "https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview",
       "helper": null,
       "claims": [
         {
-          "id": "c20",
+          "id": "c39",
           "text": "Private apps work in one account only and can't be listed; public apps support multiple accounts via OAuth.",
           "label": "uncertain",
           "sources": [
@@ -410,7 +885,7 @@
               "url": "https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview",
               "title": "Private apps overview",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "mismatch"
@@ -432,13 +907,13 @@
         "max": 4,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c21"
+        "claimId": "c40"
       },
       "linkUrl": "https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview",
       "helper": null,
       "claims": [
         {
-          "id": "c21",
+          "id": "c40",
           "text": "Scopes are configured as required, conditionally required, or optional during app setup.",
           "label": "tested",
           "sources": [
@@ -446,13 +921,13 @@
               "url": "https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview",
               "title": "Public apps overview",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -468,13 +943,13 @@
         "max": 1,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c22"
+        "claimId": "c41"
       },
       "linkUrl": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
       "helper": null,
       "claims": [
         {
-          "id": "c22",
+          "id": "c41",
           "text": "A verified domain is part of HubSpot's security expectations for an app.",
           "label": "tested",
           "sources": [
@@ -482,13 +957,13 @@
               "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
               "title": "Certification requirements",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -504,13 +979,13 @@
         "max": 4,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c23"
+        "claimId": "c42"
       },
       "linkUrl": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
       "helper": null,
       "claims": [
         {
-          "id": "c23",
+          "id": "c42",
           "text": "The app must handle OAuth token requests and refreshes itself, with no manual token copy-paste step for users.",
           "label": "tested",
           "sources": [
@@ -518,13 +993,13 @@
               "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
               "title": "Certification requirements",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -540,13 +1015,13 @@
         "max": 1,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c24"
+        "claimId": "c43"
       },
       "linkUrl": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot",
       "helper": null,
       "claims": [
         {
-          "id": "c24",
+          "id": "c43",
           "text": "Unlisted public apps are capped at about 25 installs until the app is listed.",
           "label": "tested",
           "sources": [
@@ -554,13 +1029,13 @@
               "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot",
               "title": "Manage apps in HubSpot",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -596,13 +1071,13 @@
         "max": 2,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c25"
+        "claimId": "c44"
       },
       "linkUrl": "https://developers.hubspot.com/app-partners/set-up",
       "helper": null,
       "claims": [
         {
-          "id": "c25",
+          "id": "c44",
           "text": "Listing submissions go through a manual Ecosystem Quality review and are rejected if they don't meet the criteria.",
           "label": "tested",
           "sources": [
@@ -610,7 +1085,7 @@
               "url": "https://developers.hubspot.com/app-partners/set-up",
               "title": "App partner set up",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
@@ -619,13 +1094,13 @@
               "url": "https://developers.hubspot.com/app-partners/set-up",
               "title": "App partner set up",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://developers.hubspot.com/app-partners/set-up on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.hubspot.com/app-partners/set-up on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -641,13 +1116,13 @@
         "max": 6,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c26"
+        "claimId": "c45"
       },
       "linkUrl": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
       "helper": null,
       "claims": [
         {
-          "id": "c26",
+          "id": "c45",
           "text": "HubSpot's review-and-feedback cycle should take no more than 60 days.",
           "label": "tested",
           "sources": [
@@ -655,13 +1130,13 @@
               "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
               "title": "Certification requirements",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -687,13 +1162,13 @@
         "max": 8,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c27"
+        "claimId": "c46"
       },
       "linkUrl": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
       "helper": null,
       "claims": [
         {
-          "id": "c27",
+          "id": "c46",
           "text": "Certification requires being listed for 6+ months with 60+ active installs, plus a demo video and security questionnaire.",
           "label": "tested",
           "sources": [
@@ -701,7 +1176,7 @@
               "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
               "title": "Certification requirements",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
@@ -710,7 +1185,7 @@
               "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
               "title": "Certification requirements",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
@@ -719,13 +1194,13 @@
               "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
               "title": "Certification requirements",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -739,7 +1214,7 @@
       "what": "Reviews a Marketplace listing submission within about 10 business days, with the full cycle taking up to 60 days; optional certification afterward adds a security questionnaire and vulnerability assessment.",
       "claims": [
         {
-          "id": "c29",
+          "id": "c48",
           "text": "Ecosystem Quality reviews listing submissions within about 10 business days, up to 60 days total.",
           "label": "tested",
           "sources": [
@@ -747,7 +1222,7 @@
               "url": "https://developers.hubspot.com/app-partners/set-up",
               "title": "App partner set up",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
@@ -756,13 +1231,13 @@
               "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
               "title": "Certification requirements",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://developers.hubspot.com/app-partners/set-up on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.hubspot.com/app-partners/set-up on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -774,7 +1249,7 @@
       "what": "Must be a super admin to access or create a private app; a public-app install typically also needs a user with sufficient permissions for the requested scopes.",
       "claims": [
         {
-          "id": "c28",
+          "id": "c47",
           "text": "You must be a super admin to access private apps in your HubSpot account.",
           "label": "tested",
           "sources": [
@@ -782,13 +1257,13 @@
               "url": "https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview",
               "title": "Private apps overview",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "mismatch"
             }
           ],
-          "testNote": "Fetched https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -800,7 +1275,7 @@
       "what": "Authorizes the app through HubSpot's OAuth consent screen; an unverified (unlisted) app shows an extra warning banner.",
       "claims": [
         {
-          "id": "c30",
+          "id": "c49",
           "text": "Users are advised to carefully review all scopes an app requests, and unverified apps show a warning banner.",
           "label": "tested",
           "sources": [
@@ -808,13 +1283,13 @@
               "url": "https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview",
               "title": "Public apps overview",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -827,7 +1302,7 @@
       "fix": "Review Ecosystem Quality's feedback carefully - the full cycle can take up to 60 days, and only one submission can be in process at a time.",
       "escalation": "HubSpot Ecosystem Quality team",
       "claim": {
-        "id": "c31",
+        "id": "c50",
         "text": "Only one app submission can be in process at a time; a second one made while the first is pending is automatically rejected.",
         "label": "sourced",
         "sources": [
@@ -835,7 +1310,7 @@
             "url": "https://developers.hubspot.com/app-partners/set-up",
             "title": "App partner set up",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
@@ -851,7 +1326,7 @@
       "fix": "Submit your app for Marketplace listing once you approach the roughly 25-install cap on unlisted public apps.",
       "escalation": "developers.hubspot.com app-partners",
       "claim": {
-        "id": "c32",
+        "id": "c51",
         "text": "Unlisted public apps are capped at about 25 installs until the app is listed.",
         "label": "tested",
         "sources": [
@@ -859,13 +1334,13 @@
             "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot",
             "title": "Manage apps in HubSpot",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -873,7 +1348,7 @@
   ],
   "whileYouWait": [
     {
-      "id": "c33",
+      "id": "c52",
       "text": "An unlisted public app can be installed on up to about 25 accounts (or a private app on up to 10 allowlisted accounts) while you're building or waiting on listing.",
       "label": "tested",
       "sources": [
@@ -881,20 +1356,20 @@
           "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot",
           "title": "Manage apps in HubSpot",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
           "recheck": "confirmed"
         }
       ],
-      "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot on 2026-10-24; the required terms were present.",
+      "testNote": "Fetched https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot on 2026-10-25; the required terms were present.",
       "uncertainReason": null,
       "checked": "unchecked"
     }
   ],
   "keepsComingBack": [
     {
-      "id": "c34",
+      "id": "c53",
       "text": "Certified status must be renewed - it's valid for two years on a rolling basis, and HubSpot can trigger recertification early if the app falls out of compliance.",
       "label": "sourced",
       "sources": [
@@ -902,7 +1377,7 @@
           "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
           "title": "Certification requirements",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
           "recheck": "confirmed"
@@ -918,16 +1393,36 @@
     "unverifiedClaimIds": [
       "c9",
       "c12",
+      "c15",
       "c16",
+      "c17",
+      "c18",
       "c19",
-      "c20"
+      "c20",
+      "c21",
+      "c22",
+      "c23",
+      "c24",
+      "c25",
+      "c26",
+      "c27",
+      "c28",
+      "c29",
+      "c30",
+      "c31",
+      "c32",
+      "c33",
+      "c34",
+      "c35",
+      "c38",
+      "c39"
     ],
     "sources": [
       {
         "url": "https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview",
         "title": "Private apps overview",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
         "recheck": "mismatch"
@@ -936,7 +1431,7 @@
         "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot",
         "title": "Manage apps in HubSpot",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
         "recheck": "confirmed"
@@ -945,7 +1440,7 @@
         "url": "https://developers.hubspot.com/app-partners/set-up",
         "title": "App partner set up",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
         "recheck": "confirmed"
@@ -954,7 +1449,7 @@
         "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
         "title": "Certification requirements",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
         "recheck": "confirmed"
@@ -963,7 +1458,7 @@
         "url": "https://developers.hubspot.com/docs/apps/legacy-apps/public-apps/overview",
         "title": "Public apps overview",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
         "recheck": "confirmed"
@@ -972,10 +1467,19 @@
         "url": "https://docs.composio.dev/docs/custom-app-vs-managed-app",
         "title": "Managed vs custom auth",
         "type": "vendor",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": null,
         "oldSource": false,
         "recheck": "confirmed"
+      },
+      {
+        "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/scopes",
+        "title": "Scopes",
+        "type": "official",
+        "accessedOn": "2026-10-25",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "mismatch"
       }
     ]
   },

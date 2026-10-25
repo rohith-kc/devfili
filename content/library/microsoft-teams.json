@@ -7,7 +7,7 @@
   },
   "kind": "library",
   "sample": false,
-  "lastVerifiedOn": "2026-10-24",
+  "lastVerifiedOn": "2026-10-25",
   "handVerified": null,
   "completeness": {
     "status": "complete",
@@ -24,7 +24,7 @@
           "url": "https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish",
           "title": "Publish App on Teams Store",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
           "recheck": "confirmed"
@@ -33,13 +33,13 @@
           "url": "https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish",
           "title": "Publish App on Teams Store",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
           "recheck": "confirmed"
         }
       ],
-      "testNote": "Fetched https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish on 2026-10-24; the required terms were present.",
+      "testNote": "Fetched https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish on 2026-10-25; the required terms were present.",
       "uncertainReason": null,
       "checked": "unchecked"
     },
@@ -74,7 +74,7 @@
             "url": "https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish",
             "title": "Publish App on Teams Store",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
@@ -83,13 +83,13 @@
             "url": "https://learn.microsoft.com/en-in/graph/permissions-overview",
             "title": "Microsoft Graph permissions overview",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -106,7 +106,7 @@
           "url": "https://docs.composio.dev/kb/guide/toolkits-microsoft-teams",
           "title": "Toolkits: Microsoft Teams",
           "type": "vendor",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": null,
           "oldSource": false,
           "recheck": "confirmed"
@@ -150,7 +150,7 @@
             "url": "https://learn.microsoft.com/en-in/graph/permissions-overview",
             "title": "Microsoft Graph permissions overview",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
@@ -159,13 +159,13 @@
             "url": "https://learn.microsoft.com/en-in/graph/permissions-overview",
             "title": "Microsoft Graph permissions overview",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://learn.microsoft.com/en-in/graph/permissions-overview on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://learn.microsoft.com/en-in/graph/permissions-overview on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -180,13 +180,13 @@
             "url": "https://learn.microsoft.com/en-in/graph/permissions-overview",
             "title": "Microsoft Graph permissions overview",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://learn.microsoft.com/en-in/graph/permissions-overview on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://learn.microsoft.com/en-in/graph/permissions-overview on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -201,13 +201,13 @@
             "url": "https://learn.microsoft.com/entra/identity-platform/mark-app-as-publisher-verified",
             "title": "Mark an app as publisher verified",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://learn.microsoft.com/entra/identity-platform/mark-app-as-publisher-verified on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://learn.microsoft.com/entra/identity-platform/mark-app-as-publisher-verified on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -228,19 +228,19 @@
             "url": "https://learn.microsoft.com/en-in/graph/permissions-overview",
             "title": "Microsoft Graph permissions overview",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://learn.microsoft.com/en-in/graph/permissions-overview on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://learn.microsoft.com/en-in/graph/permissions-overview on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
     },
     {
-      "scope": "Delegated permissions",
+      "scope": "Delegated permissions (overview)",
       "allows": "Lets the app act on behalf of a signed-in user, scoped to what that user can access.",
       "neededFor": "Most integrations that act on a specific user's behalf rather than running in the background.",
       "reviewImpact": "none",
@@ -253,13 +253,213 @@
             "url": "https://learn.microsoft.com/en-in/graph/permissions-overview",
             "title": "Microsoft Graph permissions overview",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
         "testNote": null,
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "Channel.ReadBasic.All",
+      "allows": "Read all channel names and descriptions (application), or on behalf of the signed-in user (delegated).",
+      "neededFor": "Listing channels in a team.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c15",
+        "text": "Channel.ReadBasic.All reads channel names and descriptions, either without a signed-in user (application) or on behalf of one (delegated).",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://learn.microsoft.com/en-us/graph/permissions-reference",
+            "title": "Microsoft Graph permissions reference",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://learn.microsoft.com/en-us/graph/permissions-reference on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "ChannelMessage.Read.All",
+      "allows": "Read all channel messages in Microsoft Teams (application), or on behalf of the signed-in user (delegated).",
+      "neededFor": "Integrations that read channel conversations.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c16",
+        "text": "ChannelMessage.Read.All reads channel messages in Teams, either without a signed-in user (application) or on behalf of one (delegated).",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://learn.microsoft.com/en-us/graph/permissions-reference",
+            "title": "Microsoft Graph permissions reference",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://learn.microsoft.com/en-us/graph/permissions-reference on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "ChannelMessage.Send",
+      "allows": "Send channel messages in Microsoft Teams, on behalf of the signed-in user.",
+      "neededFor": "Bots or integrations that post into a channel.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c17",
+        "text": "ChannelMessage.Send lets an app send channel messages in Teams, on behalf of the signed-in user.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://learn.microsoft.com/en-us/graph/permissions-reference",
+            "title": "Microsoft Graph permissions reference",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://learn.microsoft.com/en-us/graph/permissions-reference on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "Chat.Read",
+      "allows": "Read 1:1 or group chat threads, on behalf of the signed-in user.",
+      "neededFor": "Integrations that read a user's direct/group chats.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c18",
+        "text": "Chat.Read lets an app read 1:1 or group chat threads, on behalf of the signed-in user.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://learn.microsoft.com/en-us/graph/permissions-reference",
+            "title": "Microsoft Graph permissions reference",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://learn.microsoft.com/en-us/graph/permissions-reference on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "Chat.ReadWrite",
+      "allows": "Read and write all chat messages (application, no signed-in user), or read/write 1:1 and group chats on behalf of the signed-in user (delegated).",
+      "neededFor": "Integrations that both read and send chat messages.",
+      "reviewImpact": "security_assessment",
+      "claim": {
+        "id": "c19",
+        "text": "Chat.ReadWrite exists as both an application permission (reads/writes all chat messages with no signed-in user) and a delegated one (on behalf of the signed-in user).",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://learn.microsoft.com/en-us/graph/permissions-reference",
+            "title": "Microsoft Graph permissions reference",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://learn.microsoft.com/en-us/graph/permissions-reference on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "ChatMessage.Send",
+      "allows": "Send one-to-one and group chat messages, on behalf of the signed-in user.",
+      "neededFor": "Bots or integrations that send direct/group chat messages.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c20",
+        "text": "ChatMessage.Send lets an app send one-to-one and group chat messages, on behalf of the signed-in user.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://learn.microsoft.com/en-us/graph/permissions-reference",
+            "title": "Microsoft Graph permissions reference",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://learn.microsoft.com/en-us/graph/permissions-reference on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "Calendars.Read",
+      "allows": "Read events in all calendars (application, no signed-in user), or in the signed-in user's calendars (delegated).",
+      "neededFor": "Integrations that read meeting/calendar data.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c21",
+        "text": "Calendars.Read reads calendar events, either across the org with no signed-in user (application) or for the signed-in user (delegated).",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://learn.microsoft.com/en-us/graph/permissions-reference",
+            "title": "Microsoft Graph permissions reference",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://learn.microsoft.com/en-us/graph/permissions-reference on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "Presence.Read",
+      "allows": "Read a user's presence (activity, availability, status note, out-of-office message, timezone, location), on behalf of the signed-in user.",
+      "neededFor": "Status-aware integrations (e.g. showing who's available).",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c22",
+        "text": "Presence.Read lets an app read presence information - activity, availability, status note, out-of-office message, timezone, and location - on behalf of the signed-in user.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://learn.microsoft.com/en-us/graph/permissions-reference",
+            "title": "Microsoft Graph permissions reference",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://learn.microsoft.com/en-us/graph/permissions-reference on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -270,7 +470,7 @@
       "item": "A Partner Center developer account",
       "kind": "account",
       "claim": {
-        "id": "c15",
+        "id": "c23",
         "text": "Publishing to the Teams Store requires a Partner Center developer account.",
         "label": "tested",
         "sources": [
@@ -278,13 +478,13 @@
             "url": "https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish",
             "title": "Publish App on Teams Store",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -293,7 +493,7 @@
       "item": "Completed publisher verification (recommended before submitting, via a Cloud Partner Program account)",
       "kind": "other",
       "claim": {
-        "id": "c16",
+        "id": "c24",
         "text": "Microsoft recommends completing publisher verification before you submit your app for the Teams Store.",
         "label": "tested",
         "sources": [
@@ -301,7 +501,7 @@
             "url": "https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish",
             "title": "Publish App on Teams Store",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
@@ -310,13 +510,13 @@
             "url": "https://learn.microsoft.com/entra/identity-platform/mark-app-as-publisher-verified",
             "title": "Mark an app as publisher verified",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -325,7 +525,7 @@
       "item": "A validated app package (checked in the Teams Developer Portal) plus test notes",
       "kind": "test_account",
       "claim": {
-        "id": "c17",
+        "id": "c25",
         "text": "Validating your app package in the Teams Developer Portal catches errors before submission.",
         "label": "tested",
         "sources": [
@@ -333,13 +533,13 @@
             "url": "https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish",
             "title": "Publish App on Teams Store",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -356,7 +556,7 @@
       "helper": null,
       "claims": [
         {
-          "id": "c18",
+          "id": "c26",
           "text": "Microsoft documents Graph permissions, publisher verification, and Teams Store publishing at learn.microsoft.com.",
           "label": "tested",
           "sources": [
@@ -364,13 +564,13 @@
               "url": "https://learn.microsoft.com/en-in/graph/permissions-overview",
               "title": "Microsoft Graph permissions overview",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://learn.microsoft.com/en-in/graph/permissions-overview on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://learn.microsoft.com/en-in/graph/permissions-overview on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -386,13 +586,13 @@
         "max": 4,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c19"
+        "claimId": "c27"
       },
       "linkUrl": "https://learn.microsoft.com/en-in/graph/permissions-overview",
       "helper": null,
       "claims": [
         {
-          "id": "c19",
+          "id": "c27",
           "text": "Delegated permissions are recommended wherever they meet the app's needs.",
           "label": "sourced",
           "sources": [
@@ -400,7 +600,7 @@
               "url": "https://learn.microsoft.com/en-in/graph/permissions-overview",
               "title": "Microsoft Graph permissions overview",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
@@ -422,13 +622,13 @@
         "max": 4,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c20"
+        "claimId": "c28"
       },
       "linkUrl": "https://learn.microsoft.com/en-in/graph/permissions-overview",
       "helper": null,
       "claims": [
         {
-          "id": "c20",
+          "id": "c28",
           "text": "Only a Privileged Role Administrator or Global Administrator can consent to application permissions.",
           "label": "tested",
           "sources": [
@@ -436,13 +636,13 @@
               "url": "https://learn.microsoft.com/en-in/graph/permissions-overview",
               "title": "Microsoft Graph permissions overview",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://learn.microsoft.com/en-in/graph/permissions-overview on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://learn.microsoft.com/en-in/graph/permissions-overview on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -458,13 +658,13 @@
         "max": 4,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c21"
+        "claimId": "c29"
       },
       "linkUrl": "https://learn.microsoft.com/entra/identity-platform/mark-app-as-publisher-verified",
       "helper": null,
       "claims": [
         {
-          "id": "c21",
+          "id": "c29",
           "text": "Publisher verification requires a completed Cloud Partner Program account.",
           "label": "tested",
           "sources": [
@@ -472,13 +672,13 @@
               "url": "https://learn.microsoft.com/entra/identity-platform/mark-app-as-publisher-verified",
               "title": "Mark an app as publisher verified",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://learn.microsoft.com/entra/identity-platform/mark-app-as-publisher-verified on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://learn.microsoft.com/entra/identity-platform/mark-app-as-publisher-verified on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -524,13 +724,13 @@
         "max": 2,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c22"
+        "claimId": "c30"
       },
       "linkUrl": "https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish",
       "helper": null,
       "claims": [
         {
-          "id": "c22",
+          "id": "c30",
           "text": "A Partner Center developer account and a validated app package are both needed before submission.",
           "label": "tested",
           "sources": [
@@ -538,13 +738,13 @@
               "url": "https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish",
               "title": "Publish App on Teams Store",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -560,13 +760,13 @@
         "max": 12,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c23"
+        "claimId": "c31"
       },
       "linkUrl": "https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish",
       "helper": null,
       "claims": [
         {
-          "id": "c23",
+          "id": "c31",
           "text": "Microsoft provides a detailed test report within 24 working hours and categorizes issues as Must fix, Blocker, or Good-to-fix.",
           "label": "tested",
           "sources": [
@@ -574,7 +774,7 @@
               "url": "https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish",
               "title": "Publish App on Teams Store",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
@@ -583,13 +783,13 @@
               "url": "https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish",
               "title": "Publish App on Teams Store",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -605,7 +805,7 @@
       "helper": null,
       "claims": [
         {
-          "id": "c24",
+          "id": "c32",
           "text": "Allow at least one business day for the app to become available in the Teams Store once approved.",
           "label": "tested",
           "sources": [
@@ -613,13 +813,13 @@
               "url": "https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish",
               "title": "Publish App on Teams Store",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -633,7 +833,7 @@
       "what": "Reviews listed apps against Commercial Marketplace certification policies with deep functional, UX, and metadata checks; not required for a custom app a customer uploads directly.",
       "claims": [
         {
-          "id": "c26",
+          "id": "c34",
           "text": "Teams Store listing is reviewed against Commercial Marketplace certification policies across desktop, web, and mobile.",
           "label": "tested",
           "sources": [
@@ -641,13 +841,13 @@
               "url": "https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish",
               "title": "Publish App on Teams Store",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -659,7 +859,7 @@
       "what": "Must grant org-wide admin consent for any admin-only (application) Graph permission the app requests; Teams Administrators can view but not grant this.",
       "claims": [
         {
-          "id": "c25",
+          "id": "c33",
           "text": "Only a Privileged Role Administrator or Global Administrator can consent to application permissions.",
           "label": "tested",
           "sources": [
@@ -667,13 +867,13 @@
               "url": "https://learn.microsoft.com/en-in/graph/permissions-overview",
               "title": "Microsoft Graph permissions overview",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://learn.microsoft.com/en-in/graph/permissions-overview on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://learn.microsoft.com/en-in/graph/permissions-overview on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -685,7 +885,7 @@
       "what": "Consents individually for delegated permissions the organization's policy allows users to grant themselves.",
       "claims": [
         {
-          "id": "c27",
+          "id": "c35",
           "text": "Delegated permissions can sometimes be consented to by the user themselves rather than an admin.",
           "label": "sourced",
           "sources": [
@@ -693,7 +893,7 @@
               "url": "https://learn.microsoft.com/en-in/graph/permissions-overview",
               "title": "Microsoft Graph permissions overview",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
@@ -712,7 +912,7 @@
       "fix": "Resolve Blocker issues first - the validation team can't test the rest of the app's functionality until they're fixed.",
       "escalation": "Microsoft's concierge service (teamsubm@microsoft.com)",
       "claim": {
-        "id": "c28",
+        "id": "c36",
         "text": "Blocker issues prevent the validation team from testing further until they're resolved.",
         "label": "tested",
         "sources": [
@@ -720,13 +920,13 @@
             "url": "https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish",
             "title": "Publish App on Teams Store",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -736,7 +936,7 @@
       "fix": "Budget 1 to 1.5 months for a full cycle, since most of the time goes to fixing issues across multiple validation rounds.",
       "escalation": "Microsoft's concierge service (teamsubm@microsoft.com)",
       "claim": {
-        "id": "c29",
+        "id": "c37",
         "text": "A full submission-to-publish cycle has been estimated at 1 to 1.5 months, mostly spent fixing validation issues.",
         "label": "uncertain",
         "sources": [
@@ -744,7 +944,7 @@
             "url": "https://devblogs.microsoft.com/microsoft365dev/publish-your-apps-to-the-microsoft-teams-store/",
             "title": "Publish your apps to the Microsoft Teams store",
             "type": "vendor",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2021,
             "oldSource": true,
             "recheck": "mismatch"
@@ -758,7 +958,7 @@
   ],
   "whileYouWait": [
     {
-      "id": "c30",
+      "id": "c38",
       "text": "A custom app can be uploaded or sideloaded directly by a customer's admin and used immediately, without ever going through Teams Store review.",
       "label": "tested",
       "sources": [
@@ -766,13 +966,13 @@
           "url": "https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish",
           "title": "Publish App on Teams Store",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
           "recheck": "confirmed"
         }
       ],
-      "testNote": "Fetched https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish on 2026-10-24; the required terms were present.",
+      "testNote": "Fetched https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish on 2026-10-25; the required terms were present.",
       "uncertainReason": null,
       "checked": "unchecked"
     }
@@ -783,14 +983,14 @@
     "unverifiedClaimIds": [
       "c8",
       "c9",
-      "c29"
+      "c37"
     ],
     "sources": [
       {
         "url": "https://learn.microsoft.com/entra/identity-platform/mark-app-as-publisher-verified",
         "title": "Mark an app as publisher verified",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
         "recheck": "confirmed"
@@ -799,7 +999,7 @@
         "url": "https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish",
         "title": "Publish App on Teams Store",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
         "recheck": "confirmed"
@@ -808,7 +1008,7 @@
         "url": "https://learn.microsoft.com/en-in/graph/permissions-overview",
         "title": "Microsoft Graph permissions overview",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
         "recheck": "confirmed"
@@ -817,7 +1017,7 @@
         "url": "https://learn.microsoft.com/microsoftteams/manage-consent-app-permissions",
         "title": "Grant and manage consent to Teams app permissions",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
         "recheck": "confirmed"
@@ -826,7 +1026,7 @@
         "url": "https://devblogs.microsoft.com/microsoft365dev/publish-your-apps-to-the-microsoft-teams-store/",
         "title": "Publish your apps to the Microsoft Teams store",
         "type": "vendor",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2021,
         "oldSource": true,
         "recheck": "mismatch"
@@ -835,8 +1035,17 @@
         "url": "https://docs.composio.dev/kb/guide/toolkits-microsoft-teams",
         "title": "Toolkits: Microsoft Teams",
         "type": "vendor",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": null,
+        "oldSource": false,
+        "recheck": "confirmed"
+      },
+      {
+        "url": "https://learn.microsoft.com/en-us/graph/permissions-reference",
+        "title": "Microsoft Graph permissions reference",
+        "type": "official",
+        "accessedOn": "2026-10-25",
+        "publishedYear": 2026,
         "oldSource": false,
         "recheck": "confirmed"
       }
