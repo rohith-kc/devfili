@@ -152,7 +152,7 @@ export async function* runPipeline(query: string, options: RunOptions = {}): Asy
         } as const)
       : await resolveApp(trimmed, env, today);
   } catch {
-    yield { type: "error", code: "provider_busy", message: "The research assistant is busy right now. Try again shortly." };
+    yield { type: "error", code: "provider_busy", message: "The research assistant is busy or rate-limited right now. Try again in a while, or browse the reviewed library below." };
     yield { type: "done" };
     return;
   }
@@ -208,7 +208,7 @@ export async function* runPipeline(query: string, options: RunOptions = {}): Asy
   try {
     discoverResult = await discover(env, app.name, app.websiteUrl ?? "", today);
   } catch {
-    yield { type: "error", code: "provider_busy", message: "Research providers are busy right now. Try again shortly." };
+    yield { type: "error", code: "provider_busy", message: "Research providers are busy or rate-limited right now. Try again in a while, or browse the reviewed library below." };
     yield { type: "done" };
     return;
   }
@@ -232,7 +232,7 @@ export async function* runPipeline(query: string, options: RunOptions = {}): Asy
     core = await draftCore(env, today, app.name, app, discoverResult.findings, probes);
     draftedPath = await draftPath(env, today, app.name, app, discoverResult.findings, probes, core);
   } catch {
-    yield { type: "error", code: "provider_busy", message: "Could not draft the guide right now. Try again shortly." };
+    yield { type: "error", code: "provider_busy", message: "Could not draft the guide right now - the provider may be rate-limited. Try again in a while, or browse the reviewed library below." };
     yield { type: "done" };
     return;
   }

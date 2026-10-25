@@ -59,8 +59,8 @@ async function discoverOneSide(env: Env, stage: string, prompt: string, useGroq:
   let text: string;
   try {
     const result = useGroq
-      ? await callWithRetry(stage, "groq", env.groqModelDraft, () =>
-          groqBrowserSearch({ apiKey: env.groqApiKey, baseURL: env.groqBaseUrl, model: env.groqModelDraft, prompt })
+      ? await callWithRetry(stage, "groq", env.groqModelFast, () =>
+          groqBrowserSearch({ apiKey: env.groqApiKey, baseURL: env.groqBaseUrl, model: env.groqModelFast, prompt })
         )
       : await callWithRetry(stage, "gemini", env.geminiModelResearch, () =>
           geminiGenerate({
@@ -74,8 +74,8 @@ async function discoverOneSide(env: Env, stage: string, prompt: string, useGroq:
   } catch {
     if (useGroq) return { findings: [], notFound: [`${stage}: provider call failed`] };
     try {
-      const fallback = await callWithRetry(`${stage}-fallback`, "groq", env.groqModelDraft, () =>
-        groqBrowserSearch({ apiKey: env.groqApiKey, baseURL: env.groqBaseUrl, model: env.groqModelDraft, prompt })
+      const fallback = await callWithRetry(`${stage}-fallback`, "groq", env.groqModelFast, () =>
+        groqBrowserSearch({ apiKey: env.groqApiKey, baseURL: env.groqBaseUrl, model: env.groqModelFast, prompt })
       );
       text = fallback.text;
     } catch {
