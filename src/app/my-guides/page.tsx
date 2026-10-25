@@ -1,16 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
 import { Header } from "@/components/Header";
 import { AppIcon } from "@/components/AppIcon";
-import { GuideView } from "@/components/GuideView";
 import { removeSavedGuide, useHydrated, useSavedGuides, useUsername } from "@/lib/localUser";
 
 export default function MyGuidesPage() {
   const hydrated = useHydrated();
   const name = useUsername();
   const guides = useSavedGuides();
-  const [openSlug, setOpenSlug] = useState<string | null>(null);
 
   return (
     <div className="flex min-h-full flex-1 flex-col bg-background">
@@ -35,11 +33,7 @@ export default function MyGuidesPage() {
             {guides.map((g) => (
               <li key={g.slug} className="rounded-2xl border border-border bg-surface">
                 <div className="flex items-center justify-between gap-3 p-4">
-                  <button
-                    type="button"
-                    onClick={() => setOpenSlug(openSlug === g.slug ? null : g.slug)}
-                    className="focus-ring flex flex-1 items-center gap-3 text-left"
-                  >
+                  <Link href={`/saved/${g.slug}`} className="focus-ring flex flex-1 items-center gap-3 text-left">
                     <AppIcon slug={g.slug} name={g.name} websiteUrl={g.guide.app.websiteUrl} />
                     <span>
                       <span className="block font-medium text-foreground">{g.name}</span>
@@ -47,7 +41,7 @@ export default function MyGuidesPage() {
                         Saved {new Date(g.savedAt).toLocaleDateString()}
                       </span>
                     </span>
-                  </button>
+                  </Link>
                   <button
                     type="button"
                     onClick={() => removeSavedGuide(g.slug)}
@@ -56,11 +50,6 @@ export default function MyGuidesPage() {
                     Remove
                   </button>
                 </div>
-                {openSlug === g.slug && (
-                  <div className="border-t border-border">
-                    <GuideView guide={g.guide} />
-                  </div>
-                )}
               </li>
             ))}
           </ul>

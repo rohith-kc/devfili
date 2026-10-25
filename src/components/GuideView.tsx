@@ -29,8 +29,13 @@ function Section({
   children: ReactNode;
 }) {
   return (
-    <section id={id} aria-labelledby={`${id}-heading`} className="border-t border-border py-8">
-      <h2 id={`${id}-heading`} className="mb-3 flex items-center gap-1.5 text-lg font-semibold text-foreground">
+    <section
+      id={id}
+      aria-labelledby={`${id}-heading`}
+      className="scroll-mt-32 rounded-2xl border border-border bg-surface p-6 shadow-sm"
+    >
+      <h2 id={`${id}-heading`} className="mb-4 flex items-center gap-2.5 text-base font-semibold tracking-tight text-foreground">
+        <span aria-hidden="true" className="h-5 w-1 rounded-full bg-accent" />
         {title}
         {titleExtra}
       </h2>
@@ -248,10 +253,10 @@ export function GuideSections({ guide }: { guide: Guide }) {
   );
 }
 
-export function GuideView({ guide }: { guide: Guide }) {
+export function GuideView({ guide, hideSave = false }: { guide: Guide; hideSave?: boolean }) {
   return (
-    <article className="mx-auto max-w-3xl px-6 pb-20">
-      <GuideHeader guide={guide} />
+    <article className="mx-auto flex max-w-3xl flex-col gap-5 px-6 pb-20">
+      <GuideHeader guide={guide} hideSave={hideSave} />
       <Verdict guide={guide} />
       <GuideSections guide={guide} />
     </article>

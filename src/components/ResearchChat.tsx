@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import Link from "next/link";
 import type { Guide } from "@/lib/schema";
 import { getUsername, setUsername, saveGuide, isGuideSaved } from "@/lib/localUser";
 import { GuideView } from "./GuideView";
@@ -309,7 +310,7 @@ export function ResearchChat() {
               {phase === "result" && guide && (
                 <div>
                   <div className="mb-4 flex flex-col gap-3 rounded-xl border border-border bg-background p-3">
-                    <div className="flex items-center justify-between">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
                       <span className="text-sm text-muted">Researched live just now.</span>
                       <button
                         type="button"
@@ -317,8 +318,17 @@ export function ResearchChat() {
                         disabled={saved}
                         className="font-mono-label focus-ring rounded-full border border-border px-3 py-1 text-xs font-medium uppercase text-foreground transition-opacity hover:opacity-80 disabled:opacity-50"
                       >
-                        {saved ? "Saved ✓" : "Save to my guides"}
+                        {saved ? "Saved ✓" : "Save for later"}
                       </button>
+                      {saved && (
+                        <Link
+                          href={`/saved/${guide.app.slug}`}
+                          onClick={close}
+                          className="focus-ring text-xs font-medium text-accent hover:underline"
+                        >
+                          Open full page
+                        </Link>
+                      )}
                     </div>
                     {showNamePrompt && (
                       <form onSubmit={confirmName} className="flex flex-col gap-2 border-t border-border pt-3">
@@ -345,7 +355,7 @@ export function ResearchChat() {
                       </form>
                     )}
                   </div>
-                  <GuideView guide={guide} />
+                  <GuideView guide={guide} hideSave />
                   <button type="button" onClick={reset} className="focus-ring mb-6 text-sm text-accent hover:underline">
                     &larr; Check another app
                   </button>
