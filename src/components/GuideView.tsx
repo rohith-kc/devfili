@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 import type { Claim, Guide } from "@/lib/schema";
 import { rangeLabel, GATE_LABEL } from "@/lib/format";
-import { AppIcon } from "./AppIcon";
 import { EvidenceBadge } from "./EvidenceBadge";
+import { GuideHeader } from "./GuideHeader";
 import { OwnerTag } from "./OwnerTag";
 import { Verdict } from "./Verdict";
 
@@ -34,29 +34,9 @@ function Section({
   );
 }
 
-export function GuideView({ guide }: { guide: Guide }) {
+export function GuideSections({ guide }: { guide: Guide }) {
   return (
-    <article className="mx-auto max-w-3xl px-6 pb-20">
-      <header className="pt-10 pb-6">
-        {guide.sample && (
-          <span className="mb-3 inline-block rounded-full border border-dashed border-amber-400 px-2 py-0.5 text-xs font-medium text-amber-700 dark:border-amber-600 dark:text-amber-400">
-            Sample
-          </span>
-        )}
-        <div className="flex items-center gap-3">
-          <AppIcon slug={guide.app.slug} name={guide.app.name} size={44} />
-          <div>
-            <h1 className="text-2xl font-semibold tracking-tight text-foreground">{guide.app.name}</h1>
-            <p className="text-sm text-muted">
-              Last verified {guide.lastVerifiedOn}
-              {guide.handVerified && ` · Hand-verified by ${guide.handVerified.by} on ${guide.handVerified.on}`}
-            </p>
-          </div>
-        </div>
-      </header>
-
-      <Verdict guide={guide} />
-
+    <>
       <Section id="managed-app" title="Do you need your own app?">
         <p className="mb-2 text-sm text-foreground">
           {guide.managedApp.exists === "yes"
@@ -241,6 +221,16 @@ export function GuideView({ guide }: { guide: Guide }) {
           ))}
         </ul>
       </Section>
+    </>
+  );
+}
+
+export function GuideView({ guide }: { guide: Guide }) {
+  return (
+    <article className="mx-auto max-w-3xl px-6 pb-20">
+      <GuideHeader guide={guide} />
+      <Verdict guide={guide} />
+      <GuideSections guide={guide} />
     </article>
   );
 }
