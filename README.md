@@ -13,15 +13,14 @@ DevFili tells a developer, before they write a line of integration code, how har
 
 - **The 9 library guides** &mdash; browse, search, and filter by tier/gated on the home page; every guide page shows the verdict, scopes, steps, the three gates, and evidence you can click through to the real source.
 - **Live research** ("Check an app") &mdash; type any other app name and it researches, drafts, and fact-checks a guide live, streaming progress as it goes.
+- **Name-only sign-in and "My guides."** No password, no server account &mdash; just a name, stored in your browser's `localStorage` (`src/lib/localUser.ts`), used to label guides you save on that device. Sign in from the header, research an app live, click "Save to my guides," and find it again on `/my-guides` (expand it inline, or remove it).
 - **Two code-only helpers** (checklist, pre-submission check) &mdash; tick boxes, "N remaining," copy as text.
 - **Three AI-drafted helpers** (scope justification, reviewer test plan, customer admin note) &mdash; each pulls only from that guide's own cited facts, always shown with a "Draft: review before use" banner, never auto-sent anywhere.
 - **Evidence labeling is never the model's call.** Every factual claim is labeled Tested, Sourced, or Uncertain by deterministic code (`src/lib/evidence.ts`) based on whether an automated check could independently re-confirm it &mdash; the model only ever proposes facts and cites which finding/source they came from.
 
 ## Not built yet
 
-- **Sign-in and "My guides."** There's no GitHub sign-in, so a live-researched guide can't be saved or shared by link &mdash; "Save to my guides" is visibly present but disabled on purpose, not faked.
-- **A formal 25-claim accuracy spot-check** across Zoom/Teams/Slack/Google plus one live-generated app (see [Verification](#verification) below for what *has* been done).
-- Zoom, Microsoft Teams, and HubSpot still await the product owner's own section-by-section review against firsthand experience (the other 6 library guides *have* been self-reviewed against their official sources &mdash; see `docs/VERIFICATION.md`).
+- **A real account system.** The sign-in above is deliberately minimal (a name, not a login) &mdash; it labels guides per-browser, not per-person, and there's no way to see your saved guides from a different device. A real account (and the ability to share a saved guide by link) is the natural next step if this needed to scale past a single take-home reviewer.
 
 ## How the research agent works
 
@@ -106,4 +105,6 @@ The full, dated log of every non-obvious call made while building this (with the
 
 ## Verification
 
-See `docs/VERIFICATION.md` for the full log. As of this writing: the 6 library guides without firsthand developer experience behind them (Slack, Gong, Notion, Linear, Google/Gmail, LinkedIn) have been self-reviewed against their own official sources with no corrections needed; Zoom, Microsoft Teams, and HubSpot are drafted and link-checked but still await the product owner's own section-by-section read against real experience with those three; the formal 25-claim spot-check across multiple apps has not yet been run.
+See `docs/VERIFICATION.md` for the full log. All 9 library guides have been self-reviewed against their own official sources (the verdict, every gate, and the managed-app note re-checked against each provider's real documentation) &mdash; no corrections were needed in any of the 9. The Phase 8 25-claim accuracy check is also done: 5 claims each from Zoom, Microsoft Teams, Slack, and Google/Gmail, plus 5 from a 10th app (Calendly) researched fresh and live for this check and run through the real pipeline. Result: 23 Correct, 1 Corrected (a wrong assumption about Calendly's scopes, caught and fixed before it was ever published &mdash; the project's own "no label, no claim" rule working as intended), 1 Unverified (a gate the source docs genuinely don't specify, correctly left "unknown" rather than guessed).
+
+None of the 9 guides have `handVerified` set &mdash; that field specifically means a human checked the guide against their own firsthand use of the product, and that hasn't happened for any of them yet. What has happened is the independent self-review above.
