@@ -1,5 +1,12 @@
 import { GoogleGenAI } from "@google/genai";
 
+// Without an explicit timeout, a congested provider can leave a call hanging
+// on the SDK's own default (minutes) instead of failing fast enough for
+// callWithRetry to retry and the pipeline to fall back to the next provider.
+// Gemini's grounding tools (googleSearch/urlContext) legitimately take longer
+// than a plain generation, so this is more generous than Groq's.
+const REQUEST_TIMEOUT_MS = 30000;
+
 export type GeminiTool = "googleSearch" | "urlContext";
 
 export interface GeminiCallOptions {
@@ -22,7 +29,7 @@ function toolConfig(tool: GeminiTool) {
  * urlContext grounding tools. Throws on provider error - the caller (router)
  * is responsible for retry/fallback. */
 export async function geminiGenerate(opts: GeminiCallOptions): Promise<GeminiCallResult> {
-  const ai = new GoogleGenAI({ apiKey: opts.apiKey });
+  const ai = new GoogleGenAI({ apiKey: opts.apiKey, httpOptions: { timeout: REQUEST_TIMEOUT_MS } });
   const response = await ai.models.generateContent({
     model: opts.model,
     contents: opts.prompt,
@@ -40,7 +47,7 @@ export interface GeminiJsonModeOptions {
 /** Gemini's own structured-output mode (response_mime_type: application/json),
  * used as the draft stage's fallback when Groq's strict mode is unavailable. */
 export async function geminiGenerateJson(opts: GeminiJsonModeOptions): Promise<GeminiCallResult> {
-  const ai = new GoogleGenAI({ apiKey: opts.apiKey });
+  const ai = new GoogleGenAI({ apiKey: opts.apiKey, httpOptions: { timeout: REQUEST_TIMEOUT_MS } });
   const response = await ai.models.generateContent({
     model: opts.model,
     contents: opts.prompt,
