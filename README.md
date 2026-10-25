@@ -6,7 +6,7 @@ DevFili tells a developer, before they write a line of integration code, how har
 
 "Fili" is Greek for friend &mdash; the idea is the friend who already went through a provider's approval process and wrote down exactly what to expect.
 
-**Live:** _add your deployed URL here once you've deployed (see [Deploying](#deploying) below)_
+**Live:** https://devfili.vercel.app/
 **Source:** https://github.com/rohith-kc/devfili
 
 ## What's actually working right now
