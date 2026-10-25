@@ -86,6 +86,19 @@ export function setUsername(name: string): void {
   if (typeof window === "undefined") return;
   safeSet(USERNAME_KEY, name.trim().slice(0, 40));
   notify();
+  pushName();
+}
+
+/** Best-effort: records the name against this browser's id so the owner can see who visited. */
+function pushName(): void {
+  const deviceId = getDeviceId();
+  const name = safeGet(USERNAME_KEY);
+  if (!deviceId || !name) return;
+  fetch("/api/visitors", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ deviceId, name }),
+  }).catch(() => {});
 }
 
 export function clearUsername(): void {
@@ -135,6 +148,7 @@ function pushToServer(method: "POST" | "DELETE", guide: Guide | null, slug?: str
 export async function syncSavedFromServer(): Promise<void> {
   const deviceId = getDeviceId();
   if (!deviceId) return;
+  pushName();
   try {
     const res = await fetch(`/api/saved?device=${deviceId}`);
     if (!res.ok) return;
