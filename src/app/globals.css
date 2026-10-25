@@ -49,3 +49,76 @@ body {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
+
+.draft-markdown h1,
+.draft-markdown h2,
+.draft-markdown h3 {
+  margin-top: 1.25em;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  color: var(--foreground);
+}
+.draft-markdown h1:first-child,
+.draft-markdown h2:first-child,
+.draft-markdown h3:first-child {
+  margin-top: 0;
+}
+.draft-markdown h1 {
+  font-size: 1.125rem;
+}
+.draft-markdown h2 {
+  font-size: 1rem;
+}
+.draft-markdown h3 {
+  font-size: 0.9375rem;
+}
+.draft-markdown p {
+  margin-bottom: 0.9em;
+}
+.draft-markdown ul,
+.draft-markdown ol {
+  margin: 0 0 0.9em 1.25em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35em;
+}
+.draft-markdown ul {
+  list-style: disc;
+}
+.draft-markdown ol {
+  list-style: decimal;
+}
+.draft-markdown strong {
+  font-weight: 600;
+  color: var(--foreground);
+}
+.draft-markdown code {
+  border-radius: 0.25rem;
+  background: var(--background);
+  padding: 0.1em 0.35em;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.85em;
+}
+.draft-markdown hr {
+  margin: 1.25em 0;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+.draft-markdown table {
+  width: 100%;
+  margin-bottom: 1em;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+.draft-markdown th,
+.draft-markdown td {
+  border: 1px solid var(--border);
+  padding: 0.5em 0.65em;
+  text-align: left;
+  vertical-align: top;
+}
+.draft-markdown th {
+  background: var(--background);
+  font-weight: 600;
+  color: var(--foreground);
+}

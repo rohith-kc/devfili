@@ -1,6 +1,9 @@
 "use client";
 
 import { useEffect, useId, useState } from "react";
+import { createPortal } from "react-dom";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import type { Guide, HelperKind } from "@/lib/schema";
 
 type Field = { key: string; label: string; placeholder: string };
@@ -105,52 +108,85 @@ export function HelperPanel({
 
       {open && (
         <div id={formId} className="mt-3">
-          {!draft ? (
-            <form onSubmit={submit} className="flex flex-col gap-2">
-              {fields.map((f) => (
-                <label key={f.key} className="flex flex-col gap-1 text-xs text-muted">
-                  {f.label}
-                  <input
-                    value={values[f.key] ?? ""}
-                    onChange={(e) => setValues((v) => ({ ...v, [f.key]: e.target.value }))}
-                    placeholder={f.placeholder}
-                    className="focus-ring rounded-lg border border-border bg-background px-3 py-1.5 text-sm text-foreground placeholder:text-muted"
-                  />
-                </label>
-              ))}
-              <button
-                type="submit"
-                disabled={loading}
-                className="font-mono-label focus-ring mt-1 w-fit rounded-full bg-foreground px-3 py-1.5 text-xs font-semibold uppercase text-background disabled:opacity-50"
-              >
-                {loading ? "Drafting…" : "Draft it"}
-              </button>
-              {error && <p className="text-xs text-rose-600 dark:text-rose-400">{error}</p>}
-            </form>
-          ) : (
-            <div>
-              <p className="font-mono-label mb-2 inline-block rounded-full border border-dashed border-amber-400 px-2 py-0.5 text-[10px] uppercase text-amber-700 dark:border-amber-600 dark:text-amber-400">
-                Draft: review before use
-              </p>
-              <pre className="whitespace-pre-wrap rounded-lg border border-border bg-background p-3 text-xs text-foreground">
-                {draft}
-              </pre>
-              <div className="mt-2 flex gap-3">
-                <button type="button" onClick={copy} className="font-mono-label focus-ring text-xs uppercase text-accent hover:underline">
-                  {copied ? "Copied" : "Copy"}
+          <form onSubmit={submit} className="flex flex-col gap-2">
+            {fields.map((f) => (
+              <label key={f.key} className="flex flex-col gap-1 text-xs text-muted">
+                {f.label}
+                <input
+                  value={values[f.key] ?? ""}
+                  onChange={(e) => setValues((v) => ({ ...v, [f.key]: e.target.value }))}
+                  placeholder={f.placeholder}
+                  className="focus-ring rounded-lg border border-border bg-background px-3 py-1.5 text-sm text-foreground placeholder:text-muted"
+                />
+              </label>
+            ))}
+            <button
+              type="submit"
+              disabled={loading}
+              className="font-mono-label focus-ring mt-1 w-fit rounded-full bg-foreground px-3 py-1.5 text-xs font-semibold uppercase text-background disabled:opacity-50"
+            >
+              {loading ? "Drafting…" : draft ? "Draft again" : "Draft it"}
+            </button>
+            {error && <p className="text-xs text-rose-600 dark:text-rose-400">{error}</p>}
+          </form>
+        </div>
+      )}
+
+      {draft &&
+        createPortal(
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-6"
+            role="presentation"
+            onClick={() => setDraft(null)}
+          >
+            <div
+              role="dialog"
+              aria-modal="true"
+              aria-label={`${title} draft`}
+              className="flex max-h-[85vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between border-b border-border p-5">
+                <div>
+                  <h3 className="text-base font-semibold text-foreground">{title}</h3>
+                  <p className="font-mono-label mt-1 inline-block rounded-full border border-dashed border-amber-400 px-2 py-0.5 text-[10px] uppercase text-amber-700 dark:border-amber-600 dark:text-amber-400">
+                    Draft: review before use
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setDraft(null)}
+                  className="focus-ring rounded p-1 text-muted hover:text-foreground"
+                  aria-label="Close"
+                >
+                  &#x2715;
                 </button>
+              </div>
+
+              <div className="draft-markdown overflow-y-auto p-6 text-sm leading-relaxed text-foreground">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>{draft}</ReactMarkdown>
+              </div>
+
+              <div className="flex items-center justify-end gap-3 border-t border-border p-4">
                 <button
                   type="button"
                   onClick={() => setDraft(null)}
                   className="font-mono-label focus-ring text-xs uppercase text-muted hover:text-foreground"
                 >
-                  Draft again
+                  Close
+                </button>
+                <button
+                  type="button"
+                  onClick={copy}
+                  className="font-mono-label focus-ring rounded-full border border-border px-4 py-2 text-xs font-semibold uppercase text-foreground transition-opacity hover:opacity-80"
+                >
+                  {copied ? "Copied ✓" : "Copy"}
                 </button>
               </div>
             </div>
-          )}
-        </div>
-      )}
+          </div>,
+          document.body
+        )}
     </div>
   );
 }

@@ -114,9 +114,17 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ hel
       baseURL: env.groqBaseUrl,
       model: env.groqModelFast,
       prompt: built.prompt,
-      maxTokens: 1200,
+      maxTokens: 2000,
     });
-    return Response.json({ draft: result.text, factsUsed: built.factsUsed });
+    // The prompt asks the model to end with this exact line so earlier
+    // reviewers could confirm it followed the "always marked as a draft"
+    // rule; the UI now shows that marking itself, so strip the duplicate.
+    // Also drop any orphan markdown marker left by truncation mid-list.
+    const draft = result.text
+      .replace(/\n*\**draft:\s*review before use\.?\**\s*$/i, "")
+      .replace(/\n+[*-]\s*$/, "")
+      .trimEnd();
+    return Response.json({ draft, factsUsed: built.factsUsed });
   } catch {
     return Response.json({ error: "provider_busy", message: "The draft service is busy right now. Try again shortly." }, { status: 503 });
   }
