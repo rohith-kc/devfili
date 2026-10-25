@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { AppIcon } from "./AppIcon";
 import {
   clearUsername,
@@ -20,6 +21,7 @@ export function ProfileMenu() {
   const guides = useSavedGuides();
   const [open, setOpen] = useState(false);
   const [draft, setDraft] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     void syncSavedFromServer();
@@ -161,6 +163,7 @@ export function ProfileMenu() {
                     onClick={() => {
                       clearUsername();
                       setOpen(false);
+                      router.push("/");
                     }}
                     className="font-mono-label focus-ring text-xs uppercase text-muted hover:text-foreground"
                   >
