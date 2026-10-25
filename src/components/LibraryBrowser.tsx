@@ -3,22 +3,29 @@
 import { useMemo, useState } from "react";
 import type { AppMeta } from "@/lib/content";
 import type { Guide } from "@/lib/schema";
+import { TIER_LABEL } from "@/lib/format";
 import { AppTile } from "./AppTile";
+
+type TierFilter = "all" | 1 | 2 | 3 | 4;
 
 export function LibraryBrowser({ items }: { items: { app: AppMeta; guide: Guide }[] }) {
   const [query, setQuery] = useState("");
+  const [tier, setTier] = useState<TierFilter>("all");
+  const [gatedOnly, setGatedOnly] = useState(false);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return items;
-    return items.filter(
-      ({ app }) => app.name.toLowerCase().includes(q) || app.aliases.some((a) => a.toLowerCase().includes(q))
-    );
-  }, [items, query]);
+    return items.filter(({ app, guide }) => {
+      if (q && !app.name.toLowerCase().includes(q) && !app.aliases.some((a) => a.toLowerCase().includes(q))) return false;
+      if (tier !== "all" && guide.tile.tier !== tier) return false;
+      if (gatedOnly && !guide.tile.gated) return false;
+      return true;
+    });
+  }, [items, query, tier, gatedOnly]);
 
   return (
     <section id="library" className="mx-auto max-w-6xl px-6 py-16">
-      <div className="mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+      <div className="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
         <div>
           <h2 className="text-xl font-semibold text-foreground">Reviewed guides</h2>
           <p className="mt-1 text-sm text-muted">9 apps, hand-reviewed or source-checked.</p>
@@ -43,10 +50,44 @@ export function LibraryBrowser({ items }: { items: { app: AppMeta; guide: Guide 
         </label>
       </div>
 
+      <div className="mb-8 flex flex-wrap items-center gap-2">
+        <span className="font-mono-label mr-1 text-xs uppercase text-muted">Filter</span>
+        <button
+          type="button"
+          onClick={() => setTier("all")}
+          className={`focus-ring rounded-full border px-3 py-1 text-xs font-medium ${
+            tier === "all" ? "border-accent bg-accent/10 text-accent" : "border-border text-muted hover:text-foreground"
+          }`}
+        >
+          All tiers
+        </button>
+        {([1, 2, 3, 4] as const).map((t) => (
+          <button
+            key={t}
+            type="button"
+            onClick={() => setTier(tier === t ? "all" : t)}
+            className={`focus-ring rounded-full border px-3 py-1 text-xs font-medium ${
+              tier === t ? "border-accent bg-accent/10 text-accent" : "border-border text-muted hover:text-foreground"
+            }`}
+          >
+            {TIER_LABEL[t]}
+          </button>
+        ))}
+        <button
+          type="button"
+          onClick={() => setGatedOnly((v) => !v)}
+          className={`focus-ring rounded-full border px-3 py-1 text-xs font-medium ${
+            gatedOnly ? "border-amber-400 bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-400" : "border-border text-muted hover:text-foreground"
+          }`}
+        >
+          Gated only
+        </button>
+      </div>
+
       {filtered.length === 0 ? (
         <p className="rounded-2xl border border-dashed border-border p-10 text-center text-sm text-muted">
-          No reviewed guide matches &ldquo;{query}&rdquo; yet &mdash; live research for any other app is coming in a later
-          phase.
+          No reviewed guide matches these filters &mdash; try clearing them, or use &ldquo;Check an app&rdquo; above to
+          research any other OAuth app live.
         </p>
       ) : (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">

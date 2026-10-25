@@ -1,8 +1,10 @@
 import type { ReactNode } from "react";
 import type { Claim, Guide } from "@/lib/schema";
 import { rangeLabel, GATE_LABEL } from "@/lib/format";
+import { CUSTOMER_ADMIN_EXPLAIN, OWNER_EXPLAIN } from "@/lib/glossary";
 import { EvidenceBadge } from "./EvidenceBadge";
 import { GuideHeader } from "./GuideHeader";
+import { InfoTip } from "./InfoTip";
 import { OwnerTag } from "./OwnerTag";
 import { Verdict } from "./Verdict";
 
@@ -18,16 +20,19 @@ function ClaimLine({ claim }: { claim: Claim }) {
 function Section({
   id,
   title,
+  titleExtra,
   children,
 }: {
   id: string;
   title: string;
+  titleExtra?: ReactNode;
   children: ReactNode;
 }) {
   return (
     <section id={id} aria-labelledby={`${id}-heading`} className="border-t border-border py-8">
-      <h2 id={`${id}-heading`} className="mb-3 text-lg font-semibold text-foreground">
+      <h2 id={`${id}-heading`} className="mb-3 flex items-center gap-1.5 text-lg font-semibold text-foreground">
         {title}
+        {titleExtra}
       </h2>
       {children}
     </section>
@@ -115,6 +120,14 @@ export function GuideSections({ guide }: { guide: Guide }) {
       </Section>
 
       <Section id="steps" title="Steps">
+        <div className="mb-4 flex flex-wrap gap-4 text-xs text-muted">
+          {(["agent_did", "agent_drafted", "you_do"] as const).map((owner) => (
+            <span key={owner} className="inline-flex items-center gap-1">
+              <OwnerTag owner={owner} />
+              <InfoTip label={owner}>{OWNER_EXPLAIN[owner]}</InfoTip>
+            </span>
+          ))}
+        </div>
         <ol className="flex flex-col gap-4">
           {guide.steps.map((step) => (
             <li key={step.n} className="flex gap-3">
@@ -160,7 +173,12 @@ export function GuideSections({ guide }: { guide: Guide }) {
         const gate = guide.gates[key];
         const title = key === "provider" ? "Gate: provider review" : key === "customerAdmin" ? "Gate: customer admin" : "Gate: end user";
         return (
-          <Section key={key} id={`gate-${key}`} title={title}>
+          <Section
+            key={key}
+            id={`gate-${key}`}
+            title={title}
+            titleExtra={key === "customerAdmin" ? <InfoTip label="Customer admin">{CUSTOMER_ADMIN_EXPLAIN}</InfoTip> : undefined}
+          >
             <p className="mb-1 text-sm text-foreground">
               Applies: <span className="font-medium">{GATE_LABEL[gate.applies]}</span>
             </p>

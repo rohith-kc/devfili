@@ -23,3 +23,19 @@ export function brandInitial(name: string): string {
   const letter = name.replace(/[^A-Za-z]/, "").charAt(0);
   return (letter || name.charAt(0)).toUpperCase();
 }
+
+// A handful of domains give a sharper brand icon than the app's own
+// websiteUrl would (e.g. Microsoft's root favicon isn't Teams-specific).
+const FAVICON_DOMAIN_OVERRIDE: Record<string, string> = {
+  "microsoft-teams": "teams.microsoft.com",
+  "google-gmail": "mail.google.com",
+};
+
+/** A live link to the provider's own publicly-served favicon, proxied
+ * through Google's favicon service - not a bundled/redistributed logo file
+ * (see docs/DECISIONS.md: several providers no longer allow that), just a
+ * reference to the icon each site already serves itself. */
+export function faviconUrl(slug: string, websiteUrl: string): string {
+  const domain = FAVICON_DOMAIN_OVERRIDE[slug] ?? new URL(websiteUrl).hostname;
+  return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=128`;
+}

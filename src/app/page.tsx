@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { LibraryBrowser } from "@/components/LibraryBrowser";
+import { Footer } from "@/components/Footer";
 import { listLibraryGuides } from "@/lib/content";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
         <Hero />
         <LibraryBrowser items={items} />
       </main>
+      <Footer />
     </div>
   );
 }

@@ -11,15 +11,12 @@ export function Hero() {
         }}
       />
       <div className="relative mx-auto max-w-6xl px-6 py-20 text-center sm:py-28">
-        <span className="font-mono-label inline-block rounded-full border border-background/20 px-3 py-1 text-xs uppercase tracking-wide text-background/70">
-          9 apps reviewed &middot; live research for the rest
-        </span>
-        <h1 className="mx-auto mt-6 max-w-3xl text-4xl font-semibold tracking-tight sm:text-6xl">
+        <h1 className="mx-auto max-w-3xl text-4xl font-semibold tracking-tight sm:text-6xl">
           Get your OAuth app approved <span className="text-accent">swiftly</span>
         </h1>
         <p className="mx-auto mt-5 max-w-xl text-base text-background/70 sm:text-lg">
-          Difficulty tier, your time, the wait, and the three approval gates &mdash; for Zoom, Slack, HubSpot, and
-          six more, with evidence you can check yourself.
+          Difficulty tier, your time, the wait, and the three approval gates &mdash; researched in depth for
+          Zoom, Slack, HubSpot and the rest of our library, with live research for any other OAuth app.
         </p>
       </div>
     </section>
