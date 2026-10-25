@@ -3,6 +3,7 @@ import type { Env } from "../llm/router";
 import { callWithRetry } from "../llm/router";
 import { geminiGenerate } from "../llm/gemini";
 import { groqBrowserSearch, groqComplete } from "../llm/groq";
+import { openrouterWebSearch } from "../llm/openrouter";
 import { parseJsonWithSchema } from "../llm/json";
 import type { Finding } from "../schema";
 import { communityResearchPrompt, officialResearchPrompt } from "./prompts";
@@ -52,11 +53,24 @@ async function repairJson(env: Env, stage: string, badText: string): Promise<Raw
 
 /** Runs the primary provider call (with its own internal retry); on total
  * failure of a Gemini call, falls back once to Groq's browser_search tool
- * (groq/compound's replacement). On a JSON parse failure (either provider),
+ * (groq/compound's replacement), then once more to OpenRouter's web-search
+ * plugin (when configured) if Groq also fails. On a JSON parse failure,
  * makes one repair call. Never throws - returns no findings on total
  * failure so one broken source doesn't sink the whole stage. */
+async function tryOpenRouterDiscover(env: Env, stage: string, prompt: string): Promise<string | null> {
+  if (!env.openrouterApiKey) return null;
+  try {
+    const result = await callWithRetry(`${stage}-fallback-2`, "openrouter", env.openrouterModel, () =>
+      openrouterWebSearch({ apiKey: env.openrouterApiKey, baseURL: env.openrouterBaseUrl, model: env.openrouterModel, prompt })
+    );
+    return result.text;
+  } catch {
+    return null;
+  }
+}
+
 async function discoverOneSide(env: Env, stage: string, prompt: string, useGroq: boolean): Promise<RawFindingsResponse> {
-  let text: string;
+  let text: string | null = null;
   try {
     const result = useGroq
       ? await callWithRetry(stage, "groq", env.groqModelFast, () =>
@@ -72,15 +86,21 @@ async function discoverOneSide(env: Env, stage: string, prompt: string, useGroq:
         );
     text = result.text;
   } catch {
-    if (useGroq) return { findings: [], notFound: [`${stage}: provider call failed`] };
-    try {
-      const fallback = await callWithRetry(`${stage}-fallback`, "groq", env.groqModelFast, () =>
-        groqBrowserSearch({ apiKey: env.groqApiKey, baseURL: env.groqBaseUrl, model: env.groqModelFast, prompt })
-      );
-      text = fallback.text;
-    } catch {
-      return { findings: [], notFound: [`${stage}: provider call failed`] };
+    if (useGroq) {
+      // Primary was already Groq's browser_search - the next fallback tier
+      // is OpenRouter, not another identical (and equally expensive) Groq call.
+      text = await tryOpenRouterDiscover(env, stage, prompt);
+    } else {
+      try {
+        const fallback = await callWithRetry(`${stage}-fallback`, "groq", env.groqModelFast, () =>
+          groqBrowserSearch({ apiKey: env.groqApiKey, baseURL: env.groqBaseUrl, model: env.groqModelFast, prompt })
+        );
+        text = fallback.text;
+      } catch {
+        text = await tryOpenRouterDiscover(env, stage, prompt);
+      }
     }
+    if (text === null) return { findings: [], notFound: [`${stage}: provider call failed`] };
   }
 
   const parsed = parseJsonWithSchema(text, RawFindingsResponse);
