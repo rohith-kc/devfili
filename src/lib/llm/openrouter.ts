@@ -10,10 +10,18 @@ export interface OpenRouterCallResult {
   totalTokens: number | null;
 }
 
+// Without an explicit timeout, a congested provider can leave a call hanging
+// on the SDK's own default (minutes) instead of failing fast enough for
+// callWithRetry to retry. OpenRouter is the last fallback tier, so this is a
+// little more generous than Groq's - a :online web-search call genuinely
+// takes longer than a plain completion.
+const REQUEST_TIMEOUT_MS = 30000;
+
 function client(opts: OpenRouterClientOptions): OpenAI {
   return new OpenAI({
     apiKey: opts.apiKey,
     baseURL: opts.baseURL,
+    timeout: REQUEST_TIMEOUT_MS,
     // Optional but recommended by OpenRouter for attribution; no secrets.
     defaultHeaders: {
       "HTTP-Referer": "https://devfili.app",

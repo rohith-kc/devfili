@@ -10,8 +10,13 @@ export interface GroqCallResult {
   totalTokens: number | null;
 }
 
+// Without an explicit timeout, a congested provider can leave a call hanging
+// on the SDK's own default (minutes) instead of failing fast enough for
+// callWithRetry to retry and the pipeline to fall back to the next provider.
+const REQUEST_TIMEOUT_MS = 25000;
+
 function client(opts: GroqClientOptions): OpenAI {
-  return new OpenAI({ apiKey: opts.apiKey, baseURL: opts.baseURL });
+  return new OpenAI({ apiKey: opts.apiKey, baseURL: opts.baseURL, timeout: REQUEST_TIMEOUT_MS });
 }
 
 function toResult(completion: OpenAI.Chat.Completions.ChatCompletion): GroqCallResult {
