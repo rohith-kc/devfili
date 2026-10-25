@@ -176,6 +176,17 @@
       "publishedYear": 2026,
       "excerpt": "Deauthorization Notification Endpoint",
       "checkable": { "url": "https://developers.zoom.us/docs/integrations/end-user-auth/", "mustContain": ["Deauthorization"] }
+    },
+    {
+      "id": "F17",
+      "topic": "scopes",
+      "statement": "Zoom's classic-scopes reference names every OAuth scope by name, including meeting:read, meeting:write, user:read, user:write, recording:read, recording:write, webinar:read, webinar:write, report:read:admin, phone:read, phone:write, chat:read, chat:write, account:read:admin, account:write:admin, calendar:read, and calendar:write, each with its own one-line description.",
+      "sourceUrl": "https://developers.zoom.us/docs/integrations/oauth-scopes/",
+      "sourceTitle": "Integrations - Classic scopes",
+      "sourceType": "official",
+      "publishedYear": 2026,
+      "excerpt": "View your meetings",
+      "checkable": { "url": "https://developers.zoom.us/docs/integrations/oauth-scopes/", "mustContain": ["View your meetings"] }
     }
   ],
   "core": {
@@ -231,20 +242,23 @@
       ]
     },
     "scopes": [
-      {
-        "scope": "report:read:admin",
-        "allows": "Read account-wide usage reports.",
-        "neededFor": "Admin-level reporting integrations across an organization's whole account.",
-        "reviewImpact": "security_assessment",
-        "claim": { "text": "The report:read:admin scope requires the authorizing user to have matching admin-level Role Permissions, and - like every scope - goes through Zoom's Security Review team.", "findingIds": ["F7", "F8"], "probeIds": ["P17", "P18"] }
-      },
-      {
-        "scope": "Account-level scopes (general)",
-        "allows": "Access data across the whole Zoom account rather than one user.",
-        "neededFor": "Apps that act on behalf of an organization rather than a single user.",
-        "reviewImpact": "security_assessment",
-        "claim": { "text": "Account-level scopes are reviewed by Zoom's Security Review team and require an authorizing user with matching admin permissions.", "findingIds": ["F1", "F7", "F8"], "probeIds": ["P12", "P17", "P18"] }
-      }
+      { "scope": "meeting:read", "allows": "View your meetings.", "neededFor": "Reading a user's own meetings.", "reviewImpact": "security_assessment", "claim": { "text": "meeting:read lets an app view the authorizing user's meetings; every scope, including this one, goes through Zoom's Security Review team.", "findingIds": ["F17", "F7"], "probeIds": [] } },
+      { "scope": "meeting:write", "allows": "View and manage your meetings.", "neededFor": "Creating or editing a user's own meetings.", "reviewImpact": "security_assessment", "claim": { "text": "meeting:write lets an app view and manage the authorizing user's meetings, subject to Zoom's Security Review.", "findingIds": ["F17", "F7"], "probeIds": [] } },
+      { "scope": "user:read", "allows": "View your user information.", "neededFor": "Reading the authorizing user's profile.", "reviewImpact": "security_assessment", "claim": { "text": "user:read lets an app view the authorizing user's own profile information.", "findingIds": ["F17", "F7"], "probeIds": [] } },
+      { "scope": "user:write", "allows": "View and manage your own user information.", "neededFor": "Editing the authorizing user's profile.", "reviewImpact": "security_assessment", "claim": { "text": "user:write lets an app view and manage the authorizing user's own profile information.", "findingIds": ["F17", "F7"], "probeIds": [] } },
+      { "scope": "recording:read", "allows": "Access your recordings.", "neededFor": "Reading a user's cloud recordings.", "reviewImpact": "security_assessment", "claim": { "text": "recording:read lets an app access the authorizing user's own cloud recordings.", "findingIds": ["F17", "F7"], "probeIds": [] } },
+      { "scope": "recording:write", "allows": "View and manage your recordings.", "neededFor": "Managing a user's cloud recordings.", "reviewImpact": "security_assessment", "claim": { "text": "recording:write lets an app view and manage the authorizing user's own cloud recordings.", "findingIds": ["F17", "F7"], "probeIds": [] } },
+      { "scope": "webinar:read", "allows": "Read-only access to your own webinars.", "neededFor": "Reading a user's webinars.", "reviewImpact": "security_assessment", "claim": { "text": "webinar:read gives read-only access to the authorizing user's own webinars.", "findingIds": ["F17", "F7"], "probeIds": [] } },
+      { "scope": "webinar:write", "allows": "Read and modify your own webinars.", "neededFor": "Creating or editing a user's webinars.", "reviewImpact": "security_assessment", "claim": { "text": "webinar:write lets an app read and modify the authorizing user's own webinars.", "findingIds": ["F17", "F7"], "probeIds": [] } },
+      { "scope": "report:read:admin", "allows": "Access report data.", "neededFor": "Admin-level reporting across the whole account.", "reviewImpact": "security_assessment", "claim": { "text": "report:read:admin lets an app access account-wide report data, and requires an authorizing user with matching admin Role Permissions.", "findingIds": ["F17", "F7", "F8"], "probeIds": [] } },
+      { "scope": "phone:read", "allows": "View your phone information.", "neededFor": "Reading a user's Zoom Phone data.", "reviewImpact": "security_assessment", "claim": { "text": "phone:read lets an app view the authorizing user's Zoom Phone information.", "findingIds": ["F17", "F7"], "probeIds": [] } },
+      { "scope": "phone:write", "allows": "View and manage your phone information.", "neededFor": "Managing a user's Zoom Phone data.", "reviewImpact": "security_assessment", "claim": { "text": "phone:write lets an app view and manage the authorizing user's Zoom Phone information.", "findingIds": ["F17", "F7"], "probeIds": [] } },
+      { "scope": "chat:read", "allows": "View chat message info.", "neededFor": "Reading a user's chat messages and channels.", "reviewImpact": "security_assessment", "claim": { "text": "chat:read lets an app view the authorizing user's chat message info.", "findingIds": ["F17", "F7"], "probeIds": [] } },
+      { "scope": "chat:write", "allows": "Manage chat message info.", "neededFor": "Sending or managing a user's chat messages.", "reviewImpact": "security_assessment", "claim": { "text": "chat:write lets an app manage the authorizing user's chat message info.", "findingIds": ["F17", "F7"], "probeIds": [] } },
+      { "scope": "account:read:admin", "allows": "View account info.", "neededFor": "Reading account-level settings.", "reviewImpact": "security_assessment", "claim": { "text": "account:read:admin lets an app view account-level info, and requires an authorizing admin.", "findingIds": ["F17", "F7", "F8"], "probeIds": [] } },
+      { "scope": "account:write:admin", "allows": "View and manage account info.", "neededFor": "Changing account-level settings.", "reviewImpact": "security_assessment", "claim": { "text": "account:write:admin lets an app view and manage account-level info, and requires an authorizing admin.", "findingIds": ["F17", "F7", "F8"], "probeIds": [] } },
+      { "scope": "calendar:read", "allows": "View calendar.", "neededFor": "Reading a user's Zoom-linked calendar.", "reviewImpact": "security_assessment", "claim": { "text": "calendar:read lets an app view the authorizing user's calendar.", "findingIds": ["F17", "F7"], "probeIds": [] } },
+      { "scope": "calendar:write", "allows": "Manage calendar.", "neededFor": "Creating or editing a user's calendar events.", "reviewImpact": "security_assessment", "claim": { "text": "calendar:write lets an app manage the authorizing user's calendar.", "findingIds": ["F17", "F7"], "probeIds": [] } }
     ],
     "prerequisites": [
       {

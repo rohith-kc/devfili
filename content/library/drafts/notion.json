@@ -7,7 +7,7 @@
   },
   "kind": "library",
   "sample": false,
-  "lastVerifiedOn": "2026-10-24",
+  "lastVerifiedOn": "2026-10-25",
   "handVerified": null,
   "completeness": {
     "status": "complete",
@@ -24,13 +24,13 @@
           "url": "https://developers.notion.com/docs/publishing-integrations-to-notions-integration-gallery",
           "title": "Publishing integrations to Notion's Integration Gallery",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
           "recheck": "mismatch"
         }
       ],
-      "testNote": "Fetched https://developers.notion.com/docs/publishing-integrations-to-notions-integration-gallery on 2026-10-24; the required terms were present.",
+      "testNote": "Fetched https://developers.notion.com/docs/publishing-integrations-to-notions-integration-gallery on 2026-10-25; the required terms were present.",
       "uncertainReason": null,
       "checked": "unchecked"
     },
@@ -59,7 +59,7 @@
             "url": "https://developers.notion.com/guides/get-started/public-integrations",
             "title": "Public integrations",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
@@ -68,13 +68,13 @@
             "url": "https://developers.notion.com/docs/publishing-integrations-to-notions-integration-gallery",
             "title": "Publishing integrations to Notion's Integration Gallery",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "mismatch"
           }
         ],
-        "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -91,7 +91,7 @@
           "url": "https://docs.composio.dev/docs/authentication/programmatic-auth-configs",
           "title": "Programmatic auth configs",
           "type": "vendor",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": null,
           "oldSource": false,
           "recheck": "confirmed"
@@ -122,7 +122,7 @@
             "url": "https://docs.composio.dev/docs/authentication/programmatic-auth-configs",
             "title": "Programmatic auth configs",
             "type": "vendor",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": null,
             "oldSource": false,
             "recheck": "confirmed"
@@ -145,7 +145,7 @@
             "url": "https://developers.notion.com/guides/get-started/public-integrations",
             "title": "Public integrations",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
@@ -154,13 +154,13 @@
             "url": "https://developers.notion.com/guides/get-started/public-integrations",
             "title": "Public integrations",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -175,7 +175,7 @@
             "url": "https://developers.notion.com/guides/get-started/internal-integrations",
             "title": "Internal integrations",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "mismatch"
@@ -196,13 +196,13 @@
             "url": "https://developers.notion.com/guides/get-started/public-integrations",
             "title": "Public integrations",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -210,9 +210,9 @@
   },
   "scopes": [
     {
-      "scope": "Capabilities (read content, update content, insert content)",
-      "allows": "Reading, updating, or inserting content in the pages a user grants access to.",
-      "neededFor": "Any public integration - set at creation instead of requested as individual OAuth scope strings.",
+      "scope": "Capabilities (overview)",
+      "allows": "Capabilities - such as reading content, updating content, and inserting content - are set when creating the integration, rather than requested as individual OAuth scope strings.",
+      "neededFor": "Understanding how access is granted at all for a Notion integration.",
       "reviewImpact": "none",
       "claim": {
         "id": "c13",
@@ -223,14 +223,189 @@
             "url": "https://developers.notion.com/guides/get-started/public-integrations",
             "title": "Public integrations",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "Read content",
+      "allows": "Read existing content in a workspace.",
+      "neededFor": "Any integration that needs to see pages/blocks/databases.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c14",
+        "text": "Read content lets a connection read existing content in a workspace.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.notion.com/reference/capabilities",
+            "title": "Capabilities",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "Update content",
+      "allows": "Update existing content.",
+      "neededFor": "Editing pages, blocks, or database rows.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c15",
+        "text": "Update content lets a connection update existing content.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.notion.com/reference/capabilities",
+            "title": "Capabilities",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "Insert content",
+      "allows": "Create new content, but doesn't by itself grant access to read full objects.",
+      "neededFor": "Writing new pages/blocks without needing read access.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c16",
+        "text": "Insert content lets a connection create new content, but doesn't grant access to read full objects.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.notion.com/reference/capabilities",
+            "title": "Capabilities",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "Read comments",
+      "allows": "Read comments on a page or block.",
+      "neededFor": "Integrations that surface or process discussion threads.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c17",
+        "text": "Read comments lets a connection read comments on a page or block.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.notion.com/reference/capabilities",
+            "title": "Capabilities",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "Insert comments",
+      "allows": "Add comments to a page or an existing discussion.",
+      "neededFor": "Integrations that post comments (e.g. a bot that replies).",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c18",
+        "text": "Insert comments lets a connection add comments to a page or to an existing discussion.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.notion.com/reference/capabilities",
+            "title": "Capabilities",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "User information (no email)",
+      "allows": "User objects include name and profile image, but not email.",
+      "neededFor": "Showing who did what, without needing email addresses.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c19",
+        "text": "User information without email addresses includes name and profile image, but not email.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.notion.com/reference/capabilities",
+            "title": "Capabilities",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "User information (with email)",
+      "allows": "User objects include name, profile image, and email address.",
+      "neededFor": "Matching Notion users to accounts in another system by email.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c20",
+        "text": "User information with email addresses includes name, profile image, and email.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://developers.notion.com/reference/capabilities",
+            "title": "Capabilities",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
         "checked": "unchecked"
       }
     }
@@ -240,7 +415,7 @@
       "item": "At least one OAuth redirect URI",
       "kind": "other",
       "claim": {
-        "id": "c14",
+        "id": "c21",
         "text": "Creating a public integration requires at least one redirect URI.",
         "label": "tested",
         "sources": [
@@ -248,13 +423,13 @@
             "url": "https://developers.notion.com/guides/get-started/public-integrations",
             "title": "Public integrations",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -263,7 +438,7 @@
       "item": "A decision on installation scope (any workspace vs. selected workspaces only) - can't be changed later",
       "kind": "other",
       "claim": {
-        "id": "c15",
+        "id": "c22",
         "text": "Installation scope is chosen at creation and can't be changed afterward.",
         "label": "tested",
         "sources": [
@@ -271,13 +446,13 @@
             "url": "https://developers.notion.com/guides/get-started/public-integrations",
             "title": "Public integrations",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -294,7 +469,7 @@
       "helper": null,
       "claims": [
         {
-          "id": "c16",
+          "id": "c23",
           "text": "Notion documents public integrations and Marketplace publishing at developers.notion.com.",
           "label": "tested",
           "sources": [
@@ -302,13 +477,13 @@
               "url": "https://developers.notion.com/docs/publishing-integrations-to-notions-integration-gallery",
               "title": "Publishing integrations to Notion's Integration Gallery",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "mismatch"
             }
           ],
-          "testNote": "Fetched https://developers.notion.com/docs/publishing-integrations-to-notions-integration-gallery on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.notion.com/docs/publishing-integrations-to-notions-integration-gallery on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -324,13 +499,13 @@
         "max": 2,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c17"
+        "claimId": "c24"
       },
       "linkUrl": "https://developers.notion.com/guides/get-started/public-integrations",
       "helper": null,
       "claims": [
         {
-          "id": "c17",
+          "id": "c24",
           "text": "Capabilities and installation scope are both set when the integration is created.",
           "label": "tested",
           "sources": [
@@ -338,7 +513,7 @@
               "url": "https://developers.notion.com/guides/get-started/public-integrations",
               "title": "Public integrations",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
@@ -347,13 +522,13 @@
               "url": "https://developers.notion.com/guides/get-started/public-integrations",
               "title": "Public integrations",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -369,13 +544,13 @@
         "max": 1,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c18"
+        "claimId": "c25"
       },
       "linkUrl": "https://developers.notion.com/guides/get-started/public-integrations",
       "helper": null,
       "claims": [
         {
-          "id": "c18",
+          "id": "c25",
           "text": "A redirect URI is required to create a public integration.",
           "label": "tested",
           "sources": [
@@ -383,13 +558,13 @@
               "url": "https://developers.notion.com/guides/get-started/public-integrations",
               "title": "Public integrations",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -405,13 +580,13 @@
         "max": 4,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c19"
+        "claimId": "c26"
       },
       "linkUrl": "https://developers.notion.com/guides/get-started/public-integrations",
       "helper": null,
       "claims": [
         {
-          "id": "c19",
+          "id": "c26",
           "text": "Public integrations use OAuth with a page picker step during authorization.",
           "label": "tested",
           "sources": [
@@ -419,13 +594,13 @@
               "url": "https://developers.notion.com/guides/get-started/public-integrations",
               "title": "Public integrations",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -471,13 +646,13 @@
         "max": 2,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c20"
+        "claimId": "c27"
       },
       "linkUrl": "https://developers.notion.com/docs/publishing-integrations-to-notions-integration-gallery",
       "helper": null,
       "claims": [
         {
-          "id": "c20",
+          "id": "c27",
           "text": "Only 'Any workspace' integrations are eligible for Marketplace listing.",
           "label": "tested",
           "sources": [
@@ -485,13 +660,13 @@
               "url": "https://developers.notion.com/guides/get-started/public-integrations",
               "title": "Public integrations",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -507,13 +682,13 @@
         "max": 2,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c21"
+        "claimId": "c28"
       },
       "linkUrl": "https://developers.notion.com/docs/publishing-integrations-to-notions-integration-gallery",
       "helper": null,
       "claims": [
         {
-          "id": "c21",
+          "id": "c28",
           "text": "The Notion team reviews every listing submission and aims to respond within 5-10 business days.",
           "label": "tested",
           "sources": [
@@ -521,13 +696,13 @@
               "url": "https://developers.notion.com/docs/publishing-integrations-to-notions-integration-gallery",
               "title": "Publishing integrations to Notion's Integration Gallery",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "mismatch"
             }
           ],
-          "testNote": "Fetched https://developers.notion.com/docs/publishing-integrations-to-notions-integration-gallery on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.notion.com/docs/publishing-integrations-to-notions-integration-gallery on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -551,7 +726,7 @@
       "what": "No provider review is required to use a public integration via OAuth; a review only happens if you choose to submit a Marketplace listing.",
       "claims": [
         {
-          "id": "c23",
+          "id": "c30",
           "text": "Marketplace listing is optional, and a public integration works through OAuth without ever being listed.",
           "label": "tested",
           "sources": [
@@ -559,13 +734,13 @@
               "url": "https://developers.notion.com/docs/publishing-integrations-to-notions-integration-gallery",
               "title": "Publishing integrations to Notion's Integration Gallery",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "mismatch"
             }
           ],
-          "testNote": "Fetched https://developers.notion.com/docs/publishing-integrations-to-notions-integration-gallery on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.notion.com/docs/publishing-integrations-to-notions-integration-gallery on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -577,7 +752,7 @@
       "what": "Can restrict members to only pre-approved connections; on non-Enterprise plans, there's no equivalent admin gate.",
       "claims": [
         {
-          "id": "c22",
+          "id": "c29",
           "text": "Enterprise-plan workspace owners can restrict members to only pre-approved connections.",
           "label": "tested",
           "sources": [
@@ -585,13 +760,13 @@
               "url": "https://www.notion.com/help/enterprise-connection-settings",
               "title": "Enterprise connection settings",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://www.notion.com/help/enterprise-connection-settings on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://www.notion.com/help/enterprise-connection-settings on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -603,7 +778,7 @@
       "what": "Chooses which pages to share via the page picker during OAuth; other workspace members must authorize separately to use it themselves.",
       "claims": [
         {
-          "id": "c24",
+          "id": "c31",
           "text": "Each user authorizes a public integration individually, choosing their own pages via the page picker.",
           "label": "tested",
           "sources": [
@@ -611,7 +786,7 @@
               "url": "https://developers.notion.com/guides/get-started/public-integrations",
               "title": "Public integrations",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
@@ -620,13 +795,13 @@
               "url": "https://developers.notion.com/guides/get-started/public-integrations",
               "title": "Public integrations",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -639,7 +814,7 @@
       "fix": "Review Notion's feedback email and the Connection Gallery Best Practices guide, then revise and resubmit.",
       "escalation": "Notion's team, via the Listings dashboard",
       "claim": {
-        "id": "c25",
+        "id": "c32",
         "text": "Listings are rejected for brand/trademark issues, quality concerns, or not meeting baseline criteria, with feedback sent by email.",
         "label": "tested",
         "sources": [
@@ -647,13 +822,13 @@
             "url": "https://developers.notion.com/docs/publishing-integrations-to-notions-integration-gallery",
             "title": "Publishing integrations to Notion's Integration Gallery",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "mismatch"
           }
         ],
-        "testNote": "Fetched https://developers.notion.com/docs/publishing-integrations-to-notions-integration-gallery on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://developers.notion.com/docs/publishing-integrations-to-notions-integration-gallery on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -663,7 +838,7 @@
       "fix": "Create a brand-new connection scoped to 'Any workspace' - installation scope can't be changed after creation.",
       "escalation": "developers.notion.com",
       "claim": {
-        "id": "c26",
+        "id": "c33",
         "text": "Installation scope is set once at creation and can't be changed afterward.",
         "label": "tested",
         "sources": [
@@ -671,13 +846,13 @@
             "url": "https://developers.notion.com/guides/get-started/public-integrations",
             "title": "Public integrations",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -685,7 +860,7 @@
   ],
   "whileYouWait": [
     {
-      "id": "c27",
+      "id": "c34",
       "text": "A public integration works through its OAuth flow immediately, for as many workspaces as authorize it, without ever needing to be listed.",
       "label": "tested",
       "sources": [
@@ -693,13 +868,13 @@
           "url": "https://developers.notion.com/docs/publishing-integrations-to-notions-integration-gallery",
           "title": "Publishing integrations to Notion's Integration Gallery",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
           "recheck": "mismatch"
         }
       ],
-      "testNote": "Fetched https://developers.notion.com/docs/publishing-integrations-to-notions-integration-gallery on 2026-10-24; the required terms were present.",
+      "testNote": "Fetched https://developers.notion.com/docs/publishing-integrations-to-notions-integration-gallery on 2026-10-25; the required terms were present.",
       "uncertainReason": null,
       "checked": "unchecked"
     }
@@ -707,7 +882,7 @@
   "keepsComingBack": [],
   "hardToUndo": [
     {
-      "id": "c28",
+      "id": "c35",
       "text": "Installation scope (any workspace vs. selected workspaces only) is set once at creation and can't be changed afterward - switching requires a brand-new connection.",
       "label": "tested",
       "sources": [
@@ -715,13 +890,13 @@
           "url": "https://developers.notion.com/guides/get-started/public-integrations",
           "title": "Public integrations",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
           "recheck": "confirmed"
         }
       ],
-      "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-24; the required terms were present.",
+      "testNote": "Fetched https://developers.notion.com/guides/get-started/public-integrations on 2026-10-25; the required terms were present.",
       "uncertainReason": null,
       "checked": "unchecked"
     }
@@ -729,14 +904,21 @@
   "derived": {
     "unverifiedClaimIds": [
       "c8",
-      "c11"
+      "c11",
+      "c14",
+      "c15",
+      "c16",
+      "c17",
+      "c18",
+      "c19",
+      "c20"
     ],
     "sources": [
       {
         "url": "https://developers.notion.com/docs/publishing-integrations-to-notions-integration-gallery",
         "title": "Publishing integrations to Notion's Integration Gallery",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
         "recheck": "mismatch"
@@ -745,7 +927,7 @@
         "url": "https://www.notion.com/help/enterprise-connection-settings",
         "title": "Enterprise connection settings",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
         "recheck": "confirmed"
@@ -754,7 +936,7 @@
         "url": "https://developers.notion.com/guides/get-started/public-integrations",
         "title": "Public integrations",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
         "recheck": "confirmed"
@@ -763,7 +945,7 @@
         "url": "https://docs.composio.dev/docs/authentication/programmatic-auth-configs",
         "title": "Programmatic auth configs",
         "type": "vendor",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": null,
         "oldSource": false,
         "recheck": "confirmed"
@@ -772,7 +954,16 @@
         "url": "https://developers.notion.com/guides/get-started/internal-integrations",
         "title": "Internal integrations",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "mismatch"
+      },
+      {
+        "url": "https://developers.notion.com/reference/capabilities",
+        "title": "Capabilities",
+        "type": "official",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
         "recheck": "mismatch"

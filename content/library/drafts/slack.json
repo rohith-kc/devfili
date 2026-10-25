@@ -7,7 +7,7 @@
   },
   "kind": "library",
   "sample": false,
-  "lastVerifiedOn": "2026-10-24",
+  "lastVerifiedOn": "2026-10-25",
   "handVerified": null,
   "completeness": {
     "status": "complete",
@@ -24,7 +24,7 @@
           "url": "https://docs.slack.dev/distribution",
           "title": "App distribution",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
           "recheck": "confirmed"
@@ -33,13 +33,13 @@
           "url": "https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide",
           "title": "Slack Marketplace review guide",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
           "recheck": "confirmed"
         }
       ],
-      "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-24; the required terms were present.",
+      "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-25; the required terms were present.",
       "uncertainReason": null,
       "checked": "unchecked"
     },
@@ -74,7 +74,7 @@
             "url": "https://docs.slack.dev/distribution",
             "title": "App distribution",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
@@ -83,13 +83,13 @@
             "url": "https://slack.com/help/articles/202035138-Add-apps-to-your-Slack-workspace",
             "title": "Add apps to your Slack workspace",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -106,7 +106,7 @@
           "url": "https://docs.composio.dev/docs/custom-app-vs-managed-app",
           "title": "Managed vs custom auth",
           "type": "vendor",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": null,
           "oldSource": false,
           "recheck": "confirmed"
@@ -137,7 +137,7 @@
             "url": "https://docs.composio.dev/docs/custom-app-vs-managed-app",
             "title": "Managed vs custom auth",
             "type": "vendor",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": null,
             "oldSource": false,
             "recheck": "confirmed"
@@ -160,7 +160,7 @@
             "url": "https://docs.slack.dev/distribution",
             "title": "App distribution",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
@@ -169,13 +169,13 @@
             "url": "https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide",
             "title": "Slack Marketplace review guide",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -190,13 +190,13 @@
             "url": "https://docs.slack.dev/distribution",
             "title": "App distribution",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -215,21 +215,46 @@
   },
   "scopes": [
     {
-      "scope": "admin.apps:read (and other admin.* scopes)",
-      "allows": "Read or manage settings across an entire Slack Enterprise organization.",
-      "neededFor": "Org-wide admin tooling rather than a single workspace integration.",
+      "scope": "Bot scopes vs. user scopes",
+      "allows": "Bot scopes grant permissions to your app's own bot identity; user scopes let the app act on behalf of whichever user installed or authorized it, limited to what that user can do.",
+      "neededFor": "Deciding whether a given named scope below should be requested as a bot scope or a user scope.",
       "reviewImpact": "verification",
       "claim": {
         "id": "c14",
-        "text": "Admin scopes require installation by an Enterprise org admin or owner, across the whole org rather than one workspace.",
+        "text": "Avoid requesting scopes for features you haven't built yet, and avoid legacy, broad-access, or coded-workflow scopes before you're ready to use them.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide",
+            "title": "Slack Marketplace review guide",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "channels:read",
+      "allows": "View basic information about public channels in a workspace.",
+      "neededFor": "Listing or looking up public channels.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c15",
+        "text": "channels:read lets an app view basic information about public channels in a workspace.",
         "label": "uncertain",
         "sources": [
           {
-            "url": "https://www.resumelens.org/blog/slack/slack-oauth-and-app-distribution",
-            "title": "OAuth 2.0 in Slack - Bot vs User Tokens",
-            "type": "vendor",
-            "accessedOn": "2026-10-24",
-            "publishedYear": null,
+            "url": "https://docs.slack.dev/reference/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
             "oldSource": false,
             "recheck": "mismatch"
           }
@@ -240,27 +265,461 @@
       }
     },
     {
-      "scope": "Coded-workflow and broad-access scopes (e.g. search:read, triggers:*)",
-      "allows": "Broad read access across workspace data, or building automated workflows.",
-      "neededFor": "Workspace-wide search or workflow-automation features.",
-      "reviewImpact": "unknown",
+      "scope": "channels:history",
+      "allows": "View messages and other content in public channels the app has been added to.",
+      "neededFor": "Reading public channel message history.",
+      "reviewImpact": "verification",
       "claim": {
-        "id": "c15",
-        "text": "Slack's Marketplace guide specifically warns against requesting legacy, broad-access, or coded-workflow scopes before you're ready to use them.",
-        "label": "sourced",
+        "id": "c16",
+        "text": "channels:history lets an app view messages and other content in public channels it's been added to.",
+        "label": "uncertain",
         "sources": [
           {
-            "url": "https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide",
-            "title": "Slack Marketplace review guide",
+            "url": "https://docs.slack.dev/reference/scopes",
+            "title": "Scopes",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
-            "recheck": "confirmed"
+            "recheck": "mismatch"
           }
         ],
         "testNote": null,
-        "uncertainReason": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "chat:write",
+      "allows": "Send messages as the Slack app.",
+      "neededFor": "Posting messages.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c17",
+        "text": "chat:write lets an app send messages as itself.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://docs.slack.dev/reference/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "chat:write.public",
+      "allows": "Send messages to channels the app isn't a member of.",
+      "neededFor": "Posting without requiring a channel invite first.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c18",
+        "text": "chat:write.public lets an app send messages to channels it isn't a member of.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://docs.slack.dev/reference/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "users:read",
+      "allows": "View people in a workspace.",
+      "neededFor": "Looking up workspace members.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c19",
+        "text": "users:read lets an app view people in a workspace.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://docs.slack.dev/reference/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "users:read.email",
+      "allows": "View email addresses of people in a workspace.",
+      "neededFor": "Matching Slack users to accounts in another system by email.",
+      "reviewImpact": "security_assessment",
+      "claim": {
+        "id": "c20",
+        "text": "users:read.email lets an app view email addresses of people in a workspace.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://docs.slack.dev/reference/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "groups:read",
+      "allows": "View basic information about private channels the app has been added to.",
+      "neededFor": "Listing private channels the app is in.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c21",
+        "text": "groups:read lets an app view basic information about private channels it's been added to.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://docs.slack.dev/reference/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "im:read",
+      "allows": "View basic information about direct messages the app has been added to.",
+      "neededFor": "Listing DM conversations the app is part of.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c22",
+        "text": "im:read lets an app view basic information about direct messages it's been added to.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://docs.slack.dev/reference/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "im:history",
+      "allows": "View messages and other content in direct messages the app has been added to.",
+      "neededFor": "Reading DM message history.",
+      "reviewImpact": "security_assessment",
+      "claim": {
+        "id": "c23",
+        "text": "im:history lets an app view messages and other content in direct messages it's been added to.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://docs.slack.dev/reference/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "files:read",
+      "allows": "View files shared in channels and conversations the app has been added to.",
+      "neededFor": "Reading shared files.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c24",
+        "text": "files:read lets an app view files shared in channels and conversations it's been added to.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://docs.slack.dev/reference/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "reactions:read",
+      "allows": "View emoji reactions and their associated content.",
+      "neededFor": "Reading reactions on messages.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c25",
+        "text": "reactions:read lets an app view emoji reactions and their associated content.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://docs.slack.dev/reference/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "reactions:write",
+      "allows": "Add and edit emoji reactions.",
+      "neededFor": "Reacting to messages.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c26",
+        "text": "reactions:write lets an app add and edit emoji reactions.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://docs.slack.dev/reference/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "team:read",
+      "allows": "View the name, email domain, and icon for connected workspaces.",
+      "neededFor": "Reading basic workspace metadata.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c27",
+        "text": "team:read lets an app view the name, email domain, and icon of a connected workspace.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://docs.slack.dev/reference/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "usergroups:read",
+      "allows": "View user groups in a workspace.",
+      "neededFor": "Reading user-group membership/structure.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c28",
+        "text": "usergroups:read lets an app view user groups in a workspace.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://docs.slack.dev/reference/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "usergroups:write",
+      "allows": "Create and manage user groups.",
+      "neededFor": "Managing user groups.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c29",
+        "text": "usergroups:write lets an app create and manage user groups.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://docs.slack.dev/reference/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "pins:read",
+      "allows": "View pinned content in channels and conversations the app has been added to.",
+      "neededFor": "Reading pinned messages/files.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c30",
+        "text": "pins:read lets an app view pinned content it's been added to.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://docs.slack.dev/reference/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "pins:write",
+      "allows": "Add and remove pinned messages and files.",
+      "neededFor": "Managing pinned content.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c31",
+        "text": "pins:write lets an app add and remove pinned messages and files.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://docs.slack.dev/reference/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "emoji:read",
+      "allows": "View custom emoji in a workspace.",
+      "neededFor": "Reading the workspace's custom emoji set.",
+      "reviewImpact": "none",
+      "claim": {
+        "id": "c32",
+        "text": "emoji:read lets an app view custom emoji in a workspace.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://docs.slack.dev/reference/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "admin.apps:read",
+      "allows": "View apps and app requests in a workspace.",
+      "neededFor": "Org-wide admin tooling rather than a single-workspace integration.",
+      "reviewImpact": "security_assessment",
+      "claim": {
+        "id": "c33",
+        "text": "admin.apps:read lets an app view apps and app requests in a workspace, and - like other admin scopes - requires installation by an Enterprise org admin or owner.",
+        "label": "uncertain",
+        "sources": [
+          {
+            "url": "https://docs.slack.dev/reference/scopes",
+            "title": "Scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "mismatch"
+          },
+          {
+            "url": "https://www.resumelens.org/blog/slack/slack-oauth-and-app-distribution",
+            "title": "OAuth 2.0 in Slack - Bot vs User Tokens",
+            "type": "vendor",
+            "accessedOn": "2026-10-25",
+            "publishedYear": null,
+            "oldSource": false,
+            "recheck": "mismatch"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": "quoted fragment not found at source",
         "checked": "unchecked"
       }
     }
@@ -270,7 +729,7 @@
       "item": "A publicly accessible landing page with an install link and a linked privacy policy, plus a support page with a direct contact method",
       "kind": "policy_page",
       "claim": {
-        "id": "c16",
+        "id": "c34",
         "text": "Marketplace listing requires a landing page with an install path and privacy-policy link, and a support page with about a 2-business-day response expectation.",
         "label": "tested",
         "sources": [
@@ -278,13 +737,13 @@
             "url": "https://docs.slack.dev/slack-marketplace/distributing-your-app-in-the-slack-marketplace",
             "title": "Distributing your app in the Slack Marketplace",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "mismatch"
           }
         ],
-        "testNote": "Fetched https://docs.slack.dev/slack-marketplace/distributing-your-app-in-the-slack-marketplace on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://docs.slack.dev/slack-marketplace/distributing-your-app-in-the-slack-marketplace on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -293,7 +752,7 @@
       "item": "A privacy policy covering data collected, retention, deletion rights, and a real contact method",
       "kind": "policy_page",
       "claim": {
-        "id": "c17",
+        "id": "c35",
         "text": "The privacy policy must cover what's collected, how long it's kept, how people can access or delete their data, and a contact method beyond just a physical address.",
         "label": "tested",
         "sources": [
@@ -301,13 +760,13 @@
             "url": "https://docs.slack.dev/slack-marketplace/distributing-your-app-in-the-slack-marketplace",
             "title": "Distributing your app in the Slack Marketplace",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "mismatch"
           }
         ],
-        "testNote": "Fetched https://docs.slack.dev/slack-marketplace/distributing-your-app-in-the-slack-marketplace on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://docs.slack.dev/slack-marketplace/distributing-your-app-in-the-slack-marketplace on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -316,7 +775,7 @@
       "item": "At least 10 active workspaces (used in the last 28 days) and 10 weekly active users",
       "kind": "other",
       "claim": {
-        "id": "c18",
+        "id": "c36",
         "text": "Marketplace submission requires the app already have at least 10 active workspaces and 10 weekly active users.",
         "label": "tested",
         "sources": [
@@ -324,13 +783,13 @@
             "url": "https://docs.slack.dev/slack-marketplace/distributing-your-app-in-the-slack-marketplace",
             "title": "Distributing your app in the Slack Marketplace",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "mismatch"
           }
         ],
-        "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -347,7 +806,7 @@
       "helper": null,
       "claims": [
         {
-          "id": "c19",
+          "id": "c37",
           "text": "Slack documents both unlisted distribution and Marketplace listing at docs.slack.dev.",
           "label": "tested",
           "sources": [
@@ -355,13 +814,13 @@
               "url": "https://docs.slack.dev/distribution",
               "title": "App distribution",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -377,13 +836,13 @@
         "max": 4,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c20"
+        "claimId": "c38"
       },
       "linkUrl": "https://docs.slack.dev/distribution",
       "helper": null,
       "claims": [
         {
-          "id": "c20",
+          "id": "c38",
           "text": "An OAuth 2.0 flow is required before the app can be installed to any workspace beyond its own.",
           "label": "tested",
           "sources": [
@@ -391,13 +850,13 @@
               "url": "https://docs.slack.dev/distribution",
               "title": "App distribution",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -413,13 +872,13 @@
         "max": 1,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c21"
+        "claimId": "c39"
       },
       "linkUrl": "https://docs.slack.dev/distribution",
       "helper": null,
       "claims": [
         {
-          "id": "c21",
+          "id": "c39",
           "text": "Unlisted public distribution is a self-service activation step with no Slack review.",
           "label": "tested",
           "sources": [
@@ -427,13 +886,13 @@
               "url": "https://docs.slack.dev/distribution",
               "title": "App distribution",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -449,13 +908,13 @@
         "max": 1,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c22"
+        "claimId": "c40"
       },
       "linkUrl": "https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide",
       "helper": null,
       "claims": [
         {
-          "id": "c22",
+          "id": "c40",
           "text": "Slack warns against requesting scopes for features you haven't built yet.",
           "label": "sourced",
           "sources": [
@@ -463,7 +922,7 @@
               "url": "https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide",
               "title": "Slack Marketplace review guide",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
@@ -495,13 +954,13 @@
         "max": 4,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c23"
+        "claimId": "c41"
       },
       "linkUrl": "https://docs.slack.dev/slack-marketplace/distributing-your-app-in-the-slack-marketplace",
       "helper": null,
       "claims": [
         {
-          "id": "c23",
+          "id": "c41",
           "text": "Marketplace listing requires a public landing page and a support page with a direct contact method.",
           "label": "tested",
           "sources": [
@@ -509,13 +968,13 @@
               "url": "https://docs.slack.dev/slack-marketplace/distributing-your-app-in-the-slack-marketplace",
               "title": "Distributing your app in the Slack Marketplace",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "mismatch"
             }
           ],
-          "testNote": "Fetched https://docs.slack.dev/slack-marketplace/distributing-your-app-in-the-slack-marketplace on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://docs.slack.dev/slack-marketplace/distributing-your-app-in-the-slack-marketplace on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -531,13 +990,13 @@
         "max": 2,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c24"
+        "claimId": "c42"
       },
       "linkUrl": "https://docs.slack.dev/slack-marketplace/distributing-your-app-in-the-slack-marketplace",
       "helper": null,
       "claims": [
         {
-          "id": "c24",
+          "id": "c42",
           "text": "Slack's privacy-policy requirements go beyond a bare physical address as a contact method.",
           "label": "tested",
           "sources": [
@@ -545,13 +1004,13 @@
               "url": "https://docs.slack.dev/slack-marketplace/distributing-your-app-in-the-slack-marketplace",
               "title": "Distributing your app in the Slack Marketplace",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "mismatch"
             }
           ],
-          "testNote": "Fetched https://docs.slack.dev/slack-marketplace/distributing-your-app-in-the-slack-marketplace on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://docs.slack.dev/slack-marketplace/distributing-your-app-in-the-slack-marketplace on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -587,13 +1046,13 @@
         "max": 2,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c25"
+        "claimId": "c43"
       },
       "linkUrl": "https://docs.slack.dev/slack-marketplace/distributing-your-app-in-the-slack-marketplace",
       "helper": null,
       "claims": [
         {
-          "id": "c25",
+          "id": "c43",
           "text": "Marketplace submission requires at least 10 active workspaces and 10 weekly active users first.",
           "label": "tested",
           "sources": [
@@ -601,13 +1060,13 @@
               "url": "https://docs.slack.dev/slack-marketplace/distributing-your-app-in-the-slack-marketplace",
               "title": "Distributing your app in the Slack Marketplace",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "mismatch"
             }
           ],
-          "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -623,13 +1082,13 @@
         "max": 6,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c26"
+        "claimId": "c44"
       },
       "linkUrl": "https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide",
       "helper": null,
       "claims": [
         {
-          "id": "c26",
+          "id": "c44",
           "text": "Review has a preliminary stage and a separate functional stage, each of which can return feedback requiring a resubmission.",
           "label": "tested",
           "sources": [
@@ -637,7 +1096,7 @@
               "url": "https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide",
               "title": "Slack Marketplace review guide",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
@@ -646,13 +1105,13 @@
               "url": "https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide",
               "title": "Slack Marketplace review guide",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -676,7 +1135,7 @@
       "what": "Runs a preliminary review of the listing and scopes, then a functional review that installs and tests the app; only required for Marketplace listing, not unlisted distribution.",
       "claims": [
         {
-          "id": "c28",
+          "id": "c46",
           "text": "Marketplace listing goes through a preliminary review stage and a separate functional review stage.",
           "label": "tested",
           "sources": [
@@ -684,7 +1143,7 @@
               "url": "https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide",
               "title": "Slack Marketplace review guide",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
@@ -693,13 +1152,13 @@
               "url": "https://docs.slack.dev/distribution",
               "title": "App distribution",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -711,7 +1170,7 @@
       "what": "Admin scopes need an org admin or owner to install; a workspace can also require admin approval for every app install, listed or not.",
       "claims": [
         {
-          "id": "c27",
+          "id": "c45",
           "text": "Admin-level scopes require an Enterprise org admin or owner, and workspace-level app approval settings can gate any app's install.",
           "label": "sourced",
           "sources": [
@@ -719,7 +1178,7 @@
               "url": "https://www.resumelens.org/blog/slack/slack-oauth-and-app-distribution",
               "title": "OAuth 2.0 in Slack - Bot vs User Tokens",
               "type": "vendor",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": null,
               "oldSource": false,
               "recheck": "mismatch"
@@ -728,7 +1187,7 @@
               "url": "https://slack.com/help/articles/202035138-Add-apps-to-your-Slack-workspace",
               "title": "Add apps to your Slack workspace",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
@@ -746,7 +1205,7 @@
       "what": "Grants authorization through Slack's OAuth consent screen; unlisted apps additionally show a not-reviewed-by-Slack warning.",
       "claims": [
         {
-          "id": "c29",
+          "id": "c47",
           "text": "Installers see Slack's standard OAuth consent screen, with an extra not-reviewed warning for unlisted apps.",
           "label": "sourced",
           "sources": [
@@ -754,7 +1213,7 @@
               "url": "https://slack.com/help/articles/202035138-Add-apps-to-your-Slack-workspace",
               "title": "Add apps to your Slack workspace",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
@@ -773,7 +1232,7 @@
       "fix": "Make sure the app is production-ready, fully installable end-to-end (including uninstall), and free of leftover test artifacts before resubmitting.",
       "escalation": "Slack Marketplace support",
       "claim": {
-        "id": "c30",
+        "id": "c48",
         "text": "Slack returns submissions it considers not ready for review, including ones with bugs or a poor user experience.",
         "label": "tested",
         "sources": [
@@ -781,13 +1240,13 @@
             "url": "https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide",
             "title": "Slack Marketplace review guide",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -797,7 +1256,7 @@
       "fix": "Remove any scope your current features don't actually use, and avoid legacy or coded-workflow scopes until you need them.",
       "escalation": "Slack Marketplace support",
       "claim": {
-        "id": "c31",
+        "id": "c49",
         "text": "Requesting scopes for unbuilt features, or legacy/broad-access/coded-workflow scopes, is a documented rejection reason.",
         "label": "tested",
         "sources": [
@@ -805,7 +1264,7 @@
             "url": "https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide",
             "title": "Slack Marketplace review guide",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
@@ -814,13 +1273,13 @@
             "url": "https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide",
             "title": "Slack Marketplace review guide",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -828,7 +1287,7 @@
   ],
   "whileYouWait": [
     {
-      "id": "c32",
+      "id": "c50",
       "text": "Unlisted public distribution lets you run a full pilot with early customers, on any number of workspaces, with no Slack review at all.",
       "label": "tested",
       "sources": [
@@ -836,20 +1295,20 @@
           "url": "https://docs.slack.dev/distribution",
           "title": "App distribution",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
           "recheck": "confirmed"
         }
       ],
-      "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-24; the required terms were present.",
+      "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-25; the required terms were present.",
       "uncertainReason": null,
       "checked": "unchecked"
     }
   ],
   "keepsComingBack": [
     {
-      "id": "c33",
+      "id": "c51",
       "text": "The published app is locked - any change to configuration, features, or scopes needs resubmission and another review pass, and Slack can also run an advanced security review at any point after approval.",
       "label": "tested",
       "sources": [
@@ -857,7 +1316,7 @@
           "url": "https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide",
           "title": "Slack Marketplace review guide",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
           "recheck": "confirmed"
@@ -866,20 +1325,20 @@
           "url": "https://docs.slack.dev/slack-marketplace/distributing-your-app-in-the-slack-marketplace",
           "title": "Distributing your app in the Slack Marketplace",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
           "recheck": "mismatch"
         }
       ],
-      "testNote": "Fetched https://docs.slack.dev/slack-marketplace/distributing-your-app-in-the-slack-marketplace on 2026-10-24; the required terms were present.",
+      "testNote": "Fetched https://docs.slack.dev/slack-marketplace/distributing-your-app-in-the-slack-marketplace on 2026-10-25; the required terms were present.",
       "uncertainReason": null,
       "checked": "unchecked"
     }
   ],
   "hardToUndo": [
     {
-      "id": "c34",
+      "id": "c52",
       "text": "Migrating a classic app to granular permissions cannot be undone, and it forces every existing installing user to reinstall the app.",
       "label": "tested",
       "sources": [
@@ -887,13 +1346,13 @@
           "url": "https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide",
           "title": "Slack Marketplace review guide",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
           "recheck": "confirmed"
         }
       ],
-      "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-24; the required terms were present.",
+      "testNote": "Fetched https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide on 2026-10-25; the required terms were present.",
       "uncertainReason": null,
       "checked": "unchecked"
     }
@@ -902,14 +1361,32 @@
     "unverifiedClaimIds": [
       "c9",
       "c13",
-      "c14"
+      "c15",
+      "c16",
+      "c17",
+      "c18",
+      "c19",
+      "c20",
+      "c21",
+      "c22",
+      "c23",
+      "c24",
+      "c25",
+      "c26",
+      "c27",
+      "c28",
+      "c29",
+      "c30",
+      "c31",
+      "c32",
+      "c33"
     ],
     "sources": [
       {
         "url": "https://docs.slack.dev/slack-marketplace/slack-marketplace-review-guide",
         "title": "Slack Marketplace review guide",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
         "recheck": "confirmed"
@@ -918,7 +1395,7 @@
         "url": "https://docs.slack.dev/distribution",
         "title": "App distribution",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
         "recheck": "confirmed"
@@ -927,7 +1404,7 @@
         "url": "https://www.resumelens.org/blog/slack/slack-oauth-and-app-distribution",
         "title": "OAuth 2.0 in Slack - Bot vs User Tokens",
         "type": "vendor",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": null,
         "oldSource": false,
         "recheck": "mismatch"
@@ -936,7 +1413,7 @@
         "url": "https://slack.com/help/articles/202035138-Add-apps-to-your-Slack-workspace",
         "title": "Add apps to your Slack workspace",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
         "recheck": "confirmed"
@@ -945,16 +1422,25 @@
         "url": "https://docs.composio.dev/docs/custom-app-vs-managed-app",
         "title": "Managed vs custom auth",
         "type": "vendor",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": null,
         "oldSource": false,
         "recheck": "confirmed"
       },
       {
+        "url": "https://docs.slack.dev/reference/scopes",
+        "title": "Scopes",
+        "type": "official",
+        "accessedOn": "2026-10-25",
+        "publishedYear": 2026,
+        "oldSource": false,
+        "recheck": "mismatch"
+      },
+      {
         "url": "https://docs.slack.dev/slack-marketplace/distributing-your-app-in-the-slack-marketplace",
         "title": "Distributing your app in the Slack Marketplace",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
         "recheck": "mismatch"

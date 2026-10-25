@@ -7,7 +7,7 @@
   },
   "kind": "library",
   "sample": false,
-  "lastVerifiedOn": "2026-10-24",
+  "lastVerifiedOn": "2026-10-25",
   "handVerified": null,
   "completeness": {
     "status": "complete",
@@ -24,7 +24,7 @@
           "url": "https://help.gong.io/docs/create-an-app-for-gong",
           "title": "Create an app for Gong",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
           "recheck": "confirmed"
@@ -33,13 +33,13 @@
           "url": "https://help.gong.io/docs/publish-your-app",
           "title": "Publish your app",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
           "recheck": "confirmed"
         }
       ],
-      "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+      "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-25; the required terms were present.",
       "uncertainReason": null,
       "checked": "unchecked"
     },
@@ -77,7 +77,7 @@
           "url": "https://composio.dev/content/how-gong-oauth-works-why-it-requires-a-technical-admin-and-how-to-share-access",
           "title": "How Gong OAuth Works: Why It Requires a Technical Admin and How to Share Access",
           "type": "vendor",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": null,
           "oldSource": false,
           "recheck": "confirmed"
@@ -121,7 +121,7 @@
             "url": "https://help.gong.io/docs/create-an-app-for-gong",
             "title": "Create an app for Gong",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
@@ -130,13 +130,13 @@
             "url": "https://help.gong.io/docs/create-an-app-for-gong",
             "title": "Create an app for Gong",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -151,13 +151,13 @@
             "url": "https://help.gong.io/docs/publish-your-app",
             "title": "Publish your app",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -172,13 +172,13 @@
             "url": "https://help.gong.io/docs/create-an-app-for-gong",
             "title": "Create an app for Gong",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -186,45 +186,70 @@
   },
   "scopes": [
     {
-      "scope": "mcp:read / mcp:write",
-      "allows": "Read and/or write access through Gong's MCP server.",
-      "neededFor": "AI agent integrations built on Gong's MCP server.",
-      "reviewImpact": "unknown",
+      "scope": "api:calls:read:basic",
+      "allows": "Read basic call data (shown in Gong's own sample token response).",
+      "neededFor": "Most call-data integrations - probably the single most common scope.",
+      "reviewImpact": "partner",
       "claim": {
         "id": "c12",
-        "text": "MCP integrations select the mcp:read and/or mcp:write scopes.",
+        "text": "api:calls:read:basic appears in Gong's own sample OAuth token response.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://help.gong.io/docs/create-an-app-for-gong",
+            "title": "Create an app for Gong",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "api:calls:create",
+      "allows": "Create/upload call records (shown in Gong's own sample token response).",
+      "neededFor": "Integrations that push call data into Gong.",
+      "reviewImpact": "partner",
+      "claim": {
+        "id": "c13",
+        "text": "api:calls:create appears in Gong's own sample OAuth token response.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://help.gong.io/docs/create-an-app-for-gong",
+            "title": "Create an app for Gong",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "api:ai-ask:read",
+      "allows": "Access Gong's AI \"Ask Anything\" feature, with personal (per-user) access supported.",
+      "neededFor": "AI-assistant integrations that need a specific user's context.",
+      "reviewImpact": "unknown",
+      "claim": {
+        "id": "c14",
+        "text": "api:ai-ask:read is named as a scope supporting personal access, unlike most Gong scopes.",
         "label": "tested",
         "sources": [
           {
             "url": "https://help.gong.io/docs/create-an-app-for-gong",
             "title": "Create an app for Gong",
             "type": "official",
-            "accessedOn": "2026-10-24",
-            "publishedYear": 2026,
-            "oldSource": false,
-            "recheck": "confirmed"
-          }
-        ],
-        "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
-        "uncertainReason": null,
-        "checked": "unchecked"
-      }
-    },
-    {
-      "scope": "Shared-access scopes (most API scopes)",
-      "allows": "Access data across the whole Gong account rather than one user's data.",
-      "neededFor": "Most Gong integrations, since authorization is company-wide, not per user.",
-      "reviewImpact": "partner",
-      "claim": {
-        "id": "c13",
-        "text": "Most scopes grant shared, company-wide access, and reaching external customers with any scope requires partner-gated publishing.",
-        "label": "tested",
-        "sources": [
-          {
-            "url": "https://help.gong.io/docs/publish-your-app",
-            "title": "Publish your app",
-            "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
@@ -233,13 +258,140 @@
             "url": "https://help.gong.io/docs/create-an-app-for-gong",
             "title": "Create an app for Gong",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "api:ai-briefer:read",
+      "allows": "Access Gong's AI briefing feature, with personal (per-user) access supported.",
+      "neededFor": "AI-assistant integrations that need a specific user's context.",
+      "reviewImpact": "unknown",
+      "claim": {
+        "id": "c15",
+        "text": "api:ai-briefer:read is named as a scope supporting personal access, unlike most Gong scopes.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://help.gong.io/docs/create-an-app-for-gong",
+            "title": "Create an app for Gong",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          },
+          {
+            "url": "https://help.gong.io/docs/create-an-app-for-gong",
+            "title": "Create an app for Gong",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "mcp:read",
+      "allows": "Read access through Gong's MCP server.",
+      "neededFor": "AI agent integrations built on Gong's MCP server.",
+      "reviewImpact": "unknown",
+      "claim": {
+        "id": "c16",
+        "text": "mcp:read is one of the scopes selected for MCP integrations.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://help.gong.io/docs/create-an-app-for-gong",
+            "title": "Create an app for Gong",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          },
+          {
+            "url": "https://help.gong.io/docs/create-an-app-for-gong",
+            "title": "Create an app for Gong",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "mcp:write",
+      "allows": "Write access through Gong's MCP server.",
+      "neededFor": "AI agent integrations built on Gong's MCP server.",
+      "reviewImpact": "unknown",
+      "claim": {
+        "id": "c17",
+        "text": "mcp:write is one of the scopes selected for MCP integrations.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://help.gong.io/docs/create-an-app-for-gong",
+            "title": "Create an app for Gong",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          },
+          {
+            "url": "https://help.gong.io/docs/create-an-app-for-gong",
+            "title": "Create an app for Gong",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "Everything else (the full catalog)",
+      "allows": "Gong documents the rest of its scopes per-API, inside the authenticated API documentation at app.gong.io/settings/api/documentation - not on a public page.",
+      "neededFor": "Any integration beyond the handful of named scopes above.",
+      "reviewImpact": "unknown",
+      "claim": {
+        "id": "c18",
+        "text": "Gong's fuller scope-to-API mapping lives behind a sign-in at app.gong.io/settings/api/documentation, which this guide's research can't browse.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://help.gong.io/docs/create-an-app-for-gong",
+            "title": "Create an app for Gong",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -250,7 +402,7 @@
       "item": "A completed Gong partner application for a developer instance",
       "kind": "partner",
       "claim": {
-        "id": "c14",
+        "id": "c19",
         "text": "A developer instance comes from Gong's partner application form and can take up to five working days to set up.",
         "label": "tested",
         "sources": [
@@ -258,13 +410,13 @@
             "url": "https://help.gong.io/docs/create-an-app-for-gong",
             "title": "Create an app for Gong",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -273,7 +425,7 @@
       "item": "Redirect URI, privacy policy, terms and conditions, help article, and authorization start page links",
       "kind": "policy_page",
       "claim": {
-        "id": "c15",
+        "id": "c20",
         "text": "An OAuth app needs a redirect URI plus links to a privacy policy, terms, a help article, and an authorization start page.",
         "label": "tested",
         "sources": [
@@ -281,13 +433,13 @@
             "url": "https://help.gong.io/docs/create-an-app-for-gong",
             "title": "Create an app for Gong",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -296,7 +448,7 @@
       "item": "Trusted IP addresses that can access the integration",
       "kind": "other",
       "claim": {
-        "id": "c16",
+        "id": "c21",
         "text": "Publishing to the Gong Collective requires providing trusted IP addresses for the integration first.",
         "label": "tested",
         "sources": [
@@ -304,13 +456,13 @@
             "url": "https://help.gong.io/docs/publish-your-app",
             "title": "Publish your app",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -327,7 +479,7 @@
       "helper": null,
       "claims": [
         {
-          "id": "c17",
+          "id": "c22",
           "text": "Gong documents app creation and Collective publishing at help.gong.io.",
           "label": "tested",
           "sources": [
@@ -335,13 +487,13 @@
               "url": "https://help.gong.io/docs/create-an-app-for-gong",
               "title": "Create an app for Gong",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -357,13 +509,13 @@
         "max": 1,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c18"
+        "claimId": "c23"
       },
       "linkUrl": "https://help.gong.io/docs/create-an-app-for-gong",
       "helper": null,
       "claims": [
         {
-          "id": "c18",
+          "id": "c23",
           "text": "A developer instance comes from a partner application form and can take up to five working days.",
           "label": "tested",
           "sources": [
@@ -371,13 +523,13 @@
               "url": "https://help.gong.io/docs/create-an-app-for-gong",
               "title": "Create an app for Gong",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -393,13 +545,13 @@
         "max": 2,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c19"
+        "claimId": "c24"
       },
       "linkUrl": "https://help.gong.io/docs/create-an-app-for-gong",
       "helper": null,
       "claims": [
         {
-          "id": "c19",
+          "id": "c24",
           "text": "Integrations are created in the Ecosystem > API area, with scopes selected from the API documentation.",
           "label": "tested",
           "sources": [
@@ -407,13 +559,13 @@
               "url": "https://help.gong.io/docs/create-an-app-for-gong",
               "title": "Create an app for Gong",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -429,13 +581,13 @@
         "max": 2,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c20"
+        "claimId": "c25"
       },
       "linkUrl": "https://help.gong.io/docs/create-an-app-for-gong",
       "helper": null,
       "claims": [
         {
-          "id": "c20",
+          "id": "c25",
           "text": "The integration form requires a redirect URI plus privacy policy, terms, help article, and authorization-start-page links.",
           "label": "tested",
           "sources": [
@@ -443,13 +595,13 @@
               "url": "https://help.gong.io/docs/create-an-app-for-gong",
               "title": "Create an app for Gong",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -465,13 +617,13 @@
         "max": 1,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c21"
+        "claimId": "c26"
       },
       "linkUrl": "https://help.gong.io/docs/publish-your-app",
       "helper": null,
       "claims": [
         {
-          "id": "c21",
+          "id": "c26",
           "text": "Publishing requires trusted IP addresses to already be on file for the integration.",
           "label": "tested",
           "sources": [
@@ -479,13 +631,13 @@
               "url": "https://help.gong.io/docs/publish-your-app",
               "title": "Publish your app",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -501,13 +653,13 @@
         "max": 24,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c22"
+        "claimId": "c27"
       },
       "linkUrl": "https://help.gong.io/docs/publish-your-app",
       "helper": null,
       "claims": [
         {
-          "id": "c22",
+          "id": "c27",
           "text": "New apps default to Private and can only be used within your own Gong account until published.",
           "label": "tested",
           "sources": [
@@ -515,13 +667,13 @@
               "url": "https://help.gong.io/docs/publish-your-app",
               "title": "Publish your app",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -557,13 +709,13 @@
         "max": 1,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c23"
+        "claimId": "c28"
       },
       "linkUrl": "https://help.gong.io/docs/publish-your-app",
       "helper": null,
       "claims": [
         {
-          "id": "c23",
+          "id": "c28",
           "text": "Publishing to the Gong Collective starts with the Technology Partner Integration Review & Enablement form.",
           "label": "tested",
           "sources": [
@@ -571,13 +723,13 @@
               "url": "https://help.gong.io/docs/publish-your-app",
               "title": "Publish your app",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -593,13 +745,13 @@
         "max": 2,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c24"
+        "claimId": "c29"
       },
       "linkUrl": "https://help.gong.io/docs/publish-your-app",
       "helper": null,
       "claims": [
         {
-          "id": "c24",
+          "id": "c29",
           "text": "Gong's team contacts you within five business days of the review submission to finalize the release.",
           "label": "tested",
           "sources": [
@@ -607,13 +759,13 @@
               "url": "https://help.gong.io/docs/publish-your-app",
               "title": "Publish your app",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -637,7 +789,7 @@
       "what": "A partner application is required just to get a developer instance, and only partners can publish an integration to the Gong Collective.",
       "claims": [
         {
-          "id": "c26",
+          "id": "c31",
           "text": "A partner application gates both getting a developer instance and publishing to the Collective.",
           "label": "tested",
           "sources": [
@@ -645,7 +797,7 @@
               "url": "https://help.gong.io/docs/create-an-app-for-gong",
               "title": "Create an app for Gong",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
@@ -654,7 +806,7 @@
               "url": "https://help.gong.io/docs/publish-your-app",
               "title": "Publish your app",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
@@ -663,13 +815,13 @@
               "url": "https://help.gong.io/docs/publish-your-app",
               "title": "Publish your app",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -681,7 +833,7 @@
       "what": "Must perform the one-time, company-wide OAuth authorization themselves - there's no way for an individual end user to do this.",
       "claims": [
         {
-          "id": "c25",
+          "id": "c30",
           "text": "OAuth setup must be performed by a tech admin, authenticating once at the company level.",
           "label": "tested",
           "sources": [
@@ -689,13 +841,13 @@
               "url": "https://help.gong.io/docs/create-an-app-for-gong",
               "title": "Create an app for Gong",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -707,7 +859,7 @@
       "what": "Gong doesn't support user-level OAuth; there is no individual end-user consent step at all.",
       "claims": [
         {
-          "id": "c27",
+          "id": "c32",
           "text": "Gong authenticates once at the company level - there's no per-user OAuth consent step.",
           "label": "tested",
           "sources": [
@@ -715,13 +867,13 @@
               "url": "https://help.gong.io/docs/create-an-app-for-gong",
               "title": "Create an app for Gong",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -734,7 +886,7 @@
       "fix": "Submit the Gong partner application form as early as possible - it can take up to five working days just to get a developer instance.",
       "escalation": "The partner application form on collective.gong.io",
       "claim": {
-        "id": "c28",
+        "id": "c33",
         "text": "A developer instance requires a partner application that can take up to five working days to process.",
         "label": "tested",
         "sources": [
@@ -742,13 +894,13 @@
             "url": "https://help.gong.io/docs/create-an-app-for-gong",
             "title": "Create an app for Gong",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://help.gong.io/docs/create-an-app-for-gong on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -758,7 +910,7 @@
       "fix": "Confirm your organization has (or can establish) Gong partner status before investing further build time.",
       "escalation": "Gong's partner/ecosystem team",
       "claim": {
-        "id": "c29",
+        "id": "c34",
         "text": "Only partners can publish an app to the Gong Collective for other customers to use.",
         "label": "tested",
         "sources": [
@@ -766,13 +918,13 @@
             "url": "https://help.gong.io/docs/publish-your-app",
             "title": "Publish your app",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -780,7 +932,7 @@
   ],
   "whileYouWait": [
     {
-      "id": "c30",
+      "id": "c35",
       "text": "While waiting on your developer instance or Collective review, you can fully build and test the app in Private mode within your own Gong account.",
       "label": "tested",
       "sources": [
@@ -788,20 +940,20 @@
           "url": "https://help.gong.io/docs/publish-your-app",
           "title": "Publish your app",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
           "recheck": "confirmed"
         }
       ],
-      "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-24; the required terms were present.",
+      "testNote": "Fetched https://help.gong.io/docs/publish-your-app on 2026-10-25; the required terms were present.",
       "uncertainReason": null,
       "checked": "unchecked"
     }
   ],
   "keepsComingBack": [
     {
-      "id": "c31",
+      "id": "c36",
       "text": "Changing scopes on an already-published OAuth app has to go through a Gong support ticket, not a self-serve settings change.",
       "label": "sourced",
       "sources": [
@@ -809,7 +961,7 @@
           "url": "https://help.gong.io/docs/publish-your-app",
           "title": "Publish your app",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
           "recheck": "confirmed"
@@ -822,7 +974,7 @@
   ],
   "hardToUndo": [
     {
-      "id": "c32",
+      "id": "c37",
       "text": "The authorization context you choose when setting up OAuth can't be changed afterward.",
       "label": "sourced",
       "sources": [
@@ -830,7 +982,7 @@
           "url": "https://help.gong.io/docs/create-an-app-for-gong",
           "title": "Create an app for Gong",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
           "recheck": "confirmed"
@@ -851,7 +1003,7 @@
         "url": "https://help.gong.io/docs/create-an-app-for-gong",
         "title": "Create an app for Gong",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
         "recheck": "confirmed"
@@ -860,7 +1012,7 @@
         "url": "https://help.gong.io/docs/publish-your-app",
         "title": "Publish your app",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
         "recheck": "confirmed"
@@ -869,7 +1021,7 @@
         "url": "https://composio.dev/content/how-gong-oauth-works-why-it-requires-a-technical-admin-and-how-to-share-access",
         "title": "How Gong OAuth Works: Why It Requires a Technical Admin and How to Share Access",
         "type": "vendor",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": null,
         "oldSource": false,
         "recheck": "confirmed"

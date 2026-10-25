@@ -7,7 +7,7 @@
   },
   "kind": "library",
   "sample": false,
-  "lastVerifiedOn": "2026-10-24",
+  "lastVerifiedOn": "2026-10-25",
   "handVerified": null,
   "completeness": {
     "status": "complete",
@@ -24,22 +24,22 @@
           "url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
           "title": "Restricted scope verification",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
-          "recheck": "mismatch"
+          "recheck": "confirmed"
         },
         {
           "url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
           "title": "Restricted scope verification",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
-          "recheck": "mismatch"
+          "recheck": "confirmed"
         }
       ],
-      "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-24; the required terms were present.",
+      "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-25; the required terms were present.",
       "uncertainReason": null,
       "checked": "unchecked"
     },
@@ -54,7 +54,7 @@
       "min": 2,
       "max": 6,
       "unit": "weeks",
-      "basis": "reported",
+      "basis": "official",
       "claimId": "c7"
     },
     "gates": {
@@ -63,7 +63,7 @@
       "endUser": "yes"
     },
     "gatedAccess": false,
-    "confidence": "medium",
+    "confidence": "high",
     "scopeForks": [
       {
         "id": "c8",
@@ -74,7 +74,7 @@
             "url": "https://developers.google.com/workspace/gmail/api/auth/scopes",
             "title": "Gmail API scopes",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
@@ -83,13 +83,13 @@
             "url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
             "title": "Restricted scope verification",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
-            "recheck": "mismatch"
+            "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://developers.google.com/workspace/gmail/api/auth/scopes on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://developers.google.com/workspace/gmail/api/auth/scopes on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -106,7 +106,7 @@
           "url": "https://composio.dev/blog/ship-gmail-integration-in-minutes",
           "title": "How to Ship a Gmail Integration in 30 Minutes (No Google Verification on Your End)",
           "type": "vendor",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": null,
           "oldSource": false,
           "recheck": "confirmed"
@@ -137,7 +137,7 @@
             "url": "https://composio.dev/blog/ship-gmail-integration-in-minutes",
             "title": "How to Ship a Gmail Integration in 30 Minutes (No Google Verification on Your End)",
             "type": "vendor",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": null,
             "oldSource": false,
             "recheck": "confirmed"
@@ -160,22 +160,22 @@
             "url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
             "title": "Restricted scope verification",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
-            "recheck": "mismatch"
+            "recheck": "confirmed"
           },
           {
             "url": "https://developers.google.com/workspace/gmail/api/auth/scopes",
             "title": "Gmail API scopes",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -184,20 +184,20 @@
       {
         "id": "c13",
         "text": "Verification isn't required for apps that qualify for an exception, such as personal use, internal organizational use, or domain-wide installation.",
-        "label": "uncertain",
+        "label": "sourced",
         "sources": [
           {
             "url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
             "title": "Restricted scope verification",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
-            "recheck": "mismatch"
+            "recheck": "confirmed"
           }
         ],
         "testNote": null,
-        "uncertainReason": "quoted fragment not found at source",
+        "uncertainReason": null,
         "checked": "unchecked"
       }
     ],
@@ -211,7 +211,7 @@
             "url": "https://support.google.com/cloud/answer/7454865",
             "title": "Unverified apps",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
@@ -225,12 +225,71 @@
   },
   "scopes": [
     {
+      "scope": "gmail.labels",
+      "allows": "View and modify labels.",
+      "neededFor": "Organizing/tagging mail without reading message content.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c15",
+        "text": "gmail.labels is a non-sensitive scope letting an app view and modify labels.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://developers.google.com/workspace/gmail/api/auth/scopes",
+            "title": "Gmail API scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "gmail.send",
+      "allows": "Send mail for the user.",
+      "neededFor": "Sending email as the user.",
+      "reviewImpact": "verification",
+      "claim": {
+        "id": "c16",
+        "text": "gmail.send is a sensitive scope, needing OAuth verification but not the third-party security assessment.",
+        "label": "tested",
+        "sources": [
+          {
+            "url": "https://developers.google.com/workspace/gmail/api/auth/scopes",
+            "title": "Gmail API scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          },
+          {
+            "url": "https://developers.google.com/workspace/gmail/api/auth/scopes",
+            "title": "Gmail API scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": "Fetched https://developers.google.com/workspace/gmail/api/auth/scopes on 2026-10-25; the required terms were present.",
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
       "scope": "gmail.readonly",
-      "allows": "View a user's Gmail messages and settings.",
+      "allows": "Read messages and settings without changing them.",
       "neededFor": "Reading a user's email.",
       "reviewImpact": "security_assessment",
       "claim": {
-        "id": "c15",
+        "id": "c17",
         "text": "gmail.readonly is a restricted scope, requiring both OAuth verification and a third-party security assessment.",
         "label": "tested",
         "sources": [
@@ -238,38 +297,197 @@
             "url": "https://developers.google.com/workspace/gmail/api/auth/scopes",
             "title": "Gmail API scopes",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          },
+          {
+            "url": "https://developers.google.com/workspace/gmail/api/auth/scopes",
+            "title": "Gmail API scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://developers.google.com/workspace/gmail/api/auth/scopes on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://developers.google.com/workspace/gmail/api/auth/scopes on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
     },
     {
-      "scope": "gmail.send",
-      "allows": "Send email on the user's behalf.",
-      "neededFor": "Sending email as the user.",
-      "reviewImpact": "verification",
+      "scope": "gmail.compose",
+      "allows": "Create drafts and send mail.",
+      "neededFor": "Drafting and sending email on the user's behalf.",
+      "reviewImpact": "security_assessment",
       "claim": {
-        "id": "c16",
-        "text": "gmail.send is a sensitive (not restricted) scope, so it needs OAuth verification but not the third-party security assessment.",
-        "label": "tested",
+        "id": "c18",
+        "text": "gmail.compose is a restricted scope letting an app create drafts and send mail.",
+        "label": "sourced",
         "sources": [
           {
             "url": "https://developers.google.com/workspace/gmail/api/auth/scopes",
             "title": "Gmail API scopes",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://developers.google.com/workspace/gmail/api/auth/scopes on 2026-10-24; the required terms were present.",
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "gmail.insert",
+      "allows": "Insert new messages into the mailbox.",
+      "neededFor": "Migrating or archiving mail into a user's inbox.",
+      "reviewImpact": "security_assessment",
+      "claim": {
+        "id": "c19",
+        "text": "gmail.insert is a restricted scope letting an app insert new messages into the mailbox.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://developers.google.com/workspace/gmail/api/auth/scopes",
+            "title": "Gmail API scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "gmail.modify",
+      "allows": "Read, write, and send mail, but not permanently delete it.",
+      "neededFor": "Full mailbox integrations that shouldn't be able to permanently delete mail.",
+      "reviewImpact": "security_assessment",
+      "claim": {
+        "id": "c20",
+        "text": "gmail.modify is a restricted scope letting an app read, write, and send mail, but not permanently delete it.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://developers.google.com/workspace/gmail/api/auth/scopes",
+            "title": "Gmail API scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "gmail.metadata",
+      "allows": "Read headers and labels without message bodies.",
+      "neededFor": "Integrations that only need metadata (sender, subject, labels), not content.",
+      "reviewImpact": "security_assessment",
+      "claim": {
+        "id": "c21",
+        "text": "gmail.metadata is a restricted scope letting an app read headers and labels without message bodies.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://developers.google.com/workspace/gmail/api/auth/scopes",
+            "title": "Gmail API scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "gmail.settings.basic",
+      "allows": "Manage Gmail settings and filters.",
+      "neededFor": "Integrations that configure a user's Gmail settings.",
+      "reviewImpact": "security_assessment",
+      "claim": {
+        "id": "c22",
+        "text": "gmail.settings.basic is a restricted scope letting an app manage Gmail settings and filters.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://developers.google.com/workspace/gmail/api/auth/scopes",
+            "title": "Gmail API scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "gmail.settings.sharing",
+      "allows": "Manage sensitive sharing settings; admin-only, via a service account with domain-wide delegation.",
+      "neededFor": "Org-wide admin tooling, not individual-user integrations.",
+      "reviewImpact": "security_assessment",
+      "claim": {
+        "id": "c23",
+        "text": "gmail.settings.sharing is a restricted, admin-only scope used via a service account with domain-wide delegation.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://developers.google.com/workspace/gmail/api/auth/scopes",
+            "title": "Gmail API scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
+        "uncertainReason": null,
+        "checked": "unchecked"
+      }
+    },
+    {
+      "scope": "mail.google.com",
+      "allows": "Full Gmail access, including permanent deletion that skips the trash.",
+      "neededFor": "Rarely - the broadest possible Gmail scope.",
+      "reviewImpact": "security_assessment",
+      "claim": {
+        "id": "c24",
+        "text": "mail.google.com is the broadest restricted scope, including permanent deletion that skips the trash.",
+        "label": "sourced",
+        "sources": [
+          {
+            "url": "https://developers.google.com/workspace/gmail/api/auth/scopes",
+            "title": "Gmail API scopes",
+            "type": "official",
+            "accessedOn": "2026-10-25",
+            "publishedYear": 2026,
+            "oldSource": false,
+            "recheck": "confirmed"
+          }
+        ],
+        "testNote": null,
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -280,7 +498,7 @@
       "item": "A demonstration video (YouTube, set to Unlisted) showing how the granted scopes are used",
       "kind": "demo_video",
       "claim": {
-        "id": "c17",
+        "id": "c25",
         "text": "Verification requires a demonstration video showing how the app uses the scopes it requests.",
         "label": "tested",
         "sources": [
@@ -288,13 +506,13 @@
             "url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
             "title": "Restricted scope verification",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
-            "recheck": "mismatch"
+            "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -303,7 +521,7 @@
       "item": "A written justification for why more limited (non-restricted) scopes aren't sufficient",
       "kind": "other",
       "claim": {
-        "id": "c18",
+        "id": "c26",
         "text": "Verification requires explaining why more limited scopes wouldn't meet the app's needs.",
         "label": "tested",
         "sources": [
@@ -311,13 +529,13 @@
             "url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
             "title": "Restricted scope verification",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
-            "recheck": "mismatch"
+            "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -326,7 +544,7 @@
       "item": "A security assessment from a Google-approved third-party CASA assessor (restricted scopes only)",
       "kind": "other",
       "claim": {
-        "id": "c19",
+        "id": "c27",
         "text": "Restricted scopes require a security assessment from an independent, Google-approved third-party assessor.",
         "label": "tested",
         "sources": [
@@ -334,13 +552,13 @@
             "url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
             "title": "Restricted scope verification",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
-            "recheck": "mismatch"
+            "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -357,7 +575,7 @@
       "helper": null,
       "claims": [
         {
-          "id": "c20",
+          "id": "c28",
           "text": "Google documents OAuth verification and Gmail scope classification at developers.google.com and support.google.com.",
           "label": "tested",
           "sources": [
@@ -365,13 +583,13 @@
               "url": "https://developers.google.com/workspace/gmail/api/auth/scopes",
               "title": "Gmail API scopes",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://developers.google.com/workspace/gmail/api/auth/scopes on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.google.com/workspace/gmail/api/auth/scopes on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -387,13 +605,13 @@
         "max": 2,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c21"
+        "claimId": "c29"
       },
       "linkUrl": "https://developers.google.com/workspace/gmail/api/auth/scopes",
       "helper": null,
       "claims": [
         {
-          "id": "c21",
+          "id": "c29",
           "text": "Gmail scopes are classified non-sensitive, sensitive, or restricted, and the app's classification follows its most restrictive scope.",
           "label": "tested",
           "sources": [
@@ -401,13 +619,13 @@
               "url": "https://developers.google.com/workspace/gmail/api/auth/scopes",
               "title": "Gmail API scopes",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://developers.google.com/workspace/gmail/api/auth/scopes on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.google.com/workspace/gmail/api/auth/scopes on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -423,13 +641,13 @@
         "max": 40,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c22"
+        "claimId": "c30"
       },
       "linkUrl": "https://support.google.com/cloud/answer/7454865",
       "helper": null,
       "claims": [
         {
-          "id": "c22",
+          "id": "c30",
           "text": "Unverified apps can have up to 100 new users while verification is pending.",
           "label": "tested",
           "sources": [
@@ -437,13 +655,13 @@
               "url": "https://support.google.com/cloud/answer/7454865",
               "title": "Unverified apps",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://support.google.com/cloud/answer/7454865 on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://support.google.com/cloud/answer/7454865 on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -459,13 +677,13 @@
         "max": 4,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c23"
+        "claimId": "c31"
       },
       "linkUrl": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
       "helper": null,
       "claims": [
         {
-          "id": "c23",
+          "id": "c31",
           "text": "Verification requires a demo video and a written scope justification.",
           "label": "tested",
           "sources": [
@@ -473,13 +691,13 @@
               "url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
               "title": "Restricted scope verification",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
-              "recheck": "mismatch"
+              "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -515,13 +733,13 @@
         "max": 2,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c24"
+        "claimId": "c32"
       },
       "linkUrl": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
       "helper": null,
       "claims": [
         {
-          "id": "c24",
+          "id": "c32",
           "text": "Restricted scope verification can potentially take several weeks to complete.",
           "label": "tested",
           "sources": [
@@ -529,13 +747,13 @@
               "url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
               "title": "Restricted scope verification",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
-              "recheck": "mismatch"
+              "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -551,13 +769,13 @@
         "max": 40,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c25"
+        "claimId": "c33"
       },
       "linkUrl": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
       "helper": null,
       "claims": [
         {
-          "id": "c25",
+          "id": "c33",
           "text": "Restricted scopes require a security assessment from a Google-empanelled third-party assessor using the CASA framework.",
           "label": "tested",
           "sources": [
@@ -565,13 +783,13 @@
               "url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
               "title": "Restricted scope verification",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
-              "recheck": "mismatch"
+              "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -587,13 +805,13 @@
         "max": 8,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c26"
+        "claimId": "c34"
       },
       "linkUrl": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
       "helper": null,
       "claims": [
         {
-          "id": "c26",
+          "id": "c34",
           "text": "A compliant verification result stays valid for 7 days before it must be published or re-verified.",
           "label": "tested",
           "sources": [
@@ -601,13 +819,13 @@
               "url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
               "title": "Restricted scope verification",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
-              "recheck": "mismatch"
+              "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -633,13 +851,13 @@
         "max": 16,
         "unit": "hours",
         "basis": "official",
-        "claimId": "c27"
+        "claimId": "c35"
       },
       "linkUrl": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
       "helper": null,
       "claims": [
         {
-          "id": "c27",
+          "id": "c35",
           "text": "Apps using restricted scopes must be reassessed at least every 12 months.",
           "label": "tested",
           "sources": [
@@ -647,13 +865,13 @@
               "url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
               "title": "Restricted scope verification",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
-              "recheck": "mismatch"
+              "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -667,7 +885,7 @@
       "what": "Verifies the app's use of sensitive/restricted scopes and, for restricted scopes, requires an independent annual security assessment.",
       "claims": [
         {
-          "id": "c29",
+          "id": "c37",
           "text": "Restricted-scope apps need both OAuth verification and a third-party CASA security assessment, repeated at least every 12 months.",
           "label": "tested",
           "sources": [
@@ -675,31 +893,31 @@
               "url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
               "title": "Restricted scope verification",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
-              "recheck": "mismatch"
+              "recheck": "confirmed"
             },
             {
               "url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
               "title": "Restricted scope verification",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
-              "recheck": "mismatch"
+              "recheck": "confirmed"
             },
             {
               "url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
               "title": "Restricted scope verification",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
-              "recheck": "mismatch"
+              "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -711,7 +929,7 @@
       "what": "Can block installation of unverified third-party apps by default and must mark the app Trusted to allow it.",
       "claims": [
         {
-          "id": "c28",
+          "id": "c36",
           "text": "Workspace admins can block unverified third-party apps and must mark one Trusted to exempt it.",
           "label": "uncertain",
           "sources": [
@@ -719,7 +937,7 @@
               "url": "https://support.google.com/a/answer/13152743",
               "title": "Control which third-party & internal apps access Google Workspace data",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": null,
               "oldSource": false,
               "recheck": "mismatch"
@@ -737,7 +955,7 @@
       "what": "Sees an unverified-app warning screen and must click through it to continue, until the app is verified.",
       "claims": [
         {
-          "id": "c30",
+          "id": "c38",
           "text": "Users see an unverified-app warning screen until the app completes verification.",
           "label": "tested",
           "sources": [
@@ -745,13 +963,13 @@
               "url": "https://support.google.com/cloud/answer/7454865",
               "title": "Unverified apps",
               "type": "official",
-              "accessedOn": "2026-10-24",
+              "accessedOn": "2026-10-25",
               "publishedYear": 2026,
               "oldSource": false,
               "recheck": "confirmed"
             }
           ],
-          "testNote": "Fetched https://support.google.com/cloud/answer/7454865 on 2026-10-24; the required terms were present.",
+          "testNote": "Fetched https://support.google.com/cloud/answer/7454865 on 2026-10-25; the required terms were present.",
           "uncertainReason": null,
           "checked": "unchecked"
         }
@@ -764,7 +982,7 @@
       "fix": "Submit for verification as early as possible - restricted-scope verification alone can take several weeks.",
       "escalation": "Google Cloud OAuth verification support",
       "claim": {
-        "id": "c31",
+        "id": "c39",
         "text": "Unverified apps are capped at 100 new users, and restricted-scope verification can take several weeks.",
         "label": "tested",
         "sources": [
@@ -772,7 +990,7 @@
             "url": "https://support.google.com/cloud/answer/7454865",
             "title": "Unverified apps",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
             "recheck": "confirmed"
@@ -781,13 +999,13 @@
             "url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
             "title": "Restricted scope verification",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
-            "recheck": "mismatch"
+            "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://support.google.com/cloud/answer/7454865 on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://support.google.com/cloud/answer/7454865 on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -797,7 +1015,7 @@
       "fix": "Explain specifically why a narrower, non-restricted scope (such as gmail.readonly instead of gmail.modify) wouldn't meet the app's needs.",
       "escalation": "Google Cloud OAuth verification support",
       "claim": {
-        "id": "c32",
+        "id": "c40",
         "text": "Verification requires justifying why more limited scopes aren't sufficient.",
         "label": "tested",
         "sources": [
@@ -805,13 +1023,13 @@
             "url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
             "title": "Restricted scope verification",
             "type": "official",
-            "accessedOn": "2026-10-24",
+            "accessedOn": "2026-10-25",
             "publishedYear": 2026,
             "oldSource": false,
-            "recheck": "mismatch"
+            "recheck": "confirmed"
           }
         ],
-        "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-24; the required terms were present.",
+        "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-25; the required terms were present.",
         "uncertainReason": null,
         "checked": "unchecked"
       }
@@ -819,7 +1037,7 @@
   ],
   "whileYouWait": [
     {
-      "id": "c33",
+      "id": "c41",
       "text": "You can keep building and testing with up to 100 real users while verification is pending - they'll just see an unverified-app warning until it completes.",
       "label": "tested",
       "sources": [
@@ -827,20 +1045,20 @@
           "url": "https://support.google.com/cloud/answer/7454865",
           "title": "Unverified apps",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
           "recheck": "confirmed"
         }
       ],
-      "testNote": "Fetched https://support.google.com/cloud/answer/7454865 on 2026-10-24; the required terms were present.",
+      "testNote": "Fetched https://support.google.com/cloud/answer/7454865 on 2026-10-25; the required terms were present.",
       "uncertainReason": null,
       "checked": "unchecked"
     }
   ],
   "keepsComingBack": [
     {
-      "id": "c34",
+      "id": "c42",
       "text": "Apps using restricted scopes must be reassessed by a third-party CASA assessor at least every 12 months, and adding a new restricted scope can also trigger reassessment.",
       "label": "tested",
       "sources": [
@@ -848,13 +1066,13 @@
           "url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
           "title": "Restricted scope verification",
           "type": "official",
-          "accessedOn": "2026-10-24",
+          "accessedOn": "2026-10-25",
           "publishedYear": 2026,
           "oldSource": false,
-          "recheck": "mismatch"
+          "recheck": "confirmed"
         }
       ],
-      "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-24; the required terms were present.",
+      "testNote": "Fetched https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification on 2026-10-25; the required terms were present.",
       "uncertainReason": null,
       "checked": "unchecked"
     }
@@ -863,26 +1081,24 @@
   "derived": {
     "unverifiedClaimIds": [
       "c4",
-      "c7",
       "c10",
-      "c13",
-      "c28"
+      "c36"
     ],
     "sources": [
       {
         "url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
         "title": "Restricted scope verification",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
-        "recheck": "mismatch"
+        "recheck": "confirmed"
       },
       {
         "url": "https://developers.google.com/workspace/gmail/api/auth/scopes",
         "title": "Gmail API scopes",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
         "recheck": "confirmed"
@@ -891,7 +1107,7 @@
         "url": "https://support.google.com/a/answer/13152743",
         "title": "Control which third-party & internal apps access Google Workspace data",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": null,
         "oldSource": false,
         "recheck": "mismatch"
@@ -900,7 +1116,7 @@
         "url": "https://support.google.com/cloud/answer/7454865",
         "title": "Unverified apps",
         "type": "official",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": 2026,
         "oldSource": false,
         "recheck": "confirmed"
@@ -909,7 +1125,7 @@
         "url": "https://composio.dev/blog/ship-gmail-integration-in-minutes",
         "title": "How to Ship a Gmail Integration in 30 Minutes (No Google Verification on Your End)",
         "type": "vendor",
-        "accessedOn": "2026-10-24",
+        "accessedOn": "2026-10-25",
         "publishedYear": null,
         "oldSource": false,
         "recheck": "confirmed"
@@ -929,7 +1145,7 @@
       "min": 2,
       "max": 6,
       "unit": "weeks",
-      "basis": "reported",
+      "basis": "official",
       "claimId": "c7"
     },
     "gated": false,
