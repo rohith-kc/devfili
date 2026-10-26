@@ -105,6 +105,8 @@ npm run dev
 
 **With Supabase (optional, full setup):** create a free project at https://supabase.com, copy its project URL and service role key into `.env.local`, then in the Supabase **SQL Editor** run the three files in `supabase/migrations` in order (`0001_init.sql`, `0002_saved_guides.sql`, `0003_visitors.sql`). This turns on result caching, shared daily limits, saving guides to the database, and a `visitors` table of who entered a name.
 
+**Limits.** When you run it locally with `npm run dev`, DevFili's own daily caps are off, so you can test as much as you like. On a deployed copy they are on by default; set `RATE_LIMITS=off` to remove them. A message like "busy or rate-limited" is different: that comes from your model provider (a free-tier quota) and only a different key, model or plan fixes it.
+
 **If something goes wrong**
 - *"busy" or "rate-limited" on research:* a provider's free quota is used up. Wait, or use different keys or models.
 - *`npm run check-keys` shows FAIL:* the key is wrong or has no access to that model. Re-copy it, and make sure there are no spaces or quotes around it.

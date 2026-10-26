@@ -69,6 +69,17 @@ async function bumpAndCheck(bucket: string, limit: number): Promise<RateLimitRes
   }
 }
 
+/** DevFili's own daily caps protect a shared deployment's free-tier keys. They are
+ * switched off with RATE_LIMITS=off, and off by default while running locally
+ * (npm run dev) where the person is using their own keys. RATE_LIMITS=on forces
+ * them back on. This never affects a provider's own rate limits (Gemini, Groq...). */
+export function ownLimitsDisabled(): boolean {
+  const setting = (process.env.RATE_LIMITS ?? "").toLowerCase();
+  if (setting === "off") return true;
+  if (setting === "on") return false;
+  return process.env.NODE_ENV === "development";
+}
+
 export interface LiveRunActor {
   ip?: string;
   userId?: string;
@@ -78,6 +89,7 @@ export interface LiveRunActor {
  * actor-specific one (signed-in user by id, guest by hashed IP). Never
  * blocks library pages - this is only called for live research. */
 export async function checkLiveRunLimit(actor: LiveRunActor): Promise<RateLimitResult> {
+  if (ownLimitsDisabled()) return { allowed: true };
   const globalLimit = Number(process.env.LIVE_RUNS_GLOBAL_PER_DAY) || 150;
   const globalResult = await bumpAndCheck("global", globalLimit);
   if (!globalResult.allowed) return globalResult;
@@ -94,6 +106,7 @@ export async function checkLiveRunLimit(actor: LiveRunActor): Promise<RateLimitR
 }
 
 export async function checkHelperRunLimit(actor: LiveRunActor): Promise<RateLimitResult> {
+  if (ownLimitsDisabled()) return { allowed: true };
   const limit = Number(process.env.HELPER_RUNS_PER_DAY) || 30;
   const bucket = actor.userId ? `helper:${actor.userId}` : actor.ip ? `helper:${hashIp(actor.ip)}` : "helper:anon";
   return bumpAndCheck(bucket, limit);
