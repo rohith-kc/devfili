@@ -2,10 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import type { Guide } from "@/lib/schema";
-import { getUsername, setUsername, saveGuide, isGuideSaved } from "@/lib/localUser";
-import { GuideView } from "./GuideView";
+import { addRecentResult } from "@/lib/localUser";
 
 type Candidate = { name: string; websiteUrl: string | null; description: string };
 type StageState = "pending" | "active" | "done";
@@ -40,12 +39,9 @@ export function ResearchChat() {
   const [phase, setPhase] = useState<Phase>("idle");
   const [stages, setStages] = useState<Stage[]>(INITIAL_STAGES);
   const [question, setQuestion] = useState<{ text: string; candidates: Candidate[] } | null>(null);
-  const [guide, setGuide] = useState<Guide | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [slow, setSlow] = useState(false);
-  const [saved, setSaved] = useState(false);
-  const [showNamePrompt, setShowNamePrompt] = useState(false);
-  const [nameDraft, setNameDraft] = useState("");
+  const router = useRouter();
   const abortRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
@@ -58,32 +54,7 @@ export function ResearchChat() {
     setPhase("idle");
     setStages(INITIAL_STAGES);
     setQuestion(null);
-    setGuide(null);
     setError(null);
-    setSaved(false);
-    setShowNamePrompt(false);
-    setNameDraft("");
-  }
-
-  function handleSaveClick() {
-    if (!guide) return;
-    if (!getUsername()) {
-      setShowNamePrompt(true);
-      return;
-    }
-    saveGuide(guide);
-    setSaved(true);
-  }
-
-  function confirmName(e: React.FormEvent) {
-    e.preventDefault();
-    const trimmed = nameDraft.trim();
-    if (!trimmed || !guide) return;
-    setUsername(trimmed);
-    saveGuide(guide);
-    setSaved(true);
-    setShowNamePrompt(false);
-    setNameDraft("");
   }
 
   async function run(body: { query: string; choice?: Candidate }) {
@@ -161,8 +132,9 @@ export function ResearchChat() {
       setQuestion({ text: event.text, candidates: event.candidates });
     } else if (event.type === "result" && event.guide) {
       setPhase("result");
-      setGuide(event.guide);
-      setSaved(isGuideSaved(event.guide.app.slug));
+      addRecentResult(event.guide);
+      router.push(`/research/${event.guide.app.slug}`);
+      setOpen(false);
     } else if (event.type === "error") {
       setPhase("error");
       setError(event.message ?? "Something went wrong.");
@@ -307,60 +279,6 @@ export function ResearchChat() {
                 </div>
               )}
 
-              {phase === "result" && guide && (
-                <div>
-                  <div className="mb-4 flex flex-col gap-3 rounded-xl border border-border bg-background p-3">
-                    <div className="flex flex-wrap items-center justify-between gap-2">
-                      <span className="text-sm text-muted">Researched live just now.</span>
-                      <button
-                        type="button"
-                        onClick={handleSaveClick}
-                        disabled={saved}
-                        className="font-mono-label focus-ring rounded-full border border-border px-3 py-1 text-xs font-medium uppercase text-foreground transition-opacity hover:opacity-80 disabled:opacity-50"
-                      >
-                        {saved ? "Saved ✓" : "Save for later"}
-                      </button>
-                      {saved && (
-                        <Link
-                          href={`/saved/${guide.app.slug}`}
-                          onClick={close}
-                          className="focus-ring text-xs font-medium text-accent hover:underline"
-                        >
-                          Open full page
-                        </Link>
-                      )}
-                    </div>
-                    {showNamePrompt && (
-                      <form onSubmit={confirmName} className="flex flex-col gap-2 border-t border-border pt-3">
-                        <label htmlFor="save-name-input" className="text-xs text-muted">
-                          Just a name &mdash; no password. Stored on this device only, to label your saved guides.
-                        </label>
-                        <div className="flex gap-2">
-                          <input
-                            id="save-name-input"
-                            autoFocus
-                            value={nameDraft}
-                            onChange={(e) => setNameDraft(e.target.value)}
-                            placeholder="e.g. Rohith"
-                            className="focus-ring flex-1 rounded-lg border border-border bg-surface px-3 py-1.5 text-sm text-foreground placeholder:text-muted"
-                          />
-                          <button
-                            type="submit"
-                            disabled={!nameDraft.trim()}
-                            className="font-mono-label focus-ring w-fit rounded-full bg-foreground px-3 py-1.5 text-xs font-semibold uppercase text-background disabled:opacity-50"
-                          >
-                            Save
-                          </button>
-                        </div>
-                      </form>
-                    )}
-                  </div>
-                  <GuideView guide={guide} hideSave />
-                  <button type="button" onClick={reset} className="focus-ring mb-6 text-sm text-accent hover:underline">
-                    &larr; Check another app
-                  </button>
-                </div>
-              )}
             </div>
           </div>
         </div>,

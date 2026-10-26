@@ -187,6 +187,46 @@ export function removeSavedGuide(slug: string): void {
   pushToServer("DELETE", null, slug);
 }
 
+const RECENT_KEY = "devfili:recent-results";
+
+export interface RecentResult {
+  slug: string;
+  name: string;
+  researchedAt: string;
+  guide: Guide;
+}
+
+/** Keeps the last few live-research results so their full page survives a refresh. */
+export function addRecentResult(guide: Guide): void {
+  if (typeof window === "undefined") return;
+  const existing = parseRecent(safeGet(RECENT_KEY)).filter((r) => r.slug !== guide.app.slug);
+  const next: RecentResult[] = [
+    { slug: guide.app.slug, name: guide.app.name, researchedAt: new Date().toISOString(), guide },
+    ...existing,
+  ].slice(0, 8);
+  safeSet(RECENT_KEY, JSON.stringify(next));
+  notify();
+}
+
+function parseRecent(raw: string | null): RecentResult[] {
+  if (!raw) return [];
+  try {
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+export function useRecentResults(): RecentResult[] {
+  const raw = useSyncExternalStore(
+    subscribe,
+    () => (typeof window === "undefined" ? null : safeGet(RECENT_KEY)),
+    () => null
+  );
+  return useMemo(() => parseRecent(raw), [raw]);
+}
+
 export function isGuideSaved(slug: string): boolean {
   return getSavedGuides().some((g) => g.slug === slug);
 }
