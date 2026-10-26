@@ -152,6 +152,26 @@ async function checkCustomEndpoint() {
     return;
   }
 
+  try {
+    const { customComplete } = await import("../src/lib/llm/custom");
+    const result = await customComplete({
+      apiKey: key,
+      baseURL,
+      model,
+      prompt: 'Reply with JSON only: {"ok": true, "items": ["a", "b"]}',
+      jsonMode: true,
+      maxTokens: 8000,
+    });
+    const parsed = JSON.parse(result.text.replace(/```(?:json)?/g, "").trim());
+    record(`${label}: JSON answer with a large output budget`, parsed?.ok === true, parsed?.ok === true ? "structured JSON works (DevFili adapts max_tokens / JSON mode if the endpoint needs it)" : `unexpected reply: ${result.text.slice(0, 80)}`);
+  } catch (err) {
+    record(
+      `${label}: JSON answer with a large output budget`,
+      false,
+      `${describeError(err)}. Next step: DevFili asks for JSON answers of several thousand tokens; check that this model allows that output size.`
+    );
+  }
+
   if (!isOpenRouter) {
     record(`${label}: web search`, true, "no built-in web search on this endpoint - DevFili will fetch the provider's public docs itself and let the model read them (set LLM_WEB_SEARCH=off to make this explicit).");
     return;
