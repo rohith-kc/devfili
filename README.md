@@ -9,6 +9,30 @@ DevFili tells a developer, before they write a line of integration code, how har
 **Live:** https://devfili.vercel.app/
 **Source:** https://github.com/rohith-kc/devfili
 
+## Start here (for reviewers)
+
+**What this is.** A take-home submission: a website that answers "how hard will it be to get my OAuth app approved for this product?", with honest evidence labels instead of confident guesses.
+
+**What was built**
+- **9 reviewed library guides** (Zoom, Slack, Gong, HubSpot, Notion, Linear, Microsoft Teams, Google/Gmail, LinkedIn): difficulty tier, your effort vs. the provider's wait as two separate numbers, scopes, ordered steps with who does each one, the three approval gates, where it gets stuck, and sources.
+- **Live research for any other app** ("Check an app"): an agent finds the provider's developer docs and real developer reports, writes the guide in the same format, and fact-checks it. The result opens as a full guide page.
+- **Drafting helpers** (scope justification, reviewer test plan, customer-admin note), a checklist and pre-submission list, **Save for later**, and a Profile panel. A name-only welcome screen (no passwords); saves sync to Supabase.
+- **Plug-and-play models:** run it on Gemini + Groq, or on any OpenAI-compatible endpoint by setting `LLM_BASE_URL`, `LLM_API_KEY` and `LLM_MODEL` (Bedrock, Grok, OpenAI, a gateway, OpenRouter).
+
+**The idea that matters most: the model never decides what is true or how hard it is.** Models only propose facts and cite finding ids. Plain code decides the evidence label (Tested, Sourced or Uncertain), the difficulty tier, the confidence and whether the guide is complete (`src/lib/evidence.ts`, `tier.ts`, `confidence.ts`, `completeness.ts`). A claim is "Tested" only if our own server fetched the cited page and found the stated terms on it. Missing information stays "Unknown"; it is never treated as "self-serve". Fetched web text is treated as data, never instructions, and every fetch of a model-supplied URL goes through an SSRF guard.
+
+**Where to look in the code**
+- `src/lib/research/` &mdash; the pipeline: resolve, discover, probe, draft, finalize, check (`pipeline.ts` is the entry point; `prompts.ts` has every prompt).
+- `src/lib/llm/` &mdash; provider clients and the fallback order (`router.ts`, `chain.ts`, `custom.ts`).
+- `src/lib/{tier,evidence,confidence,completeness}.ts` &mdash; the deterministic trust logic, unit tested in `tests/`.
+- `content/library/*.json` &mdash; the 9 reviewed guides; `docs/` &mdash; PRD, SPEC, prompts, decisions and the verification log.
+
+**How to test it**
+1. **Quickest:** open https://devfili.vercel.app/, enter a name, open a guide (try Slack), click **Save for later**, then use **Check an app** and type an app such as Miro. The live site runs on free-tier keys, so research can occasionally say "busy"; the library always works.
+2. **With your own model:** see [How to test this project](#how-to-test-this-project) below. Three lines in `.env.local` (`LLM_BASE_URL`, `LLM_API_KEY`, `LLM_MODEL`), then `npm install` and `npm run dev`.
+
+**Honest limits.** None of the 9 guides carries a human "hand-verified" mark; they were self-reviewed against official sources and a 25-claim accuracy check is in `docs/VERIFICATION.md` (23 correct, 1 corrected, 1 unverified). DevFili never creates a real provider app, so timelines come from documentation and developer reports, not first-hand approvals. Live research quality depends on the model and on providers' free-tier limits. Full list in [Limitations](#limitations-stated-plainly-as-the-project-itself-asks-every-guide-to-do).
+
 ## What's actually working right now
 
 - **The 9 library guides** &mdash; browse, search, and filter by tier/gated on the home page; every guide page shows the verdict, scopes, steps, the three gates, and evidence you can click through to the real source.
