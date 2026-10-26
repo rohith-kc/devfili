@@ -23,6 +23,8 @@ const env: Env = {
   openrouterApiKey: "",
   openrouterBaseUrl: "https://openrouter.ai/api/v1",
   openrouterModel: "meta-llama/llama-3.3-70b-instruct",
+  openrouterFirst: false,
+  openrouterWebSearch: true,
   providerResearch: "gemini",
   providerCheck: "gemini",
 };

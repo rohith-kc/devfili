@@ -2,7 +2,7 @@ import type { NextRequest } from "next/server";
 import { z } from "zod";
 import { Guide, HelperKind, type Claim } from "@/lib/schema";
 import { loadEnv } from "@/lib/llm/router";
-import { groqComplete } from "@/lib/llm/groq";
+import { plainComplete, plainProviders } from "@/lib/llm/chain";
 import { looksLikeSecret } from "@/lib/safety/secrets";
 import { checkHelperRunLimit, type LiveRunActor } from "@/lib/safety/ratelimit";
 
@@ -104,18 +104,12 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ hel
   }
 
   const env = loadEnv();
-  if (!env.groqApiKey) {
+  if (plainProviders(env).length === 0) {
     return Response.json({ error: "provider_busy", message: "The draft service isn't configured right now." }, { status: 503 });
   }
 
   try {
-    const result = await groqComplete({
-      apiKey: env.groqApiKey,
-      baseURL: env.groqBaseUrl,
-      model: env.groqModelFast,
-      prompt: built.prompt,
-      maxTokens: 2000,
-    });
+    const result = await plainComplete(env, `helper-${helper}`, built.prompt, { maxTokens: 2000 });
     // The prompt asks the model to end with this exact line so earlier
     // reviewers could confirm it followed the "always marked as a draft"
     // rule; the UI now shows that marking itself, so strip the duplicate.

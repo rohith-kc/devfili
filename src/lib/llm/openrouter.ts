@@ -15,7 +15,7 @@ export interface OpenRouterCallResult {
 // callWithRetry to retry. OpenRouter is the last fallback tier, so this is a
 // little more generous than Groq's - a :online web-search call genuinely
 // takes longer than a plain completion.
-const REQUEST_TIMEOUT_MS = 30000;
+const REQUEST_TIMEOUT_MS = 60000;
 
 function client(opts: OpenRouterClientOptions): OpenAI {
   return new OpenAI({
@@ -59,6 +59,8 @@ export async function openrouterComplete(opts: OpenRouterCompletionOptions): Pro
 
 export interface OpenRouterWebSearchOptions extends OpenRouterClientOptions {
   model: string;
+  /** Append ":online" (OpenRouter only). Other endpoints answer without web search. */
+  online?: boolean;
   prompt: string;
   maxTokens?: number;
 }
@@ -69,9 +71,9 @@ export interface OpenRouterWebSearchOptions extends OpenRouterClientOptions {
  * browser_search tool, used as the third and last research fallback. */
 export async function openrouterWebSearch(opts: OpenRouterWebSearchOptions): Promise<OpenRouterCallResult> {
   const completion = await client(opts).chat.completions.create({
-    model: `${opts.model}:online`,
+    model: opts.online === false ? opts.model : `${opts.model}:online`,
     messages: [{ role: "user", content: opts.prompt }],
-    max_tokens: opts.maxTokens ?? 3000,
+    max_tokens: opts.maxTokens ?? 6000,
   });
   return toResult(completion);
 }
