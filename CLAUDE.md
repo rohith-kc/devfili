@@ -34,7 +34,7 @@ Secrets must never pass through chat, files in git, logs, or the browser.
 - Model names and base URLs come from env vars, never hard-coded.
 - Evidence labels and owner tags use text plus icon, never colour alone. Everything is keyboard operable.
 - Anything sample or placeholder is visibly marked "Sample". Never invent provider facts in code, fixtures or copy.
-- Do not add the Anthropic SDK. Providers are Google Gemini (native SDK), Groq (OpenAI-compatible), and - as an optional third fallback tier only, after both of the above fail, and only when `OPENROUTER_API_KEY` is set - OpenRouter (OpenAI-compatible). OpenRouter is never primary for any stage.
+- Do not add the Anthropic SDK. Providers are Google Gemini (native SDK), Groq (OpenAI-compatible), and OpenRouter or any other OpenAI-compatible endpoint (via `OPENROUTER_*`). OpenRouter is a last fallback by default; it becomes the first choice only when it is the sole configured key or `PRIMARY_PROVIDER=openrouter` is set, so a reviewer can run everything on one key and any model (including Claude through OpenRouter).
 
 ## Commands (create these npm scripts)
 `dev`, `build`, `start`, `lint`, `test`, `check-keys`, `scan-secrets`, `research -- "<app>"`, `library:generate -- <slug...>`, `library:validate`, `library:links`.
