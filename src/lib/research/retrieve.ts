@@ -121,6 +121,17 @@ export async function gatherSources(
     );
   }
 
+  if (kind === "identify") {
+    // No website known and no search engine: try the obvious home pages for the typed name.
+    const words = appName.toLowerCase().replace(/[^a-z0-9 .-]/g, " ").trim();
+    const direct = /^[a-z0-9-]+(\.[a-z0-9-]+)+$/.test(words) ? [words] : [];
+    const joined = words.replace(/[ .]+/g, "");
+    const hyphen = words.replace(/[ .]+/g, "-");
+    const names = [...new Set([joined, hyphen].filter((n) => n.length >= 2))];
+    for (const d of direct) seedUrls.push(`https://${d}`);
+    for (const n of names) for (const tld of ["com", "ai", "io", "app", "co", "so"]) seedUrls.push(`https://${n}.${tld}`);
+  }
+
   const query =
     kind === "official"
       ? `${appName} OAuth app review approval developer documentation`

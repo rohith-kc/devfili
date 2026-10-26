@@ -122,6 +122,15 @@ export interface RunOptions {
 const DEFAULT_DEADLINE_SECONDS = 240;
 const CHECK_STAGE_MIN_BUDGET_MS = 5000;
 
+/** The underlying reason, shown only when running locally or when SHOW_ERROR_DETAILS=on,
+ * so a developer testing their own model can see what failed. Provider error text never contains keys. */
+function errorDetail(err: unknown): string {
+  const show = process.env.SHOW_ERROR_DETAILS === "on" || (process.env.NODE_ENV !== "production" && process.env.SHOW_ERROR_DETAILS !== "off");
+  if (!show) return "";
+  const text = String(err instanceof Error ? err.message : err).replace(/\s+/g, " ").slice(0, 400);
+  return ` [Details: ${text}]`;
+}
+
 /** Runs the full research pipeline (resolve -> discover -> probe -> draft ->
  * finalize -> check -> finalize), yielding the same status/question/result/
  * error/done events the SSE route streams to the browser. A CLI caller can
@@ -234,8 +243,10 @@ export async function* runPipeline(query: string, options: RunOptions = {}): Asy
       draftCore(env, today, app.name, app, discoverResult.findings, probes),
       draftPath(env, today, app.name, app, discoverResult.findings, probes, null),
     ]);
-  } catch {
-    yield { type: "error", code: "provider_busy", message: "Could not draft the guide right now - the provider may be rate-limited. Try again in a while, or browse the reviewed library below." };
+  } catch (err) {
+    // Say why (never keys or prompts) so a developer running this on their own model can fix the cause.
+    console.log(`[research] stage=draft failed reason=${String(err instanceof Error ? err.message : err).slice(0, 1500)}`);
+    yield { type: "error", code: "provider_busy", message: `Could not draft the guide right now - the provider may be rate-limited. Try again in a while, or browse the reviewed library below.${errorDetail(err)}` };
     yield { type: "done" };
     return;
   }

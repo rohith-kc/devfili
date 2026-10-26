@@ -10,18 +10,18 @@ export interface CustomCallResult {
   totalTokens: number | null;
 }
 
-// Without an explicit timeout, a congested provider can leave a call hanging
-// on the SDK's own default (minutes) instead of failing fast enough for
-// callWithRetry to retry. OpenRouter is the last fallback tier, so this is a
-// little more generous than Groq's - a :online web-search call genuinely
-// takes longer than a plain completion.
-const REQUEST_TIMEOUT_MS = 60000;
+// Long structured answers (the guide drafts) can take a slow model well over a
+// minute, so the default is generous. LLM_TIMEOUT_SECONDS changes it.
+function requestTimeoutMs(): number {
+  const seconds = Number(process.env.LLM_TIMEOUT_SECONDS);
+  return (Number.isFinite(seconds) && seconds > 0 ? seconds : 150) * 1000;
+}
 
 function client(opts: CustomClientOptions): OpenAI {
   return new OpenAI({
     apiKey: opts.apiKey,
     baseURL: opts.baseURL,
-    timeout: REQUEST_TIMEOUT_MS,
+    timeout: requestTimeoutMs(),
     // Optional but recommended by OpenRouter for attribution; no secrets.
     defaultHeaders: {
       "HTTP-Referer": "https://devfili.app",
@@ -37,6 +37,52 @@ function toResult(completion: OpenAI.Chat.Completions.ChatCompletion): CustomCal
   };
 }
 
+type Params = Record<string, unknown>;
+
+function errorText(err: unknown): string {
+  return err instanceof Error ? err.message : String(err);
+}
+
+/** OpenAI-compatible endpoints disagree on a few request options. Rather than
+ * fail, adapt once or twice to what the endpoint says it does not accept:
+ * `max_completion_tokens` instead of `max_tokens` (newer OpenAI-style models),
+ * and no `response_format` (endpoints without JSON mode; the prompts already
+ * ask for JSON only). */
+export function adaptParams(params: Params, err: unknown): Params | null {
+  const message = errorText(err);
+  if ("max_tokens" in params && /max_completion_tokens/i.test(message)) {
+    const { max_tokens, ...rest } = params;
+    return { ...rest, max_completion_tokens: max_tokens };
+  }
+  if ("max_completion_tokens" in params && /max_tokens/i.test(message) && !/max_completion_tokens/i.test(message)) {
+    const { max_completion_tokens, ...rest } = params;
+    return { ...rest, max_tokens: max_completion_tokens };
+  }
+  if ("response_format" in params && /response_format|json_object|json mode|json_schema|structured output/i.test(message)) {
+    const { response_format, ...rest } = params;
+    void response_format;
+    return rest;
+  }
+  return null;
+}
+
+async function createChat(opts: CustomClientOptions, initial: Params): Promise<CustomCallResult> {
+  const openai = client(opts);
+  let params = initial;
+  for (let attempt = 0; ; attempt++) {
+    try {
+      const completion = await openai.chat.completions.create(
+        params as unknown as OpenAI.Chat.Completions.ChatCompletionCreateParamsNonStreaming
+      );
+      return toResult(completion);
+    } catch (err) {
+      const adapted = attempt < 2 ? adaptParams(params, err) : null;
+      if (!adapted) throw err;
+      params = adapted;
+    }
+  }
+}
+
 export interface CustomCompletionOptions extends CustomClientOptions {
   model: string;
   prompt: string;
@@ -44,17 +90,15 @@ export interface CustomCompletionOptions extends CustomClientOptions {
   maxTokens?: number;
 }
 
-/** A plain (or best-effort JSON-object mode) chat completion. Last-resort
- * fallback, used only after both Gemini and Groq have failed - throws on
- * provider error, same contract as groqComplete. */
+/** A plain (or best-effort JSON-object mode) chat completion on the custom
+ * endpoint. Throws on provider error, same contract as groqComplete. */
 export async function customComplete(opts: CustomCompletionOptions): Promise<CustomCallResult> {
-  const completion = await client(opts).chat.completions.create({
+  return createChat(opts, {
     model: opts.model,
     messages: [{ role: "user", content: opts.prompt }],
-    ...(opts.jsonMode ? { response_format: { type: "json_object" as const } } : {}),
+    ...(opts.jsonMode ? { response_format: { type: "json_object" } } : {}),
     ...(opts.maxTokens ? { max_tokens: opts.maxTokens } : {}),
   });
-  return toResult(completion);
 }
 
 export interface CustomSearchOptions extends CustomClientOptions {
@@ -65,15 +109,13 @@ export interface CustomSearchOptions extends CustomClientOptions {
   maxTokens?: number;
 }
 
-/** Research call on the custom endpoint. With online=true, appends ":online" to the model id on OpenRouter
- * turns on OpenRouter's built-in web-search plugin (results woven into the
- * model's context before it answers) - the OpenRouter equivalent of Groq's
- * browser_search tool, used as the third and last research fallback. */
+/** Research call on the custom endpoint. With online=true, appends ":online"
+ * to the model id on OpenRouter, which turns on its built-in web-search
+ * plugin; otherwise the prompt itself carries the pages to read. */
 export async function customSearchComplete(opts: CustomSearchOptions): Promise<CustomCallResult> {
-  const completion = await client(opts).chat.completions.create({
+  return createChat(opts, {
     model: opts.online === false ? opts.model : `${opts.model}:online`,
     messages: [{ role: "user", content: opts.prompt }],
     max_tokens: opts.maxTokens ?? 6000,
   });
-  return toResult(completion);
 }

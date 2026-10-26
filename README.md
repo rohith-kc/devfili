@@ -135,6 +135,7 @@ npm run dev
 
 **If something goes wrong**
 - *"busy" or "rate-limited" on research:* a provider's free quota is used up. Wait, or use different keys or models.
+- *"Could not draft the guide right now":* the model answered badly or too slowly. When you run locally, the message ends with `[Details: ...]` and the terminal prints a `stage=draft failed` line with the reason. Common causes: the model is slow (raise `LLM_TIMEOUT_SECONDS`), its answer is not valid JSON in the guide format (use a stronger model), or its output limit is too low (guide drafts need several thousand output tokens). `npm run check-keys` tests JSON answers on your endpoint. DevFili already adapts to endpoints that want `max_completion_tokens` or have no JSON mode.
 - *`npm run check-keys` shows FAIL:* the key is wrong or has no access to that model. Re-copy it, and make sure there are no spaces or quotes around it.
 - *Port 3000 already in use:* run `npm run dev -- -p 3001` and open http://localhost:3001.
 
