@@ -1,11 +1,11 @@
 import OpenAI from "openai";
 
-export interface OpenRouterClientOptions {
+export interface CustomClientOptions {
   apiKey: string;
   baseURL: string;
 }
 
-export interface OpenRouterCallResult {
+export interface CustomCallResult {
   text: string;
   totalTokens: number | null;
 }
@@ -17,7 +17,7 @@ export interface OpenRouterCallResult {
 // takes longer than a plain completion.
 const REQUEST_TIMEOUT_MS = 60000;
 
-function client(opts: OpenRouterClientOptions): OpenAI {
+function client(opts: CustomClientOptions): OpenAI {
   return new OpenAI({
     apiKey: opts.apiKey,
     baseURL: opts.baseURL,
@@ -30,14 +30,14 @@ function client(opts: OpenRouterClientOptions): OpenAI {
   });
 }
 
-function toResult(completion: OpenAI.Chat.Completions.ChatCompletion): OpenRouterCallResult {
+function toResult(completion: OpenAI.Chat.Completions.ChatCompletion): CustomCallResult {
   return {
     text: completion.choices[0]?.message?.content ?? "",
     totalTokens: completion.usage?.total_tokens ?? null,
   };
 }
 
-export interface OpenRouterCompletionOptions extends OpenRouterClientOptions {
+export interface CustomCompletionOptions extends CustomClientOptions {
   model: string;
   prompt: string;
   jsonMode?: boolean;
@@ -47,7 +47,7 @@ export interface OpenRouterCompletionOptions extends OpenRouterClientOptions {
 /** A plain (or best-effort JSON-object mode) chat completion. Last-resort
  * fallback, used only after both Gemini and Groq have failed - throws on
  * provider error, same contract as groqComplete. */
-export async function openrouterComplete(opts: OpenRouterCompletionOptions): Promise<OpenRouterCallResult> {
+export async function customComplete(opts: CustomCompletionOptions): Promise<CustomCallResult> {
   const completion = await client(opts).chat.completions.create({
     model: opts.model,
     messages: [{ role: "user", content: opts.prompt }],
@@ -57,19 +57,19 @@ export async function openrouterComplete(opts: OpenRouterCompletionOptions): Pro
   return toResult(completion);
 }
 
-export interface OpenRouterWebSearchOptions extends OpenRouterClientOptions {
+export interface CustomSearchOptions extends CustomClientOptions {
   model: string;
-  /** Append ":online" (OpenRouter only). Other endpoints answer without web search. */
+  /** Append ":online" (OpenRouter only). Other endpoints answer from the pages in the prompt. */
   online?: boolean;
   prompt: string;
   maxTokens?: number;
 }
 
-/** Web-search fallback: appending ":online" to any OpenRouter model id
+/** Research call on the custom endpoint. With online=true, appends ":online" to the model id on OpenRouter
  * turns on OpenRouter's built-in web-search plugin (results woven into the
  * model's context before it answers) - the OpenRouter equivalent of Groq's
  * browser_search tool, used as the third and last research fallback. */
-export async function openrouterWebSearch(opts: OpenRouterWebSearchOptions): Promise<OpenRouterCallResult> {
+export async function customSearchComplete(opts: CustomSearchOptions): Promise<CustomCallResult> {
   const completion = await client(opts).chat.completions.create({
     model: opts.online === false ? opts.model : `${opts.model}:online`,
     messages: [{ role: "user", content: opts.prompt }],

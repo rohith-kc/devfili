@@ -1,7 +1,7 @@
 import type { Env } from "./router";
 import { callWithRetry } from "./router";
 import { groqComplete } from "./groq";
-import { openrouterComplete } from "./openrouter";
+import { customComplete } from "./custom";
 
 export interface PlainCompleteOptions {
   jsonMode?: boolean;
@@ -11,9 +11,9 @@ export interface PlainCompleteOptions {
 /** Providers that can answer a plain prompt, in the order to try them.
  * Groq first and OpenRouter second by default; OpenRouter first when it is
  * the configured primary (one key, any model). Providers without a key are skipped. */
-export function plainProviders(env: Env): ("groq" | "openrouter")[] {
-  const order: ("groq" | "openrouter")[] = env.openrouterFirst ? ["openrouter", "groq"] : ["groq", "openrouter"];
-  return order.filter((p) => (p === "groq" ? !!env.groqApiKey : !!env.openrouterApiKey));
+export function plainProviders(env: Env): ("groq" | "custom")[] {
+  const order: ("groq" | "custom")[] = env.customFirst ? ["custom", "groq"] : ["groq", "custom"];
+  return order.filter((p) => (p === "groq" ? !!env.groqApiKey : !!env.customApiKey));
 }
 
 /** A plain completion through the first provider that works. Throws the last
@@ -35,8 +35,8 @@ export async function plainComplete(
           groqComplete({ apiKey: env.groqApiKey, baseURL: env.groqBaseUrl, model: env.groqModelFast, prompt, ...opts })
         );
       }
-      return await callWithRetry(stage, "openrouter", env.openrouterModel, () =>
-        openrouterComplete({ apiKey: env.openrouterApiKey, baseURL: env.openrouterBaseUrl, model: env.openrouterModel, prompt, ...opts })
+      return await callWithRetry(stage, "custom", env.customModel, () =>
+        customComplete({ apiKey: env.customApiKey, baseURL: env.customBaseUrl, model: env.customModel, prompt, ...opts })
       );
     } catch (err) {
       lastError = err;

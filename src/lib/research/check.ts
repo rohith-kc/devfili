@@ -92,7 +92,7 @@ export async function runCheck(env: Env, today: string, allClaims: ClaimForCheck
   const batches = splitByDistinctUrls(claims);
   // Gemini's page-reading check is the primary unless Groq is chosen, OpenRouter
   // is the configured primary, or there is no Gemini key.
-  const useExcerptsPrimary = env.providerCheck === "groq" || env.openrouterFirst || !env.geminiApiKey;
+  const useExcerptsPrimary = env.providerCheck === "groq" || env.customFirst || !env.geminiApiKey;
   let usedFallback = useExcerptsPrimary;
   const lastResorts = async (batch: ClaimForCheck[]): Promise<CheckResult[]> => {
     try {

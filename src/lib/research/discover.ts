@@ -4,7 +4,8 @@ import { callWithRetry } from "../llm/router";
 import { geminiGenerate } from "../llm/gemini";
 import { groqBrowserSearch } from "../llm/groq";
 import { plainComplete } from "../llm/chain";
-import { openrouterWebSearch } from "../llm/openrouter";
+import { customSearchComplete } from "../llm/custom";
+import { gatherSources, sourcesBlock } from "./retrieve";
 import { parseJsonWithSchema } from "../llm/json";
 import type { Finding } from "../schema";
 import { communityResearchPrompt, officialResearchPrompt } from "./prompts";
@@ -52,19 +53,19 @@ ${badText.slice(0, 8000)}`;
   }
 }
 
-type SearchProvider = "gemini" | "groq" | "openrouter";
+type SearchProvider = "gemini" | "groq" | "custom";
 
 /** Which providers to try for a web-search call, best first. Providers
  * without a key are skipped. Default order is the configured primary
  * (Gemini, or Groq's browser_search), then the other, then OpenRouter; when
  * OpenRouter is the configured primary it goes first. */
 function searchOrder(env: Env, useGroq: boolean): SearchProvider[] {
-  const base: SearchProvider[] = useGroq ? ["groq", "openrouter"] : ["gemini", "groq", "openrouter"];
-  const ordered: SearchProvider[] = env.openrouterFirst ? ["openrouter", ...base.filter((p) => p !== "openrouter")] : base;
-  return ordered.filter((p) => (p === "gemini" ? !!env.geminiApiKey : p === "groq" ? !!env.groqApiKey : !!env.openrouterApiKey));
+  const base: SearchProvider[] = useGroq ? ["groq", "custom"] : ["gemini", "groq", "custom"];
+  const ordered: SearchProvider[] = env.customFirst ? ["custom", ...base.filter((p) => p !== "custom")] : base;
+  return ordered.filter((p) => (p === "gemini" ? !!env.geminiApiKey : p === "groq" ? !!env.groqApiKey : !!env.customApiKey));
 }
 
-function runSearch(env: Env, provider: SearchProvider, stage: string, prompt: string, attemptIndex: number) {
+function runSearch(env: Env, provider: SearchProvider, stage: string, prompt: string, attemptIndex: number, appName: string, website: string) {
   const label = attemptIndex === 0 ? stage : `${stage}-fallback${attemptIndex > 1 ? `-${attemptIndex}` : ""}`;
   if (provider === "gemini") {
     return callWithRetry(label, "gemini", env.geminiModelResearch, () =>
@@ -76,13 +77,21 @@ function runSearch(env: Env, provider: SearchProvider, stage: string, prompt: st
       groqBrowserSearch({ apiKey: env.groqApiKey, baseURL: env.groqBaseUrl, model: env.groqModelFast, prompt })
     );
   }
-  return callWithRetry(label, "openrouter", env.openrouterModel, () =>
-    openrouterWebSearch({
-      apiKey: env.openrouterApiKey,
-      baseURL: env.openrouterBaseUrl,
-      model: env.openrouterModel,
-      prompt,
-      online: env.openrouterWebSearch,
+  return runCustomSearch(env, label, stage, prompt, appName, website);
+}
+
+async function runCustomSearch(env: Env, label: string, stage: string, prompt: string, appName: string, website: string) {
+  // No built-in search on this endpoint: fetch the public pages once (not again on a retry) and let the model read them.
+  const fullPrompt = env.customSearch
+    ? prompt
+    : prompt + sourcesBlock(await gatherSources(stage.includes("community") ? "community" : "official", appName, website));
+  return callWithRetry(label, "custom", env.customModel, () =>
+    customSearchComplete({
+      apiKey: env.customApiKey,
+      baseURL: env.customBaseUrl,
+      model: env.customModel,
+      prompt: fullPrompt,
+      online: env.customSearch,
     })
   );
 }
@@ -91,12 +100,12 @@ function runSearch(env: Env, provider: SearchProvider, stage: string, prompt: st
  * one answers. On a JSON parse failure, makes one repair call. Never throws -
  * returns no findings on total failure so one broken source doesn't sink the
  * whole stage. */
-async function discoverOneSide(env: Env, stage: string, prompt: string, useGroq: boolean): Promise<RawFindingsResponse> {
+async function discoverOneSide(env: Env, stage: string, prompt: string, useGroq: boolean, appName: string, website: string): Promise<RawFindingsResponse> {
   let text: string | null = null;
   const order = searchOrder(env, useGroq);
   for (let i = 0; i < order.length && text === null; i++) {
     try {
-      text = (await runSearch(env, order[i], stage, prompt, i)).text;
+      text = (await runSearch(env, order[i], stage, prompt, i, appName, website)).text;
     } catch {
       // try the next provider
     }
@@ -146,8 +155,8 @@ export async function discover(env: Env, appName: string, website: string, today
   const useGroq = env.providerResearch === "groq";
 
   const [official, community] = await Promise.all([
-    discoverOneSide(env, "discover-official", officialPrompt, useGroq).catch(() => EMPTY),
-    discoverOneSide(env, "discover-community", communityPrompt, useGroq).catch(() => EMPTY),
+    discoverOneSide(env, "discover-official", officialPrompt, useGroq, appName, website).catch(() => EMPTY),
+    discoverOneSide(env, "discover-community", communityPrompt, useGroq, appName, website).catch(() => EMPTY),
   ]);
 
   const findings = dedupeAndAssignIds([...official.findings, ...community.findings]);

@@ -6,13 +6,13 @@ export interface Env {
   groqBaseUrl: string;
   groqModelDraft: string;
   groqModelFast: string;
-  openrouterApiKey: string;
-  openrouterBaseUrl: string;
-  openrouterModel: string;
+  customApiKey: string;
+  customBaseUrl: string;
+  customModel: string;
   /** Try OpenRouter before Gemini and Groq for every stage (one key, any model). */
-  openrouterFirst: boolean;
+  customFirst: boolean;
   /** Whether OpenRouter's ":online" web search can be used (only on openrouter.ai). */
-  openrouterWebSearch: boolean;
+  customSearch: boolean;
   providerResearch: "gemini" | "groq";
   providerCheck: "gemini" | "groq";
 }
@@ -20,10 +20,14 @@ export interface Env {
 /** Reads provider configuration from process.env, with the same defaults as
  * .env.example. Server-only - never exposed to the browser. */
 export function loadEnv(): Env {
-  const openrouterApiKey = process.env.OPENROUTER_API_KEY ?? "";
-  const openrouterBaseUrl = process.env.OPENROUTER_BASE_URL || "https://openrouter.ai/api/v1";
-  const onlyOpenRouter = !!openrouterApiKey && !process.env.GEMINI_API_KEY && !process.env.GROQ_API_KEY;
-  const searchSetting = (process.env.OPENROUTER_WEB_SEARCH ?? "").toLowerCase();
+  // LLM_* is the neutral name for "any OpenAI-compatible endpoint" (OpenAI, xAI
+  // Grok, AWS Bedrock's OpenAI-compatible API, a company gateway, OpenRouter...).
+  // OPENROUTER_* is still read, so existing setups keep working.
+  const customApiKey = process.env.LLM_API_KEY || process.env.OPENROUTER_API_KEY || "";
+  const customBaseUrl = process.env.LLM_BASE_URL || process.env.OPENROUTER_BASE_URL || "https://openrouter.ai/api/v1";
+  const onlyCustom = !!customApiKey && !process.env.GEMINI_API_KEY && !process.env.GROQ_API_KEY;
+  const searchSetting = (process.env.LLM_WEB_SEARCH || process.env.OPENROUTER_WEB_SEARCH || "").toLowerCase();
+  const primary = (process.env.PRIMARY_PROVIDER ?? "").toLowerCase();
   return {
     geminiApiKey: process.env.GEMINI_API_KEY ?? "",
     geminiModelResearch: process.env.GEMINI_MODEL_RESEARCH ?? "",
@@ -32,11 +36,11 @@ export function loadEnv(): Env {
     groqBaseUrl: process.env.GROQ_BASE_URL || "https://api.groq.com/openai/v1",
     groqModelDraft: process.env.GROQ_MODEL_DRAFT || "openai/gpt-oss-120b",
     groqModelFast: process.env.GROQ_MODEL_FAST || "openai/gpt-oss-20b",
-    openrouterApiKey,
-    openrouterBaseUrl,
-    openrouterModel: process.env.OPENROUTER_MODEL || "meta-llama/llama-3.3-70b-instruct",
-    openrouterFirst: !!openrouterApiKey && (process.env.PRIMARY_PROVIDER === "openrouter" || onlyOpenRouter),
-    openrouterWebSearch: searchSetting ? searchSetting !== "off" : /openrouter\.ai/i.test(openrouterBaseUrl),
+    customApiKey,
+    customBaseUrl,
+    customModel: process.env.LLM_MODEL || process.env.OPENROUTER_MODEL || "meta-llama/llama-3.3-70b-instruct",
+    customFirst: !!customApiKey && (primary === "custom" || primary === "openrouter" || onlyCustom),
+    customSearch: searchSetting ? searchSetting !== "off" : /openrouter\.ai/i.test(customBaseUrl),
     providerResearch: process.env.PROVIDER_RESEARCH === "groq" ? "groq" : "gemini",
     providerCheck: process.env.PROVIDER_CHECK === "groq" ? "groq" : "gemini",
   };

@@ -51,13 +51,20 @@ Open https://devfili.vercel.app/, type a name, and you are in the library.
 
 ### Option 2: run it on your own computer with your own keys (about 10 minutes)
 
-You need **Node.js 20 or newer** (check with `node -v`), **git**, and **one** of these:
+You need **Node.js 20 or newer** (check with `node -v`), **git**, and **a model API**. Pick whichever you already have:
 
-- **Easiest: a single OpenRouter key** (https://openrouter.ai/keys). OpenRouter is one account that can run almost any model, including **Claude, GPT and Gemini**, and it adds web search for you. Put the key in `OPENROUTER_API_KEY`, set `OPENROUTER_MODEL` to any model ID from https://openrouter.ai/models, and leave the Gemini and Groq keys blank. DevFili then runs every stage on that model.
-- **Or free keys:** a Gemini key (https://aistudio.google.com/apikey) and a Groq key (https://console.groq.com/keys). An OpenRouter key is then an optional extra fallback.
-- **Or your own gateway:** any OpenAI-compatible endpoint. Put its key in `OPENROUTER_API_KEY`, its URL in `OPENROUTER_BASE_URL`, its model in `OPENROUTER_MODEL`, and set `OPENROUTER_WEB_SEARCH=off`. Everything works, but live research then has no web search, so expect thinner results.
+- **Your own model endpoint (recommended, plug and play).** DevFili works with **any OpenAI-compatible API**: OpenAI, xAI Grok, AWS Bedrock's OpenAI-compatible endpoint, OpenRouter, a company gateway, and so on. You only set three values in `.env.local` and leave the Gemini and Groq keys blank:
 
-Research quality and speed depend on the model: a strong model gives clearly better guides than the small default.
+```
+LLM_BASE_URL=https://your-provider.example.com/v1
+LLM_API_KEY=your-key
+LLM_MODEL=the-model-id
+```
+
+  Examples for `LLM_BASE_URL`: `https://api.openai.com/v1`, `https://api.x.ai/v1`, `https://bedrock-runtime.<region>.amazonaws.com/openai/v1` (with a Bedrock API key), `https://openrouter.ai/api/v1`. DevFili then runs every stage (finding the app, researching, writing the guide, fact-checking, and the drafting helpers) on that one model. No web-search feature is needed: DevFili fetches the provider's public developer pages itself and gives them to your model to read.
+- **Or the free keys:** a Gemini key (https://aistudio.google.com/apikey) and a Groq key (https://console.groq.com/keys).
+
+Research quality and speed depend on the model: a strong model gives clearly better guides than a small one. The built-in page fetching finds the official docs well; community reports (forums, rejection stories) need a provider with web search, such as OpenRouter or Gemini, so a plain endpoint will show fewer of those.
 
 1. Download the code and install it:
 
@@ -77,7 +84,7 @@ cp .env.example .env.local
 copy .env.example .env.local
 ```
 
-3. Open `.env.local` in any text editor and paste your key(s) after the matching names, then save (for the one-key option, set `OPENROUTER_API_KEY=` and `OPENROUTER_MODEL=`). Leave everything else as it is. (`.env.local` is git-ignored, so your keys are never uploaded.)
+3. Open `.env.local` in any text editor and paste your key(s) after the matching names, then save (for your own endpoint, set `LLM_BASE_URL=`, `LLM_API_KEY=` and `LLM_MODEL=`). Leave everything else as it is. (`.env.local` is git-ignored, so your keys are never uploaded.)
 4. Check the keys work. It prints PASS or FAIL for each provider and never shows a key:
 
 ```bash
@@ -92,7 +99,7 @@ npm run dev
 
 6. Try it: enter a name, open a library guide (for example Slack), click **Save for later**, open **Profile**, then click **Check an app** and type an app such as Miro. The finished research opens as a full guide page.
 
-**Using stronger models or more credits:** the models are just settings in `.env.local`. Change `OPENROUTER_MODEL`, `GEMINI_MODEL_RESEARCH`, `GEMINI_MODEL_CHECK`, `GROQ_MODEL_DRAFT` or `GROQ_MODEL_FAST` to any model your account can use (`npm run check-keys` lists the Gemini ones). To make OpenRouter the first choice even when other keys are set, add `PRIMARY_PROVIDER=openrouter`. To allow more tests per day, raise `LIVE_RUNS_PER_GUEST_PER_DAY` and `LIVE_RUNS_GLOBAL_PER_DAY`.
+**Using stronger models or more credits:** the models are just settings in `.env.local`. Change `LLM_MODEL`, `GEMINI_MODEL_RESEARCH`, `GEMINI_MODEL_CHECK`, `GROQ_MODEL_DRAFT` or `GROQ_MODEL_FAST` to any model your account can use (`npm run check-keys` lists the Gemini ones). To make your endpoint the first choice even when Gemini or Groq keys are also set, add `PRIMARY_PROVIDER=custom`. To allow more tests per day, raise `LIVE_RUNS_PER_GUEST_PER_DAY` and `LIVE_RUNS_GLOBAL_PER_DAY`.
 
 **Without Supabase:** leave the three `SUPABASE` settings blank and everything still works. Research results are not cached between restarts, daily limits are counted in memory, and saved guides stay in your browser only.
 
