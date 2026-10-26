@@ -34,7 +34,7 @@ Secrets must never pass through chat, files in git, logs, or the browser.
 - Model names and base URLs come from env vars, never hard-coded.
 - Evidence labels and owner tags use text plus icon, never colour alone. Everything is keyboard operable.
 - Anything sample or placeholder is visibly marked "Sample". Never invent provider facts in code, fixtures or copy.
-- Do not add the Anthropic SDK. Providers are Google Gemini (native SDK), Groq (OpenAI-compatible), and - as an optional third fallback tier only, after both of the above fail, and only when `OPENROUTER_API_KEY` is set - OpenRouter (OpenAI-compatible). OpenRouter is never primary for any stage.
+- Do not add the Anthropic SDK. Providers are Google Gemini (native SDK), Groq (OpenAI-compatible), and a user-supplied custom OpenAI-compatible endpoint (`LLM_BASE_URL` / `LLM_API_KEY` / `LLM_MODEL`; the older `OPENROUTER_*` names are aliases). The custom endpoint is a last fallback by default; it is the first choice for every stage when it is the only configured key or `PRIMARY_PROVIDER=custom` is set, so a reviewer can run everything on their own model (Bedrock, Grok, OpenAI, a gateway). Endpoints without built-in web search use DevFili's own public-page fetching (`src/lib/research/retrieve.ts`, under the SSRF guard).
 
 ## Commands (create these npm scripts)
 `dev`, `build`, `start`, `lint`, `test`, `check-keys`, `scan-secrets`, `research -- "<app>"`, `library:generate -- <slug...>`, `library:validate`, `library:links`.

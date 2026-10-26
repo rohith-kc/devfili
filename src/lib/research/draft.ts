@@ -3,7 +3,7 @@ import type { Env } from "../llm/router";
 import { callWithRetry } from "../llm/router";
 import { groqStrictJson } from "../llm/groq";
 import { geminiGenerateJson } from "../llm/gemini";
-import { openrouterComplete } from "../llm/openrouter";
+import { customComplete } from "../llm/custom";
 import { parseJsonWithSchema } from "../llm/json";
 import { recheckFor } from "../evidence";
 import { DraftCore, DraftPath, type Finding, type Probe } from "../schema";
@@ -33,11 +33,10 @@ function probesForPrompt(probes: Probe[]) {
   return probes.map((p) => ({ id: p.id, url: p.url, passed: p.readable && p.mustContainAll }));
 }
 
-/** Calls Groq's strict json_schema mode first; on total failure or a schema
- * mismatch, falls back to Gemini's own JSON mode with the schema spelled out
- * in the prompt (the draft stage's Gemini fallback from SPEC section 8), then
- * - if OpenRouter is configured - to OpenRouter's JSON-object mode with the
- * same schema-in-prompt approach, as the last resort. */
+/** Tries each configured provider until one returns valid JSON for the schema:
+ * Groq's strict json_schema mode, then Gemini's JSON mode, then OpenRouter's
+ * JSON-object mode (the last two with the schema spelled out in the prompt).
+ * OpenRouter goes first when it is the configured primary. */
 async function callStructured<T>(
   env: Env,
   stage: string,
@@ -48,58 +47,58 @@ async function callStructured<T>(
 ): Promise<T> {
   const fallbackPrompt = `${prompt}\n\nReply with JSON ONLY, matching exactly this JSON Schema (every field is required; use null where the schema allows it):\n${JSON.stringify(jsonSchema)}`;
 
-  let groqErr: unknown;
-  try {
-    const result = await callWithRetry(stage, "groq", env.groqModelDraft, () =>
-      groqStrictJson({
-        apiKey: env.groqApiKey,
-        baseURL: env.groqBaseUrl,
-        model: env.groqModelDraft,
-        prompt,
-        schemaName,
-        jsonSchema,
-      })
-    );
-    const parsed = parseJsonWithSchema(result.text, zodSchema);
-    if (parsed.success) return parsed.data;
-    groqErr = new Error(`groq output failed schema validation: ${parsed.error}`);
-  } catch (err) {
-    groqErr = err;
+  type Attempt = { provider: "groq" | "gemini" | "custom"; run: () => Promise<{ text: string }> };
+  const attempts: Attempt[] = [];
+  if (env.groqApiKey) {
+    attempts.push({
+      provider: "groq",
+      run: () =>
+        callWithRetry(stage, "groq", env.groqModelDraft, () =>
+          groqStrictJson({ apiKey: env.groqApiKey, baseURL: env.groqBaseUrl, model: env.groqModelDraft, prompt, schemaName, jsonSchema })
+        ),
+    });
   }
-
-  let geminiErr: unknown;
-  try {
-    const result = await callWithRetry(`${stage}-fallback`, "gemini", env.geminiModelResearch, () =>
-      geminiGenerateJson({ apiKey: env.geminiApiKey, model: env.geminiModelResearch, prompt: fallbackPrompt })
-    );
-    const parsed = parseJsonWithSchema(result.text, zodSchema);
-    if (parsed.success) return parsed.data;
-    geminiErr = new Error(`gemini output failed schema validation: ${parsed.error}`);
-  } catch (err) {
-    geminiErr = err;
+  if (env.geminiApiKey) {
+    attempts.push({
+      provider: "gemini",
+      run: () =>
+        callWithRetry(`${stage}-fallback`, "gemini", env.geminiModelResearch, () =>
+          geminiGenerateJson({ apiKey: env.geminiApiKey, model: env.geminiModelResearch, prompt: fallbackPrompt })
+        ),
+    });
   }
+  if (env.customApiKey) {
+    const custom: Attempt = {
+      provider: "custom",
+      run: () =>
+        callWithRetry(`${stage}-fallback-2`, "custom", env.customModel, () =>
+          customComplete({
+            apiKey: env.customApiKey,
+            baseURL: env.customBaseUrl,
+            model: env.customModel,
+            prompt: fallbackPrompt,
+            jsonMode: true,
+            maxTokens: 8000,
+          })
+        ),
+    };
+    if (env.customFirst) attempts.unshift(custom);
+    else attempts.push(custom);
+  }
+  if (attempts.length === 0) throw new Error(`${stage}: no provider key is configured`);
 
-  if (env.openrouterApiKey) {
+  const failures: string[] = [];
+  for (const attempt of attempts) {
     try {
-      const result = await callWithRetry(`${stage}-fallback-2`, "openrouter", env.openrouterModel, () =>
-        openrouterComplete({
-          apiKey: env.openrouterApiKey,
-          baseURL: env.openrouterBaseUrl,
-          model: env.openrouterModel,
-          prompt: fallbackPrompt,
-          jsonMode: true,
-        })
-      );
+      const result = await attempt.run();
       const parsed = parseJsonWithSchema(result.text, zodSchema);
       if (parsed.success) return parsed.data;
-    } catch {
-      // fall through to the combined error below
+      failures.push(`${attempt.provider}: output failed schema validation: ${parsed.error}`);
+    } catch (err) {
+      failures.push(`${attempt.provider}: ${describeStageError(err)}`);
     }
   }
-
-  throw new Error(
-    `${stage}: all providers failed - groq: ${describeStageError(groqErr)}; gemini: ${describeStageError(geminiErr)}`
-  );
+  throw new Error(`${stage}: all providers failed - ${failures.join("; ")}`);
 }
 
 function describeStageError(err: unknown): string {

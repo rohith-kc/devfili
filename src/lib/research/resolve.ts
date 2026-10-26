@@ -1,9 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { z } from "zod";
-import { callWithRetry, type Env } from "../llm/router";
-import { groqComplete } from "../llm/groq";
-import { openrouterComplete } from "../llm/openrouter";
+import type { Env } from "../llm/router";
+import { plainComplete } from "../llm/chain";
 import { parseJsonWithSchema } from "../llm/json";
 import { normalizeQuery, slugify } from "../normalize";
 import { resolvePrompt } from "./prompts";
@@ -62,19 +61,7 @@ export async function resolveApp(query: string, env: Env, today: string): Promis
   if (libraryMatch) return { type: "library", slug: libraryMatch };
 
   const prompt = resolvePrompt(today, query);
-  let text: string;
-  try {
-    const result = await callWithRetry("resolve", "groq", env.groqModelFast, () =>
-      groqComplete({ apiKey: env.groqApiKey, baseURL: env.groqBaseUrl, model: env.groqModelFast, prompt, jsonMode: true })
-    );
-    text = result.text;
-  } catch (err) {
-    if (!env.openrouterApiKey) throw err;
-    const result = await callWithRetry("resolve-fallback", "openrouter", env.openrouterModel, () =>
-      openrouterComplete({ apiKey: env.openrouterApiKey, baseURL: env.openrouterBaseUrl, model: env.openrouterModel, prompt, jsonMode: true })
-    );
-    text = result.text;
-  }
+  const { text } = await plainComplete(env, "resolve", prompt, { jsonMode: true });
 
   const parsed = parseJsonWithSchema(text, ResolveResponse);
   if (!parsed.success) {

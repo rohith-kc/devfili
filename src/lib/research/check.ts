@@ -2,8 +2,7 @@ import { z } from "zod";
 import type { Env } from "../llm/router";
 import { callWithRetry } from "../llm/router";
 import { geminiGenerate } from "../llm/gemini";
-import { groqComplete } from "../llm/groq";
-import { openrouterComplete } from "../llm/openrouter";
+import { plainComplete } from "../llm/chain";
 import { parseJsonWithSchema } from "../llm/json";
 import type { CheckResult } from "../schema";
 import { checkPrompt, fallbackCheckPrompt } from "./prompts";
@@ -58,36 +57,18 @@ async function runGeminiCheck(env: Env, today: string, batch: ClaimForCheck[]): 
   return parsed.data;
 }
 
-/** Excerpts-only fallback checker: no web access, weaker than the primary
- * check. Every result it produces is capped to supported/partial/unsupported
- * (never conflict, since it can't compare against the live page). */
-async function runGroqFallbackCheck(env: Env, today: string, batch: ClaimForCheck[]): Promise<CheckResult[]> {
+/** Excerpts-only checker: no web access, weaker than the primary check.
+ * Every result it produces is capped to supported/partial/unsupported
+ * (never conflict, since it can't compare against the live page). Uses
+ * whichever of Groq / OpenRouter is configured. */
+async function runExcerptCheck(env: Env, today: string, batch: ClaimForCheck[]): Promise<CheckResult[]> {
   const prompt = fallbackCheckPrompt(
     today,
     JSON.stringify(batch.map((c) => ({ claimId: c.claimId, text: c.text, excerpts: c.excerpts })))
   );
-  const result = await callWithRetry("check-fallback", "groq", env.groqModelFast, () =>
-    groqComplete({ apiKey: env.groqApiKey, baseURL: env.groqBaseUrl, model: env.groqModelFast, prompt, jsonMode: true })
-  );
+  const result = await plainComplete(env, "check-fallback", prompt, { jsonMode: true });
   const parsed = parseJsonWithSchema(result.text, FallbackCheckResultsResponse);
-  if (!parsed.success) throw new Error(`check-fallback: could not parse Groq output: ${parsed.error}`);
-  return parsed.data;
-}
-
-/** Same excerpts-only shape as the Groq fallback, but via OpenRouter - the
- * third and last fact-check tier, tried only when Groq's fallback also
- * fails and an OpenRouter key is configured. */
-async function runOpenRouterFallbackCheck(env: Env, today: string, batch: ClaimForCheck[]): Promise<CheckResult[]> {
-  if (!env.openrouterApiKey) throw new Error("check-fallback-2: no OpenRouter key configured");
-  const prompt = fallbackCheckPrompt(
-    today,
-    JSON.stringify(batch.map((c) => ({ claimId: c.claimId, text: c.text, excerpts: c.excerpts })))
-  );
-  const result = await callWithRetry("check-fallback-2", "openrouter", env.openrouterModel, () =>
-    openrouterComplete({ apiKey: env.openrouterApiKey, baseURL: env.openrouterBaseUrl, model: env.openrouterModel, prompt, jsonMode: true })
-  );
-  const parsed = parseJsonWithSchema(result.text, FallbackCheckResultsResponse);
-  if (!parsed.success) throw new Error(`check-fallback-2: could not parse OpenRouter output: ${parsed.error}`);
+  if (!parsed.success) throw new Error(`check-fallback: could not parse output: ${parsed.error}`);
   return parsed.data;
 }
 
@@ -109,24 +90,22 @@ export async function runCheck(env: Env, today: string, allClaims: ClaimForCheck
   if (claims.length === 0) return { results: [], usedFallback: false };
 
   const batches = splitByDistinctUrls(claims);
-  const useGroqPrimary = env.providerCheck === "groq";
-  let usedFallback = useGroqPrimary;
+  // Gemini's page-reading check is the primary unless Groq is chosen, OpenRouter
+  // is the configured primary, or there is no Gemini key.
+  const useExcerptsPrimary = env.providerCheck === "groq" || env.customFirst || !env.geminiApiKey;
+  let usedFallback = useExcerptsPrimary;
   const lastResorts = async (batch: ClaimForCheck[]): Promise<CheckResult[]> => {
     try {
-      return await runGroqFallbackCheck(env, today, batch);
+      return await runExcerptCheck(env, today, batch);
     } catch {
-      try {
-        return await runOpenRouterFallbackCheck(env, today, batch);
-      } catch {
-        return []; // leave this batch's claims unresolved
-      }
+      return []; // leave this batch's claims unresolved
     }
   };
 
   // Batches are independent, so they run at the same time instead of one after another.
   const perBatch = await Promise.all(
     batches.map(async (batch) => {
-      if (useGroqPrimary) return lastResorts(batch);
+      if (useExcerptsPrimary) return lastResorts(batch);
       try {
         return await runGeminiCheck(env, today, batch);
       } catch {

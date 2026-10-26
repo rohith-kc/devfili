@@ -7,6 +7,7 @@ const secrets = [
   env.GEMINI_API_KEY,
   env.GROQ_API_KEY,
   env.OPENROUTER_API_KEY,
+  env.LLM_API_KEY,
   env.SUPABASE_SERVICE_ROLE_KEY,
   env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
 ].filter((v): v is string => !!v && v.length > 8);
@@ -34,7 +35,7 @@ function record(name: string, pass: boolean, detail: string) {
 async function checkGroq() {
   const key = env.GROQ_API_KEY;
   if (!key) {
-    record("Groq", false, "GROQ_API_KEY is blank in .env.local. Next step: open .env.local, paste your Groq key after GROQ_API_KEY=, save.");
+    record("Groq", !!customKey(), customKey() ? "GROQ_API_KEY is blank - not needed, the custom LLM_* endpoint is used for every stage." : "GROQ_API_KEY is blank in .env.local. Next step: open .env.local, paste your Groq key after GROQ_API_KEY=, save.");
     return;
   }
   const baseURL = env.GROQ_BASE_URL || "https://api.groq.com/openai/v1";
@@ -118,15 +119,21 @@ async function checkGroq() {
   }
 }
 
-async function checkOpenRouter() {
-  const key = env.OPENROUTER_API_KEY;
+function customKey(): string {
+  return env.LLM_API_KEY || env.OPENROUTER_API_KEY || "";
+}
+
+async function checkCustomEndpoint() {
+  const key = customKey();
   if (!key) {
-    record("OpenRouter", true, "OPENROUTER_API_KEY is blank - the optional third fallback tier is disabled. This is fine; Gemini and Groq still work without it.");
+    record("Custom model endpoint", true, "LLM_API_KEY is blank - the optional custom OpenAI-compatible endpoint is not used. This is fine; Gemini and Groq still work without it.");
     return;
   }
-  const baseURL = env.OPENROUTER_BASE_URL || "https://openrouter.ai/api/v1";
+  const baseURL = env.LLM_BASE_URL || env.OPENROUTER_BASE_URL || "https://openrouter.ai/api/v1";
+  const model = env.LLM_MODEL || env.OPENROUTER_MODEL || "meta-llama/llama-3.3-70b-instruct";
+  const isOpenRouter = /openrouter\.ai/i.test(baseURL);
   const client = new OpenAI({ apiKey: key, baseURL, defaultHeaders: { "HTTP-Referer": "https://devfili.app", "X-Title": "DevFili" } });
-  const model = env.OPENROUTER_MODEL || "meta-llama/llama-3.3-70b-instruct";
+  const label = `Custom endpoint ${new URL(baseURL).hostname}`;
 
   try {
     const completion = await client.chat.completions.create({
@@ -135,16 +142,20 @@ async function checkOpenRouter() {
       max_tokens: 5,
     });
     const text = completion.choices[0]?.message?.content ?? "";
-    record(`OpenRouter: tiny completion (${model})`, true, `model replied "${text.trim().slice(0, 30)}"`);
+    record(`${label}: tiny completion (${model})`, true, `model replied "${text.trim().slice(0, 30)}"`);
   } catch (err) {
     record(
-      `OpenRouter: tiny completion (${model})`,
+      `${label}: tiny completion (${model})`,
       false,
-      `${describeError(err)}. Next step: confirm OPENROUTER_MODEL is a real, available model id - see https://openrouter.ai/models - and that the key has credit/access.`
+      `${describeError(err)}. Next step: check LLM_BASE_URL, LLM_MODEL (a model id your account can use) and that the key has access.`
     );
     return;
   }
 
+  if (!isOpenRouter) {
+    record(`${label}: web search`, true, "no built-in web search on this endpoint - DevFili will fetch the provider's public docs itself and let the model read them (set LLM_WEB_SEARCH=off to make this explicit).");
+    return;
+  }
   try {
     const completion = await client.chat.completions.create({
       model: `${model}:online`,
@@ -152,13 +163,9 @@ async function checkOpenRouter() {
       max_tokens: 200,
     });
     const text = completion.choices[0]?.message?.content ?? "";
-    record(`OpenRouter: web search (${model}:online)`, true, `model replied "${text.trim().slice(0, 40)}"`);
+    record(`${label}: web search (${model}:online)`, true, `model replied "${text.trim().slice(0, 40)}"`);
   } catch (err) {
-    record(
-      `OpenRouter: web search (${model}:online)`,
-      false,
-      `${describeError(err)}. Next step: this is OpenRouter's web-search fallback, used only as the last research/check tier after Gemini and Groq both fail.`
-    );
+    record(`${label}: web search (${model}:online)`, false, `${describeError(err)}. Next step: set LLM_WEB_SEARCH=off to use DevFili's own page fetching instead.`);
   }
 }
 
@@ -172,7 +179,7 @@ function printAqKeyAdvice() {
 async function checkGemini() {
   const key = env.GEMINI_API_KEY;
   if (!key) {
-    record("Gemini", false, "GEMINI_API_KEY is blank in .env.local. Next step: open .env.local, paste your Gemini key after GEMINI_API_KEY=, save.");
+    record("Gemini", !!customKey(), customKey() ? "GEMINI_API_KEY is blank - not needed, the custom LLM_* endpoint is used for every stage." : "GEMINI_API_KEY is blank in .env.local. Next step: open .env.local, paste your Gemini key after GEMINI_API_KEY=, save.");
     return;
   }
   const ai = new GoogleGenAI({ apiKey: key });
@@ -258,7 +265,7 @@ async function main() {
   console.log("");
   await checkGemini();
   console.log("");
-  await checkOpenRouter();
+  await checkCustomEndpoint();
   console.log("");
   await checkSupabase();
   console.log("");
