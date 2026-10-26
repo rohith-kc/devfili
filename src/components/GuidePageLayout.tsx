@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 import type { Guide } from "@/lib/schema";
 import { Header } from "./Header";
@@ -14,7 +15,17 @@ const JUMPS = [
   { href: "#sources", label: "Sources" },
 ];
 
-export function GuidePageLayout({ guide, backHref = "/#library", backLabel = "Library" }: { guide: Guide; backHref?: string; backLabel?: string }) {
+export function GuidePageLayout({
+  guide,
+  backHref = "/#library",
+  backLabel = "Library",
+  notice,
+}: {
+  guide: Guide;
+  backHref?: string;
+  backLabel?: string;
+  notice?: ReactNode;
+}) {
   return (
     <div className="flex min-h-full flex-1 flex-col bg-background">
       <Header />
@@ -33,6 +44,11 @@ export function GuidePageLayout({ guide, backHref = "/#library", backLabel = "Li
           <Link href={backHref} className="focus-ring inline-flex items-center gap-1 rounded text-sm text-muted hover:text-foreground">
             <span aria-hidden="true">&larr;</span> {backLabel}
           </Link>
+          {notice && (
+            <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
+              {notice}
+            </p>
+          )}
           <GuideHeader guide={guide} />
           <div className="mt-6">
             <Verdict guide={guide} />

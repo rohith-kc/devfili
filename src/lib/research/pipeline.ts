@@ -229,8 +229,11 @@ export async function* runPipeline(query: string, options: RunOptions = {}): Asy
   yield status(6, "active");
   let core, draftedPath;
   try {
-    core = await draftCore(env, today, app.name, app, discoverResult.findings, probes);
-    draftedPath = await draftPath(env, today, app.name, app, discoverResult.findings, probes, core);
+    // Both halves read the same findings, so they are drafted at the same time.
+    [core, draftedPath] = await Promise.all([
+      draftCore(env, today, app.name, app, discoverResult.findings, probes),
+      draftPath(env, today, app.name, app, discoverResult.findings, probes, null),
+    ]);
   } catch {
     yield { type: "error", code: "provider_busy", message: "Could not draft the guide right now - the provider may be rate-limited. Try again in a while, or browse the reviewed library below." };
     yield { type: "done" };

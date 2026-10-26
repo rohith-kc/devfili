@@ -111,36 +111,31 @@ export async function runCheck(env: Env, today: string, allClaims: ClaimForCheck
   const batches = splitByDistinctUrls(claims);
   const useGroqPrimary = env.providerCheck === "groq";
   let usedFallback = useGroqPrimary;
-  const results: CheckResult[] = [];
-
-  for (const batch of batches) {
-    if (useGroqPrimary) {
-      try {
-        results.push(...(await runGroqFallbackCheck(env, today, batch)));
-      } catch {
-        try {
-          results.push(...(await runOpenRouterFallbackCheck(env, today, batch)));
-        } catch {
-          // leave this batch's claims unresolved
-        }
-      }
-      continue;
-    }
+  const lastResorts = async (batch: ClaimForCheck[]): Promise<CheckResult[]> => {
     try {
-      results.push(...(await runGeminiCheck(env, today, batch)));
+      return await runGroqFallbackCheck(env, today, batch);
     } catch {
-      usedFallback = true;
       try {
-        results.push(...(await runGroqFallbackCheck(env, today, batch)));
+        return await runOpenRouterFallbackCheck(env, today, batch);
       } catch {
-        try {
-          results.push(...(await runOpenRouterFallbackCheck(env, today, batch)));
-        } catch {
-          // leave this batch's claims unresolved
-        }
+        return []; // leave this batch's claims unresolved
       }
     }
-  }
+  };
+
+  // Batches are independent, so they run at the same time instead of one after another.
+  const perBatch = await Promise.all(
+    batches.map(async (batch) => {
+      if (useGroqPrimary) return lastResorts(batch);
+      try {
+        return await runGeminiCheck(env, today, batch);
+      } catch {
+        usedFallback = true;
+        return lastResorts(batch);
+      }
+    })
+  );
+  const results: CheckResult[] = perBatch.flat();
 
   return { results, usedFallback };
 }

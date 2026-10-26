@@ -131,12 +131,9 @@ export async function draftPath(
   app: { name: string; slug: string; websiteUrl: string | null },
   findings: Finding[],
   probes: Probe[],
-  core: DraftCore
+  core: DraftCore | null
 ): Promise<DraftPath> {
-  const coreSummary = {
-    facts: core.facts,
-    scopes: core.scopes,
-  };
+  const coreSummary = core ? { facts: core.facts, scopes: core.scopes } : null;
   const prompt = draftPathPrompt(
     today,
     appName,
