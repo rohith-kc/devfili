@@ -84,7 +84,7 @@ async function runCustomSearch(env: Env, label: string, stage: string, prompt: s
   // No built-in search on this endpoint: fetch the public pages once (not again on a retry) and let the model read them.
   const fullPrompt = env.customSearch
     ? prompt
-    : prompt + sourcesBlock(await gatherSources(stage.includes("community") ? "community" : "official", appName, website));
+    : prompt + sourcesBlock(await gatherSources(stage.includes("resolve") ? "identify" : stage.includes("community") ? "community" : "official", appName, website));
   return callWithRetry(label, "custom", env.customModel, () =>
     customSearchComplete({
       apiKey: env.customApiKey,
@@ -94,6 +94,20 @@ async function runCustomSearch(env: Env, label: string, stage: string, prompt: s
       online: env.customSearch,
     })
   );
+}
+
+/** One web-search-capable call through the first provider that works (used to
+ * identify a product the plain model does not recognise). Returns null on total failure. */
+export async function searchText(env: Env, stage: string, prompt: string, appName: string, website: string): Promise<string | null> {
+  const order = searchOrder(env, false);
+  for (let i = 0; i < order.length; i++) {
+    try {
+      return (await runSearch(env, order[i], stage, prompt, i, appName, website)).text;
+    } catch {
+      // try the next provider
+    }
+  }
+  return null;
 }
 
 /** Runs the web-search call through each available provider in turn until

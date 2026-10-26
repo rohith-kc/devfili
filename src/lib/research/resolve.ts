@@ -3,6 +3,7 @@ import path from "node:path";
 import { z } from "zod";
 import type { Env } from "../llm/router";
 import { plainComplete } from "../llm/chain";
+import { searchText } from "./discover";
 import { parseJsonWithSchema } from "../llm/json";
 import { normalizeQuery, slugify } from "../normalize";
 import { resolvePrompt } from "./prompts";
@@ -61,17 +62,31 @@ export async function resolveApp(query: string, env: Env, today: string): Promis
   if (libraryMatch) return { type: "library", slug: libraryMatch };
 
   const prompt = resolvePrompt(today, query);
-  const { text } = await plainComplete(env, "resolve", prompt, { jsonMode: true });
+  const first = await tryResolve(await plainComplete(env, "resolve", prompt, { jsonMode: true }).then((r) => r.text, () => null));
+  if (first && first.type !== "not_found") return first;
 
+  // The quick call answers from memory and does not know newer products
+  // (it said "not found" for Fireflies.ai, for example). Look the name up on
+  // the web before giving up.
+  const searchPrompt = `${prompt}
+You may use web search. Many real products are newer than your training data, so do NOT answer "not_found" just because you do not recognise the name: search for it first. Answer "not_found" only if a search finds no such software product.`;
+  const searched = await tryResolve(await searchText(env, "resolve-search", searchPrompt, query, ""));
+  if (searched) return searched;
+
+  return (
+    first ?? {
+      type: "not_found",
+      note: "Could not identify that app. Try its full name or its website address (for example fireflies.ai).",
+    }
+  );
+}
+
+function tryResolve(text: string | null): ResolveResult | null {
+  if (!text) return null;
   const parsed = parseJsonWithSchema(text, ResolveResponse);
-  if (!parsed.success) {
-    return { type: "not_found", note: "Could not understand the app you meant. Try naming it more specifically." };
-  }
-
+  if (!parsed.success) return null;
   const data = parsed.data;
-  if (data.status === "ambiguous") {
-    return { type: "ambiguous", candidates: data.candidates, note: data.note };
-  }
+  if (data.status === "ambiguous") return { type: "ambiguous", candidates: data.candidates, note: data.note };
   if (data.status === "not_found" || !data.app) {
     return { type: "not_found", note: data.note || "Could not identify this product." };
   }
