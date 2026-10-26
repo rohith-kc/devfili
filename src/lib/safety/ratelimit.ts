@@ -28,6 +28,27 @@ function memoryFailSafeAllow(bucket: string): boolean {
   return true;
 }
 
+// Used when no database is configured at all (for example a reviewer running
+// the app locally without Supabase): honour the real daily limit in memory,
+// per server process, instead of the much tighter database-down fail-safe.
+const memoryDaily = new Map<string, { day: string; count: number }>();
+
+function memoryDailyAllow(bucket: string, limit: number): boolean {
+  const day = utcDateString();
+  const entry = memoryDaily.get(bucket);
+  if (!entry || entry.day !== day) {
+    memoryDaily.set(bucket, { day, count: 1 });
+    return limit >= 1;
+  }
+  entry.count += 1;
+  return entry.count <= limit;
+}
+
+export function resetMemoryLimitsForTests(): void {
+  memoryDaily.clear();
+  memoryCounts.clear();
+}
+
 export interface RateLimitResult {
   allowed: boolean;
   reason?: string;
@@ -36,7 +57,7 @@ export interface RateLimitResult {
 async function bumpAndCheck(bucket: string, limit: number): Promise<RateLimitResult> {
   const client = getAdminClient();
   if (!client) {
-    return memoryFailSafeAllow(bucket) ? { allowed: true } : { allowed: false, reason: "rate limited (database unreachable, fail-safe)" };
+    return memoryDailyAllow(bucket, limit) ? { allowed: true } : { allowed: false, reason: `rate limited (${bucket})` };
   }
   try {
     const { data, error } = await client.rpc("bump_live_run", { p_bucket: bucket, p_day: utcDateString() });

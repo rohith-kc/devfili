@@ -37,21 +37,69 @@ OpenRouter is entirely optional &mdash; leave `OPENROUTER_API_KEY` blank and eve
 
 The model is never allowed to decide: a difficulty tier, a confidence level, whether a guide is complete, or whether a claim is Tested/Sourced/Uncertain. Those are all computed by plain TypeScript (`src/lib/tier.ts`, `confidence.ts`, `completeness.ts`, `evidence.ts`) from facts and findings the model proposed and cited &mdash; see `docs/SPEC.md` section 7 for the full logic.
 
-## Setup (running it yourself)
+## How to test this project
+
+There are three ways, from quickest to most thorough.
+
+### Option 1: use the live site (nothing to install)
+
+Open https://devfili.vercel.app/, type a name, and you are in the library.
+
+- The 9 library guides, saving guides for later, and the Profile panel always work.
+- "Check an app" (live research) and the three drafting helpers call AI providers using the author's **free-tier keys**. Each visitor gets 5 fresh live researches per day, the whole site gets 150, and a provider may occasionally be rate-limited. If you see "busy" or "rate-limited", try again later or use Option 2.
+- Apps someone has already researched in the last 7 days load instantly and do not count against the limit.
+
+### Option 2: run it on your own computer with your own keys (about 10 minutes)
+
+You need: **Node.js 20 or newer** (check with `node -v`), **git**, and an API key for **Gemini** (free from https://aistudio.google.com/apikey) and **Groq** (free from https://console.groq.com/keys). An OpenRouter key is optional.
+
+1. Download the code and install it:
 
 ```bash
 git clone https://github.com/rohith-kc/devfili.git
 cd devfili
 npm install
+```
+
+2. Create your settings file from the template (Mac/Linux, then Windows):
+
+```bash
 cp .env.example .env.local
 ```
 
-Open `.env.local` in your editor and paste in your own keys (see [Environment variables](#environment-variables) below) &mdash; never commit this file, and never paste a key into a chat or an issue.
+```powershell
+copy .env.example .env.local
+```
+
+3. Open `.env.local` in any text editor and paste your keys after `GEMINI_API_KEY=` and `GROQ_API_KEY=`, then save. Leave everything else as it is. (`.env.local` is git-ignored, so your keys are never uploaded.)
+4. Check the keys work. It prints PASS or FAIL for each provider and never shows a key:
 
 ```bash
-npm run check-keys    # confirms each key works, never prints the values
-npm run dev            # http://localhost:3000
+npm run check-keys
 ```
+
+5. Start the app and open http://localhost:3000:
+
+```bash
+npm run dev
+```
+
+6. Try it: enter a name, open a library guide (for example Slack), click **Save for later**, open **Profile**, then click **Check an app** and type an app such as Miro. The finished research opens as a full guide page.
+
+**Using stronger models or more credits:** the models are just settings in `.env.local`. Change `GEMINI_MODEL_RESEARCH`, `GEMINI_MODEL_CHECK`, `GROQ_MODEL_DRAFT`, `GROQ_MODEL_FAST` or `OPENROUTER_MODEL` to any model your account can use (`npm run check-keys` lists the Gemini ones). To allow more tests per day, raise `LIVE_RUNS_PER_GUEST_PER_DAY` and `LIVE_RUNS_GLOBAL_PER_DAY`.
+
+**Without Supabase:** leave the three `SUPABASE` settings blank and everything still works. Research results are not cached between restarts, daily limits are counted in memory, and saved guides stay in your browser only.
+
+**With Supabase (optional, full setup):** create a free project at https://supabase.com, copy its project URL and service role key into `.env.local`, then in the Supabase **SQL Editor** run the three files in `supabase/migrations` in order (`0001_init.sql`, `0002_saved_guides.sql`, `0003_visitors.sql`). This turns on result caching, shared daily limits, saving guides to the database, and a `visitors` table of who entered a name.
+
+**If something goes wrong**
+- *"busy" or "rate-limited" on research:* a provider's free quota is used up. Wait, or use different keys or models.
+- *`npm run check-keys` shows FAIL:* the key is wrong or has no access to that model. Re-copy it, and make sure there are no spaces or quotes around it.
+- *Port 3000 already in use:* run `npm run dev -- -p 3001` and open http://localhost:3001.
+
+### Option 3: deploy your own copy to Vercel
+
+See [Deploying](#deploying) below. Import the repository into your own Vercel account and add the same settings as environment variables.
 
 Other useful commands:
 
