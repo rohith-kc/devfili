@@ -92,7 +92,7 @@ async function searchLinks(query: string): Promise<string[]> {
  * developer-site addresses, following topical links, and one web search.
  * "community": pages found only by web search (forums, issues, write-ups). */
 export async function gatherSources(
-  kind: "official" | "community",
+  kind: "official" | "community" | "identify",
   appName: string,
   website: string
 ): Promise<SourcePage[]> {
@@ -119,7 +119,9 @@ export async function gatherSources(
   const query =
     kind === "official"
       ? `${appName} OAuth app review approval developer documentation`
-      : `${appName} OAuth app review rejected approval developer forum`;
+      : kind === "identify"
+        ? `${appName} software product official website`
+        : `${appName} OAuth app review rejected approval developer forum`;
   const [seedResults, searchResults] = await Promise.all([
     Promise.all(seedUrls.map((u) => limit(() => fetchPage(u)))),
     searchLinks(query).catch(() => [] as string[]),
@@ -132,7 +134,7 @@ export async function gatherSources(
     follow.push(...r.links.filter((l) => !root || sameSite(l, root)));
   }
 
-  const searchTargets = searchResults.filter((u) => kind === "community" || !root || sameSite(u, root) || pages.size < 4);
+  const searchTargets = searchResults.filter((u) => kind !== "official" || !root || sameSite(u, root) || pages.size < 4);
   const extraUrls = [...new Set([...searchTargets, ...follow])].filter((u) => !pages.has(u)).slice(0, MAX_EXTRA_FETCHES);
   const extraResults = await Promise.all(extraUrls.map((u) => limit(() => fetchPage(u))));
   for (const r of extraResults) add(r?.page);
