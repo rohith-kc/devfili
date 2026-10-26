@@ -27,9 +27,28 @@ DevFili tells a developer, before they write a line of integration code, how har
 - `src/lib/{tier,evidence,confidence,completeness}.ts` &mdash; the deterministic trust logic, unit tested in `tests/`.
 - `content/library/*.json` &mdash; the 9 reviewed guides; `docs/` &mdash; PRD, SPEC, prompts, decisions and the verification log.
 
-**How to test it**
-1. **Quickest:** open https://devfili.vercel.app/, enter a name, open a guide (try Slack), click **Save for later**, then use **Check an app** and type an app such as Miro. The live site runs on free-tier keys, so research can occasionally say "busy"; the library always works.
-2. **With your own model:** see [How to test this project](#how-to-test-this-project) below. Three lines in `.env.local` (`LLM_BASE_URL`, `LLM_API_KEY`, `LLM_MODEL`), then `npm install` and `npm run dev`.
+**How to test it: snapshot**
+
+*A. Live site, no setup (2 minutes)*
+1. Open https://devfili.vercel.app/ and enter any name (no password).
+2. Open a library guide (try **Slack**), look at the tier, the two numbers (your time vs. the wait), the gates and the evidence labels, then click **Save for later**.
+3. Try the checklist and the **Drafts** tab (scope justification, test plan, admin note) in the right-hand Toolkit.
+4. Click **Check an app** and type an app that is not in the library, such as **Miro** or **Fireflies**. It researches live and opens a full guide page.
+5. Open **Profile** (top right) to see saved guides; **Sign out** returns to the welcome screen.
+
+The live site runs on free-tier AI keys with a cap of 5 fresh researches per visitor per day, so research can say "busy" or "limit reached". The 9 library guides always work. If that happens, use B.
+
+*B. Run it yourself with your own model (about 5 minutes)*
+1. Install Node.js 20+ and git.
+2. `git clone https://github.com/rohith-kc/devfili.git`, then `cd devfili`, then `npm install`.
+3. Copy `.env.example` to `.env.local` (`cp .env.example .env.local`, or `copy` on Windows).
+4. In `.env.local`, fill in **one** of these and leave the rest blank:
+   - **Any OpenAI-compatible API** (OpenAI, Grok, Bedrock, a gateway, OpenRouter): `LLM_BASE_URL=`, `LLM_API_KEY=`, `LLM_MODEL=`
+   - **Groq only:** `GROQ_API_KEY=`, `PROVIDER_RESEARCH=groq`, `PROVIDER_CHECK=groq`
+   - **Gemini only:** `GEMINI_API_KEY=`
+5. `npm run check-keys` (prints PASS/FAIL, never shows a key), then `npm run dev`, then open http://localhost:3000 and do steps 1 to 5 of A.
+
+Locally DevFili's own daily caps are off. Supabase is optional (without it, saves stay in the browser). More detail, including what each setting does and troubleshooting, is in [How to test this project](#how-to-test-this-project) below.
 
 **Honest limits.** None of the 9 guides carries a human "hand-verified" mark; they were self-reviewed against official sources and a 25-claim accuracy check is in `docs/VERIFICATION.md` (23 correct, 1 corrected, 1 unverified). DevFili never creates a real provider app, so timelines come from documentation and developer reports, not first-hand approvals. Live research quality depends on the model and on providers' free-tier limits. Full list in [Limitations](#limitations-stated-plainly-as-the-project-itself-asks-every-guide-to-do).
 
