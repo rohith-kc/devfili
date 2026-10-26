@@ -64,6 +64,8 @@ LLM_MODEL=the-model-id
   Examples for `LLM_BASE_URL`: `https://api.openai.com/v1`, `https://api.x.ai/v1`, `https://bedrock-runtime.<region>.amazonaws.com/openai/v1` (with a Bedrock API key), `https://openrouter.ai/api/v1`. DevFili then runs every stage (finding the app, researching, writing the guide, fact-checking, and the drafting helpers) on that one model. No web-search feature is needed: DevFili fetches the provider's public developer pages itself and gives them to your model to read.
 - **Or the free keys:** a Gemini key (https://aistudio.google.com/apikey) and a Groq key (https://console.groq.com/keys).
 
+**Fresh search results on a plain endpoint (optional).** If your endpoint has no web search, add a search API so DevFili can find current pages and developer reports: set `SEARCH_PROVIDER` (`tavily`, `brave` or `serper`) and `SEARCH_API_KEY`. Without it, DevFili falls back to DuckDuckGo, which usually blocks automated requests, so only the provider's own docs are found.
+
 Research quality and speed depend on the model: a strong model gives clearly better guides than a small one. The built-in page fetching finds the official docs well; community reports (forums, rejection stories) need a provider with web search, such as OpenRouter or Gemini, so a plain endpoint will show fewer of those.
 
 1. Download the code and install it:

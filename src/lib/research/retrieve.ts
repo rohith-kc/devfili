@@ -2,6 +2,7 @@ import { parse as parseHtml } from "node-html-parser";
 import pLimit from "p-limit";
 import { safeFetch } from "../safety/ssrf";
 import { htmlToText } from "./probe";
+import { apiSearchLinks } from "./websearch";
 
 // Used when the configured model provider has no built-in web search (most
 // OpenAI-compatible endpoints: OpenAI, xAI, Bedrock, company gateways).
@@ -68,9 +69,13 @@ async function fetchPage(url: string): Promise<{ page: SourcePage; links: string
   return { page: { url: fetched.finalUrl, title, text: text.slice(0, MAX_PAGE_CHARS) }, links };
 }
 
-/** Result links from DuckDuckGo's plain-HTML page. Best effort: if the
- * request is blocked or the markup changes, returns no links. */
+/** Result links for a query. Uses the configured search API (Tavily, Brave or
+ * Serper) when there is one; otherwise falls back to DuckDuckGo's plain-HTML
+ * page, which usually answers automated requests with a bot check and so
+ * returns nothing - set SEARCH_PROVIDER and SEARCH_API_KEY for reliable results. */
 async function searchLinks(query: string): Promise<string[]> {
+  const viaApi = await apiSearchLinks(query);
+  if (viaApi.length > 0) return viaApi;
   const fetched = await safeFetch(`https://html.duckduckgo.com/html/?q=${encodeURIComponent(query)}`, { timeoutMs: FETCH_TIMEOUT_MS });
   if (!fetched.ok || !fetched.text) return [];
   const urls: string[] = [];
