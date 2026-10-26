@@ -62,7 +62,8 @@ export async function resolveApp(query: string, env: Env, today: string): Promis
   if (libraryMatch) return { type: "library", slug: libraryMatch };
 
   const prompt = resolvePrompt(today, query);
-  const first = await tryResolve(await plainComplete(env, "resolve", prompt, { jsonMode: true }).then((r) => r.text, () => null));
+  const firstText = await plainComplete(env, "resolve", prompt, { jsonMode: true }).then((r) => r.text, () => null);
+  const first = tryResolve(firstText);
   if (first && first.type !== "not_found") return first;
 
   // The quick call answers from memory and does not know newer products
@@ -70,8 +71,17 @@ export async function resolveApp(query: string, env: Env, today: string): Promis
   // the web before giving up.
   const searchPrompt = `${prompt}
 You may use web search. Many real products are newer than your training data, so do NOT answer "not_found" just because you do not recognise the name: search for it first. Answer "not_found" only if a search finds no such software product.`;
-  const searched = await tryResolve(await searchText(env, "resolve-search", searchPrompt, query, ""));
-  if (searched) return searched;
+  // Search answers sometimes come back as prose instead of the JSON asked for, so allow one more try.
+  let gotAnyAnswer = firstText !== null;
+  for (let attempt = 0; attempt < 2; attempt++) {
+    const text = await searchText(env, "resolve-search", searchPrompt, query, "");
+    if (text !== null) gotAnyAnswer = true;
+    const searched = tryResolve(text);
+    if (searched) return searched;
+  }
+
+  // Every provider call failed (for example a quota limit): that is "busy", not "no such app".
+  if (!gotAnyAnswer) throw new Error("resolve: no provider answered");
 
   return (
     first ?? {
