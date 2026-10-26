@@ -51,4 +51,10 @@ describe("resolveApp web-search second chance", () => {
     searchText.mockResolvedValue(found);
     expect((await resolveApp("fireflies", env, "2026-10-26")).type).toBe("app");
   });
+
+  it('reports a provider problem, not "not found", when every call fails', async () => {
+    plainComplete.mockRejectedValue(new Error("429 rate limited"));
+    searchText.mockResolvedValue(null);
+    await expect(resolveApp("fireflies", env, "2026-10-26")).rejects.toThrow();
+  });
 });

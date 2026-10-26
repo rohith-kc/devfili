@@ -35,7 +35,7 @@ function record(name: string, pass: boolean, detail: string) {
 async function checkGroq() {
   const key = env.GROQ_API_KEY;
   if (!key) {
-    record("Groq", !!customKey(), customKey() ? "GROQ_API_KEY is blank - not needed, the custom LLM_* endpoint is used for every stage." : "GROQ_API_KEY is blank in .env.local. Next step: open .env.local, paste your Groq key after GROQ_API_KEY=, save.");
+    record("Groq", anotherProvider("groq"), anotherProvider("groq") ? "GROQ_API_KEY is blank - not needed, another provider is configured." : "GROQ_API_KEY is blank in .env.local. Next step: open .env.local, paste your Groq key after GROQ_API_KEY=, save.");
     return;
   }
   const baseURL = env.GROQ_BASE_URL || "https://api.groq.com/openai/v1";
@@ -119,6 +119,11 @@ async function checkGroq() {
   }
 }
 
+/** True when at least one other provider is configured, so a blank key here is fine. */
+function anotherProvider(missing: "groq" | "gemini"): boolean {
+  return !!customKey() || (missing === "groq" ? !!env.GEMINI_API_KEY : !!env.GROQ_API_KEY);
+}
+
 function customKey(): string {
   return env.LLM_API_KEY || env.OPENROUTER_API_KEY || "";
 }
@@ -199,7 +204,7 @@ function printAqKeyAdvice() {
 async function checkGemini() {
   const key = env.GEMINI_API_KEY;
   if (!key) {
-    record("Gemini", !!customKey(), customKey() ? "GEMINI_API_KEY is blank - not needed, the custom LLM_* endpoint is used for every stage." : "GEMINI_API_KEY is blank in .env.local. Next step: open .env.local, paste your Gemini key after GEMINI_API_KEY=, save.");
+    record("Gemini", anotherProvider("gemini"), anotherProvider("gemini") ? "GEMINI_API_KEY is blank - not needed, another provider is configured." : "GEMINI_API_KEY is blank in .env.local. Next step: open .env.local, paste your Gemini key after GEMINI_API_KEY=, save.");
     return;
   }
   const ai = new GoogleGenAI({ apiKey: key });
